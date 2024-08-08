@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Account Activation" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{% trans "Account Activation" %}</h1>
+    <p>{% trans "Thank you for registering! Please activate your account to complete the registration." %}</p>
+    <p>{% trans "We have sent an activation email to the address you provided. Please check your inbox and follow the instructions in the email to activate your account." %}</p>
+    <p>{% trans "If you did not receive the email, please check your spam folder." %}</p>
+</div>
+{% endblock %}

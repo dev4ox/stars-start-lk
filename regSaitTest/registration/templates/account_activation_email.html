@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% load i18n %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "Account Activation" %}</title>
+</head>
+<body>
+    <h1>{% trans "Account Activation" %}</h1>
+    <p>{% trans "Hello" %}, {{ user.username }}!</p>
+    <p>{% trans "To confirm your account, please click the button below:" %}</p>
+    <a href="{{ activation_url }}" style="display: inline-block; padding: 10px 20px; font-size: 16px; color: #ffffff; background-color: #007bff; text-decoration: none; border-radius: 5px;">{% trans "Confirm Account" %}</a>
+</body>
+</html>

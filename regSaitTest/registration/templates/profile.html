@@ -1,0 +1,55 @@
+<!-- templates/profile.html -->
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Profile" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{% trans "Profile" %}</h2>
+    <div class="row profile-container">
+        <div class="col-md-4 profile-left text-center">
+            <img src="{{ user.profile_photo.url }}" alt="{% trans 'Profile Photo' %}" class="profile-photo img-fluid rounded-circle" width="150" height="150">
+        </div>
+        <div class="col-md-8 profile-right">
+            <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+            <p>{% trans "Email" %}: {{ user.username }}</p>
+            <p>{% trans "Phone" %}: {{ user.phone_number }}</p>
+            <a href="{% url 'edit_profile' %}" class="btn btn-success">{% trans "Edit Profile" %}</a>
+        </div>
+    </div>
+
+    <div class="last-order mt-5 p-3 bg-white rounded shadow">
+        <h3>{% trans "Last Orders" %}</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>{% trans "Order ID" %}</th>
+                    <th>{% trans "Service" %}</th>
+                    <th>{% trans "Category" %}</th>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Status" %}</th>
+                    <th>{% trans "Cost" %}</th>
+                    <th>{% trans "Actions" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in last_orders %}
+                    <tr>
+                        <td>{{ order.order_id }}</td>
+                        <td>{{ order.service.title }}</td>
+                        <td>{{ order.category.name }}</td>
+                        <td>{{ order.date }}</td>
+                        <td>{{ order.get_status_display }}</td>
+                        <td>{{ order.cost }}</td>
+
+                        <td>
+                            <a href="{% url 'orders_details' order.order_id %}" class="btn btn-info">{% trans "Details" %}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

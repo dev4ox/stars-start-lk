@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Ожидание менеджера{% endblock %}
+
+{% block content %}
+    <div class="notification">
+        <h1>Ожидайте, с вами скоро свяжется менеджер по телефону.</h1>
+        <a href="{% url 'orders' %}" class="btn btn-primary mb-3">{% trans 'Return to the list of orders' %}</a>
+    </div>
+{% endblock %}

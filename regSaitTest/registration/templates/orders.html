@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Orders" %}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2>{% trans "My Orders" %}</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>{% trans "Order ID" %}</th>
+                <th>{% trans "Order Date" %}</th>
+                <th>{% trans "Service Name" %}</th>
+                <th>{% trans "Cost" %}</th>
+                <th>{% trans "Status" %}</th>
+                <th>{% trans "Actions" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.order_id }}</td>
+                <td>{{ order.date|date:"Y-m-d" }}</td>
+                <td>{{ order.service.title }}</td>
+                <td>{{ order.cost }} р.</td>
+                <td>
+                    <span class="badge {% if order.status == 'paid' %}badge-success{% elif order.status == 'not_paid' %}badge-danger{% elif order.status == 'in_progress' %}badge-warning{% else %}badge-secondary{% endif %}">
+                        {{ order.get_status_display }}
+                    </span>
+                </td>
+                <td>
+                    {% if order.status == 'not_paid' %}
+                    <form method="post" action="{% url 'orders_pay' order.order_id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">{% trans "Pay" %}</button>
+                    </form>
+                    {% endif %}
+
+                    {% if order.status == 'paid' %}
+                    <form method="post" action="{% url 'order_get_tickets' order.order_id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">{% trans "Get ticket" %}</button>
+                    </form>
+                    {% endif %}
+
+                    <a href="{% url 'orders_details' order.order_id %}" class="btn btn-info">{% trans "Details" %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination-container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if orders.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ orders.previous_page_number }}">{{ _('Previous') }}</a></li>
+                {% endif %}
+                {% for i in orders.paginator.page_range %}
+                <li class="page-item {% if orders.number == i %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endfor %}
+                {% if orders.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ orders.next_page_number }}">{{ _('Next') }}</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-box">
+        <img src="{% static 'images/logo-stars-start-white-mini-300px.png' %}" alt="Logo" class="login-logo">
+        <h2>{% trans "Login" %}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>
+        </form>
+        <div class="login-links">
+            <a href="{% url 'reset_password' %}">{% trans "Forgot password?" %}</a> |
+            <a href="{% url 'register' %}">{% trans "Sign up" %}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Sign Up" %}{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <div class="register-box">
+        <img src="{% static 'images/logo-stars-start-white-mini-300px.png' %}" alt="Logo" class="register-logo">
+        <h2>{% trans "Sign up" %}</h2>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                {{ form.phone_number.label_tag }}
+                {{ form.phone_number }}
+            </div>
+            <div class="form-group">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+            </div>
+            <div class="form-group">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+            </div>
+            <div class="form-group">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+            </div>
+            <div class="form-group">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </div>
+            <button type="submit" class="btn btn-primary">{% trans "Sign up" %}</button>
+        </form>
+        <div class="register-links">
+            <h4>{% trans "Already have an account?" %} <a href="{% url 'login' %}">{% trans "Log in" %}</a></h4>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function(){
+        $('input[type="tel"]').inputmask({"mask": "+7 (999) 999-99-99"});
+    });
+</script>
+{% endblock %}

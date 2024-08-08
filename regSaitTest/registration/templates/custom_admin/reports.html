@@ -1,0 +1,50 @@
+{% extends "custom_admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Report Management" %} | {% trans "Star Start" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">{% trans "Reports" %}</h2>
+    <div class="btn-group mb-3" role="group" aria-label="Report Filters">
+        <button type="button" class="btn btn-secondary">{% trans "Service Reports" %}</button>
+        <button type="button" class="btn btn-secondary">{% trans "Order Reports" %}</button>
+        <button type="button" class="btn btn-secondary">{% trans "Profit Reports" %}</button>
+    </div>
+    <div class="report-content">
+        <!-- Example content for Service Reports -->
+        <h4>{% trans "Service Reports" %}</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>{% trans "Service Name" %}</th>
+                    <th>{% trans "Number of Orders" %}</th>
+                    <th>{% trans "Total Revenue" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{% trans "Space Photo Session" %}</td>
+                    <td>10</td>
+                    <td>₽500,000</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Virtual Flight to Mars" %}</td>
+                    <td>5</td>
+                    <td>₽375,000</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Planetarium Excursion" %}</td>
+                    <td>8</td>
+                    <td>₽40,000</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Master Class 'Building a Rocket'" %}</td>
+                    <td>3</td>
+                    <td>₽24,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Edit Profile" %}{% endblock %}
+
+{% block content %}
+<div class="edit-profile-container">
+    <div class="edit-profile-box">
+        <h2>{% trans "Edit Profile" %}</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+            </div>
+            <div class="form-group">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+            </div>
+            <div class="form-group">
+                {{ form.phone_number.label_tag }}
+                {{ form.phone_number }}
+            </div>
+            <div class="form-group">
+                {{ form.profile_photo.label_tag }}
+                <div>
+                    {% if user.profile.profile_photo %}
+                        {% trans "Currently" %}: <a href="{{ user.profile.profile_photo.url }}">{{ user.profile.profile_photo.url }}</a><br>
+                    {% endif %}
+                    {{ form.profile_photo }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label>{% trans "Password" %}:</label>
+                <div disabled="" aria-describedby="id_password_helptext" id="id_password">
+                    <strong>{% trans "Password is not set." %}</strong>
+                </div>
+                <span class="helptext" id="id_password_helptext">
+                    {% trans "Raw passwords are not stored, so there is no way to see this user's password, but you can change the password using" %} 
+                    <a href="{% url 'password_change' %}">{% trans "this form" %}</a>.
+                </span>
+            </div>
+            <button type="submit" class="btn btn-primary">{% trans "Save Changes" %}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $(document).ready(function(){
+      $('input[type="tel"]').inputmask({"mask": "+7 (999) 999-99-99"});
+  });
+</script>
+{% endblock %}

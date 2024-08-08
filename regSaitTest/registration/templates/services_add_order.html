@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Add Order' %}{% endblock %}
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var serviceSelect = document.getElementById('id_service');
+        var categorySelect = document.getElementById('id_category');
+        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        var costText = document.getElementById('category_cost_text');
+
+        function loadCategories(service_id) {
+            fetch('/ajax/load-categories/?service=' + service_id, {
+                method: 'GET',
+                headers: {
+                    'X-CSRFToken': csrfToken
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                categorySelect.innerHTML = '';
+                for (var key in data) {
+                    var option = document.createElement('option');
+                    option.value = key;
+                    option.text = data[key];
+                    categorySelect.appendChild(option);
+                }
+
+                if (categorySelect.value) {
+                    loadCategoryCost(categorySelect.value);
+                }
+            });
+        }
+
+        function loadCategoryCost(category_id) {
+            fetch('/ajax/get-category-cost/?category=' + category_id, {
+                method: 'GET',
+                headers: {
+                    'X-CSRFToken': csrfToken
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                costText.textContent = data.cost;
+            });
+        }
+
+        if (serviceSelect.value) {
+            loadCategories(serviceSelect.value);  // Загружаем категории при загрузке страницы, если есть выбранная услуга
+        }
+
+        serviceSelect.addEventListener('change', function() {
+            loadCategories(this.value);
+        });
+
+        categorySelect.addEventListener('change', function() {
+            loadCategoryCost(this.value);
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>Add Order</h1>
+<div class="user-card h-100">
+    <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}" width="500px" height="300px">
+    <div class="card-body">
+        <h5 class="card-title">{{ service.title }}</h5>
+        <p class="card-text">{{ service.description }}</p>
+    </div>
+</div>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-group">
+        <label for="category_cost_text">{% trans "Cost" %}</label>
+        <p id="category_cost_text"></p>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

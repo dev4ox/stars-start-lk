@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Our Services" %} | {% trans "Star Start" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{% trans "Our Services" %}</h1>
+    <p>{% trans "Choose a service that will make your event unforgettable!" %}</p>
+    <div class="row">
+        {% for service in services_list %}
+        <div class="col-md-4 mb-4">
+            <div class="user-card h-100">
+                <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ service.title }}</h5>
+                    <p class="card-text">{{ service.description }}</p>
+                    <a href="{% url 'services_add_order' service.id %}" class="btn btn-success">{% trans "Order" %}</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

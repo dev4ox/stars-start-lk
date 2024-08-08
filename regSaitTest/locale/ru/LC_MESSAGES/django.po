@@ -1,0 +1,755 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-27 03:00+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: registration/forms.py:9 registration/forms.py:50 registration/forms.py:100
+#: registration/forms.py:104 registration/templates/profile.html:16
+msgid "Email"
+msgstr "Электронная почта"
+
+#: registration/forms.py:11 registration/forms.py:52
+msgid "Phone number"
+msgstr "Номер телефона"
+
+#: registration/forms.py:20 registration/forms.py:69
+msgid "First name"
+msgstr "Имя"
+
+#: registration/forms.py:21 registration/forms.py:70
+msgid "Last name"
+msgstr "Фамилия"
+
+#: registration/forms.py:57
+msgid "Password"
+msgstr "Пароль"
+
+#: registration/forms.py:59
+msgid ""
+"Raw passwords are not stored, so there is no way to see this user’s "
+"password, but you can change the password using <a href=\"/"
+"password_change\">this form</a>."
+msgstr ""
+"Открытые пароли не сохраняются, поэтому нет способа увидеть пароль этого "
+"пользователя, но вы можете изменить пароль, используя <a href=\"/"
+"password_change\">эту форму</a>."
+
+#: registration/forms.py:71
+msgid "Profile photo"
+msgstr "Фотография профиля"
+
+#: registration/models.py:21
+msgid "email address"
+msgstr "адрес электронной почты"
+
+#: registration/models.py:24
+msgid "A user with this email already exists."
+msgstr "Пользователь с таким email уже существует."
+
+#: registration/models.py:54
+msgid "Title"
+msgstr "Название"
+
+#: registration/models.py:55
+msgid "Content"
+msgstr "Содержание"
+
+#: registration/models.py:57
+msgid "Image Path"
+msgstr "Путь к изображению"
+
+#: registration/models.py:58
+msgid "Cost"
+msgstr "Стоимость"
+
+#: registration/models.py:61
+msgid "Catalog"
+msgstr "Каталог"
+
+#: registration/models.py:62
+msgid "Catalogs"
+msgstr "Каталоги"
+
+#: registration/models.py:71 registration/models.py:89
+msgid "User"
+msgstr "Пользователь"
+
+#: registration/models.py:72
+msgid "Item List"
+msgstr "Список товаров"
+
+#: registration/models.py:73 registration/models.py:91
+msgid "Amount"
+msgstr "Сумма"
+
+#: registration/models.py:74 registration/templates/profile.html:34
+msgid "Discount"
+msgstr "Скидка"
+
+#: registration/models.py:75 registration/templates/custom_admin/users.html:49
+msgid "Manager"
+msgstr "Менеджер"
+
+#: registration/models.py:76 registration/templates/custom_admin/orders.html:23
+#: registration/templates/profile.html:36
+msgid "Status"
+msgstr "Статус"
+
+#: registration/models.py:77 registration/templates/custom_admin/orders.html:21
+msgid "Date"
+msgstr "Дата"
+
+#: registration/models.py:80 registration/models.py:90
+msgid "Order"
+msgstr "Заказ"
+
+#: registration/models.py:81 registration/templates/base.html:41
+#: registration/templates/custom_admin/base.html:42
+msgid "Orders"
+msgstr "Заказы"
+
+#: registration/models.py:92
+msgid "Date Payment"
+msgstr "Дата платежа"
+
+#: registration/models.py:93
+msgid "Transaction ID"
+msgstr "ID транзакции"
+
+#: registration/models.py:96
+msgid "Payment"
+msgstr "Платеж"
+
+#: registration/models.py:97
+msgid "Payments"
+msgstr "Платежи"
+
+#: registration/templates/account_activation_email.html:6
+#: registration/templates/account_activation_email.html:9
+#: registration/templates/message_about_activate.html:4
+#: registration/templates/message_about_activate.html:8
+#: registration/views.py:27
+msgid "Account Activation"
+msgstr "Активация аккаунта"
+
+#: registration/templates/account_activation_email.html:10
+msgid "Hello"
+msgstr "Здравствуйте"
+
+#: registration/templates/account_activation_email.html:11
+msgid "To confirm your account, please click the button below:"
+msgstr "Для подтверждения вашего аккаунта, пожалуйста, нажмите на кнопку ниже:"
+
+#: registration/templates/account_activation_email.html:12
+msgid "Confirm Account"
+msgstr "Подтвердить аккаунт"
+
+#: registration/templates/base.html:8
+#: registration/templates/custom_admin/base.html:33
+msgid "Dashboard"
+msgstr "Панель управления"
+
+#: registration/templates/base.html:8 registration/templates/base.html:27
+#: registration/templates/base.html:68
+#: registration/templates/custom_admin/base.html:8
+#: registration/templates/custom_admin/base.html:21
+#: registration/templates/custom_admin/base.html:72
+#: registration/templates/custom_admin/orders.html:4
+#: registration/templates/custom_admin/reports.html:4
+#: registration/templates/custom_admin/services.html:4
+#: registration/templates/custom_admin/users.html:4
+msgid "Star Start"
+msgstr "Звездный старт"
+
+#: registration/templates/base.html:27
+#: registration/templates/custom_admin/base.html:22
+msgid "Production Center"
+msgstr "Продюсерский центр"
+
+#: registration/templates/base.html:28
+#: registration/templates/custom_admin/base.html:26
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
+
+#: registration/templates/base.html:35
+#: registration/templates/custom_admin/dashboard.html:4
+#: registration/templates/orders.html:4 registration/templates/payments.html:4
+#: registration/templates/profile.html:5 registration/templates/profile.html:9
+#: registration/templates/services.html:4
+msgid "Profile"
+msgstr "Профиль"
+
+#: registration/templates/base.html:38
+#: registration/templates/custom_admin/base.html:39
+msgid "Services"
+msgstr "Услуги"
+
+#: registration/templates/base.html:44
+#: registration/templates/custom_admin/base.html:48
+msgid "Logout"
+msgstr "Выйти"
+
+#: registration/templates/base.html:68
+#: registration/templates/custom_admin/base.html:72
+msgid "All rights reserved."
+msgstr "Все права защищены."
+
+#: registration/templates/custom_admin/base.html:8
+msgid "Admin panel"
+msgstr "Админ-панель"
+
+#: registration/templates/custom_admin/base.html:36
+#: registration/templates/custom_admin/dashboard.html:27
+msgid "Users"
+msgstr "Пользователи"
+
+#: registration/templates/custom_admin/base.html:45
+#: registration/templates/custom_admin/reports.html:8
+msgid "Reports"
+msgstr "Отчеты"
+
+#: registration/templates/custom_admin/dashboard.html:10
+#: registration/templates/custom_admin/dashboard.html:53
+msgid "Quick Actions"
+msgstr "Быстрые действия"
+
+#: registration/templates/custom_admin/dashboard.html:11
+#: registration/templates/custom_admin/services.html:9
+msgid "Add Service"
+msgstr "Добавить услугу"
+
+#: registration/templates/custom_admin/dashboard.html:12
+#: registration/templates/custom_admin/users.html:9
+msgid "Add User"
+msgstr "Добавить пользователя"
+
+#: registration/templates/custom_admin/dashboard.html:13
+msgid "Pending Orders"
+msgstr "Ожидающие заказы"
+
+#: registration/templates/custom_admin/dashboard.html:14
+msgid "Site Settings"
+msgstr "Настройки сайта"
+
+#: registration/templates/custom_admin/dashboard.html:20
+msgid "Admin Dashboard"
+msgstr "Панель администратора"
+
+#: registration/templates/custom_admin/dashboard.html:35
+msgid "Active Orders"
+msgstr "Активные заказы"
+
+#: registration/templates/custom_admin/dashboard.html:43
+msgid "Monthly Revenue"
+msgstr "Ежемесячный доход"
+
+#: registration/templates/custom_admin/dashboard.html:56
+msgid "View Pending Orders"
+msgstr "Просмотреть ожидающие заказы"
+
+#: registration/templates/custom_admin/dashboard.html:57
+msgid "Unread Messages"
+msgstr "Непрочитанные сообщения"
+
+#: registration/templates/custom_admin/dashboard.html:58
+msgid "Update Service Availability"
+msgstr "Обновить доступность услуги"
+
+#: registration/templates/custom_admin/dashboard.html:63
+msgid "Recent Actions"
+msgstr "Последние действия"
+
+#: registration/templates/custom_admin/dashboard.html:67
+msgid "New order"
+msgstr "Новый заказ"
+
+#: registration/templates/custom_admin/dashboard.html:67
+msgid "by user"
+msgstr "от пользователя"
+
+#: registration/templates/custom_admin/dashboard.html:68
+msgid "Service updated"
+msgstr "Услуга обновлена"
+
+#: registration/templates/custom_admin/dashboard.html:69
+msgid "New user registered"
+msgstr "Зарегистрирован новый пользователь"
+
+#: registration/templates/custom_admin/dashboard.html:70
+msgid "Order cancelled"
+msgstr "Заказ отменен"
+
+#: registration/templates/custom_admin/orders.html:4
+#, fuzzy
+#| msgid "Order cancelled"
+msgid "Order Management"
+msgstr "Заказ отменен"
+
+#: registration/templates/custom_admin/orders.html:8
+#, fuzzy
+#| msgid "Orders"
+msgid "All Orders"
+msgstr "Заказы"
+
+#: registration/templates/custom_admin/orders.html:10
+#, fuzzy
+#| msgid "New order"
+msgid "New Orders"
+msgstr "Новый заказ"
+
+#: registration/templates/custom_admin/orders.html:11
+#: registration/templates/custom_admin/orders.html:46
+msgid "In Progress"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:12
+#: registration/templates/custom_admin/orders.html:58
+msgid "Completed"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:13
+#: registration/templates/custom_admin/orders.html:70
+#, fuzzy
+#| msgid "Order cancelled"
+msgid "Cancelled"
+msgstr "Заказ отменен"
+
+#: registration/templates/custom_admin/orders.html:18
+#: registration/templates/profile.html:25
+msgid "Order ID"
+msgstr "ID заказа"
+
+#: registration/templates/custom_admin/orders.html:19
+#: registration/templates/custom_admin/users.html:27
+msgid "Client"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:20
+#, fuzzy
+#| msgid "Services"
+msgid "Service"
+msgstr "Услуги"
+
+#: registration/templates/custom_admin/orders.html:22
+#: registration/templates/custom_admin/services.html:16
+msgid "Price"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:24
+#: registration/templates/custom_admin/services.html:17
+#: registration/templates/custom_admin/users.html:19
+#, fuzzy
+#| msgid "Quick Actions"
+msgid "Actions"
+msgstr "Быстрые действия"
+
+#: registration/templates/custom_admin/orders.html:30
+msgid "Ivanov Ivan"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:31
+#: registration/templates/custom_admin/reports.html:27
+#: registration/templates/custom_admin/services.html:23
+msgid "Space Photo Session"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:34
+msgid "New"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:36
+#: registration/templates/custom_admin/orders.html:48
+#: registration/templates/custom_admin/orders.html:60
+#: registration/templates/custom_admin/orders.html:72
+#: registration/templates/custom_admin/services.html:27
+#: registration/templates/custom_admin/services.html:37
+#: registration/templates/custom_admin/services.html:47
+#: registration/templates/custom_admin/services.html:57
+#: registration/templates/custom_admin/users.html:30
+#: registration/templates/custom_admin/users.html:41
+#: registration/templates/custom_admin/users.html:52
+msgid "Edit"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:37
+#: registration/templates/custom_admin/orders.html:49
+#: registration/templates/custom_admin/orders.html:61
+#: registration/templates/custom_admin/orders.html:73
+#: registration/templates/custom_admin/services.html:28
+#: registration/templates/custom_admin/services.html:38
+#: registration/templates/custom_admin/services.html:48
+#: registration/templates/custom_admin/services.html:58
+#: registration/templates/custom_admin/users.html:31
+#: registration/templates/custom_admin/users.html:42
+#: registration/templates/custom_admin/users.html:53
+msgid "Delete"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:42
+msgid "Petrova Anna"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:43
+msgid "Mini-Satellite Launch"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:54
+msgid "Sidorov Petr"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:55
+#: registration/templates/custom_admin/reports.html:32
+#: registration/templates/custom_admin/services.html:33
+msgid "Virtual Flight to Mars"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:66
+msgid "Kozlova Maria"
+msgstr ""
+
+#: registration/templates/custom_admin/orders.html:67
+msgid "Excursion to Cosmonaut Training Center"
+msgstr ""
+
+#: registration/templates/custom_admin/reports.html:4
+msgid "Report Management"
+msgstr ""
+
+#: registration/templates/custom_admin/reports.html:10
+#: registration/templates/custom_admin/reports.html:16
+#, fuzzy
+#| msgid "Services"
+msgid "Service Reports"
+msgstr "Услуги"
+
+#: registration/templates/custom_admin/reports.html:11
+#, fuzzy
+#| msgid "Reports"
+msgid "Order Reports"
+msgstr "Отчеты"
+
+#: registration/templates/custom_admin/reports.html:12
+#, fuzzy
+#| msgid "Reports"
+msgid "Profit Reports"
+msgstr "Отчеты"
+
+#: registration/templates/custom_admin/reports.html:20
+#: registration/templates/custom_admin/services.html:14
+#, fuzzy
+#| msgid "Service updated"
+msgid "Service Name"
+msgstr "Услуга обновлена"
+
+#: registration/templates/custom_admin/reports.html:21
+#, fuzzy
+#| msgid "New order"
+msgid "Number of Orders"
+msgstr "Новый заказ"
+
+#: registration/templates/custom_admin/reports.html:22
+#, fuzzy
+#| msgid "Monthly Revenue"
+msgid "Total Revenue"
+msgstr "Ежемесячный доход"
+
+#: registration/templates/custom_admin/reports.html:37
+#: registration/templates/custom_admin/services.html:43
+msgid "Planetarium Excursion"
+msgstr ""
+
+#: registration/templates/custom_admin/reports.html:42
+#: registration/templates/custom_admin/services.html:53
+msgid "Master Class 'Building a Rocket'"
+msgstr ""
+
+#: registration/templates/custom_admin/services.html:4
+#: registration/templates/custom_admin/services.html:8
+#, fuzzy
+#| msgid "Service updated"
+msgid "Service Management"
+msgstr "Услуга обновлена"
+
+#: registration/templates/custom_admin/services.html:15
+msgid "Description"
+msgstr ""
+
+#: registration/templates/custom_admin/services.html:24
+msgid ""
+"Photo session in an astronaut suit against the background of the starry sky"
+msgstr ""
+
+#: registration/templates/custom_admin/services.html:34
+msgid "Immersion in a VR simulation of a flight and landing on Mars"
+msgstr ""
+
+#: registration/templates/custom_admin/services.html:44
+msgid "Group excursion with a lecture on space and star observation"
+msgstr ""
+
+#: registration/templates/custom_admin/services.html:54
+msgid "Interactive master class on assembling a rocket model"
+msgstr ""
+
+#: registration/templates/custom_admin/services.html:63
+#: registration/templates/custom_admin/users.html:58
+#, fuzzy
+#| msgid "Toggle navigation"
+msgid "Page navigation example"
+msgstr "Переключить навигацию"
+
+#: registration/templates/custom_admin/services.html:65
+#: registration/templates/custom_admin/users.html:60
+msgid "1"
+msgstr ""
+
+#: registration/templates/custom_admin/services.html:66
+#: registration/templates/custom_admin/users.html:61
+msgid "2"
+msgstr ""
+
+#: registration/templates/custom_admin/services.html:67
+#: registration/templates/custom_admin/users.html:62
+msgid "3"
+msgstr ""
+
+#: registration/templates/custom_admin/services.html:69
+#: registration/templates/custom_admin/users.html:64
+msgid "Next"
+msgstr ""
+
+#: registration/templates/custom_admin/users.html:4
+#: registration/templates/custom_admin/users.html:8
+msgid "User Management"
+msgstr ""
+
+#: registration/templates/custom_admin/users.html:10
+msgid "Search users..."
+msgstr ""
+
+#: registration/templates/custom_admin/users.html:15
+msgid "Name"
+msgstr ""
+
+#: registration/templates/custom_admin/users.html:17
+msgid "Role"
+msgstr ""
+
+#: registration/templates/custom_admin/users.html:18
+msgid "Registration Date"
+msgstr ""
+
+#: registration/templates/custom_admin/users.html:25
+msgid "Ivan Petrov"
+msgstr ""
+
+#: registration/templates/custom_admin/users.html:36
+msgid "Anna Sidorova"
+msgstr ""
+
+#: registration/templates/custom_admin/users.html:38
+msgid "Administrator"
+msgstr ""
+
+#: registration/templates/custom_admin/users.html:47
+msgid "Aleksey Kozlov"
+msgstr ""
+
+#: registration/templates/edit_profile.html:4
+#: registration/templates/profile.html:18
+msgid "Edit Profile"
+msgstr "Редактировать профиль"
+
+#: registration/templates/edit_profile.html:10
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: registration/templates/login.html:4 registration/templates/login.html:7
+#: registration/templates/login.html:13
+msgid "Login"
+msgstr "Вход"
+
+#: registration/templates/login.html:11
+msgid "Don't have an account?"
+msgstr "Нет аккаунта?"
+
+#: registration/templates/login.html:11 registration/templates/register.html:7
+#: registration/templates/register.html:19
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+#: registration/templates/login.html:12
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#: registration/templates/message_about_activate.html:9
+msgid ""
+"Thank you for registering! Please activate your account to complete the "
+"registration."
+msgstr ""
+"Спасибо за регистрацию! Пожалуйста, активируйте ваш аккаунт для завершения "
+"регистрации."
+
+#: registration/templates/message_about_activate.html:10
+msgid ""
+"We have sent an activation email to the address you provided. Please check "
+"your inbox and follow the instructions in the email to activate your account."
+msgstr ""
+"Мы отправили письмо для активации на указанный вами адрес. Пожалуйста, "
+"проверьте ваш почтовый ящик и следуйте инструкциям в письме для активации "
+"вашего аккаунта."
+
+#: registration/templates/message_about_activate.html:11
+msgid "If you did not receive the email, please check your spam folder."
+msgstr "Если вы не получили письмо, пожалуйста, проверьте папку «Спам»."
+
+#: registration/templates/password_change.html:7
+#: registration/templates/password_change.html:11
+msgid "Change Password"
+msgstr "Изменить пароль"
+
+#: registration/templates/password_change_done.html:7
+msgid "Password Changed"
+msgstr "Пароль изменен"
+
+#: registration/templates/password_change_done.html:8
+msgid "Your password has been successfully changed."
+msgstr "Ваш пароль был успешно изменен."
+
+#: registration/templates/password_change_done.html:9
+msgid "Return to profile"
+msgstr "Вернуться в профиль"
+
+#: registration/templates/password_reset_done.html:4
+#: registration/templates/password_reset_done.html:8
+#: registration/templates/password_reset_email.html:6
+#: registration/templates/password_reset_request.html:4
+#: registration/templates/password_reset_request.html:8
+#: registration/views.py:137
+msgid "Password Reset"
+msgstr "Сброс пароля"
+
+#: registration/templates/password_reset_done.html:9
+msgid ""
+"An email with password reset instructions has been sent to the specified "
+"email address."
+msgstr ""
+"Письмо с инструкциями по сбросу пароля было отправлено на указанный адрес "
+"электронной почты."
+
+#: registration/templates/password_reset_email.html:9
+msgid "Password Reset Request"
+msgstr "Запрос на сброс пароля"
+
+#: registration/templates/password_reset_email.html:10
+msgid "Your new password:"
+msgstr "Ваш новый пароль:"
+
+#: registration/templates/password_reset_email.html:11
+msgid "Please log in using this password."
+msgstr "Пожалуйста, войдите в систему, используя этот пароль."
+
+#: registration/templates/password_reset_email.html:11
+msgid "Be sure to change it in your profile."
+msgstr "Не забудьте изменить его в вашем профиле."
+
+#: registration/templates/password_reset_request.html:12
+msgid "Submit"
+msgstr "Отправить"
+
+#: registration/templates/profile.html:12
+msgid "Profile Photo"
+msgstr "Фотография профиля"
+
+#: registration/templates/profile.html:17
+msgid "Phone"
+msgstr "Телефон"
+
+#: registration/templates/profile.html:23
+msgid "Last Order"
+msgstr "Последний заказ"
+
+#: registration/templates/profile.html:26
+msgid "Order Date"
+msgstr "Дата заказа"
+
+#: registration/templates/profile.html:27
+msgid "Manager Name"
+msgstr "Имя менеджера"
+
+#: registration/templates/profile.html:28
+msgid "Service List"
+msgstr "Список услуг"
+
+#: registration/templates/profile.html:35
+msgid "Total"
+msgstr "Итого"
+
+#: registration/templates/profile.html:38
+msgid "Paid"
+msgstr "Оплачено"
+
+#: registration/templates/profile.html:38
+msgid "Unpaid"
+msgstr "Не оплачено"
+
+#: registration/templates/profile.html:42
+msgid "No orders available."
+msgstr "Заявки отсутствуют."
+
+#: registration/templates/register.html:4
+msgid "Sign Up"
+msgstr "Регистрация"
+
+#: registration/templates/register.html:18
+msgid "Already have an account?"
+msgstr "Уже есть аккаунт?"
+
+#: registration/templates/register.html:18
+msgid "Log in"
+msgstr "Войти"
+
+#: registration/views.py:109
+msgid "Registration error. Please check the entered data."
+msgstr "Ошибка при регистрации. Пожалуйста, проверьте введенные данные."
+
+#: registration/views.py:146
+msgid "User with this email not found."
+msgstr "Пользователь с таким email не найден."
+
+#: registration/views.py:171
+msgid "Your account has been successfully activated!"
+msgstr "Ваш аккаунт был успешно активирован!"
+
+#: registration/views.py:175
+msgid "Invalid activation link!"
+msgstr "Недействительная ссылка активации!"
+
+#~ msgid "My Site"
+#~ msgstr "Мой сайт"
+
+#~ msgid "Logo"
+#~ msgstr "Логотип"
+
+#~ msgid "Home"
+#~ msgstr "Главная"
+
+#~ msgid "Posts"
+#~ msgstr "Сообщения"

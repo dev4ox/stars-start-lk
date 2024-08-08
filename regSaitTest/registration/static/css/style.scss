@@ -1,0 +1,591 @@
+// Переменные
+$background-color: #333; // Темно-серый фон
+$background-color-wh: #ccc;
+$primary-color: #333; // Основной темный цвет для фона верхнего меню
+$text-color: #fff; // Белый текст
+$text-color-wh: #000; // Черный текст для основного контента
+$link-color: #00aeff; // Синий цвет ссылок
+$button-background-color: #28a745; // Зеленый фон кнопок
+$button-text-color: #fff; // Белый текст кнопок
+$border-color: #ccc; // Светло-серый цвет для границ
+$dark-purple: #300054;
+$black: #000000;
+$teal: #008080;
+$red: #FF0000;
+$white: #FFFFFF;
+$gray: #a0a0a0;
+$neon-white: #F0F8FF;
+$neon-glow-color: rgba(240, 248, 255, 0.8);
+
+// Общие стили
+body {
+    font-family: Roboto, sans-serif;
+    background-color: $background-color;
+    color: $text-color;
+    margin: 0;
+    padding: 0;
+}
+
+.text-white {
+    color: $text-color !important;
+}
+
+.text-black {
+    color: $text-color-wh !important;
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// Header
+.header_section {
+    top: 0;
+    background: transparent;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5); /* Прозрачный черный фон */
+    backdrop-filter: blur(10px); /* Эффект размытия */
+    padding: 15px 0;
+
+    .container-fluid {
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+
+    .nav_container {
+        margin: 0 auto;
+    }
+
+    .nav-link img {
+        max-width: 18px;
+    }
+
+    .custom_nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 0;
+        z-index: 99999;
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .nav-item {
+                display: flex;
+                align-items: center;
+
+                .nav-link {
+                    margin: 10px 30px;
+                    padding: 0;
+                    padding-bottom: 3px;
+                    color: $white;
+                    text-align: center;
+                    position: relative;
+                    text-transform: uppercase;
+                    font-size: 15px;
+
+                    &::after {
+                        display: none;
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 3px;
+                        border-radius: 5px;
+                        background-color: $white;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        text-shadow: 0 0 1px $neon-glow-color ;
+                    }
+                }
+
+                &.active .nav-link::after,
+                &:hover .nav-link::after {
+                    display: block;
+                    background-color: $red;
+                    transition: all 0.5s ease-in-out;
+                }
+            }
+        }
+
+        .navbar-toggler {
+            outline: none;
+            padding: 4px;
+
+            .navbar-toggler-icon {
+                background-image: url(../images/menu.png);
+                background-size: 50px;
+            }
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            h1 {
+                font-family: "Comfortaa", sans-serif;
+                font-optical-sizing: auto;
+                font-size: 22px;
+                text-transform: uppercase;
+                font-weight: bold;
+                text-align: left;
+                color: $white;
+                margin: 0;
+                position: relative;
+                z-index: 3;
+                line-height: 70%;
+
+                span {
+                    font-size: 12px;
+                    text-transform: none;
+                }
+            }
+        }
+    }
+}
+
+// Main
+main {
+    padding: 100px 0; // Отступ сверху, чтобы блок main начинался ниже хедера
+}
+
+// Profile Container
+.profile-container {
+    display: flex;
+    background-color: $background-color;
+    color: $text-color;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+
+    .profile-left {
+        flex: 1;
+        text-align: center;
+
+        .profile-photo {
+            border-radius: 50%;
+            border: 2px solid $border-color;
+        }
+    }
+
+    .profile-right {
+        flex: 2;
+        padding-left: 20px;
+
+        h2 {
+            margin-top: 0;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        a {
+            display: inline-block;
+            background-color: $button-background-color;
+            color: $button-text-color;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+
+            &:hover {
+                background-color: darken($button-background-color, 10%);
+            }
+        }
+    }
+}
+
+// Last Order
+.last-order {
+    background-color: #fff;
+    color: $text-color-wh;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+
+    h3 {
+        margin-top: 0;
+    }
+
+    p,
+    ul {
+        margin: 10px 0;
+    }
+
+    ul {
+        padding-left: 20px;
+
+        li {
+            margin: 5px 0;
+        }
+    }
+
+    .status {
+        font-weight: bold;
+
+        &.paid {
+            color: green;
+        }
+
+        &.unpaid {
+            color: red;
+        }
+    }
+}
+
+// Footer
+footer {
+    background-color: $primary-color;
+    color: $text-color;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    p {
+        margin: 0;
+    }
+}
+
+/* Footer */
+.footer_section {
+    background-color: $dark-purple;
+    padding: 20px;
+    font-weight: 500;
+
+    p {
+        color: $neon-white;
+        margin: 0;
+        text-align: center;
+    }
+
+    a {
+        color: $neon-white;
+    }
+}
+
+// Admin-specific styles
+.card-header {
+    color: $black;
+}
+
+.admin_card {
+    &.bg-success {
+        background-color: $button-background-color !important;
+    }
+
+    .card-body {
+        color: $black;
+
+        h5 {
+            font-size: 1.25rem;
+        }
+
+        p {
+            font-size: 2rem;
+            margin: 0;
+        }
+    }
+}
+
+.admin_list-group {
+    margin-bottom: 24px;
+    a {
+        border: 0 2px solid $border-color;
+    }
+}
+
+.admin_list-group-item.active {
+    background-color: $button-background-color !important;
+    border-color: $button-background-color !important;
+}
+
+.admin_footer {
+    background-color: $primary-color !important;
+    color: $text-color !important;
+}
+
+// Report management specific styles
+.table thead th {
+    background-color: $primary-color;
+    color: $text-color;
+}
+
+.table tbody tr {
+    background-color: #fff;
+    color: $black;
+}
+
+.table tbody tr:hover {
+    background-color: $border-color;
+}
+
+.btn-warning, .btn-danger {
+    margin-right: 5px;
+}
+
+.badge-primary {
+    background-color: #007bff;
+    color: $white;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+    color: $white;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: $white;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+    color: $white;
+}
+
+.btn-group .btn {
+    margin-right: 5px;
+}
+
+// Login Page Styles
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.login-box {
+    background: $background-color; /* Dark background for the login box */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 75, 170, 0.5);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-logo {
+    width: 200px;
+    margin-bottom: 1rem;
+}
+
+.login-box h2 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+
+    label {
+        display: block;
+        color: #fff;
+        margin-bottom: 0.5rem;
+    }
+
+    input {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: 1px solid #444;
+        background: #333;
+        color: #fff;
+    }
+}
+
+.btn-primary {
+    background: #007bff;
+    border: none;
+    padding: 0.75rem;
+    width: 100%;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.login-links {
+    margin-top: 1rem;
+
+    a {
+        color: $link-color;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// Register
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120vh;
+}
+
+.register-box {
+    background: #333;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.register-logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.register-box h2 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    color: #fff;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.register-links {
+    margin-top: 20px;
+}
+
+.register-links h4 {
+    color: #fff;
+    font-size: 14px;
+}
+
+.register-links a {
+    color: $link-color;
+}
+
+// Edit profile
+.edit-profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.edit-profile-box {
+    background: #333;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+.edit-profile-box h2 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    color: #fff;
+}
+
+.form-group input, 
+.form-group div {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    background: #444;
+    color: #fff;
+}
+
+.form-group input[type="file"] {
+    padding: 5px;
+}
+
+.helptext {
+    color: #bbb;
+    font-size: 12px;
+}
+
+// Reset password
+.reset-pass-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.reset-pass-box {
+    background: #333;; /* Dark background for the login box */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 75, 170, 0.5);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    p {
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+            background: #444;
+            color: #fff 
+        }
+    }
+}
+
+.reset-pass-logo {
+    width: 200px;
+    margin-bottom: 1rem;
+}
+
+.reset-pass-box h2 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
