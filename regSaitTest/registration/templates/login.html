@@ -19,8 +19,17 @@
                 {{ form.password.label_tag }}
                 {{ form.password }}
             </div>
+
             <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>
+
+<!--            {% if form.errors %}-->
+<!--            <div style="color:red;">-->
+<!--                {{ form.errors }}-->
+<!--            </div>-->
+<!--            {% endif %}-->
+
         </form>
+
         <div class="login-links">
             <a href="{% url 'reset_password' %}">{% trans "Forgot password?" %}</a> |
             <a href="{% url 'register' %}">{% trans "Sign up" %}</a>

@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField, AuthenticationForm
 from .models import CustomUser, Services, Order, Category
 from django.utils.translation import gettext_lazy as _
+from django.utils.safestring import mark_safe
 from django import forms
 from phonenumber_field.formfields import PhoneNumberField
 
@@ -71,6 +72,13 @@ class CustomUserCreationForm(UserCreationForm):
         label=_("Phone number"),
         region="RU",
         widget=forms.TextInput(attrs={'id': 'id_phone_number'})
+    )
+    agree_to_terms = forms.BooleanField(
+        label=mark_safe(
+            'I agree to the <a href="{% url \'terms_of_service\' %}" target="_blank">Terms of Service</a> '
+            'and the <a href="{% url \'user_agreement\' %}" target="_blank">User Agreement</a>'
+        ),
+        required=True
     )
 
     class Meta:

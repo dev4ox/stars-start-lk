@@ -43,14 +43,24 @@ urlpatterns = [
 
     # reset password
     path('reset_password/', views.password_reset_request, name="reset_password"),
+    path(
+        'reset/<uidb64>/<token>/',
+        auth_views.PasswordResetConfirmView.as_view(
+            template_name="password_reset_confirm.html"
+        ), name='password_reset_confirm'
+    ),
     path('reset_password/done/', auth_views.PasswordResetDoneView.as_view(template_name="password_reset_done.html"),
          name="password_reset_done"),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),
+         name='password_reset_complete'),
 
     # activate account
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
 
     # other
     path('set-language/', views.set_language, name='set_language'),
+    path("terms_of_service/", views.terms_of_service, name="terms_of_service"),
+    path("user_agreement/", views.user_agreement, name="user_agreement"),
 
     # ajax
     path('ajax/load-categories/', views.load_categories, name='load_categories'),

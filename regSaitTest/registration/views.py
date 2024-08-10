@@ -2,6 +2,8 @@ import os
 import uuid
 import qrcode
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
+from django.utils import timezone
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, get_user_model
@@ -19,7 +21,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
-from django.utils.crypto import get_random_string
+# from django.utils.crypto import get_random_string
 from django.utils.translation import gettext_lazy as _, activate as lang_activate
 from .models import Order, Services, Category
 from django.contrib.admin.models import LogEntry
@@ -34,6 +36,8 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 from tempfile import NamedTemporaryFile
 from .utils import build_absolute_url
+from datetime import timedelta
+
 # from django.core.handlers.wsgi import WSGIRequest
 
 User = get_user_model()
@@ -206,6 +210,7 @@ def admin_orders(request):
 @login_required
 def admin_reports(request):
     return render(request, 'custom_admin/reports.html')
+
 
 # end admin block
 
@@ -426,40 +431,132 @@ def registrations(request):
     return render(request, 'register.html', {"form": form})
 
 
+# def login_view(request):
+#     if request.method == "POST":
+#         form = CustomAuthenticationForm(request.POST)
+#
+#         if form.is_valid():
+#             recaptcha_response = request.POST.get('g-recaptcha-response')
+#             data = {
+#                 'secret': settings.RECAPTCHA_SECRET_KEY,
+#                 'response': recaptcha_response
+#             }
+#
+#             r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+#             result = r.json()
+#
+#             if result['success']:
+#                 username = form.cleaned_data.get("username")
+#                 password = form.cleaned_data.get("password")
+#
+#                 user = authenticate(request, username=username, password=password)
+#
+#                 if user is not None:
+#                     login(request, user)
+#
+#                     return redirect("profile")
+#
+#             else:
+#                 form.add_error('recaptcha', 'Ошибка проверки reCAPTCHA. Пожалуйста, попробуйте снова.')
+#
+#     else:
+#         form = CustomAuthenticationForm()
+#
+#     context = {
+#         'form': form,
+#         'site_key': settings.RECAPTCHA_SITE_KEY
+#     }
+#
+#     return render(request, 'login.html', context)
+
+
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
     template_name = 'login.html'
 
 
+# def password_reset_request(request):
+#     if request.method == "POST":
+#         form = PasswordResetRequestForm(request.POST)
+#         if form.is_valid():
+#             email = form.cleaned_data['email']
+#             try:
+#                 user = User.objects.get(username=email)
+#                 new_password = get_random_string(length=8)
+#                 user.set_password(new_password)
+#                 user.save()
+#
+#                 message = render_to_string('password_reset_email.html', {
+#                     'new_password': new_password,
+#                 })
+#                 send_mail(
+#                     _('Password Reset'),
+#                     message,
+#                     settings.DEFAULT_FROM_EMAIL,
+#                     [email],
+#                     fail_silently=False,
+#                     html_message=message,
+#                 )
+#                 return redirect('password_reset_done')
+#             except User.DoesNotExist:
+#                 form.add_error('email', _('User with this email not found.'))
+#     else:
+#         form = PasswordResetRequestForm()
+#
+#     return render(request, 'password_reset_request.html', {'form': form})
+
+
 def password_reset_request(request):
     if request.method == "POST":
-        form = PasswordResetRequestForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            try:
-                user = User.objects.get(username=email)
-                new_password = get_random_string(length=8)
-                user.set_password(new_password)
-                user.save()
+        password_reset_form = PasswordResetRequestForm(request.POST)
 
-                message = render_to_string('password_reset_email.html', {
-                    'new_password': new_password,
-                })
-                send_mail(
-                    _('Password Reset'),
-                    message,
-                    settings.DEFAULT_FROM_EMAIL,
-                    [email],
-                    fail_silently=False,
-                    html_message=message,
-                )
-                return redirect('password_reset_done')
-            except User.DoesNotExist:
-                form.add_error('email', _('User with this email not found.'))
-    else:
-        form = PasswordResetRequestForm()
+        if password_reset_form.is_valid():
+            email = password_reset_form.cleaned_data['email']
+            associated_users = User.objects.filter(username=email)
 
-    return render(request, 'password_reset_request.html', {'form': form})
+            if associated_users.exists():
+                for user in associated_users:
+                    token = default_token_generator.make_token(user)
+                    uid = urlsafe_base64_encode(force_bytes(user.pk))
+
+                    reset_link = request.build_absolute_uri(
+                        reverse(
+                            'password_reset_confirm', kwargs={
+                                'uidb64': uid,
+                                'token': token
+                            }
+                        )
+                    )
+
+                    expiry_time = timezone.now() + timedelta(hours=1)  # Ссылка будет действительна 1 час
+                    context = {
+                        'reset_link': reset_link,
+                        'expiry_time': expiry_time,
+                        'user': user
+                    }
+
+                    subject = _("Password Reset Requested")
+                    email_template_name = "password_reset_email.html"
+                    email_body = render_to_string(email_template_name, context)
+
+                    send_mail(
+                        subject,
+                        email_body,
+                        settings.DEFAULT_FROM_EMAIL,
+                        [user.username],
+                        fail_silently=False,
+                        html_message=email_body,
+                    )
+
+            return redirect("password_reset_done")
+
+    password_reset_form = PasswordResetRequestForm()
+
+    context = {
+        "password_reset_form": password_reset_form
+    }
+
+    return render(request, "password_reset_request.html", context)
 
 
 def password_reset_done(request):
@@ -474,6 +571,7 @@ def activate(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
+
     except (TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
 
@@ -497,3 +595,11 @@ def payments(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+def terms_of_service(request):
+    return render(request, "none.html")
+
+
+def user_agreement(request):
+    return render(request, "none.html")
