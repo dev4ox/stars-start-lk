@@ -8,8 +8,8 @@ urlpatterns = [
     path('', views.profile, name='profile'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('register/', views.registrations, name='register'),
-    path('message_about_activate/', views.message_about_activate, name="message_about_activate"),
-    path("edit_profile/", views.edit_profile, name="edit_profile"),
+    path('message_about_activate/', views.message_about_activate, name='message_about_activate'),
+    path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('logout/', views.logout_view, name='logout'),
 
     # services

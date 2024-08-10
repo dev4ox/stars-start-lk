@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['176.57.217.86']
 
 
 # Application definition
@@ -141,7 +141,7 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/lk/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'registration/static'),
@@ -152,7 +152,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/lk/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'registration.CustomUser'
@@ -173,7 +173,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SITE_ID = 1
 
 # site
-MY_SITE_DOMAIN = 'example.com'
+MY_SITE_DOMAIN = 'stars-start.ru'
 MY_SITE_PROTOCOL = 'http'  # или 'http' если сайт не использует HTTPS
 
 RECAPTCHA_SITE_KEY = os.getenv("RECAPTCHA_SITE_KEY")

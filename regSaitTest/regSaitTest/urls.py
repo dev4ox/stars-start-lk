@@ -20,8 +20,8 @@ from .settings import DEBUG, MEDIA_URL, MEDIA_ROOT
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include("registration.urls")),
+    path("lk/admin/", admin.site.urls),
+    path("lk/", include("registration.urls")),
 ]
 
 if DEBUG:
