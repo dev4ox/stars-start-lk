@@ -25,21 +25,14 @@
             <div class="form-group">
                 {{ form.profile_photo.label_tag }}
                 <div>
-                    {% if user.profile.profile_photo %}
-                        {% trans "Currently" %}: <a href="{{ user.profile.profile_photo.url }}">{{ user.profile.profile_photo.url }}</a><br>
-                    {% endif %}
                     {{ form.profile_photo }}
                 </div>
             </div>
             <div class="form-group">
                 <label>{% trans "Password" %}:</label>
                 <div aria-describedby="id_password_helptext" id="id_password">
-                    <strong>{% trans "Password is not set." %}</strong>
+                    <a href="{% url 'password_change' %}">{% trans "Change password" %}</a>
                 </div>
-                <span class="helptext" id="id_password_helptext">
-                    {% trans "Raw passwords are not stored, so there is no way to see this user's password, but you can change the password using" %} 
-                    <a href="{% url 'password_change' %}">{% trans "this form" %}</a>.
-                </span>
             </div>
             <button type="submit" class="btn btn-primary">{% trans "Save Changes" %}</button>
         </form>

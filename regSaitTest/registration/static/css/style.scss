@@ -140,6 +140,13 @@ a {
                     transition: all 0.5s ease-in-out;
                 }
             }
+            .nav-lang {
+                .form-control {
+                    color: $white;
+                    background-color: $background-color;
+                    border: none;
+                }
+            }
         }
 
         .navbar-toggler {
@@ -195,18 +202,11 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 800px;
 
-    .profile-left {
-        flex: 1;
-        text-align: center;
-
-        .profile-photo {
-            border-radius: 50%;
-            border: 2px solid $border-color;
-        }
+    .profile-photo {
+        border: 2px solid $border-color;
     }
 
     .profile-right {
-        flex: 2;
         padding-left: 20px;
 
         h2 {
@@ -229,6 +229,12 @@ main {
                 background-color: darken($button-background-color, 10%);
             }
         }
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-photo {
+        margin: 20px 0;
     }
 }
 
@@ -432,6 +438,10 @@ footer {
         border: 1px solid #444;
         background: #333;
         color: #fff;
+    }
+
+    #id_profile_photo {
+        border: none;
     }
 }
 

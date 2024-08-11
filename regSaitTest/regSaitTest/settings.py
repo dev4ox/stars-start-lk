@@ -170,7 +170,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SITE_ID = 1
 
 # site
-PASSWORD_RESET_TIMEOUT_MINUTES = 30  # Ограничение времени на повторный запрос сброса пароля (в минутах)
+PASSWORD_RESET_TIMEOUT_MINUTES = 1  # Ограничение времени на повторный запрос сброса пароля (в минутах)
 
 RECAPTCHA_SITE_KEY = secret.RECAPTCHA_SITE_KEY
 RECAPTCHA_SECRET_KEY = secret.RECAPTCHA_SECRET_KEY

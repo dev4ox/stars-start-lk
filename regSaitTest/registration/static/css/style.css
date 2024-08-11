@@ -108,6 +108,11 @@ a:hover {
   background-color: #FF0000;
   transition: all 0.5s ease-in-out;
 }
+.header_section .custom_nav-container .navbar-nav .nav-lang .form-control {
+  color: #FFFFFF;
+  background-color: #333;
+  border: none;
+}
 .header_section .custom_nav-container .navbar-toggler {
   outline: none;
   padding: 4px;
@@ -153,16 +158,10 @@ main {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 800px;
 }
-.profile-container .profile-left {
-  flex: 1;
-  text-align: center;
-}
-.profile-container .profile-left .profile-photo {
-  border-radius: 50%;
+.profile-container .profile-photo {
   border: 2px solid #ccc;
 }
 .profile-container .profile-right {
-  flex: 2;
   padding-left: 20px;
 }
 .profile-container .profile-right h2 {
@@ -183,6 +182,11 @@ main {
   background-color: #1e7e34;
 }
 
+@media (max-width: 768px) {
+  .profile-photo {
+    margin: 20px 0;
+  }
+}
 .last-order {
   background-color: #fff;
   color: #000;
@@ -362,6 +366,9 @@ footer p {
   border: 1px solid #444;
   background: #333;
   color: #fff;
+}
+.form-group #id_profile_photo {
+  border: none;
 }
 
 .btn-primary {

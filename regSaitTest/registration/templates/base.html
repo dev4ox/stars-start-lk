@@ -20,7 +20,7 @@
     <header class="header_section">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg custom_nav-container">
-                <a class="navbar-brand" href="/"><h1>{% trans "Star Start" %} <br><span>{% trans "Production Center" %}</span></h1></a>
+                <a class="navbar-brand" href="{% url 'profile' %}"><h1>{% trans "Star Start" %} <br><span>{% trans "Production Center" %}</span></h1></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -39,17 +39,20 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
+                            </li>
+                            <form class="nav-lang" action="{% url 'set_language' %}" method="post" class="form-inline my-2 my-lg-0">
+                                {% csrf_token %}
+                                <select name="language" onchange="this.form.submit()" class="form-control">
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% for lang in LANGUAGES %}
+                                        <option value="{{ lang.0 }}"{% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>{{ lang.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </form>
                         </ul>
-                        <form action="{% url 'set_language' %}" method="post" class="form-inline my-2 my-lg-0">
-                            {% csrf_token %}
-                            <select name="language" onchange="this.form.submit()" class="form-control">
-                                {% get_current_language as LANGUAGE_CODE %}
-                                {% get_available_languages as LANGUAGES %}
-                                {% for lang in LANGUAGES %}
-                                    <option value="{{ lang.0 }}"{% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>{{ lang.1 }}</option>
-                                {% endfor %}
-                            </select>
-                        </form>
                     </div>
                 </div>
             </nav>
