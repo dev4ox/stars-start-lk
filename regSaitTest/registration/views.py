@@ -584,4 +584,4 @@ def terms_of_service(request):
 
 
 def user_agreement(request):
-    return render(request, "none.html")
+    return render(request, "user_agreement.html")
