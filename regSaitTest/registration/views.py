@@ -497,7 +497,7 @@ def password_reset_request(request):
                         html_message=email_body,
                     )
 
-                messages.success(request, _("Password reset link has been sent to your email."))
+                # messages.success(request, _("Password reset link has been sent to your email."))
                 return redirect("password_reset_done")
 
     password_reset_form = PasswordResetRequestForm()

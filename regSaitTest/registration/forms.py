@@ -74,10 +74,8 @@ class CustomUserCreationForm(UserCreationForm):
         widget=forms.TextInput(attrs={'id': 'id_phone_number'})
     )
     agree_to_terms = forms.BooleanField(
-        label=mark_safe(
-            'I agree to the <a href="{% url \'terms_of_service\' %}" target="_blank">Terms of Service</a> '
-            'and the <a href="{% url \'user_agreement\' %}" target="_blank">User Agreement</a>'
-        ),
+        label=mark_safe('I agree to the <a href="{terms_of_service_url}" target="_blank">Terms of Service</a> and the '
+                        '<a href="{user_agreement_url}" target="_blank">User Agreement</a>'),
         required=True
     )
 
