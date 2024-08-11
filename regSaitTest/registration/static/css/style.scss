@@ -43,6 +43,28 @@ a {
     }
 }
 
+.checkbox {
+    display: flex;
+    align-items: flex-start;
+
+    input[type="checkbox"] {
+        margin-right: 10px;
+        margin-top: 3px; /* Смещение галочки наверх */
+    }
+
+    label {
+        cursor: pointer; /* Указывает, что можно кликнуть */
+    }
+
+    a {
+        color: #007bff; /* Цвет ссылок */
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
 // Header
 .header_section {
     top: 0;
