@@ -27,7 +27,7 @@ SECRET_KEY = secret.DJANGO_SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['176.57.217.86', "127.0.0.1"]
+ALLOWED_HOSTS = ['176.57.217.86', "127.0.0.1", "192.168.1.66"]
 
 
 # Application definition
@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'registration.middleware.AdminCheckMiddleware',
+    'registration.middleware.BanIPMiddleware',
 ]
 
 ROOT_URLCONF = 'regSaitTest.urls'
