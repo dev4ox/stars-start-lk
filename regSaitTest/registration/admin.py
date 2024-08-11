@@ -12,7 +12,7 @@ class UserAdminForm(forms.ModelForm):
         model = CustomUser
         fields = [
             'username',
-            'email',
+            'ip_address',
             "password",
             'first_name',
             'last_name',
@@ -79,8 +79,8 @@ class CustomUserAdmin(CustomModelAdmin):
         super().__init__(model, admin_site, app="auth", model_="user", route="admin_users")
 
     form = UserAdminForm
-    list_display = ['username', 'email', "password", 'first_name', 'last_name', 'is_staff']
-    search_fields = ['username', 'email', 'first_name', 'last_name']
+    list_display = ['username', 'ip_address', "password", 'first_name', 'last_name', 'is_staff']
+    search_fields = ['username', 'ip_address', 'first_name', 'last_name']
     list_filter = ['is_staff', 'is_superuser', 'is_active']
     filter_horizontal = ['groups']
 
@@ -91,8 +91,11 @@ class CustomUserAdmin(CustomModelAdmin):
 
 
 @admin.register(BannedIP)
-class BannedIPAdmin(admin.ModelAdmin):
-    list_display = ('ip_address', 'created_at')
+class BannedIPAdmin(CustomModelAdmin):
+    def __init__(self, model, admin_site):
+        super().__init__(model, admin_site, app="registration", model_="bannedip", route="admin_users")
+
+    list_display = ('ip_address', 'description', 'created_at')
     search_fields = ('ip_address',)
 
 

@@ -20,35 +20,12 @@
 
 <div class="last-order mt-5 p-3 bg-white rounded shadow">
 <h3>{% trans "Last Orders" %}</h3>
-{% if last_orders %}
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>{% trans "Order ID" %}</th>
-                <th>{% trans "Service" %}</th>
-                <th>{% trans "Category" %}</th>
-                <th>{% trans "Date" %}</th>
-                <th>{% trans "Status" %}</th>
-                <th>{% trans "Cost" %}</th>
-                <th>{% trans "Actions" %}</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for order in last_orders %}
-                <tr>
-                    <td>{{ order.order_id }}</td>
-                    <td>{{ order.service.title }}</td>
-                    <td>{{ order.category.name }}</td>
-                    <td>{{ order.date }}</td>
-                    <td>{{ order.get_status_display }}</td>
-                    <td>{{ order.cost }}</td>
-                    <td>
-                        <a href="{% url 'orders_details' order.order_id %}" class="btn btn-info">{% trans "Details" %}</a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+{% if last_order %}
+    <p>{% trans "Service:" %} {{ last_order.service.title }}</p>
+    <p>{% trans "Category:" %} {{ last_order.category.name }}</p>
+    <p>{% trans "Date:" %} {{ last_order.date }}</p>
+    <p>{% trans "Status:" %} {{ last_order.get_status_display }}</p>
+    <p>{% trans "Cost:" %} {{ last_order.cost }}</p>
 {% else %}
     <p>{% trans "No recent orders" %}</p>
 {% endif %}
