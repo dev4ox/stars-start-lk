@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 .idea/
-secret.py
+regSaitTest/secret.py
 server_deploy.bat
 
 # C extensions
@@ -30,7 +30,7 @@ share/python-wheels/
 MANIFEST
 test/
 *.env
-secret.py
+regSaitTest/secret.py
 regSaitTest/media/order_user_tickets
 regSaitTest/media/order_user_tickets/*
 
