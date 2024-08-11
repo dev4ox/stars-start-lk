@@ -23,6 +23,25 @@ a:hover {
   text-decoration: underline;
 }
 
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+}
+.checkbox input[type=checkbox] {
+  margin-right: 10px;
+  margin-top: 3px; /* Смещение галочки наверх */
+}
+.checkbox label {
+  cursor: pointer; /* Указывает, что можно кликнуть */
+}
+.checkbox a {
+  color: #007bff; /* Цвет ссылок */
+  text-decoration: none;
+}
+.checkbox a:hover {
+  text-decoration: underline;
+}
+
 .header_section {
   top: 0;
   background: transparent;
