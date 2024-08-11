@@ -452,7 +452,7 @@ class CustomLoginView(LoginView):
         response = super().form_valid(form)
 
         user = get_object_or_404(CustomUser, username=form.cleaned_data.get("username"))
-        user.ip_address = get_ip(request)
+        user.ip_address = get_ip(self.request)
         user.save()
 
         return response
