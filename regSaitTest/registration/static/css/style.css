@@ -406,15 +406,17 @@ footer p {
   max-width: 400px;
   width: 100%;
 }
+.register-box h2 {
+  margin-bottom: 20px;
+  color: #fff;
+}
+.register-box label {
+  text-align: left;
+}
 
 .register-logo {
   max-width: 200px;
   margin-bottom: 20px;
-}
-
-.register-box h2 {
-  margin-bottom: 20px;
-  color: #fff;
 }
 
 .form-group {
@@ -437,12 +439,10 @@ footer p {
 .register-links {
   margin-top: 20px;
 }
-
 .register-links h4 {
   color: #fff;
   font-size: 14px;
 }
-
 .register-links a {
   color: #00aeff;
 }
@@ -496,6 +496,21 @@ footer p {
 .helptext {
   color: #bbb;
   font-size: 12px;
+}
+
+.form-error ul {
+  margin: 0;
+  padding: 0;
+}
+.form-error li {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  color: transparent;
+}
+.form-error .nonfield li {
+  color: #FFFFFF;
+  margin-bottom: 20px;
 }
 
 .reset-pass-container {

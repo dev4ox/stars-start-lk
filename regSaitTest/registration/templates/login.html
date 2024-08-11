@@ -11,6 +11,11 @@
         <h2>{% trans "Login" %}</h2>
         <form method="post">
             {% csrf_token %}
+            {% if form.errors %}
+            <div class="form-error">
+                {{ form.errors }}
+            </div>
+            {% endif %}
             <div class="form-group">
                 {{ form.username.label_tag }}
                 {{ form.username }}
@@ -21,12 +26,6 @@
             </div>
 
             <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>
-
-<!--            {% if form.errors %}-->
-<!--            <div style="color:red;">-->
-<!--                {{ form.errors }}-->
-<!--            </div>-->
-<!--            {% endif %}-->
 
         </form>
 

@@ -452,11 +452,9 @@ footer {
 
 .login-links {
     margin-top: 1rem;
-
     a {
         color: $link-color;
         text-decoration: none;
-
         &:hover {
             text-decoration: underline;
         }
@@ -479,16 +477,18 @@ footer {
     text-align: center;
     max-width: 400px;
     width: 100%;
+    h2 {
+        margin-bottom: 20px;
+        color: #fff;
+    }
+    label {
+        text-align: left;
+    }
 }
 
 .register-logo {
     max-width: 200px;
     margin-bottom: 20px;
-}
-
-.register-box h2 {
-    margin-bottom: 20px;
-    color: #fff;
 }
 
 .form-group {
@@ -510,15 +510,13 @@ footer {
 
 .register-links {
     margin-top: 20px;
-}
-
-.register-links h4 {
-    color: #fff;
-    font-size: 14px;
-}
-
-.register-links a {
-    color: $link-color;
+    h4 {
+        color: #fff;
+        font-size: 14px;
+    }
+    a {
+        color: $link-color;
+    }
 }
 
 // Edit profile
@@ -571,6 +569,23 @@ footer {
 .helptext {
     color: #bbb;
     font-size: 12px;
+}
+
+.form-error {
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        color: transparent;
+    }
+    .nonfield li {
+        color: $white;
+        margin-bottom: 20px;
+    }
 }
 
 // Reset password
