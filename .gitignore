@@ -28,6 +28,7 @@ share/python-wheels/
 MANIFEST
 test/
 *.env
+secret.py
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
