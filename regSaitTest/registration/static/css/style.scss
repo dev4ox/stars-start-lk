@@ -74,7 +74,6 @@ a {
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.5); /* Прозрачный черный фон */
     backdrop-filter: blur(10px); /* Эффект размытия */
-    padding: 15px 0;
 
     .container-fluid {
         padding-right: 25px;
@@ -318,11 +317,9 @@ footer {
     img {
         width: 100%;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-        border-radius: 5px;
     }
     .card-order-info {
         padding: 20px;
-
         #id_category {
             width: 100%;
             padding: 5px;
