@@ -43,8 +43,7 @@
                 {{ form.password2 }}
             </div>
             <div class="checkbox">
-                {{ form.agree_to_terms }}
-                {{ form.agree_to_terms.label }}
+                {{ form.agree_to_terms }} <label for="{{ form.agree_to_terms.id_for_label }}">{{ form.agree_to_terms.label }}</label>
             </div>
             <button type="submit" class="btn btn-primary">{% trans "Sign up" %}</button>
         </form>
