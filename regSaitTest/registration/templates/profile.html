@@ -27,7 +27,7 @@
     <p>{% trans "Status:" %} {{ last_order.get_status_display }}</p>
     <p>{% trans "Cost:" %} {{ last_order.cost }} ₽</p>
     {% if last_order.status == 'not_paid' %}
-    <form method="post" action="{% url 'orders_pay' last_order.order_id %}" style="display:inline;">
+    <form method="post" action="{% url 'orders_pay' %}" style="display:inline;">
         {% csrf_token %}
         <button type="submit" class="btn btn-success">{% trans "Pay" %}</button>
     </form>
