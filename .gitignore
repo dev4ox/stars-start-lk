@@ -29,6 +29,8 @@ MANIFEST
 test/
 *.env
 secret.py
+regSaitTest/media/order_user_tickets
+regSaitTest/media/order_user_tickets/*
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
