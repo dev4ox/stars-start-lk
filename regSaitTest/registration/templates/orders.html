@@ -31,12 +31,6 @@
                     </span>
                 </td>
                 <td>
-                    {% if order.status == 'not_paid' %}
-                    <form method="post" action="{% url 'orders_pay' order.order_id %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-success">{% trans "Pay" %}</button>
-                    </form>
-                    {% endif %}
 
                     {% if order.status == 'paid' %}
                     <form method="post" action="{% url 'order_get_tickets' order.order_id %}" style="display:inline;">

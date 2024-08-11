@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
+{% load custom_tags %}
 
 {% block title %}{% trans "Our Services" %} | {% trans "Star Start" %}{% endblock %}
 
@@ -8,13 +9,14 @@
 <h2>{% trans "Our Services" %}</h2>
 <p>{% trans "Choose a service that will make your event unforgettable!" %}</p>
 <div class="row">
-    {% for service in services_list %}
+    {% for index, service in services_list %}
     <div class="col-md-6">
         <div class="user-card">
             <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">
             <div class="card-body">
                 <h5 class="card-title">{{ service.title }}</h5>
                 <p class="card-text">{{ service.description }}</p>
+                <p>{% trans 'Price from' %} {{ min_cost_categories_list|get_by_index:index }}</p>
                 <a href="{% url 'services_add_order' service.id %}" class="btn btn-success">{% trans "Order" %}</a>
             </div>
         </div>

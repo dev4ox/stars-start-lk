@@ -348,9 +348,14 @@ def generate_or_get_pdf(request, order_id):
 @login_required
 def services(request):
     services_list = Services.objects.all().order_by("id")
+    min_cost_categories_list = []
+
+    for service in services_list:
+        min_cost_categories_list.append(Category.objects.filter(service=service).order_by('cost')[:1][0].cost)
 
     context = {
-        "services_list": services_list
+        "services_list": list(enumerate(services_list)),
+        "min_cost_categories_list": min_cost_categories_list,
     }
 
     return render(request, 'services.html', context)
