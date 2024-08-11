@@ -4,7 +4,16 @@
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Вход в личный кабинет | Продюсерский центр Звездный старт | Заказ услуг, билетов, организация мероприятий | Купить билеты на главные события года" />
+    <meta name="keywords" content="Звездный старт, Ростов на Дону, организация концертов, приглашение знаменитостей, маркетинг, продвижение мероприятий, центр мероприятий, профессиональные услуги, незабываемые события, концертная организация, корпоративные мероприятия" />
+    <!-- Open Graph meta -->
+    <meta property="og:title" content="{% trans 'Profile' %} | {% trans 'Star Start' %}" />
+    <meta property="og:description" content="Вход в личный кабинет | Продюсерский центр Звездный старт | Заказ услуг, билетов, организация мероприятий | Купить билеты на главные события года" />
+    <meta property="og:image" content="{% static 'images/image-open-graph.jpg' %}" />
+    <meta property="og:url" content="https://stars-start.ru/" />
+    <meta property="og:type" content="website" />
     <title>{% block title %}{% trans "Profile" %} | {% trans "Star Start" %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
@@ -20,7 +29,7 @@
     <header class="header_section">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg custom_nav-container">
-                <a class="navbar-brand" href="{% url 'profile' %}"><h1>{% trans "Star Start" %} <br><span>{% trans "Production Center" %}</span></h1></a>
+                <a class="navbar-brand" href="/"><h1>{% trans "Star Start" %} <br><span>{% trans "Production Center" %}</span></h1></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
