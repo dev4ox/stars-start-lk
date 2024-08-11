@@ -351,7 +351,13 @@ def services(request):
     min_cost_categories_list = []
 
     for service in services_list:
-        min_cost_categories_list.append(Category.objects.filter(service=service).order_by('cost')[:1][0].cost)
+        categories = Category.objects.filter(service=service).order_by('cost')[:1]
+
+        if categories:
+            min_cost_categories_list.append(categories[0].cost)
+
+        else:
+            min_cost_categories_list.append(categories)
 
     context = {
         "services_list": list(enumerate(services_list)),
