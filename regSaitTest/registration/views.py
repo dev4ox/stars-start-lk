@@ -580,7 +580,7 @@ def logout_view(request):
 
 
 def terms_of_service(request):
-    return render(request, "none.html")
+    return render(request, "terms_of_service.html")
 
 
 def user_agreement(request):
