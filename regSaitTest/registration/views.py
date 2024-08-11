@@ -357,7 +357,7 @@ def services(request):
             min_cost_categories_list.append(categories[0].cost)
 
         else:
-            min_cost_categories_list.append(categories)
+            min_cost_categories_list = []
 
     context = {
         "services_list": list(enumerate(services_list)),
