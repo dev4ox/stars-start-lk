@@ -79,9 +79,13 @@ def set_language(request):
 def profile(request):
     last_order = Order.objects.filter(user=request.user).order_by('-date')[:1]
 
-    context = {
-        "last_order": last_order[0],
-    }
+    if last_order:
+        context = {
+            "last_order": last_order[0],
+        }
+
+    else:
+        context = {}
 
     return render(request, 'profile.html', context)
 
