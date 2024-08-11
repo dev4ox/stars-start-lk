@@ -43,7 +43,8 @@
                 {{ form.password2 }}
             </div>
             <div class="checkbox">
-                {{ form.agree_to_terms|safe|striptags|format:terms_of_service_url=request.build_absolute_uri('{% url "terms_of_service" %}'), user_agreement_url=request.build_absolute_uri('{% url "user_agreement" %}') }}
+                {{ form.agree_to_terms }}
+                {{ form.agree_to_terms.label }}
             </div>
             <button type="submit" class="btn btn-primary">{% trans "Sign up" %}</button>
         </form>
