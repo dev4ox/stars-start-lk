@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
-from .views import CustomLoginView
+from .views import CustomLoginView, CustomPasswordResetConfirmView
 
 urlpatterns = [
     # user
@@ -45,7 +45,7 @@ urlpatterns = [
     path('reset_password/', views.password_reset_request, name="reset_password"),
     path(
         'reset/<uidb64>/<token>/',
-        auth_views.PasswordResetConfirmView.as_view(
+        CustomPasswordResetConfirmView.as_view(
             template_name="password_reset_confirm.html"
         ), name='password_reset_confirm'
     ),

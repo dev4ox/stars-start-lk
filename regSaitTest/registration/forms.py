@@ -1,4 +1,10 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField, AuthenticationForm
+from django.contrib.auth.forms import (
+    UserCreationForm,
+    UserChangeForm,
+    ReadOnlyPasswordHashField,
+    AuthenticationForm,
+    SetPasswordForm,
+)
 from .models import CustomUser, Services, Order, Category
 from django.utils.translation import gettext_lazy as _
 from django.utils.safestring import mark_safe
@@ -143,3 +149,12 @@ class CustomAuthenticationForm(AuthenticationForm):
 
 class PasswordResetRequestForm(forms.Form):
     email = forms.EmailField(label=_("Email"), max_length=254, required=True)
+
+
+class CustomSetPasswordForm(SetPasswordForm):
+    new_password1 = forms.CharField(
+        label=_("New password"),
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+        strip=False,
+        help_text="",
+    )

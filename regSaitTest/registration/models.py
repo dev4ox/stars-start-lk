@@ -120,3 +120,12 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"Payment {self.trans_id} by {self.user}"
+
+
+class BannedIP(models.Model):
+    ip_address = models.GenericIPAddressField(unique=True)
+    description = models.TextField(default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.ip_address) + "\n" + str(self.description)

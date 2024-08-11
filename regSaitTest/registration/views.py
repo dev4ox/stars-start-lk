@@ -6,13 +6,15 @@ from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout, get_user_model
+from django.contrib.auth import logout, get_user_model, password_validation
+from django.contrib.auth.views import PasswordResetConfirmView
 from .forms import (
     CustomUserCreationForm,
     CustomUserChangeForm,
     CustomAuthenticationForm,
     PasswordResetRequestForm,
     OrderAddUser,
+    CustomSetPasswordForm,
 )
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
@@ -35,7 +37,6 @@ from reportlab.pdfgen import canvas
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 from tempfile import NamedTemporaryFile
-from .utils import build_absolute_url
 from datetime import timedelta
 
 # from django.core.handlers.wsgi import WSGIRequest
@@ -507,6 +508,17 @@ def password_reset_request(request):
     }
 
     return render(request, "password_reset_request.html", context)
+
+
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    form_class = CustomSetPasswordForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["password_validators_help_text"] = password_validation.password_validators_help_texts()
+
+        return context
 
 
 def password_reset_done(request):

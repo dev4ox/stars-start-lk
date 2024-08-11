@@ -1,10 +1,9 @@
 from django.contrib import admin
 from django import forms
-from .models import CustomUser, Services, Category, Order
+from .models import CustomUser, Services, Category, Order, BannedIP
 from .forms import ServicesChangeForm, OrderChangeForm
 from .widgets import ReadOnlySelectMultiple
 from .decorators.classes import CustomModelAdmin
-from decimal import Decimal
 
 
 class UserAdminForm(forms.ModelForm):
@@ -89,6 +88,12 @@ class CustomUserAdmin(CustomModelAdmin):
     #     form = super().get_form(request, obj, **kwargs)
     #     form.current_user = request.user
     #     return form
+
+
+@admin.register(BannedIP)
+class BannedIPAdmin(admin.ModelAdmin):
+    list_display = ('ip_address', 'created_at')
+    search_fields = ('ip_address',)
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
