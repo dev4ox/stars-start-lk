@@ -16,6 +16,7 @@ from .forms import (
     OrderAddUser,
     CustomSetPasswordForm,
 )
+from .models import Order, Services, Category, BannedIP, CustomUser
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_str, force_bytes
@@ -23,9 +24,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
-# from django.utils.crypto import get_random_string
 from django.utils.translation import gettext_lazy as _, activate as lang_activate
-from .models import Order, Services, Category
 from django.contrib.admin.models import LogEntry
 from django.core.paginator import Paginator
 from .decorators.func import check_user_role
@@ -78,11 +77,15 @@ def set_language(request):
 
 @login_required
 def profile(request):
-    last_orders = Order.objects.filter(user=request.user).order_by('-date')[:3]
+    last_order = Order.objects.filter(user=request.user).order_by('-date')[:1]
 
-    context = {
-        "last_orders": last_orders,
-    }
+    if last_order:
+        context = {
+            "last_order": last_order[0],
+        }
+
+    else:
+        context = {}
 
     return render(request, 'profile.html', context)
 
@@ -126,6 +129,7 @@ def admin_dashboard(request):
 @login_required
 def admin_users(request):
     search_query = request.GET.get('search', '')
+    banned_ip_list = BannedIP.objects.all().order_by("id")
 
     # If there is a search query, we filter users by username or email
     if search_query:
@@ -134,12 +138,17 @@ def admin_users(request):
     else:
         users_list = User.objects.all().order_by("user_id")
 
-    paginator = Paginator(users_list, 5)  # 5 записей на страницу
+    paginator_user = Paginator(users_list, 5)  # 5 записей на страницу
+    paginator_banned_ip = Paginator(banned_ip_list, 5)  # 5 записей на страницу
+
     page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+
+    page_obj_user = paginator_user.get_page(page_number)
+    page_obj_banned_ip = paginator_banned_ip.get_page(page_number)
 
     context = {
-        "users_list": page_obj,
+        "users_list": page_obj_user,
+        "banned_ip_list": page_obj_banned_ip,
     }
 
     return render(request, 'custom_admin/users.html', context)
@@ -419,6 +428,7 @@ def registrations(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
+            user.ip_address = request.META.get('REMOTE_ADDR')
             user.save()
 
             send_activation_email(user, request)
@@ -436,6 +446,15 @@ def registrations(request):
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
     template_name = 'login.html'
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        user = get_object_or_404(CustomUser, username=form.cleaned_data.get("username"))
+        user.ip_address = self.request.META.get('REMOTE_ADDR')
+        user.save()
+
+        return response
 
 
 def password_reset_request(request):

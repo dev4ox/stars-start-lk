@@ -16,6 +16,7 @@ def user_directory_path(instance, filename):
 
 # User model
 class CustomUser(AbstractUser):
+    ip_address = models.GenericIPAddressField(null=True, default="")
     user_id = models.BigAutoField(primary_key=True)
     username = models.EmailField(
         _("email address"),

@@ -1,6 +1,8 @@
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.http import HttpResponseForbidden
+from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 from .models import BannedIP
 
 
@@ -31,6 +33,10 @@ class BanIPMiddleware:
         ip_address = request.META.get('REMOTE_ADDR')
 
         if BannedIP.objects.filter(ip_address=ip_address).exists():
-            return HttpResponseForbidden("Your IP has been banned.")
+            message = format_html(
+                _('Your IP has been banned. For more information, visit <a href="{}">this page</a>.'),
+                'https://t.me/starstartmanager'  # URL-адрес для ссылки
+            )
+            return HttpResponseForbidden(message)
 
         return self.get_response(request)

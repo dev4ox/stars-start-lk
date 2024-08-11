@@ -120,7 +120,6 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class CustomUserChangeForm(UserChangeForm):
-    # username = forms.EmailField(label=_("Email"))
     phone_number = forms.CharField(
         label=_("Phone number"),
         widget=forms.TextInput(attrs={'id': 'id_phone_number', 'type': 'tel'})
