@@ -61,7 +61,9 @@ urlpatterns = [
     path('set-language/', views.set_language, name='set_language'),
     path("terms_of_service/", views.terms_of_service, name="terms_of_service"),
     path("user_agreement/", views.user_agreement, name="user_agreement"),
+]
 
+urlpatterns_ajax = [
     # ajax
     path('ajax/load-categories/', views.load_categories, name='load_categories'),
     path('ajax/get-category-cost/', views.get_category_cost, name='get_category_cost'),

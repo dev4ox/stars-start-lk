@@ -30,6 +30,7 @@ class CustomUser(AbstractUser):
         default="profile_photos/default.png",
         null=True,
     )
+    last_password_reset_request = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.username

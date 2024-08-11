@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-from dotenv import load_dotenv
-
-load_dotenv("../dev.env")
+import secret
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+SECRET_KEY = secret.DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['176.57.217.86']
+ALLOWED_HOSTS = ['176.57.217.86', "127.0.0.1"]
 
 
 # Application definition
@@ -87,11 +85,11 @@ WSGI_APPLICATION = 'regSaitTest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("DATABASE_NAME"),
-        'USER': os.getenv("DATABASE_USER"),
-        'PASSWORD': os.getenv("DATABASE_PASSWORD"),
-        'HOST': os.getenv("DATABASE_HOST"),
-        'PORT': os.getenv("DATABASE_PORT"),
+        'NAME': secret.DATABASE_NAME,
+        'USER': secret.DATABASE_USER,
+        'PASSWORD': secret.DATABASE_PASSWORD,
+        'HOST': secret.DATABASE_HOST,
+        'PORT': secret.DATABASE_PORT,
     }
 }
 
@@ -117,7 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
-
 
 TIME_ZONE = 'UTC'
 
@@ -163,18 +160,17 @@ LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.getenv("EMAIL_HOST")
-EMAIL_PORT = int(os.getenv("EMAIL_PORT"))
+EMAIL_HOST = secret.EMAIL_HOST
+EMAIL_PORT = int(secret.EMAIL_PORT)
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = secret.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = secret.EMAIL_HOST_PASSWORD
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 SITE_ID = 1
 
 # site
-MY_SITE_DOMAIN = 'stars-start.ru'
-MY_SITE_PROTOCOL = 'http'  # или 'http' если сайт не использует HTTPS
+PASSWORD_RESET_TIMEOUT_MINUTES = 30  # Ограничение времени на повторный запрос сброса пароля (в минутах)
 
-RECAPTCHA_SITE_KEY = os.getenv("RECAPTCHA_SITE_KEY")
-RECAPTCHA_SECRET_KEY = os.getenv("RECAPTCHA_SECRET_KEY")
+RECAPTCHA_SITE_KEY = secret.RECAPTCHA_SITE_KEY
+RECAPTCHA_SECRET_KEY = secret.RECAPTCHA_SECRET_KEY

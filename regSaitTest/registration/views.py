@@ -298,7 +298,8 @@ def generate_or_get_pdf(request, order_id):
         p.drawText(text_object)
 
         # Генерация QR-кода
-        qr_data = build_absolute_url("orders_details", kwargs={"order_id": order_id})
+        relative_url = reverse("orders_details", kwargs={"order_id": order_id})
+        qr_data = request.build_absolute_uri(relative_url)
         qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
         qr.add_data(qr_data)
         qr.make(fit=True)
@@ -431,79 +432,9 @@ def registrations(request):
     return render(request, 'register.html', {"form": form})
 
 
-# def login_view(request):
-#     if request.method == "POST":
-#         form = CustomAuthenticationForm(request.POST)
-#
-#         if form.is_valid():
-#             recaptcha_response = request.POST.get('g-recaptcha-response')
-#             data = {
-#                 'secret': settings.RECAPTCHA_SECRET_KEY,
-#                 'response': recaptcha_response
-#             }
-#
-#             r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-#             result = r.json()
-#
-#             if result['success']:
-#                 username = form.cleaned_data.get("username")
-#                 password = form.cleaned_data.get("password")
-#
-#                 user = authenticate(request, username=username, password=password)
-#
-#                 if user is not None:
-#                     login(request, user)
-#
-#                     return redirect("profile")
-#
-#             else:
-#                 form.add_error('recaptcha', 'Ошибка проверки reCAPTCHA. Пожалуйста, попробуйте снова.')
-#
-#     else:
-#         form = CustomAuthenticationForm()
-#
-#     context = {
-#         'form': form,
-#         'site_key': settings.RECAPTCHA_SITE_KEY
-#     }
-#
-#     return render(request, 'login.html', context)
-
-
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
     template_name = 'login.html'
-
-
-# def password_reset_request(request):
-#     if request.method == "POST":
-#         form = PasswordResetRequestForm(request.POST)
-#         if form.is_valid():
-#             email = form.cleaned_data['email']
-#             try:
-#                 user = User.objects.get(username=email)
-#                 new_password = get_random_string(length=8)
-#                 user.set_password(new_password)
-#                 user.save()
-#
-#                 message = render_to_string('password_reset_email.html', {
-#                     'new_password': new_password,
-#                 })
-#                 send_mail(
-#                     _('Password Reset'),
-#                     message,
-#                     settings.DEFAULT_FROM_EMAIL,
-#                     [email],
-#                     fail_silently=False,
-#                     html_message=message,
-#                 )
-#                 return redirect('password_reset_done')
-#             except User.DoesNotExist:
-#                 form.add_error('email', _('User with this email not found.'))
-#     else:
-#         form = PasswordResetRequestForm()
-#
-#     return render(request, 'password_reset_request.html', {'form': form})
 
 
 def password_reset_request(request):
@@ -516,6 +447,24 @@ def password_reset_request(request):
 
             if associated_users.exists():
                 for user in associated_users:
+                    now = timezone.now()
+                    # Проверка, был ли запрос на сброс пароля недавно
+                    if user.last_password_reset_request and (now - user.last_password_reset_request) < timedelta(
+                            minutes=settings.PASSWORD_RESET_TIMEOUT_MINUTES):
+                        # Сообщение пользователю, что запрос был сделан недавно
+                        messages.error(
+                            request,
+                            _("You can only request a password reset every {} minutes. Please try again later.".format(
+                                settings.PASSWORD_RESET_TIMEOUT_MINUTES
+                            )
+                            )
+                        )
+                        return redirect("reset_password")
+
+                    # Обновление метки времени последнего запроса
+                    user.last_password_reset_request = now
+                    user.save()
+
                     token = default_token_generator.make_token(user)
                     uid = urlsafe_base64_encode(force_bytes(user.pk))
 
@@ -548,7 +497,8 @@ def password_reset_request(request):
                         html_message=email_body,
                     )
 
-            return redirect("password_reset_done")
+                messages.success(request, _("Password reset link has been sent to your email."))
+                return redirect("password_reset_done")
 
     password_reset_form = PasswordResetRequestForm()
 
