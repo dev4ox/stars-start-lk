@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 .idea/
 secret.py
+server_deploy.bat
 
 # C extensions
 *.so
