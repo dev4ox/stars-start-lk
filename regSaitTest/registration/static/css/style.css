@@ -187,8 +187,8 @@ main {
   }
 }
 .last-order {
-  background-color: #fff;
-  color: #000;
+  background-color: #333;
+  color: #fff;
   margin: 20px auto;
   padding: 20px;
   border-radius: 10px;
