@@ -47,7 +47,7 @@ def send_activation_email(user, request):
     mail_subject = _('Account Activation')
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     token = default_token_generator.make_token(user)
-    activation_url = request.build_absolute_uri(f'/activate/{uid}/{token}/')
+    activation_url = request.build_absolute_uri(f'activate/{uid}/{token}/')
     message = render_to_string('account_activation_email.html', {
         'user': user,
         'activation_url': activation_url,
