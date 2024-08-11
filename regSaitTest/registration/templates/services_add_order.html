@@ -4,25 +4,25 @@
 {% block title %}{% trans 'Add Order' %}{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2>{% trans "Add Order" %}</h2>
-    <div class="user-card h-100">
-        <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}" width="500px" height="300px">
-        <div class="card-body">
-            <h5 class="card-title">{{ service.title }}</h5>
-            <p class="card-text">{{ service.description }}</p>
-        </div>
+<h2>{% trans "Add Order" %}</h2>
+<div class="user-card">
+    <img src="{{ service.image_path.url }}" alt="{% trans 'Service' %}">
+    <div class="card-body">
+        <h5 class="card-title">{{ service.title }}</h5>
+        <p class="card-text">{{ service.description }}</p>
     </div>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="form-group">
-            <label for="category_cost_text">{% trans "Cost" %}</label>
-            <p id="category_cost_text"></p>
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="card-order-info">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="order-price">
+            <label>{% trans "Cost" %}:</label><p id="category_cost_text"></p> 
+            <button class="btn-primary" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
 </div>
+
 {% endblock %}
 {% block scripts %}
 <script>

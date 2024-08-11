@@ -232,7 +232,6 @@ footer p {
   margin: 0;
 }
 
-/* Footer */
 .footer_section {
   background-color: #300054;
   padding: 20px;
@@ -245,6 +244,40 @@ footer p {
 }
 .footer_section a {
   color: #F0F8FF;
+}
+
+.user-card {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.user-card img {
+  width: 100%;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+.user-card .card-order-info {
+  padding: 20px;
+}
+.user-card .card-order-info #id_category {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  background-color: #333;
+}
+.user-card .card-order-info #id_user_comment {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+}
+.user-card .card-order-info .order-price {
+  display: inline;
+  align-items: center;
+  font-size: 14pt;
 }
 
 .card-header {
