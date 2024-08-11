@@ -17,6 +17,7 @@ from .forms import (
     CustomSetPasswordForm,
 )
 from .models import Order, Services, Category, BannedIP, CustomUser
+from .utils import get_ip
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_str, force_bytes
@@ -428,7 +429,7 @@ def registrations(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
-            user.ip_address = request.META.get('REMOTE_ADDR')
+            user.ip_address = get_ip(request)
             user.save()
 
             send_activation_email(user, request)
@@ -451,7 +452,7 @@ class CustomLoginView(LoginView):
         response = super().form_valid(form)
 
         user = get_object_or_404(CustomUser, username=form.cleaned_data.get("username"))
-        user.ip_address = self.request.META.get('REMOTE_ADDR')
+        user.ip_address = get_ip(request)
         user.save()
 
         return response

@@ -4,6 +4,7 @@ from django.http import HttpResponseForbidden
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from .models import BannedIP
+from .utils import get_ip
 
 
 class AdminCheckMiddleware:
@@ -30,7 +31,7 @@ class BanIPMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        ip_address = request.META.get('REMOTE_ADDR')
+        ip_address = get_ip(request)
 
         if BannedIP.objects.filter(ip_address=ip_address).exists():
             message = format_html(
