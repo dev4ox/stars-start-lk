@@ -32,7 +32,7 @@
                 </td>
                 <td>
                      {% if order.status == 'not_paid' %}
-                    <form method="post" action="{% url 'initiate_payment' order.order_id %}" style="display:inline;">
+                    <form method="post" action="{% url 'initiate_payment' %}" style="display:inline;">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-success">{% trans "Pay" %}</button>
                     </form>
