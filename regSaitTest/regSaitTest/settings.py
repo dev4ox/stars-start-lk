@@ -169,7 +169,7 @@ EMAIL_HOST = 'stars-start.ru'  # или ваш домен, если сервер
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False  # используйте False, если вы настроили TLS
-EMAIL_HOST_USER = ''  # обычно не требуется для локальных SMTP-серверов
+EMAIL_HOST_USER = 'auth@stars-start.ru'  # обычно не требуется для локальных SMTP-серверов
 EMAIL_HOST_PASSWORD = ''  # обычно не требуется для локальных SMTP-серверов
 DEFAULT_FROM_EMAIL = 'auth@stars-start.ru'
 
