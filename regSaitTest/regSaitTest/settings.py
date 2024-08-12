@@ -178,6 +178,9 @@ SITE_ID = 1
 # site
 PASSWORD_RESET_TIMEOUT_MINUTES = 1  # Ограничение времени на повторный запрос сброса пароля (в минутах)
 
+# cerf
+CERF = secret.CERF
+
 # tinkoff
 TINKOFF_TERMINAL_KEY = secret.TINKOFF_TERMINAL_KEY
 TINKOFF_SECRET_KEY = secret.TINKOFF_SECRET_KEY

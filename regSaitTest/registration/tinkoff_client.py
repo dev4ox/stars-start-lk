@@ -19,9 +19,9 @@ class TinkoffClient:
             "FailURL": settings.FAIL_URL,
             "Token": self._generate_token(order_id, amount)
         }
-        print(payload)
 
-        response = requests.post(self.base_url + 'payment/ruble-transfer/pay', json=payload)
+        response = requests.post(self.base_url + 'payment/ruble-transfer/pay', json=payload, cert=settings.CERF)
+
         print(f"Status Code: {response.status_code}")
         print(f"Response Headers: {response.headers}")
         print(f"Response Text: {response.text}")
