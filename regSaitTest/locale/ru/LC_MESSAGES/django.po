@@ -641,25 +641,23 @@ msgstr "Последний заказ"
 
 #: .\registration\templates\profile.html:24
 msgid "Service:"
-msgstr "Услуги"
+msgstr "Услуги:"
 
 #: .\registration\templates\profile.html:25
 msgid "Category:"
-msgstr "Категории"
+msgstr "Категории:"
 
 #: .\registration\templates\profile.html:26
 msgid "Date:"
-msgstr "Дата"
+msgstr "Дата:"
 
 #: .\registration\templates\profile.html:27
-#, fuzzy
-#| msgid "Status"
 msgid "Status:"
-msgstr "Статус"
+msgstr "Статус:"
 
 #: .\registration\templates\profile.html:28
 msgid "Cost:"
-msgstr "Стоимость"
+msgstr "Стоимость:"
 
 #: .\registration\templates\profile.html:45
 msgid "No recent orders"
