@@ -602,20 +602,21 @@ def user_agreement(request):
 
 @login_required
 def initiate_payment(request, order_id):
-    order = get_object_or_404(Order, pk=order_id)
-
-    if request.method == 'POST':
-        tinkoff_client = TinkoffClient(
-            terminal_key=settings.TINKOFF_TERMINAL_KEY,
-            secret_key=settings.TINKOFF_SECRET_KEY
-        )
-        payment_data = tinkoff_client.create_payment(order.order_id, int(order.cost), "Оплата услуги")
-
-        # Запускаем задачу на проверку статуса платежа
-        check_payment_status.delay(order.order_id)
-
-        # Перенаправление пользователя на сайт оплаты Tinkoff
-        return redirect(payment_data.get('PaymentURL'))
+    return render(request, "payments.html")
+    # order = get_object_or_404(Order, pk=order_id)
+    #
+    # if request.method == 'POST':
+    #     tinkoff_client = TinkoffClient(
+    #         terminal_key=settings.TINKOFF_TERMINAL_KEY,
+    #         secret_key=settings.TINKOFF_SECRET_KEY
+    #     )
+    #     payment_data = tinkoff_client.create_payment(order.order_id, int(order.cost), "Оплата услуги")
+    #
+    #     # Запускаем задачу на проверку статуса платежа
+    #     check_payment_status.delay(order.order_id)
+    #
+    #     # Перенаправление пользователя на сайт оплаты Tinkoff
+    #     return redirect(payment_data.get('PaymentURL'))
 
 
 # def payment_callback(request):
