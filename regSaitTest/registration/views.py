@@ -16,8 +16,10 @@ from .forms import (
     OrderAddUser,
     CustomSetPasswordForm,
 )
-from .models import Order, Services, Category, BannedIP, CustomUser
+from .models import Order, Services, Category, BannedIP, CustomUser, Payment
 from .utils import get_ip
+from .tinkoff_client import TinkoffClient
+from .tasks import check_payment_status
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_str, force_bytes
@@ -596,3 +598,41 @@ def terms_of_service(request):
 
 def user_agreement(request):
     return render(request, "user_agreement.html")
+
+
+@login_required
+def initiate_payment(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+
+    if request.method == 'POST':
+        tinkoff_client = TinkoffClient(
+            terminal_key=settings.TINKOFF_TERMINAL_KEY,
+            secret_key=settings.TINKOFF_SECRET_KEY
+        )
+        payment_data = tinkoff_client.create_payment(order.order_id, int(order.cost), "Оплата услуги")
+
+        # Запускаем задачу на проверку статуса платежа
+        check_payment_status.delay(order.order_id)
+
+        # Перенаправление пользователя на сайт оплаты Tinkoff
+        return redirect(payment_data.get('PaymentURL'))
+
+
+# def payment_callback(request):
+#     data = request.POST
+#     order_id = data.get('OrderId')
+#     payment_id = data.get('PaymentId')
+#
+#     # Проверка на успешность оплаты
+#     if data.get('Status') == 'CONFIRMED':
+#         order = Order.objects.get(order_id=order_id)
+#         payment = Payment.objects.get(trans_id=payment_id)
+#
+#         # Обновление записи в БД
+#         payment.date_payment = timezone.now()
+#         payment.save()
+#
+#         order.status = 'paid'
+#         order.save()
+#
+#         return JsonResponse({'status': 'ok'})

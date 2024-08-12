@@ -5,74 +5,14 @@ from django.contrib.auth.forms import (
     AuthenticationForm,
     SetPasswordForm,
 )
-from .models import CustomUser, Services, Order, Category
+from .models import CustomUser, Services, Order, Category, Payment
 from django.utils.translation import gettext_lazy as _
 from django.utils.safestring import mark_safe
-from django.template.loader import render_to_string
 from django import forms
 from phonenumber_field.formfields import PhoneNumberField
 
 
-class ServicesChangeForm(forms.ModelForm):
-    class Meta:
-        model = Services
-        fields = ['title', "description", 'image_path']
-
-
-class OrderChangeForm(forms.ModelForm):
-    class Meta:
-        model = Order
-        fields = [
-            "user",
-            "service",
-            "status",
-            "cost",
-            "user_comment",
-            'moder_comment',
-        ]
-
-
-class OrderAddUser(forms.ModelForm):
-    class Meta:
-        model = Order
-        fields = ['service', 'category', 'status', 'user_comment', 'moder_comment', 'cost']
-        widgets = {
-            'moder_comment': forms.HiddenInput(),  # Скрываем поле комментария модератора
-            'cost': forms.HiddenInput(),  # Скрываем поле стоимости
-            'status': forms.HiddenInput(),  # Скрываем поле статуса
-            "service": forms.HiddenInput(),
-        }
-
-    def __init__(self, *args, **kwargs):
-        super(OrderAddUser, self).__init__(*args, **kwargs)
-        self.fields['category'].queryset = Category.objects.none()
-
-        if 'service' in self.data:
-
-            try:
-                service_id = int(self.data.get('service'))
-                self.fields['category'].queryset = Category.objects.filter(service_id=service_id).order_by('name')
-
-            except (ValueError, TypeError):
-                pass
-
-        elif self.instance.pk:
-            self.fields['category'].queryset = self.instance.service.categories.order_by('name')
-
-
-class OrderReadOnlyForm(forms.ModelForm):
-    class Meta:
-        model = Order
-        fields = ['user', 'service', 'category', 'status', 'user_comment', 'moder_comment', 'cost']
-
-    def __init__(self, *args, **kwargs):
-        super(OrderReadOnlyForm, self).__init__(*args, **kwargs)
-
-        for field in self.fields.values():
-            field.widget.attrs['readonly'] = True
-            field.widget.attrs['disabled'] = True
-
-
+# user forms
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(label=_("Email"))
     phone_number = PhoneNumberField(
@@ -147,6 +87,7 @@ class CustomAuthenticationForm(AuthenticationForm):
     username = forms.EmailField(label=_("Email"))
 
 
+# password forms
 class PasswordResetRequestForm(forms.Form):
     email = forms.EmailField(label=_("Email"), max_length=254, required=True)
 
@@ -158,3 +99,86 @@ class CustomSetPasswordForm(SetPasswordForm):
         strip=False,
         help_text="",
     )
+
+
+class ServicesChangeForm(forms.ModelForm):
+    class Meta:
+        model = Services
+        fields = ['title', "description", 'image_path']
+
+
+class OrderChangeForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = [
+            "user",
+            "service",
+            "status",
+            "cost",
+            "user_comment",
+            'moder_comment',
+        ]
+
+
+class OrderAddUser(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['service', 'category', 'status', 'user_comment', 'moder_comment', 'cost']
+        widgets = {
+            'moder_comment': forms.HiddenInput(),  # Скрываем поле комментария модератора
+            'cost': forms.HiddenInput(),  # Скрываем поле стоимости
+            'status': forms.HiddenInput(),  # Скрываем поле статуса
+            "service": forms.HiddenInput(),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(OrderAddUser, self).__init__(*args, **kwargs)
+        self.fields['category'].queryset = Category.objects.none()
+
+        if 'service' in self.data:
+
+            try:
+                service_id = int(self.data.get('service'))
+                self.fields['category'].queryset = Category.objects.filter(service_id=service_id).order_by('name')
+
+            except (ValueError, TypeError):
+                pass
+
+        elif self.instance.pk:
+            self.fields['category'].queryset = self.instance.service.categories.order_by('name')
+
+
+class OrderReadOnlyForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['user', 'service', 'category', 'status', 'user_comment', 'moder_comment', 'cost']
+
+    def __init__(self, *args, **kwargs):
+        super(OrderReadOnlyForm, self).__init__(*args, **kwargs)
+
+        for field in self.fields.values():
+            field.widget.attrs['readonly'] = True
+            field.widget.attrs['disabled'] = True
+
+
+# class PaymentForm(forms.ModelForm):
+#     class Meta:
+#         model = Payment
+#         fields = ['order', 'amount']
+#
+#     def __init__(self, *args, **kwargs):
+#         order = kwargs.pop('order', None)
+#         super(PaymentForm, self).__init__(*args, **kwargs)
+#
+#         if order:
+#             self.fields['order'].initial = order
+#             self.fields['amount'].initial = order.cost
+#             self.fields['order'].widget = forms.HiddenInput()
+#             self.fields['amount'].widget = forms.HiddenInput()
+#
+#     def save(self, commit=True):
+#         payment = super(PaymentForm, self).save(commit=False)
+#         if commit:
+#             payment.save()
+#
+#         return payment

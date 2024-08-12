@@ -20,11 +20,13 @@ urlpatterns = [
     path('orders/', views.orders, name='orders'),
     path('orders/<int:order_id>/get_ticket/', views.generate_or_get_pdf, name='order_get_tickets'),
     path('orders/<int:order_id>/orders_details', views.order_details, name='orders_details'),
-    path('orders/pay/', views.order_pay, name='orders_pay'),
+    # path('orders/pay/', views.order_pay, name='orders_pay'),
     # path('orders/<int:order_id>/pay/', views.order_pay, name='orders_pay'),
 
     # payments
-    path('payments/', views.payments, name='payments'),
+    # path('payments/', views.payments, name='payments'),
+    path('payment/<int:order_id>/', views.initiate_payment, name='initiate_payment'),
+    # path('payment/callback/', views.payment_callback, name='payment_callback'),
 
     # admin
     path("soft_admin/", views.admin_dashboard, name="admin_dashboard"),
