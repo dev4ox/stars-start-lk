@@ -601,7 +601,7 @@ def user_agreement(request):
 
 
 @login_required
-def initiate_payment(request, order_id):
+def initiate_payment(request):
     return render(request, "payments.html")
     # order = get_object_or_404(Order, pk=order_id)
     #

@@ -25,7 +25,7 @@ urlpatterns = [
 
     # payments
     # path('payments/', views.payments, name='payments'),
-    path('payment/<int:order_id>/', views.initiate_payment, name='initiate_payment'),
+    path('payments/', views.initiate_payment, name='initiate_payment'),
     # path('payment/callback/', views.payment_callback, name='payment_callback'),
 
     # admin
