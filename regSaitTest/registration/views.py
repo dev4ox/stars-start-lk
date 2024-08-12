@@ -520,19 +520,14 @@ def password_reset_request(request):
                     email_template_name = "password_reset_email.html"
                     email_body = render_to_string(email_template_name, context)
 
-                    try:
-                        send_mail(
-                            subject,
-                            email_body,
-                            settings.DEFAULT_FROM_EMAIL,
-                            [user.username],  # Используем user.username, так как это email
-                            fail_silently=False,
-                            html_message=email_body,
-                        )
-                    except Exception as e:
-                        print(f"Failed to send email: {e}")
-                        messages.error(request, _("There was an error sending the email: ") + str(e))
-                        return redirect("reset_password")
+                    send_mail(
+                        subject,
+                        email_body,
+                        settings.DEFAULT_FROM_EMAIL,
+                        [user.username],  # Используем user.username, так как это email
+                        fail_silently=False,
+                        html_message=email_body,
+                    )
 
                 # messages.success(request, _("Password reset link has been sent to your email."))
                 return redirect("password_reset_done")
