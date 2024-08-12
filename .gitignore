@@ -4,7 +4,6 @@ __pycache__/
 *$py.class
 .idea/
 regSaitTest/secret.py
-regSaitTest/regSaitTest/settings.py
 server_deploy.bat
 deploy.sh
 
