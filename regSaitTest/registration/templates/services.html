@@ -17,7 +17,7 @@
                 <h5 class="card-title">{{ service.title }}</h5>
                 <p class="card-text">{{ service.description }}</p>
                 {% if min_cost_categories_list %}
-                    <p>{% trans 'Price from' %} ₽{{ min_cost_categories_list|get_by_index:index }}</p>
+                    <p>{% trans 'Price from' %} {{ min_cost_categories_list|get_by_index:index }} ₽</p>
                 {% endif %}
                 <a href="{% url 'services_add_order' service.id %}" class="btn btn-success">{% trans "Order" %}</a>
             </div>
