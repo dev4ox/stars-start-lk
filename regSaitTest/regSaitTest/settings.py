@@ -165,11 +165,11 @@ LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'localhost'  # или ваш домен, если сервер работает удаленно
+EMAIL_HOST = 'stars-start.ru'  # или ваш домен, если сервер работает удаленно
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False  # используйте False, если вы настроили TLS
-EMAIL_HOST_USER = 'auth@stars-start.ru'  # обычно не требуется для локальных SMTP-серверов
+EMAIL_HOST_USER = ''  # обычно не требуется для локальных SMTP-серверов
 EMAIL_HOST_PASSWORD = ''  # обычно не требуется для локальных SMTP-серверов
 DEFAULT_FROM_EMAIL = 'auth@stars-start.ru'
 
