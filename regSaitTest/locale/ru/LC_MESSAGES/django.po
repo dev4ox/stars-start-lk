@@ -82,7 +82,7 @@ msgstr "Пользователь"
 #: .\registration\models.py:103 .\registration\models.py:113
 #: .\registration\templates\services.html:22
 msgid "Order"
-msgstr "Заказ"
+msgstr "Заказать"
 
 #: .\registration\models.py:104 .\registration\templates\base.html:46
 #: .\registration\templates\custom_admin\base.html:44
