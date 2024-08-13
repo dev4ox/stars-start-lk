@@ -181,18 +181,11 @@ PASSWORD_RESET_TIMEOUT_MINUTES = 1  # Ограничение времени на
 # cerf
 CERF = secret.CERF
 
-# tinkoff
-TINKOFF_TERMINAL_KEY = secret.TINKOFF_TERMINAL_KEY
-TINKOFF_SECRET_KEY = secret.TINKOFF_SECRET_KEY
-SUCCESS_URL = 'https://stars-start.ru/success/'
-FAIL_URL = 'https://stars-start.ru/fail/'
-
-
 # celery
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
 # Настройки backend'а для хранения результатов выполнения задач (необязательно)
-# CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_BACKEND = 'django-db'
 
 # Другие настройки Celery
 CELERY_ACCEPT_CONTENT = ['json']

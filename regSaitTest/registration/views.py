@@ -18,7 +18,6 @@ from .forms import (
 )
 from .models import Order, Services, Category, BannedIP, CustomUser, Payment
 from .utils import get_ip
-from .tinkoff_client import TinkoffClient
 from .tasks import check_payment_status
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
@@ -258,7 +257,7 @@ def order_details(request, order_id):
 
 
 @login_required
-def order_pay(request):
+def order_pay(request, order_id):
     # order = get_object_or_404(Order, order_id=order_id, user=request.user)
     #
     # order.status = 'in_progress'
@@ -386,7 +385,7 @@ def services_add_order(request, service_id):
             order.cost = order.category.cost
 
             order.save()
-            return redirect('orders_pay')  # Перенаправление на страницу списка заказов
+            return redirect('orders_pay', order.order_id)  # Перенаправление на страницу списка заказов
 
     else:
         initial_data = {
