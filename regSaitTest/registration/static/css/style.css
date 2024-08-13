@@ -249,32 +249,49 @@ footer p {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .user-card img {
   width: 100%;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
-.user-card .card-order-info {
-  padding: 20px;
+.user-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.user-card .card-order-info #id_category {
-  width: 100%;
-  padding: 5px;
-  border-radius: 5px;
-  color: #FFFFFF;
-  background-color: #333;
+.user-card .card-body h5 {
+  margin-bottom: 15px;
 }
-.user-card .card-order-info #id_user_comment {
-  width: 100%;
-  padding: 5px;
-  border-radius: 5px;
-  background-color: #333;
-  color: #fff;
+.user-card .card-body .card-text {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  max-height: 14em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: max-height 0.3s ease;
+  max-height: none;
+  white-space: normal;
 }
-.user-card .card-order-info .order-price {
-  display: inline;
-  align-items: center;
-  font-size: 14pt;
+
+.text-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.text-ellipsis.expanded {
+  -webkit-line-clamp: unset;
+  max-height: none;
 }
 
 .card-header {

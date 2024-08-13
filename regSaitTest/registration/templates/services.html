@@ -15,7 +15,7 @@
             <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">
             <div class="card-body">
                 <h5 class="card-title">{{ service.title }}</h5>
-                <p class="card-text">{{ service.description }}</p>
+                <p class="card-text text-ellipsis" data-full-text="{{ service.description }}">{{ service.description }}</p>
                 {% if min_cost_categories_list %}
                     <p>{% trans 'Price from' %} {{ min_cost_categories_list|get_by_index:index }} ₽</p>
                 {% endif %}
@@ -25,4 +25,24 @@
     </div>
     {% endfor %}
 </div>
+{% endblock %}
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const cards = document.querySelectorAll('.card-text');
+        
+        cards.forEach(card => {
+            const fullText = card.getAttribute('data-full-text');
+            card.addEventListener('click', function () {
+                if (card.classList.contains('expanded')) {
+                    card.classList.remove('expanded');
+                    card.textContent = fullText.slice(0, 207) + '...';
+                } else {
+                    card.classList.add('expanded');
+                    card.textContent = fullText;
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
