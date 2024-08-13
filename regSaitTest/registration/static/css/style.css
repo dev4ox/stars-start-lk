@@ -267,31 +267,29 @@ footer p {
   margin-bottom: 15px;
 }
 .user-card .card-body .card-text {
-  flex-grow: 1;
-  position: relative;
+  margin: 0;
   overflow: hidden;
-  max-height: 14em;
+  max-height: 4.8em; /* Высота для 4-х строк */
   text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: max-height 0.3s ease;
-  max-height: none;
-  white-space: normal;
-}
-
-.text-ellipsis {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: normal;
-  cursor: pointer;
+  transition: max-height 0.3s ease;
 }
-
-.text-ellipsis.expanded {
-  -webkit-line-clamp: unset;
-  max-height: none;
+.user-card .card-body .card-text.expanded {
+  max-height: none; /* Убираем ограничение высоты */
+  overflow: visible;
+}
+.user-card .card-body .toggle-link {
+  color: #00aeff;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px 0 15px;
+  display: inline-block;
+  text-align: right;
+}
+.user-card .card-body .toggle-link:hover {
+  text-decoration: underline;
 }
 
 .card-header {
