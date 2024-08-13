@@ -346,7 +346,6 @@ def generate_or_get_pdf(request, order_id):
     return response
 
 
-@login_required
 def services(request):
     services_list = Services.objects.all().order_by("id")
     min_cost_categories_list = []
