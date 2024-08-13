@@ -57,6 +57,14 @@ class Category(models.Model):
         return f"{self.name} ({self.service.title})"
 
 
+class GroupServices(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(default="")
+
+    def __str__(self):
+        return self.title
+
+
 class Services(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(default="")
@@ -66,6 +74,7 @@ class Services(models.Model):
         null=True,
         default="services_images/default.jpg"
     )
+    group_services = models.ForeignKey("GroupServices", on_delete=models.CASCADE, default="")
 
     def __str__(self):
         return self.title

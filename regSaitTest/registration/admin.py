@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
-from .models import CustomUser, Services, Category, Order, BannedIP
-from .forms import ServicesChangeForm, OrderChangeForm
+from .models import CustomUser, Services, Category, Order, BannedIP, GroupServices
+from .forms import ServicesChangeForm, OrderChangeForm, GroupServicesChangeForm
 from .widgets import ReadOnlySelectMultiple
 from .decorators.classes import CustomModelAdmin
 
@@ -38,33 +38,19 @@ class CategoryAdmin(CustomModelAdmin):
         super().__init__(model, admin_site, app="registration", model_="category", route="admin_category")
 
 
+class GroupServicesAdmin(CustomModelAdmin):
+    def __init__(self, model, admin_site):
+        super().__init__(model, admin_site, app="registration", model_="groupservices", route="admin_service")
+
+    form = GroupServicesChangeForm
+    list_display = ('title', 'description')
+
+
 class ServiceAdmin(CustomModelAdmin):
     def __init__(self, model, admin_site):
         super().__init__(model, admin_site, app="registration", model_="services", route="admin_service")
 
     form = ServicesChangeForm
-
-    # def formfield_for_manytomany(self, db_field, request, **kwargs):
-    #     form_field = super().formfield_for_manytomany(db_field, request, **kwargs)
-    #     if db_field.name == 'category':
-    #         if 'id' not in form_field.widget.attrs:
-    #             form_field.widget.attrs['id'] = db_field.name
-    #
-    #         # Получаем связанные объекты и значения поля cost
-    #         related_model = db_field.related_model
-    #         related_objects = related_model.objects.all()
-    #         options = []
-    #         for obj in related_objects:
-    #             if hasattr(obj, 'cost'):
-    #                 cost = obj.cost
-    #                 if isinstance(cost, Decimal):
-    #                     cost = float(cost)  # Преобразуем Decimal в float
-    #                 options.append((obj.pk, f"{obj} (Стоимость: {cost})"))
-    #
-    #         # Генерируем HTML для выбора с измененными текстами опций
-    #         form_field.choices = options
-    #
-    #     return form_field
 
 
 class OrderAdmin(CustomModelAdmin):
@@ -101,5 +87,6 @@ class BannedIPAdmin(CustomModelAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(GroupServices, GroupServicesAdmin)
 admin.site.register(Services, ServiceAdmin)
 admin.site.register(Order, OrderAdmin)

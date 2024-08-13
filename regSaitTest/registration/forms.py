@@ -5,7 +5,7 @@ from django.contrib.auth.forms import (
     AuthenticationForm,
     SetPasswordForm,
 )
-from .models import CustomUser, Services, Order, Category, Payment
+from .models import CustomUser, Services, Order, Category, GroupServices
 from django.utils.translation import gettext_lazy as _
 from django.utils.safestring import mark_safe
 from django import forms
@@ -101,10 +101,16 @@ class CustomSetPasswordForm(SetPasswordForm):
     )
 
 
+class GroupServicesChangeForm(forms.ModelForm):
+    class Meta:
+        model = Services
+        fields = ['title', "description"]
+
+
 class ServicesChangeForm(forms.ModelForm):
     class Meta:
         model = Services
-        fields = ['title', "description", 'image_path']
+        fields = ['title', "description", 'image_path', "group_services"]
 
 
 class OrderChangeForm(forms.ModelForm):

@@ -1,6 +1,15 @@
 import os
 import uuid
 import qrcode
+from reportlab.lib.pagesizes import A6, landscape
+from reportlab.lib.utils import ImageReader
+from reportlab.pdfgen import canvas
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase import pdfmetrics
+from tempfile import NamedTemporaryFile
+from datetime import timedelta
+from yookassa import Configuration, Payment
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
@@ -8,6 +17,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, get_user_model, password_validation
 from django.contrib.auth.views import PasswordResetConfirmView
+
 from .forms import (
     CustomUserCreationForm,
     CustomUserChangeForm,
@@ -16,9 +26,11 @@ from .forms import (
     OrderAddUser,
     CustomSetPasswordForm,
 )
-from .models import Order, Services, Category, BannedIP, CustomUser, Payment
+from .models import Order, Services, Category, BannedIP, CustomUser, Payment, GroupServices
 from .utils import get_ip
 from .tasks import check_payment_status
+from .decorators.func import check_user_role
+
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_str, force_bytes
@@ -29,17 +41,8 @@ from django.conf import settings
 from django.utils.translation import gettext_lazy as _, activate as lang_activate
 from django.contrib.admin.models import LogEntry
 from django.core.paginator import Paginator
-from .decorators.func import check_user_role
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from reportlab.lib.pagesizes import A6, landscape
-from reportlab.lib.utils import ImageReader
-from reportlab.pdfgen import canvas
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.pdfbase import pdfmetrics
-from tempfile import NamedTemporaryFile
-from datetime import timedelta
-
 # from django.core.handlers.wsgi import WSGIRequest
 
 User = get_user_model()
@@ -260,8 +263,23 @@ def order_details(request, order_id):
 def order_pay(request, order_id):
     # order = get_object_or_404(Order, order_id=order_id, user=request.user)
     #
-    # order.status = 'in_progress'
-    # order.save()
+    # Configuration.account_id = "shopId"
+    # Configuration.secret_key = 438784
+    #
+    # payment_value = {
+    #     "amount": {
+    #         "value": "100.00",
+    #         "currency": "RUB"
+    #     },
+    #     "confirmation": {
+    #         "type": "redirect",
+    #         "return_url": "https://www.example.com/return_url"
+    #     },
+    #     "capture": True,
+    #     "description": "Заказ №1"
+    # }
+    #
+    # payment_to_yokassa = Payment.create(payment_value, uuid.uuid4())
 
     return render(request, "order_pay.html")
 
@@ -348,6 +366,7 @@ def generate_or_get_pdf(request, order_id):
 
 def services(request):
     services_list = Services.objects.all().order_by("id")
+    group_services = GroupServices.objects.all().order_by("title")
     min_cost_categories_list = []
 
     for service in services_list:
@@ -356,11 +375,9 @@ def services(request):
         if categories:
             min_cost_categories_list.append(categories[0].cost)
 
-        else:
-            min_cost_categories_list = []
-
     context = {
         "services_list": list(enumerate(services_list)),
+        "group_services": group_services,
         "min_cost_categories_list": min_cost_categories_list,
     }
 

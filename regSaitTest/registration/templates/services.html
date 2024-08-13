@@ -7,24 +7,61 @@
 
 {% block content %}
 <h2>{% trans "Our Services" %}</h2>
-<div class="row">
-    {% for index, service in services_list %}
-    <div class="col-md-6">
-        <div class="user-card">
-            <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">
-            <div class="card-body">
-                <h5 class="card-title">{{ service.title }}</h5>
-                <p class="card-text text-ellipsis" data-full-text="{{ service.description }}">{{ service.description }}</p>
-                {% if min_cost_categories_list %}
-                    <p>{% trans 'Price from' %} {{ min_cost_categories_list|get_by_index:index }} ₽</p>
+
+{% if group_services %}
+    {% for group in group_services %}
+        <h2>{{ group.title }}</h2>
+        <div class="row">
+
+            {% for index, service in services_list %}
+
+                {% if service.group_services == group %}
+                    <div class="col-md-6">
+                        <div class="user-card">
+                            <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ service.title }}</h5>
+                                <p class="card-text text-ellipsis" data-full-text="{{ service.description }}">{{ service.description }}</p>
+                                {% with category=min_cost_categories_list|get_by_index:index %}
+                                    {% if category is not None %}
+                                        <p>{% trans 'Price from' %} {{ min_cost_categories_list|get_by_index:index }} ₽</p>
+                                    {% endif %}
+                                {% endwith %}
+                                <a href="{% url 'services_add_order' service.id %}" class="btn btn-success">{% trans "Order" %}</a>
+                            </div>
+                        </div>
+                    </div>
                 {% endif %}
-                <a href="{% url 'services_add_order' service.id %}" class="btn btn-success">{% trans "Order" %}</a>
+
+            {% endfor %}
+
+        </div>
+    {% endfor %}
+
+{% else %}
+    <div class="row">
+
+        {% for index, service in services_list %}
+        <div class="col-md-6">
+            <div class="user-card">
+                <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ service.title }}</h5>
+                    <p class="card-text text-ellipsis" data-full-text="{{ service.description }}">{{ service.description }}</p>
+                    {% if min_cost_categories_list %}
+                        <p>{% trans 'Price from' %} {{ min_cost_categories_list|get_by_index:index }} ₽</p>
+                    {% endif %}
+                    <a href="{% url 'services_add_order' service.id %}" class="btn btn-success">{% trans "Order" %}</a>
+                </div>
             </div>
         </div>
+        {% endfor %}
+
     </div>
-    {% endfor %}
-</div>
+{% endif %}
+
 {% endblock %}
+
 {% block scripts %}
 <script>
     document.addEventListener('DOMContentLoaded', function () {
