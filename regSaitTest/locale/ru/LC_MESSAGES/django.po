@@ -676,10 +676,6 @@ msgstr "Уже есть аккаунт?"
 msgid "Our Services"
 msgstr "Услуги"
 
-#: .\registration\templates\services.html:10
-msgid "Choose a service that will make your event unforgettable!"
-msgstr "Выберите услугу"
-
 #: .\registration\templates\services.html:20
 msgid "Price from"
 msgstr "От"
