@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    "django_celery_results",
     'registration.apps.RegistrationConfig',
     "widget_tweaks",
 ]
@@ -181,11 +182,18 @@ PASSWORD_RESET_TIMEOUT_MINUTES = 1  # Ограничение времени на
 # cerf
 CERF = secret.CERF
 
+# yokassa
+# "https://stars-start.ru/lk/orders/"
+# "http://127.0.0.1:8000/lk/orders/"
+YOKASSA_RETURN_URL = "https://stars-start.ru/lk/orders/"
+YOKASSA_SECRET_KEY = secret.SECRET_KEY
+YOKASSA_ACCOUNT_ID = secret.ACCOUNT_ID
+
 # celery
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
 # Настройки backend'а для хранения результатов выполнения задач (необязательно)
-CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 # Другие настройки Celery
 CELERY_ACCEPT_CONTENT = ['json']

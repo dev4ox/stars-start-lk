@@ -26,7 +26,7 @@ from .forms import (
     OrderAddUser,
     CustomSetPasswordForm,
 )
-from .models import Order, Services, Category, BannedIP, CustomUser, Payment, GroupServices
+from .models import Order, Services, Category, BannedIP, CustomUser, Payment as Payment_models, GroupServices
 from .utils import get_ip
 from .tasks import check_payment_status
 from .decorators.func import check_user_role
@@ -261,27 +261,39 @@ def order_details(request, order_id):
 
 @login_required
 def order_pay(request, order_id):
-    # order = get_object_or_404(Order, order_id=order_id, user=request.user)
-    #
-    # Configuration.account_id = "shopId"
-    # Configuration.secret_key = 438784
-    #
-    # payment_value = {
-    #     "amount": {
-    #         "value": "100.00",
-    #         "currency": "RUB"
-    #     },
-    #     "confirmation": {
-    #         "type": "redirect",
-    #         "return_url": "https://www.example.com/return_url"
-    #     },
-    #     "capture": True,
-    #     "description": "Заказ №1"
-    # }
-    #
-    # payment_to_yokassa = Payment.create(payment_value, uuid.uuid4())
+    # return render(request, "order_pay.html")
+    order = get_object_or_404(Order, order_id=order_id, user=request.user)
 
-    return render(request, "order_pay.html")
+    Configuration.account_id = settings.YOKASSA_ACCOUNT_ID
+    Configuration.secret_key = settings.YOKASSA_SECRET_KEY
+
+    payment_value = {
+        "amount": {
+            "value": order.cost,
+            "currency": "RUB"
+        },
+
+        "confirmation": {
+            "type": "redirect",
+            "return_url": settings.YOKASSA_RETURN_URL
+        },
+
+        "capture": True,
+        "description": f"Заказ №{order.order_id}",
+
+        "metadata": {
+          "order_id": f"{order.order_id}"
+        }
+    }
+
+    trans_id = uuid.uuid4()
+    payment = Payment.create(payment_value, trans_id)
+    # print(trans_id, payment_to_yokassa.id)
+
+    check_payment_status.delay(payment.id, order.order_id)
+
+    # return JsonResponse(payment_to_yokassa.json(), safe=False)
+    return redirect(payment.confirmation["confirmation_url"])
 
 
 @login_required
@@ -401,7 +413,7 @@ def services_add_order(request, service_id):
             order.cost = order.category.cost
 
             order.save()
-            return redirect('orders_pay', order.order_id)  # Перенаправление на страницу списка заказов
+            return redirect('orders')  # Перенаправление на страницу списка заказов
 
     else:
         initial_data = {
