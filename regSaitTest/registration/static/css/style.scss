@@ -361,6 +361,34 @@ footer {
             }
         }
     }
+
+    .card-order-info {
+        padding: 20px;
+        form {
+            display: block;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            select {
+                padding: 0.375rem 0.75rem;
+                border-radius: 0.25rem;
+                color: #FFFFFF;
+                background-color: #444;
+                border: none;
+            }
+            textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-top: 5px;
+                background: #444;
+                color: #fff;
+            }
+        }
+    }
 }
 
 

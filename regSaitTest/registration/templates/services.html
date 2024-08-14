@@ -8,7 +8,7 @@
 {% block content %}
 <h2>{% trans "Our Services" %}</h2>
 <form method="get" class="d-flex mb-3">
-    <input type="text" name="search" class="form-control me-2" placeholder="{% trans 'Search groupservices...' %}" value="{{ search_query }}">
+    <input type="text" name="search" class="form-control me-2" placeholder="{% trans 'Search services group...' %}" value="{{ search_query }}">
     {% if not search_query %}
         <button type="submit" class="btn btn-secondary">{% trans "Search" %}</button>
     {% endif %}
@@ -23,7 +23,7 @@
 
 {% if group_services %}
     {% for group in group_services %}
-        <h2>{{ group.title }}</h2>
+        <h3 style="text-align: center; margin: 30px auto 0;">{{ group.title }}</h3>
         <div class="row">
 
             {% for index, service in services_list %}
