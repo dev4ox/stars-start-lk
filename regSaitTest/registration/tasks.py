@@ -13,7 +13,7 @@ def check_payment_status(payment_id: str, order_id):
 
     timeout = 15 * 60  # 15 минут в секундах
     start_time = time.time()
-    delay = 30  # sec
+    delay = 15  # sec
 
     Configuration.account_id = settings.YOKASSA_ACCOUNT_ID
     Configuration.secret_key = settings.YOKASSA_SECRET_KEY
