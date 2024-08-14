@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-14 21:35+0300\n"
+"POT-Creation-Date: 2024-08-14 21:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,11 +80,9 @@ msgid "User comment"
 msgstr "Комментарий пользователя"
 
 #: .\registration\middleware.py:38
-msgid ""
-"Your IP has been banned. For more information, visit {link_start}this "
-"page{link_end}."
+msgid "Your IP has been banned. For more information, visit:"
 msgstr ""
-"Ваш IP адрес был забанен. Обратитесь в {link_start}тех. поддержку{link_end}."
+"Ваш IP адрес был забанен. Связаться с нами:"
 
 #: .\registration\models.py:22
 msgid "email address"
