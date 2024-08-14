@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
-from .models import CustomUser, Services, Category, Order, BannedIP, GroupServices
-from .forms import ServicesChangeForm, OrderChangeForm, GroupServicesChangeForm
+from .models import CustomUser, Services, Category, Order, BannedIP, GroupServices, Payment
+from .forms import ServicesChangeForm, OrderChangeForm, GroupServicesChangeForm, PaymentChangeForm
 from .widgets import ReadOnlySelectMultiple
 from .decorators.classes import CustomModelAdmin
 
@@ -60,6 +60,13 @@ class OrderAdmin(CustomModelAdmin):
     form = OrderChangeForm
 
 
+class PaymentAdmin(CustomModelAdmin):
+    def __init__(self, model, admin_site):
+        super().__init__(model, admin_site, app="registration", model_="payment", route="admin_orders")
+
+    form = PaymentChangeForm
+
+
 class CustomUserAdmin(CustomModelAdmin):
     def __init__(self, model, admin_site):
         super().__init__(model, admin_site, app="auth", model_="user", route="admin_users")
@@ -69,11 +76,6 @@ class CustomUserAdmin(CustomModelAdmin):
     search_fields = ['username', 'ip_address', 'first_name', 'last_name']
     list_filter = ['is_staff', 'is_superuser', 'is_active']
     filter_horizontal = ['groups']
-
-    # def get_form(self, request, obj=None, **kwargs):
-    #     form = super().get_form(request, obj, **kwargs)
-    #     form.current_user = request.user
-    #     return form
 
 
 @admin.register(BannedIP)
@@ -90,3 +92,4 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(GroupServices, GroupServicesAdmin)
 admin.site.register(Services, ServiceAdmin)
 admin.site.register(Order, OrderAdmin)
+admin.site.register(Payment, PaymentAdmin)

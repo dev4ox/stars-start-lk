@@ -5,7 +5,7 @@ from django.contrib.auth.forms import (
     AuthenticationForm,
     SetPasswordForm,
 )
-from .models import CustomUser, Services, Order, Category, GroupServices
+from .models import CustomUser, Services, Order, Category, Payment, GroupServices
 from django.utils.translation import gettext_lazy as _
 from django.utils.safestring import mark_safe
 from django import forms
@@ -103,7 +103,7 @@ class CustomSetPasswordForm(SetPasswordForm):
 
 class GroupServicesChangeForm(forms.ModelForm):
     class Meta:
-        model = Services
+        model = GroupServices
         fields = ['title', "description"]
 
 
@@ -171,24 +171,7 @@ class OrderReadOnlyForm(forms.ModelForm):
             field.widget.attrs['disabled'] = True
 
 
-# class PaymentForm(forms.ModelForm):
-#     class Meta:
-#         model = Payment
-#         fields = ['order', 'amount']
-#
-#     def __init__(self, *args, **kwargs):
-#         order = kwargs.pop('order', None)
-#         super(PaymentForm, self).__init__(*args, **kwargs)
-#
-#         if order:
-#             self.fields['order'].initial = order
-#             self.fields['amount'].initial = order.cost
-#             self.fields['order'].widget = forms.HiddenInput()
-#             self.fields['amount'].widget = forms.HiddenInput()
-#
-#     def save(self, commit=True):
-#         payment = super(PaymentForm, self).save(commit=False)
-#         if commit:
-#             payment.save()
-#
-#         return payment
+class PaymentChangeForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        fields = ["user", "order", "amount", "trans_id"]
