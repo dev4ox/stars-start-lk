@@ -7,6 +7,19 @@
 
 {% block content %}
 <h2>{% trans "Our Services" %}</h2>
+<form method="get" class="d-flex mb-3">
+    <input type="text" name="search" class="form-control me-2" placeholder="{% trans 'Search users...' %}" value="{{ search_query }}">
+    {% if not search_query %}
+        <button type="submit" class="btn btn-secondary">{% trans "Search" %}</button>
+    {% endif %}
+
+    {% if search_query %}
+        <a href="{% url 'services' %}">
+            <button type="button" class="btn btn-danger">{% trans "Reset" %}</button>
+        </a>
+    {% endif %}
+</form>
+
 
 {% if group_services %}
     {% for group in group_services %}
@@ -38,26 +51,7 @@
         </div>
     {% endfor %}
 
-{% else %}
-    <div class="row">
 
-        {% for index, service in services_list %}
-        <div class="col-md-6">
-            <div class="user-card">
-                <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ service.title }}</h5>
-                    <p class="card-text text-ellipsis" data-full-text="{{ service.description }}">{{ service.description }}</p>
-                    {% if min_cost_categories_list %}
-                        <p>{% trans 'Price from' %} {{ min_cost_categories_list|get_by_index:index }} ₽</p>
-                    {% endif %}
-                    <a href="{% url 'services_add_order' service.id %}" class="btn btn-success">{% trans "Order" %}</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-
-    </div>
 {% endif %}
 
 {% endblock %}

@@ -378,8 +378,16 @@ def generate_or_get_pdf(request, order_id):
 
 def services(request):
     services_list = Services.objects.all().order_by("id")
-    group_services = GroupServices.objects.all().order_by("title")
+    # group_services = GroupServices.objects.all().order_by("title")
     min_cost_categories_list = []
+    search_query = request.GET.get('search', '')
+
+    if search_query:
+        group_services = GroupServices.objects.filter(title__icontains=search_query) | GroupServices.objects.filter(
+            description__icontains=search_query).order_by('title')
+
+    else:
+        group_services = GroupServices.objects.all().order_by("title")
 
     for service in services_list:
         categories = Category.objects.filter(service=service).order_by('cost')[:1]
@@ -391,6 +399,7 @@ def services(request):
         "services_list": list(enumerate(services_list)),
         "group_services": group_services,
         "min_cost_categories_list": min_cost_categories_list,
+        "search_query": search_query,
     }
 
     return render(request, 'services.html', context)
