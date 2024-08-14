@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-14 20:14+0300\n"
+"POT-Creation-Date: 2024-08-14 21:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,9 +81,10 @@ msgstr "Комментарий пользователя"
 
 #: .\registration\middleware.py:38
 msgid ""
-"Your IP has been banned. For more information, visit <a href=\"{}\">this "
-"page</a>."
-msgstr "Ваш IP адрес был забанен. Обратитесь в <a href=\"{}\">тех. поддержку</a>"
+"Your IP has been banned. For more information, visit {link_start}this "
+"page{link_end}."
+msgstr ""
+"Ваш IP адрес был забанен. Обратитесь в {link_start}тех. поддержку{link_end}."
 
 #: .\registration\models.py:22
 msgid "email address"
@@ -98,7 +99,7 @@ msgid "User"
 msgstr "Пользователь"
 
 #: .\registration\models.py:112 .\registration\models.py:122
-#: .\registration\templates\services.html:43
+#: .\registration\templates\services.html:41
 msgid "Order"
 msgstr "Заказать"
 
@@ -161,7 +162,7 @@ msgid "Profile"
 msgstr "Профиль"
 
 #: .\registration\templates\base.html:12 .\registration\templates\base.html:48
-#: .\registration\templates\base.html:89
+#: .\registration\templates\base.html:91
 #: .\registration\templates\custom_admin\base.html:8
 #: .\registration\templates\custom_admin\base.html:20
 #: .\registration\templates\custom_admin\base.html:74
@@ -196,12 +197,12 @@ msgstr "Переключить навигацию"
 msgid "Services"
 msgstr "Услуги"
 
-#: .\registration\templates\base.html:65
+#: .\registration\templates\base.html:66
 #: .\registration\templates\custom_admin\base.html:50
 msgid "Logout"
 msgstr "Выйти"
 
-#: .\registration\templates\base.html:89
+#: .\registration\templates\base.html:91
 #: .\registration\templates\custom_admin\base.html:74
 #: .\registration\templates\terms_of_service.html:78
 #: .\registration\templates\user_agreement.html:83
@@ -371,7 +372,7 @@ msgid "Client"
 msgstr "Клиент"
 
 #: .\registration\templates\custom_admin\orders.html:32
-#: .\registration\templates\services.html:34
+#: .\registration\templates\services.html:32
 #: .\registration\templates\services_add_order.html:9
 msgid "Service"
 msgstr "Услуги"
@@ -460,7 +461,7 @@ msgid "Search users..."
 msgstr "Поиск пользователей..."
 
 #: .\registration\templates\custom_admin\users.html:11
-#: .\registration\templates\services.html:13
+#: .\registration\templates\services.html:12
 msgid "Search"
 msgstr "Найти"
 
@@ -728,11 +729,11 @@ msgstr "Услуги"
 msgid "Search services group..."
 msgstr "Поиск услуг по группе..."
 
-#: .\registration\templates\services.html:18
+#: .\registration\templates\services.html:16
 msgid "Reset"
 msgstr "Очистить"
 
-#: .\registration\templates\services.html:40
+#: .\registration\templates\services.html:38
 msgid "Price from"
 msgstr "От"
 

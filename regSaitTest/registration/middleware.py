@@ -35,8 +35,9 @@ class BanIPMiddleware:
 
         if BannedIP.objects.filter(ip_address=ip_address).exists():
             message = format_html(
-                _('Your IP has been banned. For more information, visit <a href="{}">this page</a>.'),
-                'https://t.me/starstartmanager'  # URL-адрес для ссылки
+                _('Your IP has been banned. For more information, visit {link_start}this page{link_end}.'),
+                link_start='<a href="https://t.me/starstartmanager">',
+                link_end='</a>'
             )
             return HttpResponseForbidden(message)
 
