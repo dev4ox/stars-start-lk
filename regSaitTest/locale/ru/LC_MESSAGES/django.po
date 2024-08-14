@@ -81,7 +81,8 @@ msgstr "Комментарий пользователя"
 
 #: .\registration\middleware.py:38
 msgid ""
-"Your IP has been banned. For more information, visit <a href=\"{}\">this page</a>."
+"Your IP has been banned. For more information, visit <a href=\"{}\">this "
+"page</a>."
 msgstr "Ваш IP адрес был забанен. Обратитесь в <a href="{}">тех. поддержку</a>"
 
 #: .\registration\models.py:22
