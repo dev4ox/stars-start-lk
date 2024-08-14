@@ -61,9 +61,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'orders' %}">{% trans "Orders" %}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
-                            </li>
+                            {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
+                                </li>
+                            {% endif %}
                             <form class="nav-lang" action="{% url 'set_language' %}" method="post" class="form-inline my-2 my-lg-0">
                                 {% csrf_token %}
                                 <select name="language" onchange="this.form.submit()" class="form-control">
