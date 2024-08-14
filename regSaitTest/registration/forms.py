@@ -136,6 +136,10 @@ class OrderAddUser(forms.ModelForm):
             'status': forms.HiddenInput(),  # Скрываем поле статуса
             "service": forms.HiddenInput(),
         }
+        labels = {
+            "category": _("Category"),
+            "user_comment": _("User comment"),
+        }
 
     def __init__(self, *args, **kwargs):
         super(OrderAddUser, self).__init__(*args, **kwargs)
