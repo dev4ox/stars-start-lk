@@ -446,6 +446,10 @@ footer {
 .table tbody tr {
     background-color: #fff;
     color: $black;
+
+    .btn {
+        margin: 5px;
+    }
 }
 
 .table tbody tr:hover {
@@ -478,10 +482,6 @@ footer {
 
 .btn-group .btn {
     margin-right: 5px;
-}
-
-.btn {
-    margin: 5px;
 }
 
 // Login Page Styles

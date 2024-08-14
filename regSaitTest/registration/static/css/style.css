@@ -366,6 +366,9 @@ footer p {
   background-color: #fff;
   color: #000000;
 }
+.table tbody tr .btn {
+  margin: 5px;
+}
 
 .table tbody tr:hover {
   background-color: #ccc;
@@ -397,10 +400,6 @@ footer p {
 
 .btn-group .btn {
   margin-right: 5px;
-}
-
-.btn {
-  margin: 5px;
 }
 
 .login-container {
