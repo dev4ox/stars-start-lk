@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-14 18:44+0300\n"
+"POT-Creation-Date: 2024-08-14 20:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,17 +125,20 @@ msgstr "ID транзакции"
 msgid "Payment"
 msgstr "Платеж"
 
-#: .\registration\models.py:129
+#: .\registration\models.py:129 .\registration\templates\payments.html:4
 msgid "Payments"
 msgstr "Платежи"
 
 #: .\registration\templates\account_activation_email.html:6
 #: .\registration\templates\account_activation_email.html:9
-#: .\registration\templates\message_about_activate.html:4
 #: .\registration\templates\message_about_activate.html:8
 #: .\registration\views.py:52
 msgid "Account Activation"
 msgstr "Активация аккаунта"
+
+#: .\registration\templates\account_activation_email.html:6
+msgid "Stars start"
+msgstr "Звёздный старт"
 
 #: .\registration\templates\account_activation_email.html:10
 #: .\registration\templates\password_reset_email.html:11
@@ -153,14 +155,13 @@ msgstr "Подтвердить аккаунт"
 
 #: .\registration\templates\base.html:12 .\registration\templates\base.html:17
 #: .\registration\templates\base.html:56
-#: .\registration\templates\payments.html:4
 #: .\registration\templates\profile.html:5
 #: .\registration\templates\profile.html:8
 msgid "Profile"
 msgstr "Профиль"
 
-#: .\registration\templates\base.html:12 .\registration\templates\base.html:17
-#: .\registration\templates\base.html:48 .\registration\templates\base.html:89
+#: .\registration\templates\base.html:12 .\registration\templates\base.html:48
+#: .\registration\templates\base.html:89
 #: .\registration\templates\custom_admin\base.html:8
 #: .\registration\templates\custom_admin\base.html:20
 #: .\registration\templates\custom_admin\base.html:74
@@ -169,12 +170,15 @@ msgstr "Профиль"
 #: .\registration\templates\custom_admin\reports.html:4
 #: .\registration\templates\custom_admin\services.html:4
 #: .\registration\templates\custom_admin\users.html:4
-#: .\registration\templates\services.html:6
-#: .\registration\templates\terms_of_service.html:8
 #: .\registration\templates\terms_of_service.html:78
-#: .\registration\templates\user_agreement.html:8
 #: .\registration\templates\user_agreement.html:83
 msgid "Star Start"
+msgstr "Звёздный старт"
+
+#: .\registration\templates\base.html:17
+#: .\registration\templates\terms_of_service.html:8
+#: .\registration\templates\user_agreement.html:8
+msgid "Star start"
 msgstr "Звёздный старт"
 
 #: .\registration\templates\base.html:48
@@ -350,7 +354,6 @@ msgid "Cancelled"
 msgstr "Отменен"
 
 #: .\registration\templates\custom_admin\orders.html:26
-#: .\registration\templates\services_add_order.html:4
 #: .\registration\templates\services_add_order.html:7
 msgid "Add Order"
 msgstr "Добавить заказ"
@@ -471,12 +474,14 @@ msgid "Created"
 msgstr "Дата создания"
 
 #: .\registration\templates\custom_admin\users.html:98
-#, fuzzy
 #| msgid "Toggle navigation"
 msgid "Page navigation example"
 msgstr "Переключить навигацию"
 
 #: .\registration\templates\edit_profile.html:5
+msgid "Edit profile"
+msgstr "Редактирование профиля"
+
 #: .\registration\templates\edit_profile.html:10
 #: .\registration\templates\profile.html:17
 msgid "Edit Profile"
@@ -500,10 +505,15 @@ msgid "Forgot password?"
 msgstr "Забыли пароль?"
 
 #: .\registration\templates\login.html:34
+#: .\registration\templates\register.html:5
 #: .\registration\templates\register.html:11
 #: .\registration\templates\register.html:48
 msgid "Sign up"
 msgstr "Зарегистрироваться"
+
+#: .\registration\templates\message_about_activate.html:4
+msgid "Account activation"
+msgstr "Активация аккаунта"
 
 #: .\registration\templates\message_about_activate.html:9
 msgid ""
@@ -535,6 +545,10 @@ msgstr "Если вы не получили письмо, пожалуйста, 
 #: .\registration\templates\user_agreement.html:79
 msgid "Return back"
 msgstr "Вернуться назад"
+
+#: .\registration\templates\order_pay.html:4
+msgid "Wait manager"
+msgstr "Ожидайте менеджера"
 
 #: .\registration\templates\order_pay.html:9
 msgid "Return to the list of orders"
@@ -571,6 +585,11 @@ msgstr "Предыдущая"
 msgid "Next"
 msgstr "Далее"
 
+#: .\registration\templates\password_change.html:4
+#: .\registration\templates\password_change_done.html:4
+msgid "Password change"
+msgstr "Изменение пароля"
+
 #: .\registration\templates\password_change.html:9
 #: .\registration\templates\password_change.html:13
 msgid "Change Password"
@@ -585,6 +604,12 @@ msgid "Your password has been successfully changed."
 msgstr "Ваш пароль был успешно изменен."
 
 #: .\registration\templates\password_reset_complete.html:4
+#: .\registration\templates\password_reset_confirm.html:4
+#: .\registration\templates\password_reset_done.html:4
+#: .\registration\templates\password_reset_request.html:4
+msgid "Password reset"
+msgstr "Сброс пароля"
+
 #: .\registration\templates\password_reset_complete.html:7
 msgid "Password Reset Complete"
 msgstr "Сброс пароля"
@@ -598,7 +623,6 @@ msgstr "Успех! Войдите, используя новый пароль."
 msgid "Log in"
 msgstr "Войти"
 
-#: .\registration\templates\password_reset_confirm.html:4
 #: .\registration\templates\password_reset_confirm.html:9
 msgid "Set New Password"
 msgstr "Изменение пароля"
@@ -607,10 +631,8 @@ msgstr "Изменение пароля"
 msgid "Set password"
 msgstr "Изменить пароль"
 
-#: .\registration\templates\password_reset_done.html:4
 #: .\registration\templates\password_reset_done.html:8
 #: .\registration\templates\password_reset_email.html:8
-#: .\registration\templates\password_reset_request.html:4
 msgid "Password Reset"
 msgstr "Сброс пароля"
 
@@ -684,15 +706,14 @@ msgstr "Стоимость:"
 msgid "No recent orders"
 msgstr "Заказов не найдено"
 
-#: .\registration\templates\register.html:5
-msgid "Sign Up"
-msgstr "Регистрация"
-
 #: .\registration\templates\register.html:51
 msgid "Already have an account?"
 msgstr "Уже есть аккаунт?"
 
 #: .\registration\templates\services.html:6
+msgid "Our services"
+msgstr "Услуги"
+
 #: .\registration\templates\services.html:9
 msgid "Our Services"
 msgstr "Услуги"
@@ -709,13 +730,21 @@ msgstr "Очистить"
 msgid "Price from"
 msgstr "От"
 
+#: .\registration\templates\services_add_order.html:4
+msgid "Add order"
+msgstr "Оформление заказа"
+
+#: .\registration\templates\services_add_order.html:20
+msgid "Submit"
+msgstr "Отправить"
+
 #: .\registration\templates\terms_of_service.html:8
 msgid "Terms of service"
 msgstr "Условия пользования"
 
 #: .\registration\templates\user_agreement.html:8
-msgid "User Agreement"
-msgstr "Заказ отменен"
+msgid "User agreement"
+msgstr "Пользовательское соглашение"
 
 #: .\registration\views.py:488
 msgid "Registration error. Please check the entered data."
@@ -739,6 +768,9 @@ msgstr "Ваш аккаунт был успешно активирован!"
 msgid "Invalid activation link!"
 msgstr "Недействительная ссылка активации!"
 
+#~ msgid "Sign Up"
+#~ msgstr "Регистрация"
+
 #~ msgid "Title"
 #~ msgstr "Название"
 
@@ -759,9 +791,6 @@ msgstr "Недействительная ссылка активации!"
 
 #~ msgid "Discount"
 #~ msgstr "Скидка"
-
-#~ msgid "Manager"
-#~ msgstr "Менеджер"
 
 #~ msgid "Pending Orders"
 #~ msgstr "Ожидающие заказы"
@@ -792,9 +821,6 @@ msgstr "Недействительная ссылка активации!"
 
 #~ msgid "Be sure to change it in your profile."
 #~ msgstr "Не забудьте изменить его в вашем профиле."
-
-#~ msgid "Submit"
-#~ msgstr "Отправить"
 
 #~ msgid "Manager Name"
 #~ msgstr "Имя менеджера"
