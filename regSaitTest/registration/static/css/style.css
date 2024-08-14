@@ -231,16 +231,26 @@ footer p {
 }
 
 .footer_section {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   background-color: #300054;
   padding: 20px;
-  font-weight: 500;
 }
 .footer_section p {
   color: #F0F8FF;
   margin: 0;
   text-align: center;
 }
-.footer_section a {
+.footer_section ul {
+  margin: 10px auto;
+  list-style: none;
+  padding: 0;
+}
+.footer_section ul li {
+  text-align: center;
+}
+.footer_section ul li a {
   color: #F0F8FF;
 }
 

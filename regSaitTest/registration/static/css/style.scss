@@ -292,18 +292,27 @@ footer {
 }
 
 .footer_section {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     background-color: $dark-purple;
     padding: 20px;
-    font-weight: 500;
 
     p {
         color: $neon-white;
         margin: 0;
         text-align: center;
     }
-
-    a {
-        color: $neon-white;
+    ul {
+        margin: 10px auto;
+        list-style: none;
+        padding: 0;
+        li {
+            text-align: center;
+            a {
+                color: $neon-white;
+            }
+        }
     }
 }
 
