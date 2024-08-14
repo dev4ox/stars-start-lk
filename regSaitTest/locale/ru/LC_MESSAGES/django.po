@@ -690,11 +690,11 @@ msgstr "Последний заказ"
 
 #: .\registration\templates\profile.html:24
 msgid "Service:"
-msgstr "Услуги:"
+msgstr "Услуга:"
 
 #: .\registration\templates\profile.html:25
 msgid "Category:"
-msgstr "Категории:"
+msgstr "Категория:"
 
 #: .\registration\templates\profile.html:26
 msgid "Date:"
