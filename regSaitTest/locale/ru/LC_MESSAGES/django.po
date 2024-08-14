@@ -83,7 +83,7 @@ msgstr "Комментарий пользователя"
 msgid ""
 "Your IP has been banned. For more information, visit <a href=\"{}\">this "
 "page</a>."
-msgstr "Ваш IP адрес был забанен. Обратитесь в <a href="{}">тех. поддержку</a>"
+msgstr "Ваш IP адрес был забанен. Обратитесь в <a href=\"{}\">тех. поддержку</a>"
 
 #: .\registration\models.py:22
 msgid "email address"
