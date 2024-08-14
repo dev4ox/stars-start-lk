@@ -336,6 +336,9 @@ footer p {
   font-size: 2rem;
   margin: 0;
 }
+.admin_card .card-body ul {
+  margin: 0 20px;
+}
 
 .admin_list-group {
   margin-bottom: 24px;
