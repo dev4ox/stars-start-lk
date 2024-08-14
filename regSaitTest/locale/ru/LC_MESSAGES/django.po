@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-14 20:01+0300\n"
+"POT-Creation-Date: 2024-08-14 20:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -218,7 +218,7 @@ msgid "Dashboard"
 msgstr "Панель управления"
 
 #: .\registration\templates\custom_admin\base.html:35
-#: .\registration\templates\custom_admin\dashboard.html:25
+#: .\registration\templates\custom_admin\dashboard.html:26
 msgid "Users"
 msgstr "Пользователи"
 
@@ -284,44 +284,47 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: .\registration\templates\custom_admin\dashboard.html:10
-#: .\registration\templates\custom_admin\dashboard.html:51
+#: .\registration\templates\custom_admin\dashboard.html:52
 msgid "Quick Actions"
 msgstr "Быстрые действия"
 
 #: .\registration\templates\custom_admin\dashboard.html:11
-#: .\registration\templates\custom_admin\services.html:9
-msgid "Add Service"
-msgstr "Добавить услугу"
+msgid "Add group service"
+msgstr "Добавить группу услуг"
 
 #: .\registration\templates\custom_admin\dashboard.html:12
-msgid "Add Orders"
+msgid "Add service"
+msgstr "Добавить услугу"
+
+#: .\registration\templates\custom_admin\dashboard.html:13
+msgid "Add orders"
 msgstr "Добавить заказ"
 
-#: .\registration\templates\custom_admin\dashboard.html:18
+#: .\registration\templates\custom_admin\dashboard.html:19
 msgid "Admin Dashboard"
 msgstr "Панель администратора"
 
-#: .\registration\templates\custom_admin\dashboard.html:33
+#: .\registration\templates\custom_admin\dashboard.html:34
 msgid "Active Orders"
 msgstr "Активные заказы"
 
-#: .\registration\templates\custom_admin\dashboard.html:41
+#: .\registration\templates\custom_admin\dashboard.html:42
 msgid "Monthly Revenue"
 msgstr "Ежемесячный доход"
 
-#: .\registration\templates\custom_admin\dashboard.html:54
+#: .\registration\templates\custom_admin\dashboard.html:55
 msgid "View Pending Orders"
 msgstr "Просмотреть последние заказы"
 
-#: .\registration\templates\custom_admin\dashboard.html:55
+#: .\registration\templates\custom_admin\dashboard.html:56
 msgid "Unread Messages"
 msgstr "Непрочитанные сообщения"
 
-#: .\registration\templates\custom_admin\dashboard.html:56
+#: .\registration\templates\custom_admin\dashboard.html:57
 msgid "Update Service Availability"
 msgstr "Обновить доступность услуги"
 
-#: .\registration\templates\custom_admin\dashboard.html:61
+#: .\registration\templates\custom_admin\dashboard.html:62
 msgid "Recent Actions"
 msgstr "Последние действия"
 
@@ -438,6 +441,10 @@ msgstr ""
 msgid "Service Management"
 msgstr "Услуги"
 
+#: .\registration\templates\custom_admin\services.html:9
+msgid "Add Service"
+msgstr "Добавить услугу"
+
 #: .\registration\templates\custom_admin\services.html:15
 #: .\registration\templates\custom_admin\users.html:77
 msgid "Description"
@@ -474,7 +481,6 @@ msgid "Created"
 msgstr "Дата создания"
 
 #: .\registration\templates\custom_admin\users.html:98
-#| msgid "Toggle navigation"
 msgid "Page navigation example"
 msgstr "Переключить навигацию"
 
@@ -767,6 +773,9 @@ msgstr "Ваш аккаунт был успешно активирован!"
 #: .\registration\views.py:616
 msgid "Invalid activation link!"
 msgstr "Недействительная ссылка активации!"
+
+#~ msgid "Add Orders"
+#~ msgstr "Добавить заказ"
 
 #~ msgid "Sign Up"
 #~ msgstr "Регистрация"
