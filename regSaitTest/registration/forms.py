@@ -114,12 +114,17 @@ class ServicesChangeForm(forms.ModelForm):
 
 
 class OrderChangeForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['cost'].widget.attrs['readonly'] = True
+
     class Meta:
         model = Order
         fields = [
             "user",
             "service",
             "category",
+            "cost",
             "status",
             "user_comment",
             'moder_comment',
