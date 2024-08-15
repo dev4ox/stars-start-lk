@@ -119,8 +119,8 @@ class OrderChangeForm(forms.ModelForm):
         fields = [
             "user",
             "service",
+            "category",
             "status",
-            "cost",
             "user_comment",
             'moder_comment',
         ]

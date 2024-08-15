@@ -59,6 +59,14 @@ class OrderAdmin(CustomModelAdmin):
 
     form = OrderChangeForm
 
+    def save_form(self, request, form, change):
+        order = super().save_form(request, form, change)
+
+        order.cost = order.category.cost
+        order.save()
+
+        return order
+
 
 class PaymentAdmin(CustomModelAdmin):
     def __init__(self, model, admin_site):
