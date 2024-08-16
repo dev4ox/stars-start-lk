@@ -181,8 +181,8 @@ msgstr "Звёздный старт"
 
 #: .\registration\templates\base.html:48
 #: .\registration\templates\custom_admin\base.html:21
-msgid "Production Center"
-msgstr "Продюсерский центр"
+msgid "production center"
+msgstr "продюсерский центр"
 
 #: .\registration\templates\base.html:49
 #: .\registration\templates\custom_admin\base.html:25
