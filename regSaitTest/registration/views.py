@@ -267,6 +267,27 @@ def order_pay(request, order_id):
     Configuration.account_id = settings.YOKASSA_ACCOUNT_ID
     Configuration.secret_key = settings.YOKASSA_SECRET_KEY
 
+    receipt = {
+        "customer": {
+            "full_name": f"{request.user.first_name} {request.user.last_name}",
+            "email": request.user.username,
+            "phone": str(request.user.phone_number)
+        },
+        "items": [
+            {
+                "description": f"Заказ №{order.order_id}",
+                "quantity": "1.00",
+                "amount": {
+                    "value": str(order.cost),
+                    "currency": "RUB"
+                },
+                "vat_code": 4,  # Убедитесь, что код НДС соответствует вашему случаю
+                "payment_mode": "full_payment",
+                "payment_subject": "commodity"
+            }
+        ]
+    }
+
     payment_value = {
         "amount": {
             "value": order.cost,
@@ -283,7 +304,8 @@ def order_pay(request, order_id):
 
         "metadata": {
           "order_id": f"{order.order_id}"
-        }
+        },
+        "receipt": receipt
     }
 
     trans_id = uuid.uuid4()
