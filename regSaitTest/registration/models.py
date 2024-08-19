@@ -32,6 +32,7 @@ class CustomUser(AbstractUser):
         null=True,
     )
     last_password_reset_request = models.DateTimeField(null=True, blank=True)
+    role = models.IntegerField(default=0)
 
     def __str__(self):
         return self.username
@@ -57,14 +58,6 @@ class Category(models.Model):
         return f"{self.name} ({self.service.title})"
 
 
-class GroupServices(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField(default="")
-
-    def __str__(self):
-        return self.title
-
-
 class Services(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(default="")
@@ -74,7 +67,7 @@ class Services(models.Model):
         null=True,
         default="services_images/default.jpg"
     )
-    group_services = models.ForeignKey("GroupServices", on_delete=models.CASCADE, default="")
+    group_services = models.ForeignKey("panels.GroupServices", on_delete=models.CASCADE, default="")
 
     def __str__(self):
         return self.title
@@ -99,6 +92,7 @@ class Order(models.Model):
 
     order_id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name=_("User"), default="")
+    manager = models.CharField(max_length=50, default="")
     user_ticket_path = models.CharField(null=True, max_length=200)
     service = models.ForeignKey(Services, on_delete=models.CASCADE, default="")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default="", null=True)
@@ -114,28 +108,3 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order {self.order_id} by {self.user.username}"
-
-
-# Payment model
-class Payment(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name=_("User"))
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name=_("Order"))
-    amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("Amount"))
-    date_payment = models.DateTimeField(auto_now=True, verbose_name=_("Date Payment"))
-    trans_id = models.CharField(max_length=1000, verbose_name=_("Transaction ID"))
-
-    class Meta:
-        verbose_name = _("Payment")
-        verbose_name_plural = _("Payments")
-
-    def __str__(self):
-        return f"Payment {self.trans_id} by {self.user}"
-
-
-class BannedIP(models.Model):
-    ip_address = models.GenericIPAddressField(unique=True)
-    description = models.TextField(default="")
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return str(self.ip_address) + "\n" + str(self.description)

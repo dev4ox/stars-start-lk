@@ -26,10 +26,11 @@ from .forms import (
     OrderAddUser,
     CustomSetPasswordForm,
 )
-from .models import Order, Services, Category, BannedIP, CustomUser, Payment as Payment_models, GroupServices
-from .utils import get_ip
-from .tasks import check_payment_status
-from .decorators.func import check_user_role
+from .models import Order, Services, Category, CustomUser
+from panels.models import GroupServices
+from panels.utils import get_ip
+from panels.tasks import check_payment_status
+from panels.views_forms import AddOrGetDataSession
 
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
@@ -39,7 +40,6 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _, activate as lang_activate
-from django.contrib.admin.models import LogEntry
 from django.core.paginator import Paginator
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -53,10 +53,14 @@ def send_activation_email(user, request):
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     token = default_token_generator.make_token(user)
     activation_url = request.build_absolute_uri(f'/lk/activate/{uid}/{token}/')
-    message = render_to_string('account_activation_email.html', {
-        'user': user,
-        'activation_url': activation_url,
-    })
+    message = render_to_string(
+        'account_activation_email.html',
+        {
+            'user': user,
+            'activation_url': activation_url,
+        }
+    )
+
     send_mail(
         mail_subject,
         message,
@@ -105,129 +109,8 @@ def edit_profile(request):
 
     else:
         form = CustomUserChangeForm(instance=request.user)
+
     return render(request, "edit_profile.html", {"form": form, 'user': request.user})
-
-
-# start admin block
-@check_user_role
-@login_required
-def admin_dashboard(request):
-    user_count = User.objects.count()
-
-    new_order_count = Order.objects.filter(status="new").count()
-    in_progress_order_count = Order.objects.filter(status="in_progress").count()
-    active_order_count = new_order_count + in_progress_order_count
-
-    # Get the last 10 actions
-    recent_actions = LogEntry.objects.all().select_related('content_type', 'user').order_by('-action_time')[:4]
-
-    context = {
-        "user_count": user_count,
-        "active_order_count": active_order_count,
-        "recent_actions": recent_actions,
-    }
-
-    return render(request, 'custom_admin/dashboard.html', context)
-
-
-@check_user_role
-@login_required
-def admin_users(request):
-    search_query = request.GET.get('search', '')
-    banned_ip_list = BannedIP.objects.all().order_by("id")
-
-    # If there is a search query, we filter users by username or email
-    if search_query:
-        users_list = User.objects.filter(username__icontains=search_query) | User.objects.filter(
-            email__icontains=search_query).order_by('user_id')
-    else:
-        users_list = User.objects.all().order_by("user_id")
-
-    paginator_user = Paginator(users_list, 5)  # 5 записей на страницу
-    paginator_banned_ip = Paginator(banned_ip_list, 5)  # 5 записей на страницу
-
-    page_number = request.GET.get('page')
-
-    page_obj_user = paginator_user.get_page(page_number)
-    page_obj_banned_ip = paginator_banned_ip.get_page(page_number)
-
-    context = {
-        "users_list": page_obj_user,
-        "banned_ip_list": page_obj_banned_ip,
-    }
-
-    return render(request, 'custom_admin/users.html', context)
-
-
-@check_user_role
-@login_required
-def admin_services(request):
-    services_list = Services.objects.all().order_by('id')
-
-    paginator = Paginator(services_list, 5)  # 5 записей на страницу
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-
-    context = {
-        "services_list": page_obj,
-    }
-    return render(request, 'custom_admin/services.html', context)
-
-
-@check_user_role
-@login_required
-def admin_category(request):
-    sort_by = request.GET.get('sort_by', 'id')
-    order = request.GET.get('order', 'asc')
-
-    if sort_by == 'service.title':
-        sort_by = 'service__title'
-
-    if order == 'desc':
-        sort_by = f'-{sort_by}'
-
-    categories = Category.objects.all().order_by(sort_by)
-
-    context = {
-        'categories': categories,
-        'current_sort': sort_by.lstrip('-'),
-        'current_order': order,
-    }
-    return render(request, 'custom_admin/category.html', context)
-
-
-@check_user_role
-@login_required
-def admin_orders(request):
-    status = request.GET.get('status')
-
-    if status == "all":
-        orders_list = Order.objects.prefetch_related("service").all().order_by("order_id")
-
-    elif status:
-        orders_list = Order.objects.prefetch_related("service").filter(status=status).order_by("order_id")
-
-    else:
-        orders_list = Order.objects.prefetch_related("service").all().order_by("order_id")
-
-    statuses = Order.STATUS_CHOICES
-
-    context = {
-        'orders_list': orders_list,
-        'statuses': statuses,
-        'current_status': status,
-    }
-
-    return render(request, 'custom_admin/orders.html', context)
-
-
-@check_user_role
-@login_required
-def admin_reports(request):
-    return render(request, 'custom_admin/reports.html')
-
-
-# end admin block
 
 
 @login_required
@@ -246,17 +129,44 @@ def orders(request):
 
 @login_required
 def order_details(request, order_id):
-    if request.user.is_superuser:
-        return redirect(f"/admin/registration/order/{order_id}/change/")
-
-    elif not request.user.is_superuser and request.user.is_active:
+    if request.user.role == 0:
         order = get_object_or_404(Order, order_id=order_id, user=request.user)
 
         context = {
-            'order': order
+            'order': order,
+            "user": order.user,
         }
 
         return render(request, 'order_details.html', context)
+
+    elif request.user.role == 3 or request.user.role == 1:
+        order = get_object_or_404(Order, order_id=order_id)
+
+        context = {
+            'order': order,
+            "user": order.user,
+        }
+
+        return render(request, "observer/order_user_details.html", context)
+
+    elif request.user.role == -1 or request.user.role == 2:
+        request.session = AddOrGetDataSession(
+            session=request.session,
+            form_name="order_change",
+            url_redirect="orders",
+            model_name="order",
+            model_list_param_name=["order_id", ],
+            model_save_commit=False,
+            model_link_field_value={
+                "cost": "category.cost"
+            },
+            html_vars={
+                "title": "Order change",
+                "h2_tag": "Order change",
+            },
+        )
+
+        return redirect("panel_form_edit", order_id)
 
 
 @login_required
@@ -314,7 +224,7 @@ def order_pay(request, order_id):
 
     check_payment_status.delay(payment.id, order.order_id)
 
-    # return JsonResponse(payment_to_yokassa.json(), safe=False)
+    # return JsonResponse(payment.json(), safe=False)
     return redirect(payment.confirmation["confirmation_url"])
 
 
@@ -612,10 +522,6 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
         return context
 
 
-def password_reset_done(request):
-    return render(request, 'password_reset_done.html')
-
-
 def message_about_activate(request):
     return render(request, 'message_about_activate.html')
 
@@ -656,42 +562,3 @@ def terms_of_service(request):
 
 def user_agreement(request):
     return render(request, "user_agreement.html")
-
-
-@login_required
-def initiate_payment(request):
-    return render(request, "payments.html")
-    # order = get_object_or_404(Order, pk=order_id)
-    #
-    # if request.method == 'POST':
-    #     tinkoff_client = TinkoffClient(
-    #         terminal_key=settings.TINKOFF_TERMINAL_KEY,
-    #         secret_key=settings.TINKOFF_SECRET_KEY
-    #     )
-    #     payment_data = tinkoff_client.create_payment(order.order_id, int(order.cost), "Оплата услуги")
-    #
-    #     # Запускаем задачу на проверку статуса платежа
-    #     check_payment_status.delay(order.order_id)
-    #
-    #     # Перенаправление пользователя на сайт оплаты Tinkoff
-    #     return redirect(payment_data.get('PaymentURL'))
-
-
-# def payment_callback(request):
-#     data = request.POST
-#     order_id = data.get('OrderId')
-#     payment_id = data.get('PaymentId')
-#
-#     # Проверка на успешность оплаты
-#     if data.get('Status') == 'CONFIRMED':
-#         order = Order.objects.get(order_id=order_id)
-#         payment = Payment.objects.get(trans_id=payment_id)
-#
-#         # Обновление записи в БД
-#         payment.date_payment = timezone.now()
-#         payment.save()
-#
-#         order.status = 'paid'
-#         order.save()
-#
-#         return JsonResponse({'status': 'ok'})

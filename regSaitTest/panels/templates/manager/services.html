@@ -1,4 +1,4 @@
-{% extends "custom_admin/base.html" %}
+{% extends "panels_base_manager.html" %}
 {% load i18n %}
 
 {% block title %}{% trans "Service Management" %} | {% trans "Star Start" %}{% endblock %}
@@ -6,14 +6,12 @@
 {% block content %}
 <div class="container">
     <h2 class="mb-4">{% trans "Service Management" %}</h2>
-    <a href="/admin/registration/services/add/" class="btn btn-primary mb-3">{% trans "Add Service" %}</a>
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>{% trans "Service Name" %}</th>
                 <th>{% trans "Description" %}</th>
-                <th>{% trans "Actions" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -22,10 +20,6 @@
                 <td>{{ service.id }}</td>
                 <td>{{ service.title }}</td>
                 <td>{{ service.description }}</td>
-                <td>
-                    <a href="/admin/registration/services/{{ service.id }}/change/" class="btn btn-success">{% trans "Edit" %}</a>
-                    <a href="/admin/registration/services/{{ service.id }}/delete/" class="btn btn-danger">{% trans "Delete" %}</a>
-                </td>
             </tr>
         {% endfor %}
         </tbody>

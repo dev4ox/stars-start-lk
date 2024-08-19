@@ -1,7 +1,8 @@
 from celery import shared_task
 from yookassa import Payment, Configuration
 from requests import HTTPError
-from .models import Order, Payment as Payment_models
+from registration.models import Order
+from .models import Payment as Payment_models
 from django.conf import settings
 from django.utils import timezone
 import time
@@ -41,6 +42,7 @@ def check_payment_status(payment_id: str, order_id):
 
                 order.status = "paid"
                 order.save()
+
                 return (f"Payment confirmed and processed\n"
                         f"User: {order.user}\nPayment_id: {payment_id}\nOrder_id: {order.order_id}")
 

@@ -20,22 +20,10 @@ urlpatterns = [
     path('orders/', views.orders, name='orders'),
     path('orders/<int:order_id>/get_ticket/', views.generate_or_get_pdf, name='order_get_tickets'),
     path('orders/<int:order_id>/orders_details', views.order_details, name='orders_details'),
-    # path('orders/pay/', views.order_pay, name='orders_pay'),
     path('orders/<int:order_id>/pay/', views.order_pay, name='orders_pay'),
 
     # payments
-    # path('payments/', views.payments, name='payments'),
-    path('payments/', views.initiate_payment, name='initiate_payment'),
-    # path('payment/callback/', views.payment_callback, name='payment_callback'),
-
-    # admin
-    path("soft_admin/", views.admin_dashboard, name="admin_dashboard"),
-    path("soft_admin/users/", views.admin_users, name="admin_users"),
-    path("soft_admin/service/", views.admin_services, name="admin_service"),
-    path("soft_admin/category/", views.admin_category, name="admin_category"),
-    path("soft_admin/orders/", views.admin_orders, name="admin_orders"),
-    path("soft_admin/reports/", views.admin_reports, name="admin_reports"),
-
+    path('payments/', views.payments, name='payments'),
 
     # password change
     path("password_change/", auth_views.PasswordChangeView.as_view(template_name="password_change.html"),

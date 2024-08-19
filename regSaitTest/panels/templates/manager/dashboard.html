@@ -1,0 +1,65 @@
+{% extends "panels_base_manager.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Dashboard" %}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group admin_list-group">
+            <a href="{% url 'panel_manager_dashboard' %}" class="list-group-item list-group-item-action active">{% trans "Quick Actions" %}</a>
+            <a href="{% url 'panel_manager_service' %}" class="list-group-item list-group-item-action">{% trans "Service" %}</a>
+            <a href="{% url 'panel_manager_orders' %}" class="list-group-item list-group-item-action">{% trans "Orders" %}</a>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card mb-4 admin_card">
+            <div class="card-header">
+                <h4>{% trans "Admin Dashboard" %}</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card bg-success mb-3 admin_card">
+                            <div class="card-body text-white">
+                                <h5 class="card-title">{% trans "Users" %}</h5>
+                                <p class="card-text">{{ user_count }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-success mb-3 admin_card">
+                            <div class="card-body text-white">
+                                <h5 class="card-title">{% trans "Active Orders" %}</h5>
+                                <p class="card-text">{{ active_order_count }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-success mb-3 admin_card">
+                            <div class="card-body text-white">
+                                <h5 class="card-title">{% trans "Monthly Revenue" %}</h5>
+                                <p class="card-text">₽ 0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card admin_card">
+            <div class="card-header">
+                <h5>{% trans "Recent Actions" %}</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    {% for action in recent_actions %}
+                        <li>
+                            {{ action.action_time }} - {{ action.user }} {{ action.get_action_flag_display }} объект {{ action.content_type }} (ID: {{ action.object_id }})
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

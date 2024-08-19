@@ -1,4 +1,4 @@
-{% extends "custom_admin/base.html" %}
+{% extends "panels_base_moderator.html" %}
 {% load i18n %}
 
 {% block title %}{% trans "Dashboard" %}{% endblock %}
@@ -7,16 +7,16 @@
 <div class="row">
     <div class="col-md-3">
         <div class="list-group admin_list-group">
-            <a href="#" class="list-group-item list-group-item-action active">{% trans "Quick Actions" %}</a>
-            <a href="/admin/registration/groupservices/add/" class="list-group-item list-group-item-action">{% trans "Add group service" %}</a>
-            <a href="/admin/registration/services/add/" class="list-group-item list-group-item-action">{% trans "Add service" %}</a>
-            <a href="/admin/registration/order/add/" class="list-group-item list-group-item-action">{% trans "Add orders" %}</a>
+            <a href="{% url 'panel_moderator_dashboard' %}" class="list-group-item list-group-item-action active">{% trans "Quick Actions" %}</a>
+            <a href="{% url 'panel_moderator_group_service' %}" class="list-group-item list-group-item-action">{% trans "Add group service" %}</a>
+            <a href="{% url 'panel_moderator_service' %}" class="list-group-item list-group-item-action">{% trans "Add service" %}</a>
+            <a href="{% url 'panel_moderator_orders' %}" class="list-group-item list-group-item-action">{% trans "Add orders" %}</a>
         </div>
     </div>
     <div class="col-md-9">
         <div class="card mb-4 admin_card">
             <div class="card-header">
-                <h4>{% trans "Admin Dashboard" %}</h4>
+                <h4>{% trans "Moderator Dashboard" %}</h4>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -47,16 +47,6 @@
                 </div>
             </div>
         </div>
-<!--        <div class="card mb-4 admin_card">-->
-<!--            <div class="card-header">-->
-<!--                <h5>{% trans "Quick Actions" %}</h5>-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--                <button type="button" class="btn btn-primary mb-2">{% trans "View Pending Orders" %} (5)</button>-->
-<!--                <button type="button" class="btn btn-primary mb-2">{% trans "Unread Messages" %} (3)</button>-->
-<!--                <button type="button" class="btn btn-primary mb-2">{% trans "Update Service Availability" %}</button>-->
-<!--            </div>-->
-<!--        </div>-->
         <div class="card admin_card">
             <div class="card-header">
                 <h5>{% trans "Recent Actions" %}</h5>

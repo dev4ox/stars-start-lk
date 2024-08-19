@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     "django_celery_results",
     'registration.apps.RegistrationConfig',
+    "panels.apps.PanelsConfig",
     "widget_tweaks",
 ]
 
@@ -58,8 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'registration.middleware.AdminCheckMiddleware',
-    'registration.middleware.BanIPMiddleware',
+    'panels.middleware.CheckRoleMiddleware',
+    'panels.middleware.BanIPMiddleware',
 ]
 
 ROOT_URLCONF = 'regSaitTest.urls'
@@ -68,7 +69,12 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, "templates")
+            os.path.join(BASE_DIR, "registration/templates/"),
+            os.path.join(BASE_DIR, "panels/templates/"),
+            os.path.join(BASE_DIR, "panels/templates/admin/"),
+            os.path.join(BASE_DIR, "panels/templates/manager/"),
+            os.path.join(BASE_DIR, "panels/templates/moderator/"),
+            os.path.join(BASE_DIR, "panels/templates/observer/"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

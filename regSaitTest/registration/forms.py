@@ -5,10 +5,11 @@ from django.contrib.auth.forms import (
     AuthenticationForm,
     SetPasswordForm,
 )
-from .models import CustomUser, Services, Order, Category, Payment, GroupServices
+from .models import CustomUser, Services, Order, Category
 from django.utils.translation import gettext_lazy as _
 from django.utils.safestring import mark_safe
 from django import forms
+from django.db import models
 from phonenumber_field.formfields import PhoneNumberField
 
 
@@ -101,10 +102,11 @@ class CustomSetPasswordForm(SetPasswordForm):
     )
 
 
-class GroupServicesChangeForm(forms.ModelForm):
+class CategoryChangeForm(forms.ModelForm):
+
     class Meta:
-        model = GroupServices
-        fields = ['title', "description"]
+        model = Category
+        fields = ["name", "cost", "service"]
 
 
 class ServicesChangeForm(forms.ModelForm):
@@ -114,14 +116,28 @@ class ServicesChangeForm(forms.ModelForm):
 
 
 class OrderChangeForm(forms.ModelForm):
+    manager = forms.ModelChoiceField(queryset=CustomUser.objects.filter(role=1), empty_label=None)
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['cost'].widget.attrs['readonly'] = True
+
+        if 'instance' in kwargs:
+            instance = kwargs['instance']
+            # Добавляем аннотацию для приоритета текущего менеджера
+            self.fields['manager'].queryset = CustomUser.objects.filter(role=1).annotate(
+                is_current_manager=models.Case(
+                    models.When(username=instance.manager, then=1),
+                    default=0,
+                    output_field=models.IntegerField()
+                )
+            ).order_by('-is_current_manager', 'username')  # Сначала текущий менеджер, затем остальные по имени
 
     class Meta:
         model = Order
         fields = [
             "user",
+            "manager",
             "service",
             "category",
             "cost",
@@ -147,7 +163,7 @@ class OrderAddUser(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        super(OrderAddUser, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['category'].queryset = Category.objects.none()
 
         if 'service' in self.data:
@@ -161,22 +177,3 @@ class OrderAddUser(forms.ModelForm):
 
         elif self.instance.pk:
             self.fields['category'].queryset = self.instance.service.categories.order_by('name')
-
-
-class OrderReadOnlyForm(forms.ModelForm):
-    class Meta:
-        model = Order
-        fields = ['user', 'service', 'category', 'status', 'user_comment', 'moder_comment', 'cost']
-
-    def __init__(self, *args, **kwargs):
-        super(OrderReadOnlyForm, self).__init__(*args, **kwargs)
-
-        for field in self.fields.values():
-            field.widget.attrs['readonly'] = True
-            field.widget.attrs['disabled'] = True
-
-
-class PaymentChangeForm(forms.ModelForm):
-    class Meta:
-        model = Payment
-        fields = ["user", "order", "amount", "trans_id"]

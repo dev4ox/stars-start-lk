@@ -23,6 +23,7 @@ from registration.urls import urlpatterns_ajax
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("lk/", include("registration.urls")),
+    path("lk/panels/", include("panels.urls"))
 ]
 
 urlpatterns += urlpatterns_ajax

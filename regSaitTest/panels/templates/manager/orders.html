@@ -1,4 +1,4 @@
-{% extends "custom_admin/base.html" %}
+{% extends "panels_base_manager.html" %}
 {% load i18n %}
 
 {% block title %}{% trans "Order Management" %} | {% trans "Star Start" %}{% endblock %}
@@ -7,23 +7,22 @@
 <div class="container">
     <h2 class="mb-4">{% trans "All Orders" %}</h2>
     <div class="btn-group mb-3" role="group" aria-label="Order Filters">
-        <a href="{% url 'admin_orders' %}?status=all">
+        <a href="{% url 'panel_manager_orders' %}?status=all">
             <button type="button" class="btn btn-secondary {% if current_status == 'all' %}active{% endif %}">{% trans "All" %}</button>
         </a>
-         <a href="{% url 'admin_orders' %}?status=new">
+         <a href="{% url 'panel_manager_orders' %}?status=new">
             <button type="button" class="btn btn-secondary {% if current_status == 'new' %}active{% endif %}">{% trans "New Orders" %}</button>
         </a>
-        <a href="{% url 'admin_orders' %}?status=in_progress">
+        <a href="{% url 'panel_manager_orders' %}?status=in_progress">
             <button type="button" class="btn btn-secondary {% if current_status == 'in_progress' %}active{% endif %}">{% trans "In Progress" %}</button>
         </a>
-        <a href="{% url 'admin_orders' %}?status=completed">
+        <a href="{% url 'panel_manager_orders' %}?status=completed">
             <button type="button" class="btn btn-secondary {% if current_status == 'completed' %}active{% endif %}">{% trans "Completed" %}</button>
         </a>
-        <a href="{% url 'admin_orders' %}?status=cancelled">
+        <a href="{% url 'panel_manager_orders' %}?status=cancelled">
             <button type="button" class="btn btn-secondary {% if current_status == 'cancelled' %}active{% endif %}">{% trans "Cancelled" %}</button>
         </a>
     </div>
-    <a href="/admin/registration/order/add/" class="btn btn-primary mb-3">{% trans "Add Order" %}</a><br>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -32,6 +31,7 @@
                 <th>{% trans "Service" %}</th>
                 <th>{% trans "Date" %}</th>
                 <th>{% trans "Price" %}</th>
+                <th>{% trans 'User comment'%}</th>
                 <th>{% trans "Status" %}</th>
                 <th>{% trans "Actions" %}</th>
             </tr>
@@ -44,10 +44,10 @@
                 <td>{{ order.service.title }}</td>
                 <td>{{ order.date }}</td>
                 <td>₽{{ order.cost }}</td>
+                <td>{{ order.user_comment }}</td>
                 <td><span class="badge badge-primary">{{ order.get_status_display }}</span></td>
                 <td>
-                    <a href="/admin/registration/order/{{ order.order_id }}/change/" class="btn btn-warning">{% trans "Edit" %}</a>
-                    <a href="/admin/registration/order/{{ order.order_id }}/delete/" class="btn btn-danger">{% trans "Delete" %}</a>
+                    <a href="{% url 'panel_form_edit' order.order_id %}" class="btn btn-warning">{% trans "Edit" %}</a>
                 </td>
             </tr>
         {% endfor %}

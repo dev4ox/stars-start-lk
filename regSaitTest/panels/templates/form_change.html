@@ -1,0 +1,17 @@
+{% extends "panels_base_form.html" %}
+{% load i18n %}
+
+{% block title %}{% trans title %} | {% trans "Star Start" %}{% endblock %}
+
+{% block content %}
+<div class="edit-profile-container">
+    <div class="edit-profile-box">
+        <h2>{% trans h2_tag %}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn-primary" type="submit">{% trans "Save" %}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -17,7 +17,7 @@
     <header class="header_section">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg custom_nav-container">
-                <a class="navbar-brand" href="{% url 'admin_dashboard' %}"><h1>{% trans "Star Start" %} <br>
+                <a class="navbar-brand" href="{% url 'panel_manager_dashboard' %}"><h1>{% trans "Star Start" %} <br>
                     <span>{% trans "production center" %}</span></h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -29,22 +29,19 @@
                     <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'admin_dashboard' %}">{% trans "Dashboard" %}</a>
+                                <a class="nav-link" href="{% url 'panel_manager_dashboard' %}">{% trans "Dashboard" %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'admin_users' %}">{% trans "Users" %}</a>
+                                <a class="nav-link" href="{% url 'panel_manager_users' %}">{% trans "Users" %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'admin_service' %}">{% trans "Services" %}</a>
+                                <a class="nav-link" href="{% url 'panel_manager_service' %}">{% trans "Services" %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'admin_category' %}">{% trans "Category" %}</a>
+                                <a class="nav-link" href="{% url 'panel_manager_category' %}">{% trans "Category" %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'admin_orders' %}">{% trans "Orders" %}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'admin_reports' %}">{% trans "Reports" %}</a>
+                                <a class="nav-link" href="{% url 'panel_manager_orders' %}">{% trans "Orders" %}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
