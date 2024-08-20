@@ -419,7 +419,7 @@ def services(request):
 
     context = {
         "services_list": list(enumerate(services_list)),
-        "group_services": group_services,
+        "group_services": group_services[::-1],
         "min_cost_categories_list": min_cost_categories_list,
         "search_query": search_query,
     }
