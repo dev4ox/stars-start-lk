@@ -427,7 +427,6 @@ def services(request):
     return render(request, 'services.html', context)
 
 
-@login_required
 def services_add_order(request, service_id):
     service = get_object_or_404(Services, id=service_id)
     category = Category.objects.prefetch_related("service").filter(service=service)
