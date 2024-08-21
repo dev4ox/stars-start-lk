@@ -59,5 +59,11 @@
     <!-- end footer section -->
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/jquery.inputmask-5.0.9.min.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            $('input[type="tel"]').inputmask({"mask": "+7 (999) 999-99-99"});
+        });
+    </script>
 </body>
 </html>

@@ -26,7 +26,7 @@
 
             {% for index, service in services_list %}
 
-                {% if service.group_services == group %}
+                {% if service.group_services == group and service.is_active %}
                     <div class="col-md-6">
                         <div class="user-card">
                             <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">

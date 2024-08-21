@@ -710,11 +710,20 @@ footer {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 75, 170, 0.5);
-    text-align: center;
     width: 100%;
     max-width: 400px;
     p {
         input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+            background: #444;
+            color: #fff 
+        }
+
+        textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;

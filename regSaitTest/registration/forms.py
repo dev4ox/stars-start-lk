@@ -106,13 +106,13 @@ class CategoryChangeForm(forms.ModelForm):
 
     class Meta:
         model = Category
-        fields = ["name", "cost", "service"]
+        fields = ["name", "cost", "service", "is_active"]
 
 
 class ServicesChangeForm(forms.ModelForm):
     class Meta:
         model = Services
-        fields = ['title', "description", 'image_path', "group_services"]
+        fields = ['title', "description", 'image_path', "group_services", "is_active"]
 
 
 class OrderChangeForm(forms.ModelForm):

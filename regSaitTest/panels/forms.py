@@ -1,4 +1,5 @@
 from django import forms
+from django.db import connection
 from django.contrib.auth.forms import (
     UserChangeForm,
     ReadOnlyPasswordHashField,
@@ -66,9 +67,11 @@ class CustomUserChangeModeratorForm(forms.ModelForm):
 
 
 class GroupServicesChangeForm(forms.ModelForm):
+    id = forms.IntegerField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+
     class Meta:
         model = GroupServices
-        fields = ['title', "description"]
+        fields = ["id", 'title', "description", "is_active"]
 
 
 class OrderChangeManagerForm(forms.ModelForm):

@@ -321,6 +321,26 @@ def services(request):
     else:
         group_services = GroupServices.objects.all().order_by("title")
 
+    group_services = list(group_services)
+    services_list = list(services_list)
+
+    for index, group in enumerate(group_services):
+        if not group.is_active:
+            del group_services[group_services.index(group)]
+
+        if not services_list[index].is_active:
+            services_group_list = Services.objects.filter(group_services=group)
+            count_deactivate = 0
+
+            for service_group in services_group_list:
+                if not service_group.is_active:
+                    count_deactivate += 1
+
+            if count_deactivate == len(services_group_list):
+                del group_services[index]
+
+            del services_list[index]
+
     for service in services_list:
         categories = Category.objects.filter(service=service).order_by('cost')[:1]
 
@@ -382,8 +402,14 @@ def load_categories(request):
     service_id = request.GET.get('service')
     categories = Category.objects.filter(service_id=service_id).order_by('name')
 
+    json_response = {}
+
+    for category in categories:
+        if category.is_active:
+            json_response[category.id] = category.name
+
     return JsonResponse(
-        {category.id: category.name for category in categories}
+        json_response
     )
 
 
