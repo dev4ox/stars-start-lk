@@ -417,6 +417,8 @@ def load_categories(request):
         if category.is_active:
             json_response[category.id] = category.name
 
+    print(json_response)
+
     return JsonResponse(
         json_response
     )
