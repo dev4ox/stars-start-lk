@@ -1,3 +1,4 @@
+import decimal
 import os
 import uuid
 import qrcode
@@ -316,10 +317,10 @@ def services(request):
 
     if search_query:
         group_services = GroupServices.objects.filter(title__icontains=search_query) | GroupServices.objects.filter(
-            description__icontains=search_query).order_by('title')
+            description__icontains=search_query).order_by('id')
 
     else:
-        group_services = GroupServices.objects.all().order_by("title")
+        group_services = GroupServices.objects.all().order_by("id")
 
     group_services = list(group_services)
     services_list = list(services_list)
@@ -342,10 +343,15 @@ def services(request):
             del services_list[index]
 
     for service in services_list:
-        categories = Category.objects.filter(service=service).order_by('cost')[:1]
+        categories = Category.objects.filter(service=service).order_by('cost')
 
         if categories:
-            min_cost_categories_list.append(categories[0].cost)
+            for category in categories:
+                if category.cost != 0:
+                    min_cost_categories_list.append(int(category.cost))
+                    break
+            else:
+                min_cost_categories_list.append(0)
 
     context = {
         "services_list": list(enumerate(services_list)),
