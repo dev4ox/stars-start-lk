@@ -350,8 +350,10 @@ def services(request):
                 if category.cost != 0:
                     min_cost_categories_list.append(int(category.cost))
                     break
-            else:
-                min_cost_categories_list.append(0)
+
+                # elif category.cost == 0:
+                #     min_cost_categories_list.append(0)
+                #     break
 
     context = {
         "services_list": list(enumerate(services_list)),
@@ -406,7 +408,8 @@ def services_add_order(request, service_id):
 @csrf_exempt
 def load_categories(request):
     service_id = request.GET.get('service')
-    categories = Category.objects.filter(service_id=service_id).order_by('name')
+    categories = Category.objects.filter(service_id=service_id).order_by('cost')
+    print(categories)
 
     json_response = {}
 
