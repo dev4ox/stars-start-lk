@@ -43,7 +43,7 @@
                 <td>{{ order.user }}</td>
                 <td>{{ order.service.title }}</td>
                 <td>{{ order.date }}</td>
-                <td>₽{{ order.cost }}</td>
+                <td>{{ order.cost }} ₽</td>
                 <td><span class="badge badge-primary">{{ order.get_status_display }}</span></td>
                 <td>
                     <a href="/admin/registration/order/{{ order.order_id }}/change/" class="btn btn-warning">{% trans "Edit" %}</a>

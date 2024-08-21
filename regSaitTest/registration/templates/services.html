@@ -33,9 +33,13 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ service.title }}</h5>
                                 <p class="card-text text-ellipsis" data-full-text="{{ service.description }}">{{ service.description }}</p>
-                                {% with category=min_cost_categories_list|get_by_index:index %}
-                                    {% if category is not None %}
-                                        <p>{% trans 'Price from' %} {{ min_cost_categories_list|get_by_index:index }} ₽</p>
+                                {% with cost=min_cost_categories_list|get_by_index:index %}
+                                    {% if cost is not None %}
+                                        {% if cost != 0  %}
+                                            <p>{% trans 'Price from' %} {{ min_cost_categories_list|get_by_index:index }} ₽</p>
+                                        {% else  %}
+                                            <p>Цена договорная</p>
+                                        {% endif %}
                                     {% endif %}
                                 {% endwith %}
                                 <a href="{% url 'services_add_order' service.id %}" class="btn btn-success">{% trans "Order" %}</a>
