@@ -37,6 +37,26 @@ class CustomUser(AbstractUser):
     )
     last_password_reset_request = models.DateTimeField(null=True, blank=True)
     role = models.IntegerField(default=0)
+    promo_attempts = models.IntegerField(default=5)
+    last_promo_attempt = models.DateTimeField(null=True, blank=True)
+
+    def reset_promo_attempts(self):
+        self.promo_attempts = 0
+        self.last_promo_attempt = timezone.now()
+        self.save()
+
+    def increment_promo_attempts(self):
+        self.promo_attempts += 1
+        self.last_promo_attempt = timezone.now()
+        self.save()
+
+    def is_promo_blocked(self, block_duration):
+        if self.promo_attempts >= 3:
+            if timezone.now() - self.last_promo_attempt < block_duration:
+                return True
+            else:
+                self.reset_promo_attempts()
+        return False
 
     def __str__(self):
         return self.username

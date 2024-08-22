@@ -29,19 +29,50 @@
 {% block scripts %}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var categorySelect = document.getElementById('id_category');
-        var promoCodeInput = document.getElementById('id_promo_code');
-        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        var costText = document.getElementById('category_cost_text');
-        var discountText = document.getElementById('promo_code_discount_text');
+    var categorySelect = document.getElementById('id_category');
+    var promoCodeInput = document.getElementById('id_promo_code');
+    var checkPromoCodeButton = document.createElement('button');
+    checkPromoCodeButton.type = 'button';
+    checkPromoCodeButton.textContent = 'Проверить';
+    promoCodeInput.insertAdjacentElement('afterend', checkPromoCodeButton);
 
-        function loadCategoryCost(category_id, promo_code = null) {
-            var url = `/ajax/get-category-cost/?category=${category_id}`;
-            if (promo_code) {
-                url += `&promo_code=${promo_code}`;
+    var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    var costText = document.getElementById('category_cost_text');
+    var discountText = document.getElementById('promo_code_discount_text');
+
+    function loadCategoryCost(category_id, promo_code = null) {
+        var url = `/ajax/get-category-cost/?category=${category_id}`;
+        if (promo_code) {
+            url += `&promo_code=${promo_code}`;
+        }
+
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'X-CSRFToken': csrfToken
             }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.cost == 0) {
+                costText.textContent = '{% trans "Negotiable" %}';
+            } else {
+                var finalCost = data.cost;
+                if (data.discount) {
+                    finalCost -= finalCost * (data.discount / 100);
+                    discountText.textContent = `-${data.discount}%`;
+                } else {
+                    discountText.textContent = '';
+                }
+                costText.textContent = finalCost + ' ₽';
+            }
+        });
+        }
 
-            fetch(url, {
+        function checkPromoCode() {
+            var promoCode = promoCodeInput.value;
+
+            fetch(`/ajax/check-promo-code/?promo_code=${promoCode}`, {
                 method: 'GET',
                 headers: {
                     'X-CSRFToken': csrfToken
@@ -49,18 +80,16 @@
             })
             .then(response => response.json())
             .then(data => {
-                if (data.cost == 0) {
-                    costText.textContent = '{% trans "Negotiable" %}';
+                if (data.is_valid) {
+                    discountText.textContent = `Скидка: ${data.discount}%`;
+                    loadCategoryCost(categorySelect.value, promoCode);
                 } else {
-                    var finalCost = data.cost;
-                    if (data.discount) {
-                        finalCost -= finalCost * (data.discount / 100);
-                        discountText.textContent = `-${data.discount}%`;
-                    } else {
-                        discountText.textContent = '';
-                    }
-                    costText.textContent = finalCost + ' ₽';
+                    discountText.textContent = data.error || "Неверный промо-код.";
                 }
+            })
+            .catch(error => {
+                discountText.textContent = "Ошибка при проверке промо-кода.";
+                console.error("Ошибка:", error);
             });
         }
 
@@ -73,7 +102,11 @@
         });
 
         promoCodeInput.addEventListener('input', function() {
-            loadCategoryCost(categorySelect.value, this.value);
+            discountText.textContent = ''; // Сброс сообщения о скидке при изменении промо-кода
+        });
+
+        checkPromoCodeButton.addEventListener('click', function() {
+            checkPromoCode();
         });
     });
 </script>

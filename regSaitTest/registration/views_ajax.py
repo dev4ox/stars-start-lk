@@ -1,3 +1,6 @@
+# python lib
+from datetime import timedelta
+
 # pip lib
 from django.http import JsonResponse
 from django.utils import timezone
@@ -6,7 +9,6 @@ from django.views.decorators.http import require_GET
 
 # my lib
 from .models import Category, PromoCode
-from .utils import check_date_promo_code
 
 
 @csrf_exempt
@@ -44,20 +46,38 @@ def get_category_cost(request):
 
 @require_GET
 def check_promo_code(request):
-    promo_code_value = request.GET.get('promo_code', None)
+    if not request.user.is_authenticated:
+        return JsonResponse({'error': 'User not authenticated'}, status=401)
+
+    promo_code = request.GET.get('promo_code', '')
     user = request.user
 
-    if promo_code_value:
-        try:
-            promo_code = PromoCode.objects.get(value=promo_code_value)
+    # Параметры блокировки
+    block_duration = timedelta(hours=1)
 
-            if promo_code.is_valid(user):
-                return JsonResponse({'is_valid': True, 'discount': promo_code.discount})
+    if user.is_promo_blocked(block_duration):
+        remaining_time = (block_duration - (timezone.now() - user.last_promo_attempt)).total_seconds() // 60
+        return JsonResponse({
+            'error': f'Превышено количество попыток. Попробуйте снова через {int(remaining_time)} минут.'
+        })
 
-            else:
-                return JsonResponse({'is_valid': False})
+    try:
+        promo = PromoCode.objects.get(value=promo_code, is_active=True)
 
-        except PromoCode.DoesNotExist:
-            return JsonResponse({'is_valid': False})
+        if promo.is_valid():
+            user.reset_promo_attempts()  # Сброс попыток при успешной проверке
+            return JsonResponse({
+                'is_valid': True,
+                'discount': promo.discount
+            })
 
-    return JsonResponse({'is_valid': False})
+        else:
+            user.increment_promo_attempts()
+            return JsonResponse({
+                'is_valid': False,
+                'error': 'Промо-код не активен или истек срок действия.'
+            })
+
+    except PromoCode.DoesNotExist:
+        user.increment_promo_attempts()
+        return JsonResponse({'is_valid': False, 'error': 'Неверный промо-код.'})
