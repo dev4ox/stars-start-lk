@@ -12,6 +12,67 @@
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,600,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+        .select2-container--default .select2-selection--multiple,
+        .select2-dropdown,
+        .select2-container--default .select2-results > .select2-results__options {
+            background-color: #333;
+            border-color: #555;
+            color: #fff;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__rendered,
+        .select2-container--default .select2-results__option {
+            background-color: #333;
+            color: #fff;
+            font-size: 16px; /* Измените размер текста по необходимости */
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #555;
+            border-color: #666;
+            color: #fff;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            color: #fff;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-search__field {
+            background-color: #333;
+            border-color: #555;
+            color: #fff;
+            width: auto; /* Автоматическая ширина */
+            min-width: 2em; /* Минимальная ширина */
+        }
+
+        .select2-container--default .select2-results__option--highlighted {
+            background-color: #444;
+            color: #fff;
+        }
+
+        .select2-container--default .select2-results__option[aria-selected="true"],
+        .select2-container--default .select2-results__option[aria-selected="false"] {
+            background-color: #444;
+            color: #fff;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__rendered li,
+        .select2-container--default .select2-results__option {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .select2-container--default .select2-dropdown {
+            width: auto; /* Ширина подстраивается под текст */
+            min-width: 100px; /* Минимальная ширина */
+            max-width: 100%; /* Максимальная ширина */
+        }
+    </style>
 </head>
 <body>
     <header class="header_section">
@@ -60,9 +121,14 @@
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <script src="{% static 'js/jquery.inputmask-5.0.9.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(document).ready(function(){
             $('input[type="tel"]').inputmask({"mask": "+7 (999) 999-99-99"});
+        });
+
+        $(document).ready(function() {
+            $('.django-select2').select2();
         });
     </script>
 </body>

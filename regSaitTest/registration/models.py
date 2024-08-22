@@ -67,7 +67,7 @@ class Services(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(default="")
     image_path = models.ImageField(
-        upload_to='services_images/',
+        upload_to=catalog_directory_path,
         blank=True,
         null=True,
         default="services_images/default.jpg"
@@ -122,7 +122,7 @@ class PromoCode(models.Model):
     discount = models.IntegerField(default=0)  # Процент скидки
     expiration_date = models.DateField(verbose_name="Promo Code Expiration Date")
     is_active = models.BooleanField(default=True)
-    one_time_use = models.BooleanField(default=False)  # Промо-код одноразовый
+    one_time_use = models.BooleanField(default=True)  # Промо-код одноразовый
     used_by = models.ManyToManyField(CustomUser, blank=True,
                                      related_name='used_promo_codes')  # Пользователи, которые использовали промо-код
     applicable_services = models.ManyToManyField(Services, blank=True)  # Применимо к конкретным услугам

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    "django_select2",
     "django_celery_results",
     'registration.apps.RegistrationConfig',
     "panels.apps.PanelsConfig",
@@ -206,3 +207,14 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
+
+
+# django_select2
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
+
+SELECT2_CACHE_BACKEND = 'default'
+SELECT2_THEME = 'default'

@@ -1,5 +1,6 @@
 # pip lib
 from django.http import JsonResponse
+from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET
 
@@ -11,17 +12,34 @@ from .utils import check_date_promo_code
 @csrf_exempt
 def get_category_cost(request):
     category_id = request.GET.get('category')
+    promo_code_value = request.GET.get('promo_code', None)
 
     try:
         category = Category.objects.get(id=category_id)
-        return JsonResponse(
-            {'cost': category.cost}
-        )
+        cost = category.cost
+
+        discount = None
+
+        if promo_code_value:
+
+            try:
+                promo_code = PromoCode.objects.get(value=promo_code_value)
+
+                if promo_code.is_active and promo_code.expiration_date >= timezone.now().date():
+                    discount = promo_code.discount
+
+            except PromoCode.DoesNotExist:
+                pass
+
+        json_response = {
+            'cost': cost,
+            'discount': discount
+        }
+
+        return JsonResponse(json_response)
 
     except Category.DoesNotExist:
-        return JsonResponse(
-            {'cost': 0}
-        )
+        return JsonResponse({'cost': 0, 'discount': None})
 
 
 @require_GET

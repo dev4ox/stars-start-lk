@@ -1,10 +1,9 @@
 from django import forms
-from django.db import connection
 from django.contrib.auth.forms import (
     UserChangeForm,
-    ReadOnlyPasswordHashField,
 )
 from django.utils.translation import gettext_lazy as _
+from django_select2.forms import Select2MultipleWidget
 
 from .models import BannedIP, GroupServices
 from registration.models import CustomUser, Order, PromoCode
@@ -110,6 +109,10 @@ class PromoCodeChangeForm(forms.ModelForm):
             "discount",
             "expiration_date",
             "is_active",
+            "one_time_use",
+            "used_by",
+            "applicable_services",
+            "applicable_categories",
         ]
 
         labels = {
@@ -118,4 +121,10 @@ class PromoCodeChangeForm(forms.ModelForm):
             "discount": _("Discount"),
             "expiration_date": _("Expiration date"),
             "is_active": _("Active"),
+        }
+
+        widgets = {
+            "used_by": Select2MultipleWidget,
+            "applicable_services": Select2MultipleWidget,
+            "applicable_categories": Select2MultipleWidget,
         }

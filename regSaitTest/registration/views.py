@@ -398,7 +398,7 @@ def services_add_order(request, service_id):
                     promo_code = PromoCode.objects.get(value=promo_code_value)
 
                     if promo_code.is_valid(request.user):
-                        cost_with_discount = promo_code.apply_discount(order.category.cost)
+                        cost_with_discount = promo_code.apply_discount(int(order.category.cost))
 
                         order.cost = cost_with_discount
                         promo_code.use(request.user)

@@ -29,15 +29,19 @@
 {% block scripts %}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var serviceSelect = document.getElementById('id_service');
         var categorySelect = document.getElementById('id_category');
         var promoCodeInput = document.getElementById('id_promo_code');
         var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         var costText = document.getElementById('category_cost_text');
         var discountText = document.getElementById('promo_code_discount_text');
 
-        function loadCategoryCost(category_id) {
-            fetch('/ajax/get-category-cost/?category=' + category_id, {
+        function loadCategoryCost(category_id, promo_code = null) {
+            var url = `/ajax/get-category-cost/?category=${category_id}`;
+            if (promo_code) {
+                url += `&promo_code=${promo_code}`;
+            }
+
+            fetch(url, {
                 method: 'GET',
                 headers: {
                     'X-CSRFToken': csrfToken
@@ -48,38 +52,28 @@
                 if (data.cost == 0) {
                     costText.textContent = '{% trans "Negotiable" %}';
                 } else {
-                    costText.textContent = data.cost + ' ₽';
-                };
-            });
-        }
-
-        function loadPromoCodeDiscount(promo_code) {
-            fetch('/ajax/check-promo-code/?promo_code=' + promo_code, {
-                method: 'GET',
-                headers: {
-                    'X-CSRFToken': csrfToken
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.is_valid) {
-                    discountText.textContent = data.discount + ' %';
-                } else {
-                    discountText.textContent = '{% trans "Invalid promo code" %}';
+                    var finalCost = data.cost;
+                    if (data.discount) {
+                        finalCost -= finalCost * (data.discount / 100);
+                        discountText.textContent = `-${data.discount}%`;
+                    } else {
+                        discountText.textContent = '';
+                    }
+                    costText.textContent = finalCost + ' ₽';
                 }
             });
         }
 
         if (categorySelect.value) {
-            loadCategoryCost(categorySelect.value);
+            loadCategoryCost(categorySelect.value, promoCodeInput.value);
         }
 
         categorySelect.addEventListener('change', function() {
-            loadCategoryCost(this.value);
+            loadCategoryCost(this.value, promoCodeInput.value);
         });
 
         promoCodeInput.addEventListener('input', function() {
-            loadPromoCodeDiscount(this.value);
+            loadCategoryCost(categorySelect.value, this.value);
         });
     });
 </script>

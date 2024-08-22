@@ -166,6 +166,7 @@ class OrderAddUser(forms.ModelForm):
     class Meta:
         model = Order
         fields = [
+            "user",
             'service',
             'category',
             'status',
@@ -180,6 +181,7 @@ class OrderAddUser(forms.ModelForm):
             'cost': forms.HiddenInput(),  # Скрываем поле стоимости
             'status': forms.HiddenInput(),  # Скрываем поле статуса
             "service": forms.HiddenInput(),
+            "user": forms.HiddenInput(),
         }
 
         labels = {
@@ -201,10 +203,11 @@ class OrderAddUser(forms.ModelForm):
                 if not promo_code.is_valid(user):
                     raise forms.ValidationError(_("Invalid or expired promo code."))
 
-                if promo_code.applicable_services.exists() and service not in promo_code.applicable_services.all():
+                # promo_code.applicable_services.exists()
+                if service not in promo_code.applicable_services.all():
                     raise forms.ValidationError(_("This promo code is not applicable to the selected service."))
 
-                if promo_code.applicable_categories.exists() and category not in promo_code.applicable_categories.all():
+                if category not in promo_code.applicable_categories.all():
                     raise forms.ValidationError(_("This promo code is not applicable to the selected category."))
 
             except PromoCode.DoesNotExist:

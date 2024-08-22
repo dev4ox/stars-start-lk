@@ -142,6 +142,8 @@ def panels_form_change(request, id_):
 
                 model.save()
 
+            form.save_m2m()
+
             return redirect(data.url_redirect)
 
     else:
