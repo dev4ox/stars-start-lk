@@ -13,7 +13,7 @@ from django.db import models
 from phonenumber_field.formfields import PhoneNumberField
 
 # my lib
-from .models import CustomUser, Services, Order, Category
+from .models import CustomUser, Services, Order, Category, PromoCode
 from .utils import get_min_cost
 
 
@@ -161,7 +161,7 @@ class OrderChangeForm(forms.ModelForm):
 
 
 class OrderAddUser(forms.ModelForm):
-    promo_code = forms.CharField(max_length=20)
+    promo_code = forms.CharField(max_length=20, required=False)
 
     class Meta:
         model = Order
@@ -188,15 +188,40 @@ class OrderAddUser(forms.ModelForm):
             "promo_code": _("Promo code"),
         }
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['category'].queryset = Category.objects.none()
+    def clean_promo_code(self):
+        promo_code_value = self.cleaned_data.get('promo_code', '').strip()
+        service = self.cleaned_data.get('service')
+        category = self.cleaned_data.get('category')
 
-        if 'initial' in kwargs:
-            service = kwargs["initial"]["service"]
-
+        if promo_code_value:
             try:
-                self.fields["category"].queryset = get_min_cost(service, output_queryset=True)
+                promo_code = PromoCode.objects.get(value=promo_code_value)
 
-            except (ValueError, TypeError):
-                pass
+                if not promo_code.is_valid(self.instance.user):
+                    raise forms.ValidationError(_("Invalid or expired promo code."))
+
+                if promo_code.applicable_services.exists() and service not in promo_code.applicable_services.all():
+                    raise forms.ValidationError(_("This promo code is not applicable to the selected service."))
+
+                if promo_code.applicable_categories.exists() and category not in promo_code.applicable_categories.all():
+                    raise forms.ValidationError(_("This promo code is not applicable to the selected category."))
+
+            except PromoCode.DoesNotExist:
+                raise forms.ValidationError(_("Promo code does not exist."))
+
+        return promo_code_value
+
+    def save(self, commit=True):
+        order = super().save(commit=False)
+        promo_code_value = self.cleaned_data.get('promo_code', '').strip()
+
+        if promo_code_value:
+            promo_code = PromoCode.objects.get(value=promo_code_value)
+            order.cost = promo_code.apply_discount(order.cost)
+            promo_code.use(order.user)
+
+        if commit:
+            order.save()
+
+        return order
+

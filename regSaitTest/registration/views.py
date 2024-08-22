@@ -388,24 +388,33 @@ def services_add_order(request, service_id):
 
         if form.is_valid():
             order = form.save(commit=False)
-            setattr(order, "category", form.cleaned_data["category"])
-
             order.user = request.user
             order.service = service
+
+            promo_code_value = form.cleaned_data.get("promo_code", "").strip()
+            if promo_code_value:
+                try:
+                    promo_code = PromoCode.objects.get(value=promo_code_value)
+
+                    if promo_code.is_valid(request.user):
+                        cost_with_discount = promo_code.apply_discount(order.category.cost)
+
+                        order.cost = cost_with_discount
+                        promo_code.use(request.user)
+
+                    else:
+                        form.add_error('promo_code', _("Invalid or expired promo code."))
+
+                except PromoCode.DoesNotExist:
+                    form.add_error('promo_code', _("Promo code does not exist."))
+
+            else:
+                order.cost = order.category.cost
+
             order.status = 'new'
-            # order.cost = order.category.cost
-
-            promo_code = get_object_or_404(PromoCode, value=form.cleaned_data["promo_code"])
-
-            if check_date_promo_code(promo_code):
-                cost_with_discount = execute_promo_code(promo_code, order.category.cost)
-
-                if cost_with_discount:
-                    order.cost = cost_with_discount
-
             order.save()
 
-            if order.category.cost != 0:
+            if order.cost != 0:
                 return redirect('orders')
 
             else:

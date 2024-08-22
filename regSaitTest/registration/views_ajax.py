@@ -26,31 +26,20 @@ def get_category_cost(request):
 
 @require_GET
 def check_promo_code(request):
-    promo_code_value = request.GET.get('promo_code', '')
+    promo_code_value = request.GET.get('promo_code', None)
+    user = request.user
 
-    response = {}
+    if promo_code_value:
+        try:
+            promo_code = PromoCode.objects.get(value=promo_code_value)
 
-    try:
-        promo_code = PromoCode.objects.get(value=promo_code_value, is_active=True)
+            if promo_code.is_valid(user):
+                return JsonResponse({'is_valid': True, 'discount': promo_code.discount})
 
-        if check_date_promo_code(promo_code):
-            response = {
-                'is_valid': True,
-                'discount': promo_code.discount
-            }
+            else:
+                return JsonResponse({'is_valid': False})
 
-            return JsonResponse(response)
+        except PromoCode.DoesNotExist:
+            return JsonResponse({'is_valid': False})
 
-        else:
-            response = {
-                'is_valid': False
-            }
-
-            return JsonResponse(response)
-
-    except PromoCode.DoesNotExist:
-        response = {
-            'is_valid': False
-        }
-
-        return JsonResponse(response)
+    return JsonResponse({'is_valid': False})

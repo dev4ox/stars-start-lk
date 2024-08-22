@@ -16,15 +16,16 @@
             {% csrf_token %}
             {{ form.as_p }}
             <div class="order-price">
-            <label>{% trans "Discount" %}:</label><p id="promo_code_discount_text"></p>
-            <label>{% trans "Cost" %}:</label><p id="category_cost_text"></p>
-            <button class="btn-primary" type="submit">{% trans "Submit" %}</button>
+                <label>{% trans "Discount" %}:</label><p id="promo_code_discount_text"></p>
+                <label>{% trans "Cost" %}:</label><p id="category_cost_text"></p>
+                <button class="btn-primary" type="submit">{% trans "Submit" %}</button>
             </div>
         </form>
     </div>
 </div>
 
 {% endblock %}
+
 {% block scripts %}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -46,8 +47,7 @@
             .then(data => {
                 if (data.cost == 0) {
                     costText.textContent = '{% trans "Negotiable" %}';
-                }
-                else {
+                } else {
                     costText.textContent = data.cost + ' ₽';
                 };
             });

@@ -1,9 +1,13 @@
+# python lib
+import os
+import uuid
+
+# pip lib
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 from django.urls import reverse
-import os
-import uuid
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 
@@ -113,8 +117,44 @@ class Order(models.Model):
 
 
 class PromoCode(models.Model):
-    value = models.CharField(max_length=20, default="", unique=True)
+    value = models.CharField(max_length=20, unique=True)
     description = models.TextField(blank=True, null=True)
-    discount = models.IntegerField(default=0)
+    discount = models.IntegerField(default=0)  # Процент скидки
     expiration_date = models.DateField(verbose_name="Promo Code Expiration Date")
     is_active = models.BooleanField(default=True)
+    one_time_use = models.BooleanField(default=False)  # Промо-код одноразовый
+    used_by = models.ManyToManyField(CustomUser, blank=True,
+                                     related_name='used_promo_codes')  # Пользователи, которые использовали промо-код
+    applicable_services = models.ManyToManyField(Services, blank=True)  # Применимо к конкретным услугам
+    applicable_categories = models.ManyToManyField(Category, blank=True)  # Применимо к конкретным категориям
+
+    def is_valid(self, user):
+        """Проверка валидности промо-кода"""
+        if not self.is_active:
+            return False
+
+        if self.expiration_date < timezone.now().date():
+            return False
+
+        if self.one_time_use and user in self.used_by.all():
+            return False
+
+        return True
+
+    def apply_discount(self, original_cost):
+        """Применение скидки к стоимости"""
+        discount_amount = original_cost * (self.discount / 100)
+
+        return original_cost - discount_amount
+
+    def use(self, user):
+        """Помечаем промо-код как использованный пользователем"""
+        self.used_by.add(user)
+
+        if self.one_time_use:
+            self.is_active = False
+
+        self.save()
+
+    def __str__(self):
+        return self.value
