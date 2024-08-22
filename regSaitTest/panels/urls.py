@@ -17,6 +17,9 @@ urlpatterns = [
     # admin banned ip
     path("admin/banned_ip/", views_admin.panels_admin_banned_ip, name="panel_admin_banned_ips"),
 
+    # admin promo codes
+    path("admin/promo_codes", views_admin.panels_admin_promo_codes, name="panel_admin_promo_codes"),
+
     # admin group service
     path("admin/group_service/", views_admin.panels_admin_group_service, name="panel_admin_group_service"),
 

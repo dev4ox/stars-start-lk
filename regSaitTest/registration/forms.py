@@ -161,6 +161,7 @@ class OrderChangeForm(forms.ModelForm):
 
 
 class OrderAddUser(forms.ModelForm):
+    promo_code = forms.CharField(max_length=20)
 
     class Meta:
         model = Order
@@ -168,6 +169,7 @@ class OrderAddUser(forms.ModelForm):
             'service',
             'category',
             'status',
+            "promo_code",
             'user_comment',
             'moder_comment',
             'cost'
@@ -183,6 +185,7 @@ class OrderAddUser(forms.ModelForm):
         labels = {
             "category": _("Category"),
             "user_comment": _("User comment"),
+            "promo_code": _("Promo code"),
         }
 
     def __init__(self, *args, **kwargs):

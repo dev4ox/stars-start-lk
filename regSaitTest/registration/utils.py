@@ -1,12 +1,13 @@
 # python lib
 from typing import Union
+from datetime import datetime
 
 # pip lib
 from django.db.models import Case, When
 from django.db.models.query import QuerySet
 
 # my lib
-from .models import Category, Services
+from .models import Category, Services, PromoCode
 
 
 def convert_list_to_queryset(
@@ -74,3 +75,31 @@ def get_min_cost(
 
         elif output_queryset:
             return convert_list_to_queryset(categories, order_by="cost")
+
+
+def check_date_promo_code(promo_code: PromoCode) -> bool:
+    # Получаем текущую дату и время
+    current_datetime = datetime.now().date()
+
+    # Сравниваем текущую дату и время с датой окончания промо-кода
+    if promo_code.expiration_date and current_datetime > promo_code.expiration_date and promo_code.is_active:
+        promo_code.is_active = False
+        promo_code.save()
+
+        return False  # Промо-код истек
+
+    elif promo_code.is_active:
+        return True  # Промо-код действителен
+
+    else:
+        return False
+
+
+def execute_promo_code(promo_code: PromoCode, cost: int) -> Union[int | None]:
+    if promo_code:
+        cost = (cost * int(promo_code.discount)) // 100
+
+        return cost
+
+    else:
+        return None

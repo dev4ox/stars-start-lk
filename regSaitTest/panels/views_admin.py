@@ -5,7 +5,7 @@ from django.contrib.admin.models import LogEntry
 from django.core.paginator import Paginator
 
 # my lib
-from registration.models import CustomUser, Order, Services, Category
+from registration.models import CustomUser, Order, Services, Category, PromoCode
 from .models import BannedIP, GroupServices
 from .views_forms import AddOrGetDataSession
 
@@ -98,6 +98,35 @@ def panels_admin_banned_ip(request):
     }
 
     return render(request, 'admin/banned_ip.html', context)
+
+
+# admin promo code
+def panels_admin_promo_codes(request):
+    promo_codes = PromoCode.objects.all().order_by("id")
+
+    paginator_promo_codes = Paginator(promo_codes, 5)
+
+    page_number = request.GET.get('page')
+
+    page_obj_promo_codes = paginator_promo_codes.get_page(page_number)
+
+    request.session = AddOrGetDataSession(
+        session=request.session,
+        form_name="promo_code_change",
+        url_redirect="panel_admin_promo_codes",
+        model_name="promo_code",
+        model_list_param_name=["id", ],
+        html_vars={
+            "title": "Promo code change",
+            "h2_tag": "Promo code change",
+        },
+    )
+
+    context = {
+        "promo_codes_list": page_obj_promo_codes,
+    }
+
+    return render(request, 'admin/promo_code.html', context)
 
 
 # admin group service

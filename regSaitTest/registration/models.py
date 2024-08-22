@@ -110,3 +110,11 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order {self.order_id} by {self.user.username}"
+
+
+class PromoCode(models.Model):
+    value = models.CharField(max_length=20, default="", unique=True)
+    description = models.TextField(blank=True, null=True)
+    discount = models.IntegerField(default=0)
+    expiration_date = models.DateField(verbose_name="Promo Code Expiration Date")
+    is_active = models.BooleanField(default=True)

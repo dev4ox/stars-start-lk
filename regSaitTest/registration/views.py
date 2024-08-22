@@ -1,5 +1,4 @@
 # python lib
-import decimal
 import os
 import uuid
 import qrcode
@@ -31,8 +30,7 @@ from django.core.paginator import Paginator
 # from django.core.handlers.wsgi import WSGIRequest
 from django.template.loader import render_to_string
 from django.conf import settings
-from django.http import JsonResponse, HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
 # my lib
 from .forms import (
@@ -43,8 +41,8 @@ from .forms import (
     OrderAddUser,
     CustomSetPasswordForm,
 )
-from .models import Order, Services, Category, CustomUser
-from .utils import get_min_cost
+from .models import Order, Services, CustomUser, PromoCode
+from .utils import get_min_cost, check_date_promo_code, execute_promo_code
 
 from panels.models import GroupServices
 from panels.utils import get_ip
@@ -395,7 +393,15 @@ def services_add_order(request, service_id):
             order.user = request.user
             order.service = service
             order.status = 'new'
-            order.cost = order.category.cost
+            # order.cost = order.category.cost
+
+            promo_code = get_object_or_404(PromoCode, value=form.cleaned_data["promo_code"])
+
+            if check_date_promo_code(promo_code):
+                cost_with_discount = execute_promo_code(promo_code, order.category.cost)
+
+                if cost_with_discount:
+                    order.cost = cost_with_discount
 
             order.save()
 
@@ -441,22 +447,6 @@ def services_message_zero_cost(request):
 #     return JsonResponse(
 #         json_response
 #     )
-
-
-@csrf_exempt
-def get_category_cost(request):
-    category_id = request.GET.get('category')
-
-    try:
-        category = Category.objects.get(id=category_id)
-        return JsonResponse(
-            {'cost': category.cost}
-        )
-
-    except Category.DoesNotExist:
-        return JsonResponse(
-            {'cost': 0}
-        )
 
 
 def registrations(request):

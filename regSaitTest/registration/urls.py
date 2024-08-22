@@ -1,12 +1,11 @@
 from django.urls import path
-from . import views
+from . import views, views_ajax
 from django.contrib.auth import views as auth_views
-from .views import CustomPasswordResetConfirmView, CustomLoginView
 
 urlpatterns = [
     # user
     path('', views.profile, name='profile'),
-    path('login/', CustomLoginView.as_view(), name='login'),
+    path('login/', views.CustomLoginView.as_view(), name='login'),
     path('register/', views.registrations, name='register'),
     path('message_about_activate/', views.message_about_activate, name='message_about_activate'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
@@ -37,7 +36,7 @@ urlpatterns = [
     path('reset_password/', views.password_reset_request, name="reset_password"),
     path(
         'reset/<uidb64>/<token>/',
-        CustomPasswordResetConfirmView.as_view(
+        views.CustomPasswordResetConfirmView.as_view(
             template_name="password_reset_confirm.html"
         ), name='password_reset_confirm'
     ),
@@ -58,5 +57,6 @@ urlpatterns = [
 urlpatterns_ajax = [
     # ajax
     # path('ajax/load-categories/', views.load_categories, name='load_categories'),
-    path('ajax/get-category-cost/', views.get_category_cost, name='get_category_cost'),
+    path('ajax/get-category-cost/', views_ajax.get_category_cost, name='get_category_cost'),
+    path('ajax/check-promo-code/', views_ajax.check_promo_code, name='check_promo_code'),
 ]

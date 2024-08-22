@@ -16,7 +16,8 @@
             {% csrf_token %}
             {{ form.as_p }}
             <div class="order-price">
-            <label>{% trans "Cost" %}:</label><p id="category_cost_text"></p> 
+            <label>{% trans "Discount" %}:</label><p id="promo_code_discount_text"></p>
+            <label>{% trans "Cost" %}:</label><p id="category_cost_text"></p>
             <button class="btn-primary" type="submit">{% trans "Submit" %}</button>
             </div>
         </form>
@@ -29,35 +30,10 @@
     document.addEventListener("DOMContentLoaded", function() {
         var serviceSelect = document.getElementById('id_service');
         var categorySelect = document.getElementById('id_category');
+        var promoCodeInput = document.getElementById('id_promo_code');
         var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         var costText = document.getElementById('category_cost_text');
-
-<!--        function loadCategories(service_id) {-->
-<!--            fetch('/ajax/load-categories/?service=' + service_id, {-->
-<!--                method: 'GET',-->
-<!--                headers: {-->
-<!--                    'X-CSRFToken': csrfToken-->
-<!--                }-->
-<!--            })-->
-<!--            .then(response => response.json())-->
-<!--            .then(data => {-->
-<!--                categorySelect.innerHTML = '';-->
-<!--                for (var key in data) {-->
-<!--                    var option = document.createElement('option');-->
-<!--                    option.value = key;-->
-<!--                    option.text = data[key];-->
-<!--                    categorySelect.appendChild(option);-->
-<!--                }-->
-
-<!--                if (categorySelect.value) {-->
-<!--                    loadCategoryCost(categorySelect.value);-->
-<!--                }-->
-<!--            });-->
-<!--        }-->
-
-        if (categorySelect.value) {
-            loadCategoryCost(categorySelect.value);
-        }
+        var discountText = document.getElementById('promo_code_discount_text');
 
         function loadCategoryCost(category_id) {
             fetch('/ajax/get-category-cost/?category=' + category_id, {
@@ -69,7 +45,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.cost == 0) {
-                    costText.textContent = 'Договорная';
+                    costText.textContent = '{% trans "Negotiable" %}';
                 }
                 else {
                     costText.textContent = data.cost + ' ₽';
@@ -77,16 +53,33 @@
             });
         }
 
-<!--        if (serviceSelect.value) {-->
-<!--            loadCategories(serviceSelect.value);  // Загружаем категории при загрузке страницы, если есть выбранная услуга-->
-<!--        }-->
+        function loadPromoCodeDiscount(promo_code) {
+            fetch('/ajax/check-promo-code/?promo_code=' + promo_code, {
+                method: 'GET',
+                headers: {
+                    'X-CSRFToken': csrfToken
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.is_valid) {
+                    discountText.textContent = data.discount + ' %';
+                } else {
+                    discountText.textContent = '{% trans "Invalid promo code" %}';
+                }
+            });
+        }
 
-<!--        serviceSelect.addEventListener('change', function() {-->
-<!--            loadCategories(this.value);-->
-<!--        });-->
+        if (categorySelect.value) {
+            loadCategoryCost(categorySelect.value);
+        }
 
         categorySelect.addEventListener('change', function() {
             loadCategoryCost(this.value);
+        });
+
+        promoCodeInput.addEventListener('input', function() {
+            loadPromoCodeDiscount(this.value);
         });
     });
 </script>

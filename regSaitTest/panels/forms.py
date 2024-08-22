@@ -7,7 +7,7 @@ from django.contrib.auth.forms import (
 from django.utils.translation import gettext_lazy as _
 
 from .models import BannedIP, GroupServices
-from registration.models import CustomUser, Order
+from registration.models import CustomUser, Order, PromoCode
 
 
 class CustomUserChangeAdminForm(UserChangeForm):
@@ -89,3 +89,33 @@ class BannedIPChangeForm(forms.ModelForm):
     class Meta:
         model = BannedIP
         fields = ["ip_address", "description"]
+
+
+class PromoCodeChangeForm(forms.ModelForm):
+    expiration_date = forms.DateField(
+        widget=forms.DateInput(
+            attrs={
+                "id": "id_expiration_date",
+                'type': 'text',
+                'placeholder': 'dd-mm-yyyy',
+            }
+        ),
+    )
+
+    class Meta:
+        model = PromoCode
+        fields = [
+            "value",
+            "description",
+            "discount",
+            "expiration_date",
+            "is_active",
+        ]
+
+        labels = {
+            "value": _("Value"),
+            "description": _("Description"),
+            "discount": _("Discount"),
+            "expiration_date": _("Expiration date"),
+            "is_active": _("Active"),
+        }

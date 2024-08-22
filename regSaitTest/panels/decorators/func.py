@@ -3,7 +3,7 @@ from typing import Callable
 
 from django import forms
 
-from registration.models import CustomUser, Order, Services, Category
+from registration.models import CustomUser, Order, Services, Category, PromoCode
 from registration.forms import CustomUserChangeForm, ServicesChangeForm, CategoryChangeForm, OrderChangeForm
 from ..models import BannedIP, GroupServices
 from ..forms import (
@@ -13,6 +13,7 @@ from ..forms import (
     CustomUserChangeManagerForm,
     OrderChangeManagerForm,
     CustomUserChangeModeratorForm,
+    PromoCodeChangeForm,
 )
 
 
@@ -36,6 +37,7 @@ def panels_form_sub_data(func: Callable) -> Callable:
             "order_change": OrderChangeForm,
             "order_manager_change": OrderChangeManagerForm,
             "banned_ip_change": BannedIPChangeForm,
+            "promo_code_change": PromoCodeChangeForm,
         }
 
         form_widgets = {
@@ -49,6 +51,7 @@ def panels_form_sub_data(func: Callable) -> Callable:
             "category": Category,
             "order": Order,
             "banned_ip": BannedIP,
+            "promo_code": PromoCode,
         }
 
         request.forms_change = forms_change

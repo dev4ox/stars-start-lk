@@ -38,6 +38,9 @@
                                 <a class="nav-link" href="{% url 'panel_admin_banned_ips' %}">{% trans "Banned IP" %}</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{% url 'panel_admin_promo_codes' %}">{% trans "Promo Code" %}</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'panel_admin_group_service' %}">{% trans "Group service" %}</a>
                             </li>
                             <li class="nav-item">
@@ -82,5 +85,7 @@
     <!-- end footer section -->
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/jquery.inputmask-5.0.9.min.js' %}"></script>
+    {% block scripts %}{% endblock %}
 </body>
 </html>
