@@ -1,14 +1,17 @@
+# python lib
 import decimal
 import os
 import uuid
 import qrcode
+from tempfile import NamedTemporaryFile
+from datetime import timedelta
+
+# pip lib
 from reportlab.lib.pagesizes import A6, landscape
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
-from tempfile import NamedTemporaryFile
-from datetime import timedelta
 from yookassa import Configuration, Payment
 
 from django.shortcuts import render, redirect, get_object_or_404
@@ -18,7 +21,20 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, get_user_model, password_validation
 from django.contrib.auth.views import PasswordResetConfirmView
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib import messages
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.utils.encoding import force_str, force_bytes
+from django.utils.translation import gettext_lazy as _, activate as lang_activate
+from django.core.mail import send_mail
+from django.core.paginator import Paginator
+# from django.core.handlers.wsgi import WSGIRequest
+from django.template.loader import render_to_string
+from django.conf import settings
+from django.http import JsonResponse, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
+# my lib
 from .forms import (
     CustomUserCreationForm,
     CustomUserChangeForm,
@@ -28,23 +44,12 @@ from .forms import (
     CustomSetPasswordForm,
 )
 from .models import Order, Services, Category, CustomUser
+from .utils import get_min_cost
+
 from panels.models import GroupServices
 from panels.utils import get_ip
 from panels.tasks import check_payment_status
 from panels.views_forms import AddOrGetDataSession
-
-from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
-from django.contrib.auth.tokens import default_token_generator
-from django.utils.encoding import force_str, force_bytes
-from django.contrib import messages
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.conf import settings
-from django.utils.translation import gettext_lazy as _, activate as lang_activate
-from django.core.paginator import Paginator
-from django.http import JsonResponse, HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-# from django.core.handlers.wsgi import WSGIRequest
 
 User = get_user_model()
 
@@ -343,22 +348,28 @@ def services(request):
             del services_list[index]
 
     for service in services_list:
-        categories = Category.objects.filter(service=service).order_by('cost')
+        service.min_cost = get_min_cost(service, output_int_num=True)
 
-        if categories:
-            for category in categories:
-                if category.cost != 0:
-                    min_cost_categories_list.append(int(category.cost))
-                    break
-
-                # elif category.cost == 0:
-                #     min_cost_categories_list.append(0)
-                #     break
+        # categories = Category.objects.filter(service=service).order_by('cost')
+        #
+        # if categories:
+        #     count_deactivate = 0
+        #
+        #     for category in categories:
+        #         if category.cost != 0 and category.is_active:
+        #             service.min_cost = int(category.cost)
+        #             break
+        #
+        #         elif not category.is_active:
+        #             count_deactivate += 1
+        #
+        #     else:
+        #         if len(categories) != 0 and count_deactivate != 0:
+        #             service.min_cost = 0
 
     context = {
         "services_list": list(enumerate(services_list)),
         "group_services": group_services,
-        "min_cost_categories_list": min_cost_categories_list,
         "search_query": search_query,
     }
 
@@ -368,28 +379,33 @@ def services(request):
 @login_required
 def services_add_order(request, service_id):
     service = get_object_or_404(Services, id=service_id)
-    category = Category.objects.prefetch_related("service").filter(service=service)
+
+    initial_data = {
+        "service": service,
+        "status": "new",
+    }
 
     if request.method == 'POST':
-        form = OrderAddUser(request.POST)
+        form = OrderAddUser(request.POST, initial=initial_data)
 
         if form.is_valid():
             order = form.save(commit=False)
+            setattr(order, "category", form.cleaned_data["category"])
 
             order.user = request.user
             order.service = service
-            order.status = 'new'  # Устанавливаем статус по умолчанию
+            order.status = 'new'
             order.cost = order.category.cost
 
             order.save()
-            return redirect('orders')  # Перенаправление на страницу списка заказов
+
+            if order.category.cost != 0:
+                return redirect('orders')
+
+            else:
+                return redirect("services_message_negotiated_price")
 
     else:
-        initial_data = {
-            "service": service,
-            "status": "new",
-        }
-
         form = OrderAddUser(initial=initial_data)
 
     # Получаем все комментарии модератора для отображения
@@ -397,7 +413,6 @@ def services_add_order(request, service_id):
 
     context = {
         "service": service,
-        "category": category,
         'form': form,
         'moder_comments': moder_comments,
     }
@@ -405,23 +420,27 @@ def services_add_order(request, service_id):
     return render(request, 'services_add_order.html', context)
 
 
-@csrf_exempt
-def load_categories(request):
-    service_id = request.GET.get('service')
-    categories = Category.objects.filter(service_id=service_id).order_by('cost')
-    print(categories)
+def services_message_zero_cost(request):
+    return render(request, "message_add_services_with_zero_cost.html")
 
-    json_response = {}
 
-    for category in categories:
-        if category.is_active:
-            json_response[category.id] = category.name
-
-    print(json_response)
-
-    return JsonResponse(
-        json_response
-    )
+# @csrf_exempt
+# def load_categories(request):
+#     service_id = request.GET.get('service')
+#     categories = Category.objects.filter(service_id=service_id).order_by('cost')
+#     print(categories)
+#
+#     json_response = {}
+#
+#     for category in categories:
+#         if category.is_active:
+#             json_response[category.id] = category.name
+#
+#     print(json_response)
+#
+#     return JsonResponse(
+#         json_response
+#     )
 
 
 @csrf_exempt

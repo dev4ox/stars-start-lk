@@ -24,7 +24,11 @@
                 <td>{{ order.order_id }}</td>
                 <td>{{ order.date|date:"Y-m-d" }}</td>
                 <td>{{ order.service.title }}</td>
-                <td>{{ order.cost }} ₽</td>
+                {% if order.cost != 0  %}
+                    <td>{{ order.cost }} ₽</td>
+                {% else %}
+                    <td>Цена договорная</td>
+                {% endif %}
                 <td>
                     <span class="badge {% if order.status == 'paid' %}badge-success{% elif order.status == 'not_paid' %}badge-danger{% elif order.status == 'in_progress' %}badge-warning{% else %}badge-secondary{% endif %}">
                         {{ order.get_status_display }}

@@ -14,7 +14,9 @@ urlpatterns = [
 
     # services
     path('services/', views.services, name="services"),
-    path('services/<int:service_id>/add_order', views.services_add_order, name="services_add_order"),
+    path('services/<int:service_id>/add_order/', views.services_add_order, name="services_add_order"),
+    path("services/message_negotiated_price/", views.services_message_zero_cost,
+         name="services_message_negotiated_price"),
 
     # orders
     path('orders/', views.orders, name='orders'),
@@ -55,6 +57,6 @@ urlpatterns = [
 
 urlpatterns_ajax = [
     # ajax
-    path('ajax/load-categories/', views.load_categories, name='load_categories'),
+    # path('ajax/load-categories/', views.load_categories, name='load_categories'),
     path('ajax/get-category-cost/', views.get_category_cost, name='get_category_cost'),
 ]

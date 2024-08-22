@@ -32,27 +32,31 @@
         var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         var costText = document.getElementById('category_cost_text');
 
-        function loadCategories(service_id) {
-            fetch('/ajax/load-categories/?service=' + service_id, {
-                method: 'GET',
-                headers: {
-                    'X-CSRFToken': csrfToken
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                categorySelect.innerHTML = '';
-                for (var key in data) {
-                    var option = document.createElement('option');
-                    option.value = key;
-                    option.text = data[key];
-                    categorySelect.appendChild(option);
-                }
+<!--        function loadCategories(service_id) {-->
+<!--            fetch('/ajax/load-categories/?service=' + service_id, {-->
+<!--                method: 'GET',-->
+<!--                headers: {-->
+<!--                    'X-CSRFToken': csrfToken-->
+<!--                }-->
+<!--            })-->
+<!--            .then(response => response.json())-->
+<!--            .then(data => {-->
+<!--                categorySelect.innerHTML = '';-->
+<!--                for (var key in data) {-->
+<!--                    var option = document.createElement('option');-->
+<!--                    option.value = key;-->
+<!--                    option.text = data[key];-->
+<!--                    categorySelect.appendChild(option);-->
+<!--                }-->
 
-                if (categorySelect.value) {
-                    loadCategoryCost(categorySelect.value);
-                }
-            });
+<!--                if (categorySelect.value) {-->
+<!--                    loadCategoryCost(categorySelect.value);-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+
+        if (categorySelect.value) {
+            loadCategoryCost(categorySelect.value);
         }
 
         function loadCategoryCost(category_id) {
@@ -73,13 +77,13 @@
             });
         }
 
-        if (serviceSelect.value) {
-            loadCategories(serviceSelect.value);  // Загружаем категории при загрузке страницы, если есть выбранная услуга
-        }
+<!--        if (serviceSelect.value) {-->
+<!--            loadCategories(serviceSelect.value);  // Загружаем категории при загрузке страницы, если есть выбранная услуга-->
+<!--        }-->
 
-        serviceSelect.addEventListener('change', function() {
-            loadCategories(this.value);
-        });
+<!--        serviceSelect.addEventListener('change', function() {-->
+<!--            loadCategories(this.value);-->
+<!--        });-->
 
         categorySelect.addEventListener('change', function() {
             loadCategoryCost(this.value);

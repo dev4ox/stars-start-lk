@@ -43,7 +43,11 @@
                 <td>{{ order.user }}</td>
                 <td>{{ order.service.title }}</td>
                 <td>{{ order.date }}</td>
-                <td>₽{{ order.cost }}</td>
+                {% if order.cost != 0  %}
+                    <td>₽{{ order.cost }} ₽</td>
+                {% else %}
+                    <td>Цена договорная</td>
+                {% endif %}
                 <td><span class="badge badge-primary">{{ order.get_status_display }}</span></td>
                 <td>
                     <a href="{% url 'panel_form_edit' order.order_id %}" class="btn btn-warning">{% trans "Edit" %}</a>

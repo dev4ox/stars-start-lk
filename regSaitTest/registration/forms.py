@@ -1,3 +1,4 @@
+# pip lib
 from django.contrib.auth.forms import (
     UserCreationForm,
     UserChangeForm,
@@ -5,12 +6,15 @@ from django.contrib.auth.forms import (
     AuthenticationForm,
     SetPasswordForm,
 )
-from .models import CustomUser, Services, Order, Category
 from django.utils.translation import gettext_lazy as _
 from django.utils.safestring import mark_safe
 from django import forms
 from django.db import models
 from phonenumber_field.formfields import PhoneNumberField
+
+# my lib
+from .models import CustomUser, Services, Order, Category
+from .utils import get_min_cost
 
 
 # user forms
@@ -116,7 +120,7 @@ class ServicesChangeForm(forms.ModelForm):
 
 
 class OrderChangeForm(forms.ModelForm):
-    manager = forms.ModelChoiceField(queryset=CustomUser.objects.filter(role=1), empty_label=None)
+    manager = forms.ModelChoiceField(queryset=CustomUser.objects.filter(role=1), required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -124,6 +128,15 @@ class OrderChangeForm(forms.ModelForm):
 
         if 'instance' in kwargs:
             instance = kwargs['instance']
+
+            if instance.manager:
+                # Если manager установлен, убираем пустую строку
+                self.fields['manager'].empty_label = None
+
+            else:
+                # Если manager не установлен, добавляем пустую строку
+                self.fields['manager'].empty_label = "--------"
+
             # Добавляем аннотацию для приоритета текущего менеджера
             self.fields['manager'].queryset = CustomUser.objects.filter(role=1).annotate(
                 is_current_manager=models.Case(
@@ -148,15 +161,25 @@ class OrderChangeForm(forms.ModelForm):
 
 
 class OrderAddUser(forms.ModelForm):
+
     class Meta:
         model = Order
-        fields = ['service', 'category', 'status', 'user_comment', 'moder_comment', 'cost']
+        fields = [
+            'service',
+            'category',
+            'status',
+            'user_comment',
+            'moder_comment',
+            'cost'
+        ]
+
         widgets = {
             'moder_comment': forms.HiddenInput(),  # Скрываем поле комментария модератора
             'cost': forms.HiddenInput(),  # Скрываем поле стоимости
             'status': forms.HiddenInput(),  # Скрываем поле статуса
             "service": forms.HiddenInput(),
         }
+
         labels = {
             "category": _("Category"),
             "user_comment": _("User comment"),
@@ -166,14 +189,11 @@ class OrderAddUser(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['category'].queryset = Category.objects.none()
 
-        if 'service' in self.data:
+        if 'initial' in kwargs:
+            service = kwargs["initial"]["service"]
 
             try:
-                service_id = int(self.data.get('service'))
-                self.fields['category'].queryset = Category.objects.filter(service_id=service_id).order_by('name')
+                self.fields["category"].queryset = get_min_cost(service, output_queryset=True)
 
             except (ValueError, TypeError):
                 pass
-
-        elif self.instance.pk:
-            self.fields['category'].queryset = self.instance.service.categories.order_by('name')

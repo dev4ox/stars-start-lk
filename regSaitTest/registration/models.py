@@ -94,7 +94,7 @@ class Order(models.Model):
 
     order_id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name=_("User"), default="")
-    manager = models.CharField(max_length=50, default="")
+    manager = models.CharField(max_length=50, default="", null=True)
     user_ticket_path = models.CharField(null=True, max_length=200)
     service = models.ForeignKey(Services, on_delete=models.CASCADE, default="")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default="", null=True)

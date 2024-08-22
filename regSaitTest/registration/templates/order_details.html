@@ -15,7 +15,11 @@
         <p><strong>Status:</strong> {{ order.get_status_display }}</p>
         <p><strong>User Comment:</strong> {{ order.user_comment }}</p>
         <p><strong>Moderator Comment:</strong> {{ order.moder_comment }}</p>
-        <p><strong>Cost:</strong> ₽ {{ order.cost }}</p>
+        {% if order.cost != 0  %}
+            <p><strong>Cost:</strong> ₽ {{ order.cost }}</p>
+        {% else %}
+            <p><strong>Cost:</strong> Цена договорная</p>
+        {% endif %}
     </div>
     <a class="btn-primary" href="{% url 'orders' %}">{% trans "Return back" %}</a>
 </div>
