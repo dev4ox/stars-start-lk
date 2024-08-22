@@ -381,6 +381,7 @@ def services_add_order(request, service_id):
     initial_data = {
         "service": service,
         "status": "new",
+        "user": request.user
     }
 
     if request.method == 'POST':
@@ -404,9 +405,13 @@ def services_add_order(request, service_id):
 
                     else:
                         form.add_error('promo_code', _("Invalid or expired promo code."))
+                        return render(request, 'services_add_order.html',
+                                      {'form': form, 'service': service})
 
                 except PromoCode.DoesNotExist:
                     form.add_error('promo_code', _("Promo code does not exist."))
+                    return render(request,
+                                  'services_add_order.html', {'form': form, 'service': service})
 
             else:
                 order.cost = order.category.cost
