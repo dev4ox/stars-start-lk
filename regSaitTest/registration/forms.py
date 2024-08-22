@@ -192,12 +192,13 @@ class OrderAddUser(forms.ModelForm):
         promo_code_value = self.cleaned_data.get('promo_code', '').strip()
         service = self.cleaned_data.get('service')
         category = self.cleaned_data.get('category')
+        user = self.cleaned_data.get("user")
 
         if promo_code_value:
             try:
                 promo_code = PromoCode.objects.get(value=promo_code_value)
 
-                if not promo_code.is_valid(self.instance.user):
+                if not promo_code.is_valid(user):
                     raise forms.ValidationError(_("Invalid or expired promo code."))
 
                 if promo_code.applicable_services.exists() and service not in promo_code.applicable_services.all():
@@ -214,11 +215,12 @@ class OrderAddUser(forms.ModelForm):
     def save(self, commit=True):
         order = super().save(commit=False)
         promo_code_value = self.cleaned_data.get('promo_code', '').strip()
+        user = self.cleaned_data.get("user")
 
         if promo_code_value:
             promo_code = PromoCode.objects.get(value=promo_code_value)
-            order.cost = promo_code.apply_discount(order.cost)
-            promo_code.use(order.user)
+            order.cost = promo_code.apply_discount(int(order.category.cost))
+            promo_code.use(user)
 
         if commit:
             order.save()

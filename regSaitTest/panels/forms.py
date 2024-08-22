@@ -67,7 +67,7 @@ class CustomUserChangeModeratorForm(forms.ModelForm):
 
 
 class GroupServicesChangeForm(forms.ModelForm):
-    id = forms.IntegerField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+    id = forms.IntegerField(widget=forms.TextInput(attrs={'readonly': 'readonly'}), required=False)
 
     class Meta:
         model = GroupServices
