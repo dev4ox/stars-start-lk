@@ -5,10 +5,11 @@ import uuid
 # pip lib
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from phonenumber_field.modelfields import PhoneNumberField
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from phonenumber_field.modelfields import PhoneNumberField
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 def user_directory_path(instance, filename):
@@ -51,11 +52,13 @@ class CustomUser(AbstractUser):
         self.save()
 
     def is_promo_blocked(self, block_duration):
-        if self.promo_attempts >= 3:
+        if self.promo_attempts >= 3 and self.last_promo_attempt:
             if timezone.now() - self.last_promo_attempt < block_duration:
                 return True
+
             else:
                 self.reset_promo_attempts()
+
         return False
 
     def __str__(self):
@@ -85,7 +88,7 @@ class Category(models.Model):
 
 class Services(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField(default="")
+    description = CKEditor5Field(default="", config_name='extends')
     image_path = models.ImageField(
         upload_to=catalog_directory_path,
         blank=True,
@@ -127,6 +130,7 @@ class Order(models.Model):
     user_comment = models.TextField(blank=True, null=True)
     moder_comment = models.TextField(blank=True, null=True)
     cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    discount = models.IntegerField(default=0)
 
     class Meta:
         verbose_name = _("Order")
@@ -148,7 +152,7 @@ class PromoCode(models.Model):
     applicable_services = models.ManyToManyField(Services, blank=True)  # Применимо к конкретным услугам
     applicable_categories = models.ManyToManyField(Category, blank=True)  # Применимо к конкретным категориям
 
-    def is_valid(self, user):
+    def is_valid(self, user, service, category):
         """Проверка валидности промо-кода"""
         if not self.is_active:
             return False
@@ -157,6 +161,12 @@ class PromoCode(models.Model):
             return False
 
         if self.one_time_use and user in self.used_by.all():
+            return False
+
+        if service not in self.applicable_services.all():
+            return False
+
+        if category not in self.applicable_categories.all():
             return False
 
         return True

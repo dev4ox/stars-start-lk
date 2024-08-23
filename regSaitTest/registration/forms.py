@@ -11,6 +11,7 @@ from django.utils.safestring import mark_safe
 from django import forms
 from django.db import models
 from phonenumber_field.formfields import PhoneNumberField
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 # my lib
 from .models import CustomUser, Services, Order, Category, PromoCode
@@ -114,9 +115,16 @@ class CategoryChangeForm(forms.ModelForm):
 
 
 class ServicesChangeForm(forms.ModelForm):
+
     class Meta:
         model = Services
         fields = ['title', "description", 'image_path', "group_services", "is_active"]
+
+    widgets = {
+        "description": CKEditor5Widget(
+            attrs={"class": "django_ckeditor_5"}, config_name="comment"
+        )
+    }
 
 
 class OrderChangeForm(forms.ModelForm):
@@ -161,6 +169,19 @@ class OrderChangeForm(forms.ModelForm):
 
 
 class OrderAddUser(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['category'].queryset = Category.objects.none()
+
+        if 'initial' in kwargs:
+            service = kwargs["initial"]["service"]
+
+            try:
+                self.fields["category"].queryset = get_min_cost(service, output_queryset=True)
+
+            except (ValueError, TypeError):
+                pass
+
     promo_code = forms.CharField(max_length=20, required=False)
 
     class Meta:
@@ -190,40 +211,19 @@ class OrderAddUser(forms.ModelForm):
             "promo_code": _("Promo code"),
         }
 
-    def clean_promo_code(self):
-        promo_code_value = self.cleaned_data.get('promo_code', '').strip()
-        service = self.cleaned_data.get('service')
-        category = self.cleaned_data.get('category')
-        user = self.cleaned_data.get("user")
-
-        if promo_code_value:
-            try:
-                promo_code = PromoCode.objects.get(value=promo_code_value)
-
-                if not promo_code.is_valid(user):
-                    raise forms.ValidationError(_("Invalid or expired promo code."))
-
-                # promo_code.applicable_services.exists()
-                if service not in promo_code.applicable_services.all():
-                    raise forms.ValidationError(_("This promo code is not applicable to the selected service."))
-
-                if category not in promo_code.applicable_categories.all():
-                    raise forms.ValidationError(_("This promo code is not applicable to the selected category."))
-
-            except PromoCode.DoesNotExist:
-                raise forms.ValidationError(_("Promo code does not exist."))
-
-        return promo_code_value
-
     def save(self, commit=True):
         order = super().save(commit=False)
         promo_code_value = self.cleaned_data.get('promo_code', '').strip()
         user = self.cleaned_data.get("user")
 
-        if promo_code_value:
-            promo_code = PromoCode.objects.get(value=promo_code_value)
-            order.cost = promo_code.apply_discount(int(order.category.cost))
-            promo_code.use(user)
+        try:
+            if promo_code_value:
+                promo_code = PromoCode.objects.get(value=promo_code_value)
+                order.cost = promo_code.apply_discount(int(order.category.cost))
+                promo_code.use(user)
+
+        except PromoCode.DoesNotExist:
+            pass
 
         if commit:
             order.save()

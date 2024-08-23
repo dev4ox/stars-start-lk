@@ -12,11 +12,10 @@
         <p class="card-text">{{ service.description }}</p>
     </div>
     <div class="card-order-info">
-        <form method="post">
+        <form method="post" id="form_service_add_order">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="order-price">
-                <label>{% trans "Discount" %}:</label><p id="promo_code_discount_text"></p>
                 <label>{% trans "Cost" %}:</label><p id="category_cost_text"></p>
                 <button class="btn-primary" type="submit">{% trans "Submit" %}</button>
             </div>
@@ -29,50 +28,18 @@
 {% block scripts %}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-    var categorySelect = document.getElementById('id_category');
-    var promoCodeInput = document.getElementById('id_promo_code');
-    var checkPromoCodeButton = document.createElement('button');
-    checkPromoCodeButton.type = 'button';
-    checkPromoCodeButton.textContent = 'Проверить';
-    promoCodeInput.insertAdjacentElement('afterend', checkPromoCodeButton);
+        var categorySelect = document.getElementById('id_category');
+        var promoCodeInput = document.getElementById('id_promo_code');
+        var checkPromoCodeButton = document.createElement('button');
 
-    var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    var costText = document.getElementById('category_cost_text');
-    var discountText = document.getElementById('promo_code_discount_text');
+        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        var costText = document.getElementById('category_cost_text');
+        var discountText = document.getElementById('promo_code_discount_text');
 
-    function loadCategoryCost(category_id, promo_code = null) {
-        var url = `/ajax/get-category-cost/?category=${category_id}`;
-        if (promo_code) {
-            url += `&promo_code=${promo_code}`;
-        }
+        function loadCategoryCost(category_id, promo_code = null) {
+            var url = `/ajax/get-category-cost/?category=${category_id}`;
 
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'X-CSRFToken': csrfToken
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.cost == 0) {
-                costText.textContent = '{% trans "Negotiable" %}';
-            } else {
-                var finalCost = data.cost;
-                if (data.discount) {
-                    finalCost -= finalCost * (data.discount / 100);
-                    discountText.textContent = `-${data.discount}%`;
-                } else {
-                    discountText.textContent = '';
-                }
-                costText.textContent = finalCost + ' ₽';
-            }
-        });
-        }
-
-        function checkPromoCode() {
-            var promoCode = promoCodeInput.value;
-
-            fetch(`/ajax/check-promo-code/?promo_code=${promoCode}`, {
+            fetch(url, {
                 method: 'GET',
                 headers: {
                     'X-CSRFToken': csrfToken
@@ -80,19 +47,15 @@
             })
             .then(response => response.json())
             .then(data => {
-                if (data.is_valid) {
-                    discountText.textContent = `Скидка: ${data.discount}%`;
-                    loadCategoryCost(categorySelect.value, promoCode);
+                if (data.cost == 0) {
+                    costText.textContent = '{% trans "Negotiable" %}';
                 } else {
-                    discountText.textContent = data.error || "Неверный промо-код.";
+                    costText.textContent = data.cost + ' ₽';
                 }
-            })
-            .catch(error => {
-                discountText.textContent = "Ошибка при проверке промо-кода.";
-                console.error("Ошибка:", error);
             });
         }
 
+        // Проверяем стоимость категории при загрузке страницы
         if (categorySelect.value) {
             loadCategoryCost(categorySelect.value, promoCodeInput.value);
         }
@@ -101,13 +64,6 @@
             loadCategoryCost(this.value, promoCodeInput.value);
         });
 
-        promoCodeInput.addEventListener('input', function() {
-            discountText.textContent = ''; // Сброс сообщения о скидке при изменении промо-кода
-        });
-
-        checkPromoCodeButton.addEventListener('click', function() {
-            checkPromoCode();
-        });
     });
 </script>
 {% endblock %}

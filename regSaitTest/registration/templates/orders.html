@@ -14,6 +14,7 @@
                 <th>{% trans "Order Date" %}</th>
                 <th>{% trans "Service Name" %}</th>
                 <th>{% trans "Cost" %}</th>
+                <th>{% trans "Discount" %}</th>
                 <th>{% trans "Status" %}</th>
                 <th>{% trans "Actions" %}</th>
             </tr>
@@ -29,6 +30,7 @@
                 {% else %}
                     <td>Цена договорная</td>
                 {% endif %}
+                <td>-{{ order.discount }}%</td>
                 <td>
                     <span class="badge {% if order.status == 'paid' %}badge-success{% elif order.status == 'not_paid' %}badge-danger{% elif order.status == 'in_progress' %}badge-warning{% else %}badge-secondary{% endif %}">
                         {{ order.get_status_display }}

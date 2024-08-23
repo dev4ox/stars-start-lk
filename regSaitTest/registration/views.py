@@ -397,21 +397,18 @@ def services_add_order(request, service_id):
                 try:
                     promo_code = PromoCode.objects.get(value=promo_code_value)
 
-                    if promo_code.is_valid(request.user):
+                    if promo_code.is_valid(request.user, service, order.category):
                         cost_with_discount = promo_code.apply_discount(int(order.category.cost))
 
                         order.cost = cost_with_discount
+                        order.discount = promo_code.discount
                         promo_code.use(request.user)
 
                     else:
-                        form.add_error('promo_code', _("Invalid or expired promo code."))
-                        return render(request, 'services_add_order.html',
-                                      {'form': form, 'service': service})
+                        order.cost = order.category.cost
 
                 except PromoCode.DoesNotExist:
-                    form.add_error('promo_code', _("Promo code does not exist."))
-                    return render(request,
-                                  'services_add_order.html', {'form': form, 'service': service})
+                    order.cost = order.category.cost
 
             else:
                 order.cost = order.category.cost

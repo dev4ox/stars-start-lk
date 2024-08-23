@@ -23,7 +23,8 @@ from registration.urls import urlpatterns_ajax
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("lk/", include("registration.urls")),
-    path("lk/panels/", include("panels.urls"))
+    path("lk/panels/", include("panels.urls")),
+    path("lk/ckeditor5/", include('django_ckeditor_5.urls')),
 ]
 
 urlpatterns += urlpatterns_ajax

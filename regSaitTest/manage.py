@@ -2,6 +2,9 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import time
+import traceback
+import signal
 
 
 def main():
@@ -15,7 +18,15 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    execute_from_command_line(sys.argv)
+
+    try:
+        execute_from_command_line(sys.argv)
+
+    except RuntimeError:
+        traceback.print_exc()
+        if 'mod_wsgi' in sys.modules:
+            os.kill(os.getpid(), signal.SIGINT)
+            time.sleep(2.5)
 
 
 if __name__ == '__main__':

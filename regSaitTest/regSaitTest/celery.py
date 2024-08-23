@@ -6,9 +6,9 @@ from celery import Celery
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'regSaitTest.settings')
 # os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
-import django
-django.setup()
-
+# import django
+# django.setup()
+#
 from django.conf import settings
 
 app = Celery('regSaitTest')

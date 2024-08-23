@@ -1,4 +1,7 @@
 {% extends "panels_base_form.html" %}
+{% block header %}
+    {{ form.media }} # Required for styling/js to make ckeditor5 work
+{% endblock %}
 {% load i18n %}
 
 {% block title %}{% trans title %} | {% trans "Star Start" %}{% endblock %}

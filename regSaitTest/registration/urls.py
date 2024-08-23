@@ -58,5 +58,5 @@ urlpatterns_ajax = [
     # ajax
     # path('ajax/load-categories/', views.load_categories, name='load_categories'),
     path('ajax/get-category-cost/', views_ajax.get_category_cost, name='get_category_cost'),
-    path('ajax/check-promo-code/', views_ajax.check_promo_code, name='check_promo_code'),
+    # path('ajax/check-promo-code/', views_ajax.check_promo_code, name='check_promo_code'),
 ]

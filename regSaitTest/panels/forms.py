@@ -17,7 +17,17 @@ class CustomUserChangeAdminForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ("first_name", "last_name", "phone_number", "profile_photo", "role", "is_active")
+        fields = (
+            "ip_address",
+            "first_name",
+            "last_name",
+            "phone_number",
+            "profile_photo",
+            "role",
+            "is_active",
+            "last_promo_attempt",
+        )
+
         labels = {
             "first_name": _("First name"),
             "last_name": _("Last name"),
