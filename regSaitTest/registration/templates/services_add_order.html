@@ -9,7 +9,7 @@
     <img src="{{ service.image_path.url }}" alt="{% trans 'Service' %}">
     <div class="card-body">
         <h5 class="card-title">{{ service.title }}</h5>
-        <p class="card-text">{{ service.description }}</p>
+        <p class="card-text">{{ service.description|safe }}</p>
     </div>
     <div class="card-order-info">
         <form method="post" id="form_service_add_order">

@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
-from django_ckeditor_5.fields import CKEditor5Field
+from tinymce.models import HTMLField
 
 
 def user_directory_path(instance, filename):
@@ -88,7 +88,7 @@ class Category(models.Model):
 
 class Services(models.Model):
     title = models.CharField(max_length=255)
-    description = CKEditor5Field(default="", config_name='extends')
+    description = HTMLField(default="")
     image_path = models.ImageField(
         upload_to=catalog_directory_path,
         blank=True,

@@ -11,7 +11,7 @@ from django.utils.safestring import mark_safe
 from django import forms
 from django.db import models
 from phonenumber_field.formfields import PhoneNumberField
-from django_ckeditor_5.widgets import CKEditor5Widget
+from tinymce.widgets import TinyMCE
 
 # my lib
 from .models import CustomUser, Services, Order, Category, PromoCode
@@ -115,16 +115,25 @@ class CategoryChangeForm(forms.ModelForm):
 
 
 class ServicesChangeForm(forms.ModelForm):
+    description = forms.CharField(
+        widget=TinyMCE(
+            attrs={
+                'cols': 80,
+                'rows': 30,
+                "id": "service_form_description_textarea"
+            }
+        )
+    )
 
     class Meta:
         model = Services
         fields = ['title', "description", 'image_path', "group_services", "is_active"]
 
-    widgets = {
-        "description": CKEditor5Widget(
-            attrs={"class": "django_ckeditor_5"}, config_name="comment"
-        )
-    }
+    # widgets = {
+    #     "description": CKEditor5Widget(
+    #         attrs={"class": "django_ckeditor_5"}, config_name="comment"
+    #     )
+    # }
 
 
 class OrderChangeForm(forms.ModelForm):
@@ -177,7 +186,10 @@ class OrderAddUser(forms.ModelForm):
             service = kwargs["initial"]["service"]
 
             try:
-                self.fields["category"].queryset = get_min_cost(service, output_queryset=True)
+                queryset = get_min_cost(service, output_queryset=True)
+
+                if queryset:
+                    self.fields["category"].queryset = get_min_cost(service, output_queryset=True)
 
             except (ValueError, TypeError):
                 pass

@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,600,700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tinymce@6.0.0/skins/ui/oxide/skin.min.css">
     <style>
         .select2-container--default .select2-selection--multiple,
         .select2-dropdown,
@@ -123,7 +123,7 @@
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <script src="{% static 'js/jquery.inputmask-5.0.9.min.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tinymce@6.0.0/tinymce.min.js"></script>
     <script>
         $(document).ready(function(){
             $('input[type="tel"]').inputmask({"mask": "+7 (999) 999-99-99"});
@@ -132,12 +132,21 @@
         $(document).ready(function() {
             $('.django-select2').select2();
         });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Инициализация CKEditor на всех текстовых полях с классом 'ckeditor'
-            document.querySelectorAll('textarea.ckeditor').forEach(function(textarea) {
-                CKEDITOR.replace(textarea);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            tinymce.init({
+                selector: '#service_form_description_textarea',  // Селектор для инициализации, например, 'textarea' или '#mytextarea'
+                height: 500,
+                menubar: false,
+                plugins: [
+                    'advlist autolink lists link image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount'
+                ],
+                toolbar: 'undo redo | formatselect | bold italic backcolor | \
+                          alignleft aligncenter alignright alignjustify | \
+                          bullist numlist outdent indent | removeformat | help',
+                content_css: 'https://cdn.jsdelivr.net/npm/tinymce@6.0.0/skins/ui/oxide/content.min.css'
             });
         });
     </script>
