@@ -16,11 +16,25 @@ END $$;
 
 
 
------ Экспорт - импорт таблиц через SQL (cmd) -----
-pg_dump --data-only --table=panels_groupservices --column-inserts --dbname=stars_start > /home/ten/groupservices_data.sql
-pg_dump --data-only --table=registration_services --column-inserts --dbname=stars_start > /home/ten/services_data.sql
-pg_dump --data-only --table=registration_category --column-inserts --dbname=stars_start > /home/ten/category_data.sql
-pg_dump --data-only --table=registration_customuser --column-inserts --dbname=stars_start > /home/ten/customuser_data.sql
+----- Экспорт - импорт таблиц через SQL (linux), сначала переместить, потом запускать от postgres -----
+pg_dump --data-only --table=panels_groupservices --column-inserts --dbname=stars_start > /tmp/groupservices_data.sql
+pg_dump --data-only --table=registration_services --column-inserts --dbname=stars_start > /tmp/services_data.sql
+pg_dump --data-only --table=registration_category --column-inserts --dbname=stars_start > /tmp/category_data.sql
+pg_dump --data-only --table=registration_customuser --column-inserts --dbname=stars_start > /tmp/customuser_data.sql
 
 psql --dbname=stars_start < /tmp/groupservices_data.sql
+psql --dbname=stars_start < /tmp/services_data.sql
+psql --dbname=stars_start < /tmp/category_data.sql
+psql --dbname=stars_start < /tmp/customuser_data.sql
 
+
+----- Экспорт - импорт таблиц через SQL (win) -----
+pg_dump -U postgres --data-only --table=panels_groupservices --column-inserts --dbname=stars_start > temp/groupservices_data.sql
+pg_dump -U postgres --data-only --table=registration_services --column-inserts --dbname=stars_start > temp/services_data.sql
+pg_dump -U postgres --data-only --table=registration_category --column-inserts --dbname=stars_start > temp/category_data.sql
+pg_dump -U postgres --data-only --table=registration_customuser --column-inserts --dbname=stars_start > temp/customuser_data.sql
+
+psql -U postgres --dbname=stars_start < temp/groupservices_data.sql
+psql -U postgres --dbname=stars_start < temp/services_data.sql
+psql -U postgres --dbname=stars_start < temp/category_data.sql
+psql -U postgres --dbname=stars_start < temp/customuser_data.sql
