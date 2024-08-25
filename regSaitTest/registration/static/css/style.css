@@ -283,7 +283,7 @@ footer p {
 .user-card .card-body h5 {
   margin-bottom: 15px;
 }
-.user-card .card-body .card-text {
+.user-card .card-body p:first-of-type {
   margin: 0;
   overflow: hidden;
   max-height: 4.8em; /* Высота для 4-х строк */
@@ -293,7 +293,7 @@ footer p {
   white-space: normal;
   transition: max-height 0.3s ease;
 }
-.user-card .card-body .card-text.expanded {
+.user-card .card-body p:first-of-type.expanded {
   max-height: none; /* Убираем ограничение высоты */
   overflow: visible;
 }

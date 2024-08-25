@@ -32,7 +32,7 @@
                             <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ service.title }}</h5>
-                                <p class="card-text text-ellipsis" data-full-text="{{ service.description|safe }}">{{ service.description|safe }}</p>
+                                {{ service.description|safe }}
                                 {% if service.min_cost != 0 and service.min_cost is not None %}
                                     <p>{% trans 'Price from' %} {{ service.min_cost }} ₽</p>
                                 {% elif service.min_cost == 0 and service.min_cost is not None %}
@@ -56,26 +56,32 @@
 
 {% block scripts %}
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const cards = document.querySelectorAll('.card-text');
+    $(document).ready(function() {
+        const cardBodies = $('.card-body');
 
-        cards.forEach(card => {
-            const toggleLink = document.createElement('span');
-            toggleLink.classList.add('toggle-link');
-            toggleLink.textContent = "Развернуть";
+        cardBodies.each(function() {
+            const firstParagraph = $(this).find('p').first();
 
-            // Добавляем ссылку после параграфа
-            card.insertAdjacentElement('afterend', toggleLink);
+            if (firstParagraph.length) {
+                const toggleLink = $('<span class="toggle-link">Развернуть</span>');
+                toggleLink.insertAfter(firstParagraph);
 
-            toggleLink.addEventListener('click', function () {
-                if (card.classList.contains('expanded')) {
-                    card.classList.remove('expanded');
-                    toggleLink.textContent = "Развернуть";
-                } else {
-                    card.classList.add('expanded');
-                    toggleLink.textContent = "Свернуть";
-                }
-            });
+                firstParagraph.css({
+                    'max-height': '7.2em',
+                    'overflow': 'hidden',
+                    'transition': 'max-height 0.5s ease'
+                });
+
+                toggleLink.on('click', function() {
+                    if (firstParagraph.hasClass('expanded')) {
+                        firstParagraph.removeClass('expanded').css('max-height', '7.2em');
+                        toggleLink.text('Развернуть');
+                    } else {
+                        firstParagraph.addClass('expanded').css('max-height', firstParagraph.prop('scrollHeight') + 'px');
+                        toggleLink.text('Свернуть');
+                    }
+                });
+            }
         });
     });
 </script>
