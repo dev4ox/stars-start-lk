@@ -7,6 +7,7 @@ regSaitTest/secret.py
 regSaitTest/media
 server_deploy.bat
 deploy.sh
+/temp
 
 # C extensions
 *.so

@@ -1,4 +1,4 @@
------ УДАЛЕНИЕ ТАБЛИЦ ИЗ БД postgreSQL
+----- УДАЛЕНИЕ ТАБЛИЦ ИЗ БД postgreSQL -----
 DO $$ DECLARE
     r RECORD;
 BEGIN
@@ -13,3 +13,10 @@ BEGIN
     -- Включение проверок внешних ключей
     EXECUTE 'SET session_replication_role = DEFAULT;';
 END $$;
+
+
+
+----- Экспорт - импорт таблиц через SQL (cmd) -----
+pg_dump --data-only --table=registration_groupservices --column-inserts --dbname=stars_start > /tmp/groupservices_data.sql
+psql --dbname=stars_start < /tmp/groupservices_data.sql
+

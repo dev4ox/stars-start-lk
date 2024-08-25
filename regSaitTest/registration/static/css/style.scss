@@ -193,21 +193,27 @@ main {
 // Profile Container
 .profile-container {
     display: flex;
-    background-color: $background-color;
+    background-color: #444;
     color: $text-color;
-    margin: 20px auto;
+    margin: 10px auto;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    max-width: 100%;
 
-    .profile-photo {
-        border: 2px solid $border-color;
+    .profile-left{
+        padding: 0;
+        display: flex;
+        justify-content: center;
+
+        .profile-photo {
+            object-fit: cover; /* сохраняет соотношение сторон, обрезая изображение по краям */
+            object-position: center; /* центрирует изображение внутри контейнера */
+            aspect-ratio: 1 / 1; /* устанавливает соотношение сторон 1:1 */
+        }
     }
 
     .profile-right {
-        padding-left: 20px;
-
+        padding: 0;
         h2 {
             margin-top: 0;
         }
@@ -233,7 +239,7 @@ main {
 
 @media (max-width: 768px) {
     .profile-photo {
-        margin: 20px 0;
+        margin-bottom: 20px;
     }
 }
 
@@ -241,11 +247,10 @@ main {
 .last-order {
     background-color: $background-color;
     color: $text-color;
-    margin: 20px auto;
+    margin: 10px auto;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    max-width: 100%;
 
     h3 {
         margin-top: 0;
@@ -672,7 +677,16 @@ footer {
 }
 
 .form-group input[type="file"] {
-    padding: 5px;
+    margin: 0;
+    padding: 5px 0;
+    button {
+        border-radius: 10%;
+    }
+}
+
+#file-upload-inform {
+    margin: 0;
+    padding-bottom: 5px;
 }
 
 .helptext {
