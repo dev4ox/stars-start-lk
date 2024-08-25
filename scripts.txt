@@ -17,6 +17,10 @@ END $$;
 
 
 ----- Экспорт - импорт таблиц через SQL (cmd) -----
-pg_dump --data-only --table=registration_groupservices --column-inserts --dbname=stars_start > /tmp/groupservices_data.sql
+pg_dump --data-only --table=panels_groupservices --column-inserts --dbname=stars_start > /home/ten/groupservices_data.sql
+pg_dump --data-only --table=registration_services --column-inserts --dbname=stars_start > /home/ten/services_data.sql
+pg_dump --data-only --table=registration_category --column-inserts --dbname=stars_start > /home/ten/category_data.sql
+pg_dump --data-only --table=registration_customuser --column-inserts --dbname=stars_start > /home/ten/customuser_data.sql
+
 psql --dbname=stars_start < /tmp/groupservices_data.sql
 
