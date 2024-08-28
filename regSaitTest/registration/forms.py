@@ -1,3 +1,6 @@
+# python lib
+import os
+
 # pip lib
 from django.contrib.auth.forms import (
     UserCreationForm,
@@ -10,6 +13,8 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.safestring import mark_safe
 from django import forms
 from django.db import models
+from django.conf import settings
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from phonenumber_field.formfields import PhoneNumberField
 from tinymce.widgets import TinyMCE
 
@@ -114,6 +119,27 @@ class CategoryChangeForm(forms.ModelForm):
         fields = ["name", "cost", "service", "is_active"]
 
 
+class MultipleFileInput(forms.ClearableFileInput):
+    allow_multiple_selected = True
+
+
+class MultipleFileField(forms.FileField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('widget', MultipleFileInput())
+        super().__init__(*args, **kwargs)
+
+    def clean(self, data, initial=None):
+        single_file_clean = super().clean
+
+        if isinstance(data, (list, tuple)):
+            result = [single_file_clean(d, initial) for d in data]
+
+        else:
+            result = [single_file_clean(data, initial)]
+
+        return result
+
+
 class ServicesChangeForm(forms.ModelForm):
     description = forms.CharField(
         widget=TinyMCE(
@@ -124,16 +150,81 @@ class ServicesChangeForm(forms.ModelForm):
             }
         )
     )
+    load_content = MultipleFileField(required=False)
+    table_contents = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                "hidden": True,
+                "id": "panels_form_services_contents_table",
+                "value": 0,
+            }
+        ),
+        required=False
+    )
+    id = forms.IntegerField()
 
     class Meta:
         model = Services
-        fields = ['title', "description", 'image_path', "group_services", "is_active"]
+        fields = [
+            "id",
+            'title',
+            "group_services",
+            "description",
+            'image_path',
+            "table_contents",
+            "load_content",
+            "is_active",
+            "is_visible_content"
+        ]
 
-    # widgets = {
-    #     "description": CKEditor5Widget(
-    #         attrs={"class": "django_ckeditor_5"}, config_name="comment"
-    #     )
-    # }
+        labels = {
+            "table_contents": _("Table contents")
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["id"].widget.attrs["readonly"] = True
+        self.fields["id"].widget.attrs["id"] = "service_id"
+
+        if "instance" in kwargs:
+            instance = kwargs["instance"]
+
+            self.fields["id"].initial = instance.id
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        uploaded_files = self.cleaned_data.get('load_content')
+        file_paths = []
+
+        upload_dir = settings.MEDIA_ROOT + '\\service_contents'
+
+        if not os.path.exists(upload_dir):
+            os.makedirs(upload_dir)
+
+        for file in uploaded_files:
+            file_path = self.handle_uploaded_file(file)
+
+            if file_path not in instance.contents:
+                file_paths.append(file_path)
+
+        # Добавляем новые пути в contents
+        if file_paths:
+            instance.contents.extend(file_paths)
+
+        if commit:
+            instance.save()
+
+        return instance
+
+    @staticmethod
+    def handle_uploaded_file(f):
+        file_path = os.path.join(settings.MEDIA_ROOT, "service_contents", f.name)
+
+        with open(file_path, 'wb+') as destination:
+            for chunk in f.chunks():
+                destination.write(chunk)
+
+        return file_path
 
 
 class OrderChangeForm(forms.ModelForm):
@@ -189,7 +280,7 @@ class OrderAddUser(forms.ModelForm):
                 queryset = get_min_cost(service, output_queryset=True)
 
                 if queryset:
-                    self.fields["category"].queryset = get_min_cost(service, output_queryset=True)
+                    self.fields["category"].queryset = queryset
 
             except (ValueError, TypeError):
                 pass

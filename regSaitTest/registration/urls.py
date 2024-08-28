@@ -20,6 +20,7 @@ urlpatterns = [
     # orders
     path('orders/', views.orders, name='orders'),
     path('orders/<int:order_id>/get_ticket/', views.generate_or_get_pdf, name='order_get_tickets'),
+    path('orders/<int:service_id>/view_content/', views.order_service_content, name='order_view_content'),
     path('orders/<int:order_id>/orders_details', views.order_details, name='orders_details'),
     path('orders/<int:order_id>/pay/', views.order_pay, name='orders_pay'),
 
@@ -57,6 +58,12 @@ urlpatterns = [
 urlpatterns_ajax = [
     # ajax
     # path('ajax/load-categories/', views.load_categories, name='load_categories'),
-    path('ajax/get-category-cost/', views_ajax.get_category_cost, name='get_category_cost'),
     # path('ajax/check-promo-code/', views_ajax.check_promo_code, name='check_promo_code'),
+    path('ajax/get-category-cost/', views_ajax.get_category_cost, name='get_category_cost'),
+    path('ajax/get-service-contents/<int:service_id>/', views_ajax.get_service_contents, name='get_service_contents'),
+    path(
+        'ajax/delete-service-content/<int:service_id>/',
+        views_ajax.delete_service_content,
+        name='delete_service_content'
+    ),
 ]

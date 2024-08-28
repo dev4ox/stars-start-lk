@@ -1,14 +1,16 @@
 # python lib
-from datetime import timedelta
+from pathlib import Path
+import os
 
 # pip lib
+from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
-from django.utils import timezone
+from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_GET
+from django.views.decorators.http import require_POST
 
 # my lib
-from .models import Category, PromoCode
+from .models import Category, Services
 
 
 @csrf_exempt
@@ -28,6 +30,49 @@ def get_category_cost(request):
 
     except Category.DoesNotExist:
         return JsonResponse({'cost': 0})
+
+
+def get_service_contents(request, service_id):
+    service = get_object_or_404(Services, id=service_id)
+    output_contents = []
+
+    for path in service.contents:
+        path = Path(path)
+
+        file_obj = {
+            "filename": path.name,
+            "filepath": str(path.relative_to(settings.MEDIA_ROOT)),
+        }
+
+        output_contents.append(file_obj)
+
+    json_response = {
+        'contents': output_contents,
+    }
+
+    return JsonResponse(json_response)
+
+
+@require_POST
+def delete_service_content(request, service_id):
+    filepath = request.GET.get('filepath')
+
+    service = get_object_or_404(Services, id=service_id)
+
+    if filepath and service:
+        full_path = os.path.join(settings.MEDIA_ROOT, filepath)
+
+        if os.path.exists(full_path):
+            os.remove(full_path)
+
+            service.contents = []
+            service.save()
+
+            return JsonResponse({'success': True})
+
+    service.contents = []
+    service.save()
+    return JsonResponse({'success': False}, status=400)
 
 
 # @require_GET

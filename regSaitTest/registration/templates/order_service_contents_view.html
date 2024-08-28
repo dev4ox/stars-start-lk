@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ service.title }}{% endblock %}
+
+{% block content %}
+    <h2>{% trans "Contents" %}</h2>
+    <ul>
+        {% for file in files %}
+            <li>
+                {% if file.type == ".docx" %}
+                    <a href="{{ file.url }}">Download DOCX: {{ file.name }}</a>
+                {% elif file.type == ".pdf" %}
+                <object data="{{ file.url }}" type="application/pdf" width="600" height="400">
+                    <p>Your browser does not support PDFs. Please download the PDF to view it: <a href="{{ file.url }}">Download PDF</a>.</p>
+                </object>
+                {% elif file.type == ".mp3" %}
+                    <audio controls>
+                        <source src="{{ file.url }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                {% elif file.type == ".mp4" %}
+                    <video width="320" height="240" controls>
+                        <source src="{{ file.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% else %}
+                    Unknown file type: {{ file.name }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

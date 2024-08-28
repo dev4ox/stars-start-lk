@@ -1,8 +1,10 @@
 # python lib
 from typing import Type
+import os
 
 # pip lib
 from django.shortcuts import render, redirect
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.sessions.backends.db import SessionStore
 
@@ -27,7 +29,7 @@ class AddOrGetDataSession:
             "url_redirect": None,
             "model_name": None,
             "model_list_param_name": None,
-            "model_save_commit": None,
+            "model_save_commit": True,
             "model_link_field_value": None,
             "html_vars": None,
         }
@@ -91,6 +93,16 @@ def panels_form_details(request, id_):
     return render(request, "form_details.html", request.context)
 
 
+def save_uploaded_file(uploaded_file):
+    save_path = os.path.join(settings.MEDIA_ROOT, "service_contents", uploaded_file.name)
+
+    with open(save_path, 'wb+') as destination:
+        for chunk in uploaded_file.chunks():
+            destination.write(chunk)
+
+    return os.path.join(settings.MEDIA_URL, "service_contents/", uploaded_file.name)
+
+
 @panels_form_sub_data
 @login_required
 def panels_form_change(request, id_):
@@ -121,28 +133,32 @@ def panels_form_change(request, id_):
             else:
                 model = form.save(commit=False)
 
-                if data.model_link_field_value is not None:
-                    for model_field, to_model_fields in data.model_link_field_value.items():
-                        if "." in to_model_fields:
-                            len_to_model_fields = len(to_model_fields.split("."))
-                            to_model_fields = to_model_fields.split(".")
+            if data.model_link_field_value is not None:
+                for model_field, to_model_fields in data.model_link_field_value.items():
+                    if "." in to_model_fields:
+                        len_to_model_fields = len(to_model_fields.split("."))
+                        to_model_fields = to_model_fields.split(".")
 
-                            if len_to_model_fields == 2:
-                                setattr(
-                                    model,
-                                    model_field,
+                        if len_to_model_fields == 2:
+                            setattr(
+                                model,
+                                model_field,
+                                getattr(
                                     getattr(
-                                        getattr(
-                                            model,
-                                            to_model_fields[0]
-                                        ),
-                                        to_model_fields[1]
-                                    )
+                                        model,
+                                        to_model_fields[0]
+                                    ),
+                                    to_model_fields[1]
                                 )
+                            )
 
                 model.save()
 
-            form.save_m2m()
+            try:
+                form.save_m2m()
+
+            except AttributeError:
+                pass
 
             return redirect(data.url_redirect)
 

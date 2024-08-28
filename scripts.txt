@@ -38,3 +38,10 @@ psql -U postgres --dbname=stars_start < temp/groupservices_data.sql
 psql -U postgres --dbname=stars_start < temp/services_data.sql
 psql -U postgres --dbname=stars_start < temp/category_data.sql
 psql -U postgres --dbname=stars_start < temp/customuser_data.sql
+
+----- Команда для запуска celery -----
+На Windows:
+celery -A regSaitTest worker --loglevel=info --pool=solo
+
+На Linux:
+celery -A regSaitTest worker --loglevel=info

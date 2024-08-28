@@ -4,6 +4,7 @@ import uuid
 import qrcode
 from tempfile import NamedTemporaryFile
 from datetime import timedelta
+from pathlib import Path
 
 # pip lib
 from reportlab.lib.pagesizes import A6, landscape
@@ -12,6 +13,7 @@ from reportlab.pdfgen import canvas
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 from yookassa import Configuration, Payment
+from docx import Document
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
@@ -30,7 +32,7 @@ from django.core.paginator import Paginator
 # from django.core.handlers.wsgi import WSGIRequest
 from django.template.loader import render_to_string
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 
 # my lib
 from .forms import (
@@ -42,7 +44,7 @@ from .forms import (
     CustomSetPasswordForm,
 )
 from .models import Order, Services, CustomUser, PromoCode
-from .utils import get_min_cost, check_date_promo_code, execute_promo_code
+from .utils import get_min_cost
 
 from panels.models import GroupServices
 from panels.utils import get_ip
@@ -171,6 +173,90 @@ def order_details(request, order_id):
         )
 
         return redirect("panel_form_edit", order_id)
+
+
+# @login_required
+# def order_service_content_view(request, file_paths):
+#     # responses = []
+#     #
+#     # for file_path in file_paths:
+#     #     responses.append(order_service_content_view_file(file_path))
+#     #
+#     # context = {
+#     #     'responses': responses,
+#     # }
+#     #
+#     # return render(request, 'order_service_cotents_view.html', context)
+#
+#     # file_paths_list = file_paths.split(',')
+#     files_info = []
+#
+#     for file_path in file_paths:
+#         file_ext = os.path.splitext(file_path)[1].lower()
+#         file_info = {
+#             'path': file_path,
+#             'ext': file_ext,
+#         }
+#
+#         if file_ext == '.pdf':
+#             file_info['content_type'] = 'application/pdf'
+#             file_info['display'] = 'embed'
+#
+#         elif file_ext in ['.jpg', '.jpeg', '.png', '.gif']:
+#             file_info['content_type'] = f'image/{file_ext[1:]}'
+#             file_info['display'] = 'image'
+#
+#         elif file_ext == '.mp3':
+#             file_info['content_type'] = 'audio/mpeg'
+#             file_info['display'] = 'audio'
+#
+#         elif file_ext == '.mp4':
+#             file_info['content_type'] = 'video/mp4'
+#             file_info['display'] = 'video'
+#
+#         elif file_ext == '.docx':
+#             file_info['content_type'] = 'text/plain'
+#             file_info['display'] = 'text'
+#
+#         else:
+#             file_info['content_type'] = 'text/plain'
+#             file_info['display'] = 'text'
+#
+#         files_info.append(file_info)
+#
+#     context = {
+#         "files_info": files_info
+#     }
+#
+#     return render(request, 'order_service_contents_view.html', context)
+
+
+@login_required
+def order_service_content(request, service_id):
+    service = Services.objects.get(id=service_id)  # Получаем объект Services (замените на нужный)
+    files = service.contents  # Предполагается, что это список путей к файлам
+
+    file_data = []
+
+    for file_path in files:
+        file_path = Path(file_path)
+        url = os.path.join(settings.MEDIA_URL, "service_contents", file_path.name)
+
+        if file_path.suffix in ['.docx', '.pdf', '.mp3', '.mp4']:
+            file_data.append(
+                {
+                    'name': file_path.name,
+                    'url': url,
+                    'type': file_path.suffix,
+                }
+            )
+
+    context = {
+        "service": service,
+        'files': file_data,
+    }
+
+    return render(request, 'order_service_contents_view.html', context)
 
 
 @login_required
@@ -315,7 +401,6 @@ def generate_or_get_pdf(request, order_id):
 def services(request):
     services_list = Services.objects.all().order_by("id")
     # group_services = GroupServices.objects.all().order_by("title")
-    min_cost_categories_list = []
     search_query = request.GET.get('search', '')
 
     if search_query:

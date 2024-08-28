@@ -32,7 +32,9 @@
                             <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ service.title }}</h5>
-                                {{ service.description|safe }}
+                                <div>
+                                    {{ service.description|safe }}
+                                </div>
                                 {% if service.min_cost != 0 and service.min_cost is not None %}
                                     <p>{% trans 'Price from' %} {{ service.min_cost }} ₽</p>
                                 {% elif service.min_cost == 0 and service.min_cost is not None %}

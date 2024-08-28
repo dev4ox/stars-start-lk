@@ -21,7 +21,7 @@
             <tr>
                 <td>{{ service.id }}</td>
                 <td>{{ service.title }}</td>
-                <td>{{ service.description }}</td>
+                <td>{{ service.description|safe }}</td>
                 <td>
                     <a href="{% url 'panel_form_edit' service.id %}" class="btn btn-success">{% trans "Edit" %}</a>
                     <a href="{% url 'panel_form_delete' service.id %}" class="btn btn-danger">{% trans "Delete" %}</a>

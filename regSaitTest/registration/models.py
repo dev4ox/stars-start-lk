@@ -1,15 +1,20 @@
 # python lib
 import os
 import uuid
+from glob import glob
 
 # pip lib
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
+from django.conf import settings
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 from tinymce.models import HTMLField
+
+# my lib
+# from .tasks import check_service_contents_path
 
 
 def user_directory_path(instance, filename):
@@ -69,13 +74,6 @@ class CustomUser(AbstractUser):
         return reverse('profile')
 
 
-def catalog_directory_path(instance, filename):
-    # Function to generate the path and unique filename
-    extension = filename.split('.')[-1]
-    unique_filename = f"{uuid.uuid4()}.{extension}"
-    return os.path.join('services_images/', unique_filename)
-
-
 class Category(models.Model):
     name = models.CharField(max_length=255)
     cost = models.DecimalField(max_digits=10, decimal_places=2)
@@ -84,6 +82,20 @@ class Category(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.service.title})"
+
+
+def catalog_directory_path(instance, filename):
+    # Function to generate the path and unique filename
+    extension = filename.split('.')[-1]
+    unique_filename = f"{uuid.uuid4()}.{extension}"
+    return os.path.join('services_images/', unique_filename)
+
+
+def content_directory_path(instance, filename):
+    # Function to generate the path and unique filename
+    extension = filename.split('.')[-1]
+    unique_filename = f"{uuid.uuid4()}.{extension}"
+    return os.path.join('service_contents/', unique_filename)
 
 
 class Services(models.Model):
@@ -96,7 +108,29 @@ class Services(models.Model):
         default="services_images/default.jpg"
     )
     group_services = models.ForeignKey("panels.GroupServices", on_delete=models.CASCADE, default="")
+    contents = models.JSONField(default=list, null=True, blank=True)
     is_active = models.BooleanField(default=True)
+    is_visible_content = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        file_paths_on_server = []
+        path_to_contents_on_server = os.path.join(settings.MEDIA_ROOT, "service_contents")
+        file_types = [".docx", ".pdf", ".mp3", ".mp4"]
+
+        for file_type in file_types:
+            file_paths_on_server += glob(path_to_contents_on_server + "\\*" + file_type)
+
+        self.contents: list
+
+        for index_content_path, content_path in enumerate(self.contents):
+            if content_path not in file_paths_on_server:
+                del self.contents[index_content_path]
+
+        for index_file_path, file_path in enumerate(file_paths_on_server):
+            if file_path not in self.contents:
+                self.contents.append(file_path)
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title

@@ -49,6 +49,7 @@
                         {% csrf_token %}
                         <button type="submit" class="btn btn-success">{% trans "Get ticket" %}</button>
                     </form>
+                    <a href="{% url 'order_view_content' order.service.id %}" class="btn btn-info">{% trans "View content" %}</a>
                     {% endif %}
 
                     <a href="{% url 'orders_details' order.order_id %}" class="btn btn-info">{% trans "Details" %}</a>
