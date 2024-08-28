@@ -5,6 +5,7 @@ __pycache__/
 .idea/
 regSaitTest/secret.py
 regSaitTest/media
+regSaitTest/registration/static/js/yandex-metrica.js
 server_deploy.bat
 deploy.sh
 /temp
