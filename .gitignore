@@ -37,6 +37,8 @@ test/
 regSaitTest/secret.py
 regSaitTest/media/order_user_tickets
 regSaitTest/media/order_user_tickets/*
+regSaitTest/media/service_contents/
+regSaitTest/media/service_contents/*
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
