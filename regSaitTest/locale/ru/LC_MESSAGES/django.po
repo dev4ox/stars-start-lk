@@ -58,16 +58,12 @@ msgid "Discount"
 msgstr "Скидка"
 
 #: .\panels\forms.py:132 .\panels\templates\admin\promo_code.html:17
-#, fuzzy
-#| msgid "Registration Date"
 msgid "Expiration date"
-msgstr "Дата регистрации"
+msgstr "Дата окончания"
 
 #: .\panels\forms.py:133
-#, fuzzy
-#| msgid "Active Orders"
 msgid "Active"
-msgstr "Активные заказы"
+msgstr "Активировать"
 
 #: .\panels\middleware.py:57
 msgid "Your IP has been banned. For more information, visit:"
@@ -323,15 +319,11 @@ msgstr "Последние действия"
 #: .\panels\templates\admin\panels_base_admin.html:44
 #: .\panels\templates\moderator\group_service.html:4
 #: .\panels\templates\moderator\group_service.html:8
-#, fuzzy
-#| msgid "Add group service"
 msgid "Group service"
-msgstr "Добавить группу услуг"
+msgstr "Группа услуг"
 
 #: .\panels\templates\admin\group_service.html:9
 #: .\panels\templates\moderator\group_service.html:9
-#, fuzzy
-#| msgid "Add group service"
 msgid "Add Group service"
 msgstr "Добавить группу услуг"
 
@@ -509,10 +501,8 @@ msgid "Promo code"
 msgstr "Промокод"
 
 #: .\panels\templates\admin\promo_code.html:9
-#, fuzzy
-#| msgid "Add Order"
 msgid "Add Promo code"
-msgstr "Добавить заказ"
+msgstr "Добавить промокод"
 
 #: .\panels\templates\admin\reports.html:4
 msgid "Report Management"
@@ -633,10 +623,8 @@ msgid "Details"
 msgstr "Подробнее"
 
 #: .\panels\templates\moderator\dashboard.html:19
-#, fuzzy
-#| msgid "Admin Dashboard"
 msgid "Moderator Dashboard"
-msgstr "Панель администратора"
+msgstr "Панель модератора"
 
 #: .\panels\templates\observer\order_user_details.html:31
 #: .\registration\templates\message_about_activate.html:12
@@ -801,8 +789,6 @@ msgid "Return to the list of orders"
 msgstr "Вернуться в заказы"
 
 #: .\registration\templates\order_service_contents_view.html:7
-#, fuzzy
-#| msgid "Content"
 msgid "Contents"
 msgstr "Содержание"
 
@@ -825,10 +811,8 @@ msgid "Get ticket"
 msgstr "Билет"
 
 #: .\registration\templates\orders.html:52
-#, fuzzy
-#| msgid "Content"
 msgid "View content"
-msgstr "Содержание"
+msgstr "Просмотреть содержимое"
 
 #: .\registration\templates\orders.html:65
 msgid "Previous"
@@ -1032,125 +1016,76 @@ msgstr "Недействительная ссылка активации!"
 #~ msgid "file"
 #~ msgstr "файл"
 
-#, fuzzy
-#~| msgid "Unread Messages"
 #~ msgid "Messages"
-#~ msgstr "Непрочитанные сообщения"
+#~ msgstr "Сообщения"
 
-#, fuzzy
-#~| msgid "email address"
 #~ msgid "Enter a valid email address."
-#~ msgstr "адрес электронной почты"
+#~ msgstr "Введите корректный email"
 
-#, fuzzy
-#~| msgid "Phone number"
 #~ msgid "Enter a number."
-#~ msgstr "Номер телефона"
+#~ msgstr "Введите номер телефона"
 
-#, fuzzy, python-format
-#~| msgid "A user with this email already exists."
-#~ msgid "%(model_name)s with this %(field_labels)s already exists."
+#~ msgid "user with this email already exists."
 #~ msgstr "Пользователь с таким email уже существует."
 
-#, fuzzy, python-format
-#~| msgid "A user with this email already exists."
-#~ msgid "%(model_name)s with this %(field_label)s already exists."
-#~ msgstr "Пользователь с таким email уже существует."
-
-#, fuzzy
-#~| msgid "Phone number"
 #~ msgid "Decimal number"
-#~ msgstr "Номер телефона"
+#~ msgstr "Номер"
 
-#, fuzzy
-#~| msgid "Description"
 #~ msgid "Duration"
-#~ msgstr "Описание"
+#~ msgstr "Длительность"
 
-#, fuzzy
-#~| msgid "email address"
 #~ msgid "Email address"
-#~ msgstr "адрес электронной почты"
+#~ msgstr "Адрес электронной почты"
 
-#, fuzzy
-#~| msgid "IP address"
 #~ msgid "IPv4 address"
 #~ msgstr "IP адрес"
 
-#, fuzzy
-#~| msgid "Image Path"
 #~ msgid "Image"
-#~ msgstr "Путь к изображению"
+#~ msgstr "Изображение"
 
-#, fuzzy
-#~| msgid "Phone number"
 #~ msgid "Enter a whole number."
-#~ msgstr "Номер телефона"
+#~ msgstr "Введите целое число"
 
-#, fuzzy
-#~| msgid "Save Changes"
 #~ msgid "Change"
-#~ msgstr "Сохранить изменения"
+#~ msgstr "Изменить"
 
-#, fuzzy
-#~| msgid "Status"
 #~ msgid "Sat"
-#~ msgstr "Статус"
+#~ msgstr "Установить"
 
-#, fuzzy
-#~| msgid "Search"
 #~ msgid "March"
-#~ msgstr "Найти"
+#~ msgstr "Март"
 
-#, fuzzy
-#~| msgid "Pay"
 #~ msgid "May"
-#~ msgstr "Оплатить"
+#~ msgstr "Май"
 
-#, fuzzy
-#~| msgid "Phone number"
 #~ msgid "November"
-#~ msgstr "Номер телефона"
+#~ msgstr "Ноябрь"
 
-#, fuzzy
-#~| msgid "Pay"
 #~ msgid "may"
-#~ msgstr "Оплатить"
+#~ msgstr "май"
 
-#, fuzzy
-#~| msgid "Search"
 #~ msgctxt "abbrev. month"
 #~ msgid "March"
-#~ msgstr "Найти"
+#~ msgstr "Март"
 
-#, fuzzy
-#~| msgid "Pay"
 #~ msgctxt "abbrev. month"
 #~ msgid "May"
-#~ msgstr "Оплатить"
+#~ msgstr "Май"
 
-#, fuzzy
-#~| msgid "Search"
 #~ msgctxt "alt. month"
 #~ msgid "March"
-#~ msgstr "Найти"
+#~ msgstr "Март"
 
-#, fuzzy
-#~| msgid "Pay"
 #~ msgctxt "alt. month"
 #~ msgid "May"
-#~ msgstr "Оплатить"
+#~ msgstr "Май"
 
-#, fuzzy
-#~| msgid "Phone number"
-#~ msgctxt "alt. month"
 #~ msgid "November"
-#~ msgstr "Номер телефона"
+#~ msgstr "Ноябрь"
 
-#, fuzzy, python-format
-#~| msgid "No orders available."
+
 #~ msgid "No %(verbose_name_plural)s available"
-#~ msgstr "Заявки отсутствуют."
+#~ msgstr "%(verbose_name_plural) отсутствуют."
 
 #~ msgid "Terms of Service"
 #~ msgstr "Условия пользования"
