@@ -391,6 +391,10 @@ footer {
                 color: #FFFFFF;
                 background-color: #444;
                 border: none;
+                width: 100%; /* Ограничение ширины до ширины контейнера */
+                text-overflow: ellipsis; /* Добавление многоточия */
+                overflow: hidden; /* Обрезка текста, который не помещается */
+                white-space: nowrap; /* Запрет переноса текста на новую строку */
             }
             #id_user_comment, #id_promo_code {
                 width: 100%;
