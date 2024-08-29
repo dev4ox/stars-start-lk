@@ -326,7 +326,7 @@ footer p {
   background-color: #444;
   border: none;
 }
-.user-card .card-order-info form textarea {
+.user-card .card-order-info form #id_user_comment, .user-card .card-order-info form #id_promo_code {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
