@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-14 22:11+0300\n"
+"POT-Creation-Date: 2024-08-29 12:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,18 +19,635 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\registration\forms.py:17 .\registration\forms.py:87
+#: .\panels\forms.py:14 .\panels\forms.py:40 .\panels\forms.py:64
+#: .\registration\forms.py:30 .\registration\forms.py:75
+msgid "Phone number"
+msgstr "Номер телефона"
+
+#: .\panels\forms.py:32 .\panels\forms.py:49 .\registration\forms.py:44
+#: .\registration\forms.py:91
+msgid "First name"
+msgstr "Имя"
+
+#: .\panels\forms.py:33 .\panels\forms.py:50 .\registration\forms.py:45
 #: .\registration\forms.py:92
-#: .\registration\templates\custom_admin\users.html:17
+msgid "Last name"
+msgstr "Фамилия"
+
+#: .\panels\forms.py:34 .\panels\forms.py:51 .\registration\forms.py:93
+msgid "Profile photo"
+msgstr "Фотография профиля"
+
+#: .\panels\forms.py:129 .\panels\templates\admin\promo_code.html:14
+msgid "Value"
+msgstr "Значение"
+
+#: .\panels\forms.py:130 .\panels\templates\admin\banned_ip.html:15
+#: .\panels\templates\admin\group_service.html:15
+#: .\panels\templates\admin\promo_code.html:15
+#: .\panels\templates\admin\services.html:15
+#: .\panels\templates\manager\services.html:14
+#: .\panels\templates\moderator\group_service.html:15
+#: .\panels\templates\moderator\services.html:15
+msgid "Description"
+msgstr "Описание"
+
+#: .\panels\forms.py:131 .\panels\templates\admin\promo_code.html:16
+#: .\registration\templates\orders.html:17
+msgid "Discount"
+msgstr "Скидка"
+
+#: .\panels\forms.py:132 .\panels\templates\admin\promo_code.html:17
+#, fuzzy
+#| msgid "Registration Date"
+msgid "Expiration date"
+msgstr "Дата регистрации"
+
+#: .\panels\forms.py:133
+#, fuzzy
+#| msgid "Active Orders"
+msgid "Active"
+msgstr "Активные заказы"
+
+#: .\panels\middleware.py:57
+msgid "Your IP has been banned. For more information, visit:"
+msgstr "Ваш IP адрес был забанен. Связаться с нами:"
+
+#: .\panels\models.py:18 .\registration\models.py:157
+msgid "User"
+msgstr "Пользователь"
+
+#: .\panels\models.py:19 .\registration\models.py:170
+#: .\registration\templates\services.html:43
+msgid "Order"
+msgstr "Заказать"
+
+#: .\panels\models.py:20
+msgid "Amount"
+msgstr "Сумма"
+
+#: .\panels\models.py:21
+msgid "Date Payment"
+msgstr "Дата платежа"
+
+#: .\panels\models.py:22
+msgid "Transaction ID"
+msgstr "ID транзакции"
+
+#: .\panels\models.py:25
+msgid "Payment"
+msgstr "Платеж"
+
+#: .\panels\models.py:26 .\registration\templates\payments.html:4
+msgid "Payments"
+msgstr "Платежи"
+
+#: .\panels\templates\admin\banned_ip.html:4
+#: .\panels\templates\admin\banned_ip.html:8
+#: .\panels\templates\admin\panels_base_admin.html:38
+msgid "Banned IP"
+msgstr "Бан IP"
+
+#: .\panels\templates\admin\banned_ip.html:4
+#: .\panels\templates\admin\category.html:5
+#: .\panels\templates\admin\group_service.html:4
+#: .\panels\templates\admin\orders.html:4
+#: .\panels\templates\admin\panels_base_admin.html:8
+#: .\panels\templates\admin\panels_base_admin.html:20
+#: .\panels\templates\admin\panels_base_admin.html:83
+#: .\panels\templates\admin\promo_code.html:4
+#: .\panels\templates\admin\reports.html:4
+#: .\panels\templates\admin\services.html:4
+#: .\panels\templates\admin\users.html:4 .\panels\templates\form_change.html:7
+#: .\panels\templates\form_delete.html:4 .\panels\templates\form_details.html:4
+#: .\panels\templates\manager\category.html:5
+#: .\panels\templates\manager\orders.html:4
+#: .\panels\templates\manager\panels_base_manager.html:8
+#: .\panels\templates\manager\panels_base_manager.html:20
+#: .\panels\templates\manager\panels_base_manager.html:71
+#: .\panels\templates\manager\services.html:4
+#: .\panels\templates\manager\users.html:4
+#: .\panels\templates\moderator\category.html:5
+#: .\panels\templates\moderator\group_service.html:4
+#: .\panels\templates\moderator\orders.html:4
+#: .\panels\templates\moderator\panels_base_moderator.html:8
+#: .\panels\templates\moderator\panels_base_moderator.html:20
+#: .\panels\templates\moderator\panels_base_moderator.html:71
+#: .\panels\templates\moderator\services.html:4
+#: .\panels\templates\moderator\users.html:4
+#: .\panels\templates\panels_base_form.html:8
+#: .\panels\templates\panels_base_form.html:82
+#: .\panels\templates\panels_base_form.html:119
+#: .\registration\templates\base.html:12 .\registration\templates\base.html:35
+#: .\registration\templates\base.html:80
+#: .\registration\templates\terms_of_service.html:77
+#: .\registration\templates\user_agreement.html:82
+msgid "Star Start"
+msgstr "Звёздный старт"
+
+#: .\panels\templates\admin\banned_ip.html:9
+msgid "Add IP"
+msgstr "Добавить IP"
+
+#: .\panels\templates\admin\banned_ip.html:14
+msgid "IP address"
+msgstr "IP адрес"
+
+#: .\panels\templates\admin\banned_ip.html:16
+msgid "Created"
+msgstr "Дата создания"
+
+#: .\panels\templates\admin\banned_ip.html:17
+#: .\panels\templates\admin\category.html:40
+#: .\panels\templates\admin\group_service.html:16
+#: .\panels\templates\admin\orders.html:36
+#: .\panels\templates\admin\promo_code.html:18
+#: .\panels\templates\admin\services.html:16
+#: .\panels\templates\admin\users.html:19
+#: .\panels\templates\manager\orders.html:36
+#: .\panels\templates\manager\users.html:19
+#: .\panels\templates\moderator\category.html:40
+#: .\panels\templates\moderator\group_service.html:16
+#: .\panels\templates\moderator\orders.html:36
+#: .\panels\templates\moderator\services.html:16
+#: .\panels\templates\moderator\users.html:19
+#: .\registration\templates\orders.html:19
+msgid "Actions"
+msgstr "Действия"
+
+#: .\panels\templates\admin\banned_ip.html:28
+#: .\panels\templates\admin\category.html:51
+#: .\panels\templates\admin\group_service.html:26
+#: .\panels\templates\admin\orders.html:53
+#: .\panels\templates\admin\promo_code.html:30
+#: .\panels\templates\admin\services.html:26
+#: .\panels\templates\admin\users.html:29
+#: .\panels\templates\manager\orders.html:54
+#: .\panels\templates\moderator\category.html:51
+#: .\panels\templates\moderator\group_service.html:26
+#: .\panels\templates\moderator\orders.html:53
+#: .\panels\templates\moderator\services.html:26
+#: .\panels\templates\moderator\users.html:29
+msgid "Edit"
+msgstr "Изменить"
+
+#: .\panels\templates\admin\banned_ip.html:29
+#: .\panels\templates\admin\category.html:52
+#: .\panels\templates\admin\group_service.html:27
+#: .\panels\templates\admin\orders.html:54
+#: .\panels\templates\admin\promo_code.html:31
+#: .\panels\templates\admin\services.html:27
+#: .\panels\templates\admin\users.html:30
+#: .\panels\templates\form_delete.html:12
+#: .\panels\templates\moderator\category.html:52
+#: .\panels\templates\moderator\group_service.html:27
+#: .\panels\templates\moderator\services.html:27
+msgid "Delete"
+msgstr "Удалить"
+
+#: .\panels\templates\admin\banned_ip.html:36
+#: .\panels\templates\admin\promo_code.html:38
+msgid "Page navigation example"
+msgstr "Переключить навигацию"
+
+#: .\panels\templates\admin\category.html:5
+#: .\panels\templates\admin\category.html:9
+#: .\panels\templates\manager\category.html:5
+#: .\panels\templates\manager\category.html:9
+#: .\panels\templates\moderator\category.html:5
+#: .\panels\templates\moderator\category.html:9
+msgid "Category Management"
+msgstr "Категории"
+
+#: .\panels\templates\admin\category.html:12
+#: .\panels\templates\manager\category.html:12
+#: .\panels\templates\moderator\category.html:12
+msgid "Sort by ID"
+msgstr "Сортировка по ID"
+
+#: .\panels\templates\admin\category.html:22
+#: .\panels\templates\manager\category.html:22
+#: .\panels\templates\moderator\category.html:22
+msgid "Sort by Service Title"
+msgstr "Сортировка по алфавиту"
+
+#: .\panels\templates\admin\category.html:32
+#: .\panels\templates\moderator\category.html:32
+msgid "Add Category"
+msgstr "Добавить категорию"
+
+#: .\panels\templates\admin\category.html:37
+#: .\panels\templates\manager\category.html:36
+#: .\panels\templates\moderator\category.html:37
+msgid "Name category"
+msgstr "Название категории"
+
+#: .\panels\templates\admin\category.html:38
+#: .\panels\templates\manager\category.html:37
+#: .\panels\templates\moderator\category.html:38
+msgid "Name service"
+msgstr "Имя Услуги"
+
+#: .\panels\templates\admin\category.html:39
+#: .\panels\templates\manager\category.html:38
+#: .\panels\templates\moderator\category.html:39
+#: .\registration\templates\orders.html:16
+#: .\registration\templates\services_add_order.html:19
+msgid "Cost"
+msgstr "Стоимость"
+
+#: .\panels\templates\admin\dashboard.html:4
+#: .\panels\templates\admin\panels_base_admin.html:32
+#: .\panels\templates\manager\dashboard.html:4
+#: .\panels\templates\manager\panels_base_manager.html:32
+#: .\panels\templates\moderator\dashboard.html:4
+#: .\panels\templates\moderator\panels_base_moderator.html:32
+msgid "Dashboard"
+msgstr "Панель управления"
+
+#: .\panels\templates\admin\dashboard.html:10
+#: .\panels\templates\manager\dashboard.html:10
+#: .\panels\templates\moderator\dashboard.html:10
+msgid "Quick Actions"
+msgstr "Быстрые действия"
+
+#: .\panels\templates\admin\dashboard.html:11
+#: .\panels\templates\moderator\dashboard.html:11
+msgid "Add group service"
+msgstr "Добавить группу услуг"
+
+#: .\panels\templates\admin\dashboard.html:12
+#: .\panels\templates\moderator\dashboard.html:12
+msgid "Add service"
+msgstr "Добавить услугу"
+
+#: .\panels\templates\admin\dashboard.html:13
+#: .\panels\templates\moderator\dashboard.html:13
+msgid "Add orders"
+msgstr "Добавить заказ"
+
+#: .\panels\templates\admin\dashboard.html:19
+#: .\panels\templates\manager\dashboard.html:18
+msgid "Admin Dashboard"
+msgstr "Панель администратора"
+
+#: .\panels\templates\admin\dashboard.html:26
+#: .\panels\templates\admin\panels_base_admin.html:35
+#: .\panels\templates\manager\dashboard.html:25
+#: .\panels\templates\manager\panels_base_manager.html:35
+#: .\panels\templates\moderator\dashboard.html:26
+#: .\panels\templates\moderator\panels_base_moderator.html:35
+msgid "Users"
+msgstr "Пользователи"
+
+#: .\panels\templates\admin\dashboard.html:34
+#: .\panels\templates\manager\dashboard.html:33
+#: .\panels\templates\moderator\dashboard.html:34
+msgid "Active Orders"
+msgstr "Активные заказы"
+
+#: .\panels\templates\admin\dashboard.html:42
+#: .\panels\templates\manager\dashboard.html:41
+#: .\panels\templates\moderator\dashboard.html:42
+msgid "Monthly Revenue"
+msgstr "Ежемесячный доход"
+
+#: .\panels\templates\admin\dashboard.html:52
+#: .\panels\templates\manager\dashboard.html:51
+#: .\panels\templates\moderator\dashboard.html:52
+msgid "Recent Actions"
+msgstr "Последние действия"
+
+#: .\panels\templates\admin\group_service.html:4
+#: .\panels\templates\admin\group_service.html:8
+#: .\panels\templates\admin\panels_base_admin.html:44
+#: .\panels\templates\moderator\group_service.html:4
+#: .\panels\templates\moderator\group_service.html:8
+#, fuzzy
+#| msgid "Add group service"
+msgid "Group service"
+msgstr "Добавить группу услуг"
+
+#: .\panels\templates\admin\group_service.html:9
+#: .\panels\templates\moderator\group_service.html:9
+#, fuzzy
+#| msgid "Add group service"
+msgid "Add Group service"
+msgstr "Добавить группу услуг"
+
+#: .\panels\templates\admin\group_service.html:14
+#: .\panels\templates\moderator\group_service.html:14
+msgid "Title"
+msgstr "Название"
+
+#: .\panels\templates\admin\orders.html:4
+#: .\panels\templates\manager\orders.html:4
+#: .\panels\templates\moderator\orders.html:4
+msgid "Order Management"
+msgstr "Заказы"
+
+#: .\panels\templates\admin\orders.html:8
+#: .\panels\templates\manager\orders.html:8
+#: .\panels\templates\moderator\orders.html:8
+msgid "All Orders"
+msgstr "Все заказы"
+
+#: .\panels\templates\admin\orders.html:11
+#: .\panels\templates\manager\orders.html:11
+#: .\panels\templates\moderator\orders.html:11
+msgid "All"
+msgstr "Все"
+
+#: .\panels\templates\admin\orders.html:14
+#: .\panels\templates\manager\orders.html:14
+#: .\panels\templates\moderator\orders.html:14
+msgid "New Orders"
+msgstr "Новый заказ"
+
+#: .\panels\templates\admin\orders.html:17
+#: .\panels\templates\manager\orders.html:17
+#: .\panels\templates\moderator\orders.html:17
+msgid "In Progress"
+msgstr "Модерация"
+
+#: .\panels\templates\admin\orders.html:20
+#: .\panels\templates\manager\orders.html:20
+#: .\panels\templates\moderator\orders.html:20
+msgid "Completed"
+msgstr "Завершён"
+
+#: .\panels\templates\admin\orders.html:23
+#: .\panels\templates\manager\orders.html:23
+#: .\panels\templates\moderator\orders.html:23
+msgid "Cancelled"
+msgstr "Отменен"
+
+#: .\panels\templates\admin\orders.html:26
+#: .\panels\templates\moderator\orders.html:26
+#: .\registration\templates\services_add_order.html:7
+msgid "Add Order"
+msgstr "Добавить заказ"
+
+#: .\panels\templates\admin\orders.html:30
+#: .\panels\templates\manager\orders.html:29
+#: .\panels\templates\moderator\orders.html:30
+#: .\registration\templates\orders.html:13
+msgid "Order ID"
+msgstr "ID заказа"
+
+#: .\panels\templates\admin\orders.html:31
+#: .\panels\templates\manager\orders.html:30
+#: .\panels\templates\moderator\orders.html:31
+msgid "Client"
+msgstr "Клиент"
+
+#: .\panels\templates\admin\orders.html:32
+#: .\panels\templates\manager\dashboard.html:11
+#: .\panels\templates\manager\orders.html:31
+#: .\panels\templates\moderator\orders.html:32
+#: .\registration\templates\services.html:32
+#: .\registration\templates\services_add_order.html:9
+msgid "Service"
+msgstr "Услуги"
+
+#: .\panels\templates\admin\orders.html:33
+#: .\panels\templates\manager\orders.html:32
+#: .\panels\templates\moderator\orders.html:33
+msgid "Date"
+msgstr "Дата"
+
+#: .\panels\templates\admin\orders.html:34
+#: .\panels\templates\manager\orders.html:33
+#: .\panels\templates\moderator\orders.html:34
+msgid "Price"
+msgstr "Цена"
+
+#: .\panels\templates\admin\orders.html:35
+#: .\panels\templates\manager\orders.html:35
+#: .\panels\templates\moderator\orders.html:35
+#: .\registration\templates\orders.html:18
+msgid "Status"
+msgstr "Статус"
+
+#: .\panels\templates\admin\panels_base_admin.html:8
+#: .\panels\templates\manager\panels_base_manager.html:8
+#: .\panels\templates\moderator\panels_base_moderator.html:8
+#: .\panels\templates\panels_base_form.html:8
+msgid "Admin panel"
+msgstr "Админ-панель"
+
+#: .\panels\templates\admin\panels_base_admin.html:21
+#: .\panels\templates\manager\panels_base_manager.html:21
+#: .\panels\templates\moderator\panels_base_moderator.html:21
+#: .\panels\templates\panels_base_form.html:83
+#: .\registration\templates\base.html:36
+msgid "production center"
+msgstr "продюсерский центр"
+
+#: .\panels\templates\admin\panels_base_admin.html:25
+#: .\panels\templates\manager\panels_base_manager.html:25
+#: .\panels\templates\moderator\panels_base_moderator.html:25
+#: .\panels\templates\panels_base_form.html:87
+#: .\registration\templates\base.html:38
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
+
+#: .\panels\templates\admin\panels_base_admin.html:41
+msgid "Promo Code"
+msgstr "Промокод"
+
+#: .\panels\templates\admin\panels_base_admin.html:47
+#: .\panels\templates\manager\panels_base_manager.html:38
+#: .\panels\templates\moderator\panels_base_moderator.html:38
+#: .\registration\templates\base.html:48
+msgid "Services"
+msgstr "Услуги"
+
+#: .\panels\templates\admin\panels_base_admin.html:50
+#: .\panels\templates\manager\panels_base_manager.html:41
+#: .\panels\templates\moderator\panels_base_moderator.html:41
+#: .\registration\forms.py:312
+msgid "Category"
+msgstr "Категории"
+
+#: .\panels\templates\admin\panels_base_admin.html:53
+#: .\panels\templates\manager\dashboard.html:12
+#: .\panels\templates\manager\panels_base_manager.html:44
+#: .\panels\templates\moderator\panels_base_moderator.html:44
+#: .\panels\templates\observer\order_user_details.html:4
+#: .\registration\models.py:171 .\registration\templates\base.html:51
+#: .\registration\templates\order_details.html:4
+#: .\registration\templates\orders.html:4
+msgid "Orders"
+msgstr "Заказы"
+
+#: .\panels\templates\admin\panels_base_admin.html:56
+#: .\panels\templates\admin\reports.html:8
+msgid "Reports"
+msgstr "Отчеты"
+
+#: .\panels\templates\admin\panels_base_admin.html:59
+#: .\panels\templates\manager\panels_base_manager.html:47
+#: .\panels\templates\moderator\panels_base_moderator.html:47
+#: .\registration\templates\base.html:55
+msgid "Logout"
+msgstr "Выйти"
+
+#: .\panels\templates\admin\panels_base_admin.html:83
+#: .\panels\templates\manager\panels_base_manager.html:71
+#: .\panels\templates\moderator\panels_base_moderator.html:71
+#: .\panels\templates\panels_base_form.html:119
+#: .\registration\templates\base.html:80
+#: .\registration\templates\terms_of_service.html:77
+#: .\registration\templates\user_agreement.html:82
+msgid "All rights reserved."
+msgstr "Все права защищены."
+
+#: .\panels\templates\admin\promo_code.html:4
+#: .\panels\templates\admin\promo_code.html:8 .\registration\forms.py:314
+msgid "Promo code"
+msgstr "Промокод"
+
+#: .\panels\templates\admin\promo_code.html:9
+#, fuzzy
+#| msgid "Add Order"
+msgid "Add Promo code"
+msgstr "Добавить заказ"
+
+#: .\panels\templates\admin\reports.html:4
+msgid "Report Management"
+msgstr "Управление отчетами"
+
+#: .\panels\templates\admin\reports.html:10
+#: .\panels\templates\admin\reports.html:16
+msgid "Service Reports"
+msgstr "Отчет о услугах"
+
+#: .\panels\templates\admin\reports.html:11
+msgid "Order Reports"
+msgstr "Отчет о заказах"
+
+#: .\panels\templates\admin\reports.html:12
+msgid "Profit Reports"
+msgstr "Отчет о доходе"
+
+#: .\panels\templates\admin\reports.html:20
+#: .\panels\templates\admin\services.html:14
+#: .\panels\templates\manager\services.html:13
+#: .\panels\templates\moderator\services.html:14
+#: .\registration\templates\orders.html:15
+msgid "Service Name"
+msgstr "Имя услуги"
+
+#: .\panels\templates\admin\reports.html:21
+msgid "Number of Orders"
+msgstr "Номер ордера"
+
+#: .\panels\templates\admin\reports.html:22
+msgid "Total Revenue"
+msgstr "Весь доход"
+
+#: .\panels\templates\admin\reports.html:27
+msgid "Space Photo Session"
+msgstr ""
+
+#: .\panels\templates\admin\reports.html:32
+msgid "Virtual Flight to Mars"
+msgstr ""
+
+#: .\panels\templates\admin\reports.html:37
+msgid "Planetarium Excursion"
+msgstr ""
+
+#: .\panels\templates\admin\reports.html:42
+msgid "Master Class 'Building a Rocket'"
+msgstr ""
+
+#: .\panels\templates\admin\services.html:4
+#: .\panels\templates\admin\services.html:8
+#: .\panels\templates\manager\services.html:4
+#: .\panels\templates\manager\services.html:8
+#: .\panels\templates\moderator\services.html:4
+#: .\panels\templates\moderator\services.html:8
+msgid "Service Management"
+msgstr "Услуги"
+
+#: .\panels\templates\admin\services.html:9
+#: .\panels\templates\moderator\services.html:9
+msgid "Add Service"
+msgstr "Добавить услугу"
+
+#: .\panels\templates\admin\users.html:4 .\panels\templates\admin\users.html:8
+#: .\panels\templates\manager\users.html:4
+#: .\panels\templates\manager\users.html:8
+#: .\panels\templates\moderator\users.html:4
+#: .\panels\templates\moderator\users.html:8
+msgid "User Management"
+msgstr "Пользователи"
+
+#: .\panels\templates\admin\users.html:10
+#: .\panels\templates\manager\users.html:10
+#: .\panels\templates\moderator\users.html:10
+msgid "Search users..."
+msgstr "Поиск пользователей..."
+
+#: .\panels\templates\admin\users.html:11
+#: .\panels\templates\manager\users.html:11
+#: .\panels\templates\moderator\users.html:11
+#: .\registration\templates\services.html:12
+msgid "Search"
+msgstr "Найти"
+
+#: .\panels\templates\admin\users.html:17
+#: .\panels\templates\manager\users.html:17
+#: .\panels\templates\moderator\users.html:17 .\registration\forms.py:28
+#: .\registration\forms.py:98 .\registration\forms.py:103
 #: .\registration\templates\profile.html:15
 msgid "Email"
 msgstr "Электронная почта"
 
-#: .\registration\forms.py:19 .\registration\forms.py:64
-msgid "Phone number"
-msgstr "Номер телефона"
+#: .\panels\templates\admin\users.html:18
+#: .\panels\templates\manager\users.html:18
+#: .\panels\templates\moderator\users.html:18
+msgid "Registration Date"
+msgstr "Дата регистрации"
 
-#: .\registration\forms.py:24
+#: .\panels\templates\form_change.html:16
+msgid "Save"
+msgstr "Сохранить"
+
+#: .\panels\templates\form_delete.html:14
+#: .\panels\templates\form_details.html:13
+#: .\panels\templates\panels_base_form.html:95
+msgid "Back"
+msgstr "Назад"
+
+#: .\panels\templates\manager\orders.html:34 .\registration\forms.py:313
+msgid "User comment"
+msgstr "Комментарий пользователя"
+
+#: .\panels\templates\manager\users.html:29
+#: .\registration\templates\orders.html:55
+#: .\registration\templates\profile.html:43
+msgid "Details"
+msgstr "Подробнее"
+
+#: .\panels\templates\moderator\dashboard.html:19
+#, fuzzy
+#| msgid "Admin Dashboard"
+msgid "Moderator Dashboard"
+msgstr "Панель администратора"
+
+#: .\panels\templates\observer\order_user_details.html:31
+#: .\registration\templates\message_about_activate.html:12
+#: .\registration\templates\order_details.html:24
+#: .\registration\templates\password_change_done.html:9
+#: .\registration\templates\password_reset_done.html:10
+#: .\registration\templates\payments.html:7
+msgid "Return back"
+msgstr "Вернуться назад"
+
+#: .\registration\forms.py:35
 msgid ""
 "I agree to the <a href=\"/lk/terms_of_service\" target=\"_blank\">Terms of "
 "service</a> and the <a href=\"/lk/user_agreement\" target=\"_blank\">User "
@@ -40,19 +657,11 @@ msgstr ""
 "пользования</a> и <a href=\"/lk/user_agreement\" target=\"_blank"
 "\">Пользовательским соглашением</a>"
 
-#: .\registration\forms.py:33 .\registration\forms.py:80
-msgid "First name"
-msgstr "Имя"
-
-#: .\registration\forms.py:34 .\registration\forms.py:81
-msgid "Last name"
-msgstr "Фамилия"
-
-#: .\registration\forms.py:68 .\registration\templates\edit_profile.html:32
+#: .\registration\forms.py:79 .\registration\templates\edit_profile.html:33
 msgid "Password"
 msgstr "Пароль"
 
-#: .\registration\forms.py:70
+#: .\registration\forms.py:81
 msgid ""
 "Raw passwords are not stored, so there is no way to see this user’s "
 "password, but you can change the password using <a href=\"/password_change"
@@ -62,75 +671,26 @@ msgstr ""
 "пользователя, но вы можете изменить пароль, используя <a href=\"/"
 "password_change\">эту форму</a>."
 
-#: .\registration\forms.py:82
-msgid "Profile photo"
-msgstr "Фотография профиля"
-
-#: .\registration\forms.py:97
+#: .\registration\forms.py:108
 msgid "New password"
 msgstr "Новый пароль:"
 
-#: .\registration\forms.py:140
-#: .\registration\templates\custom_admin\base.html:41
-msgid "Category"
-msgstr "Категории"
+#: .\registration\forms.py:181
+msgid "Table contents"
+msgstr "Таблица контента"
 
-#: .\registration\forms.py:141
-msgid "User comment"
-msgstr "Комментарий пользователя"
-
-#: .\registration\middleware.py:38
-msgid "Your IP has been banned. For more information, visit:"
-msgstr "Ваш IP адрес был забанен. Связаться с нами:"
-
-#: .\registration\models.py:22
+#: .\registration\models.py:32
 msgid "email address"
 msgstr "адрес электронной почты"
 
-#: .\registration\models.py:25
+#: .\registration\models.py:35
 msgid "A user with this email already exists."
 msgstr "Пользователь с таким email уже существует."
-
-#: .\registration\models.py:101 .\registration\models.py:121
-msgid "User"
-msgstr "Пользователь"
-
-#: .\registration\models.py:112 .\registration\models.py:122
-#: .\registration\templates\services.html:41
-msgid "Order"
-msgstr "Заказать"
-
-#: .\registration\models.py:113 .\registration\templates\base.html:62
-#: .\registration\templates\custom_admin\base.html:44
-#: .\registration\templates\order_details.html:4
-#: .\registration\templates\orders.html:4
-msgid "Orders"
-msgstr "Заказы"
-
-#: .\registration\models.py:123
-msgid "Amount"
-msgstr "Сумма"
-
-#: .\registration\models.py:124
-msgid "Date Payment"
-msgstr "Дата платежа"
-
-#: .\registration\models.py:125
-msgid "Transaction ID"
-msgstr "ID транзакции"
-
-#: .\registration\models.py:128
-msgid "Payment"
-msgstr "Платеж"
-
-#: .\registration\models.py:129 .\registration\templates\payments.html:4
-msgid "Payments"
-msgstr "Платежи"
 
 #: .\registration\templates\account_activation_email.html:6
 #: .\registration\templates\account_activation_email.html:9
 #: .\registration\templates\message_about_activate.html:8
-#: .\registration\views.py:52
+#: .\registration\views.py:58
 msgid "Account Activation"
 msgstr "Активация аккаунта"
 
@@ -152,26 +712,11 @@ msgid "Confirm Account"
 msgstr "Подтвердить аккаунт"
 
 #: .\registration\templates\base.html:12 .\registration\templates\base.html:17
-#: .\registration\templates\base.html:56
+#: .\registration\templates\base.html:45
 #: .\registration\templates\profile.html:5
 #: .\registration\templates\profile.html:8
 msgid "Profile"
 msgstr "Профиль"
-
-#: .\registration\templates\base.html:12 .\registration\templates\base.html:48
-#: .\registration\templates\base.html:91
-#: .\registration\templates\custom_admin\base.html:8
-#: .\registration\templates\custom_admin\base.html:20
-#: .\registration\templates\custom_admin\base.html:74
-#: .\registration\templates\custom_admin\category.html:5
-#: .\registration\templates\custom_admin\orders.html:4
-#: .\registration\templates\custom_admin\reports.html:4
-#: .\registration\templates\custom_admin\services.html:4
-#: .\registration\templates\custom_admin\users.html:4
-#: .\registration\templates\terms_of_service.html:78
-#: .\registration\templates\user_agreement.html:83
-msgid "Star Start"
-msgstr "Звёздный старт"
 
 #: .\registration\templates\base.html:17
 #: .\registration\templates\terms_of_service.html:8
@@ -179,318 +724,15 @@ msgstr "Звёздный старт"
 msgid "Star start"
 msgstr "Звёздный старт"
 
-#: .\registration\templates\base.html:48
-#: .\registration\templates\custom_admin\base.html:21
-msgid "production center"
-msgstr "продюсерский центр"
-
-#: .\registration\templates\base.html:49
-#: .\registration\templates\custom_admin\base.html:25
-msgid "Toggle navigation"
-msgstr "Переключить навигацию"
-
-#: .\registration\templates\base.html:59
-#: .\registration\templates\custom_admin\base.html:38
-msgid "Services"
-msgstr "Услуги"
-
-#: .\registration\templates\base.html:66
-#: .\registration\templates\custom_admin\base.html:50
-msgid "Logout"
-msgstr "Выйти"
-
-#: .\registration\templates\base.html:91
-#: .\registration\templates\custom_admin\base.html:74
-#: .\registration\templates\terms_of_service.html:78
-#: .\registration\templates\user_agreement.html:83
-msgid "All rights reserved."
-msgstr "Все права защищены."
-
-#: .\registration\templates\base.html:93
+#: .\registration\templates\base.html:82
 #: .\registration\templates\terms_of_service.html:8
 msgid "Terms of service"
 msgstr "Условия пользования"
 
-#: .\registration\templates\base.html:94
+#: .\registration\templates\base.html:83
 #: .\registration\templates\user_agreement.html:8
 msgid "User agreement"
 msgstr "Пользовательское соглашение"
-
-#: .\registration\templates\custom_admin\base.html:8
-msgid "Admin panel"
-msgstr "Админ-панель"
-
-#: .\registration\templates\custom_admin\base.html:32
-#: .\registration\templates\custom_admin\dashboard.html:4
-msgid "Dashboard"
-msgstr "Панель управления"
-
-#: .\registration\templates\custom_admin\base.html:35
-#: .\registration\templates\custom_admin\dashboard.html:26
-msgid "Users"
-msgstr "Пользователи"
-
-#: .\registration\templates\custom_admin\base.html:47
-#: .\registration\templates\custom_admin\reports.html:8
-msgid "Reports"
-msgstr "Отчеты"
-
-#: .\registration\templates\custom_admin\category.html:5
-#: .\registration\templates\custom_admin\category.html:9
-msgid "Category Management"
-msgstr "Категории"
-
-#: .\registration\templates\custom_admin\category.html:12
-msgid "Sort by ID"
-msgstr "Сортировка по ID"
-
-#: .\registration\templates\custom_admin\category.html:22
-msgid "Sort by Service Title"
-msgstr "Сортировка по алфавиту"
-
-#: .\registration\templates\custom_admin\category.html:32
-msgid "Add Category"
-msgstr "Добавить категорию"
-
-#: .\registration\templates\custom_admin\category.html:37
-msgid "Name category"
-msgstr "Название категории"
-
-#: .\registration\templates\custom_admin\category.html:38
-msgid "Name service"
-msgstr "Имя Услуги"
-
-#: .\registration\templates\custom_admin\category.html:39
-#: .\registration\templates\orders.html:16
-#: .\registration\templates\services_add_order.html:19
-msgid "Cost"
-msgstr "Стоимость"
-
-#: .\registration\templates\custom_admin\category.html:40
-#: .\registration\templates\custom_admin\orders.html:36
-#: .\registration\templates\custom_admin\services.html:16
-#: .\registration\templates\custom_admin\users.html:19
-#: .\registration\templates\custom_admin\users.html:79
-#: .\registration\templates\orders.html:18
-msgid "Actions"
-msgstr "Действия"
-
-#: .\registration\templates\custom_admin\category.html:51
-#: .\registration\templates\custom_admin\orders.html:49
-#: .\registration\templates\custom_admin\services.html:26
-#: .\registration\templates\custom_admin\users.html:29
-#: .\registration\templates\custom_admin\users.html:90
-msgid "Edit"
-msgstr "Изменить"
-
-#: .\registration\templates\custom_admin\category.html:52
-#: .\registration\templates\custom_admin\orders.html:50
-#: .\registration\templates\custom_admin\services.html:27
-#: .\registration\templates\custom_admin\users.html:30
-#: .\registration\templates\custom_admin\users.html:91
-msgid "Delete"
-msgstr "Удалить"
-
-#: .\registration\templates\custom_admin\dashboard.html:10
-#: .\registration\templates\custom_admin\dashboard.html:52
-msgid "Quick Actions"
-msgstr "Быстрые действия"
-
-#: .\registration\templates\custom_admin\dashboard.html:11
-msgid "Add group service"
-msgstr "Добавить группу услуг"
-
-#: .\registration\templates\custom_admin\dashboard.html:12
-msgid "Add service"
-msgstr "Добавить услугу"
-
-#: .\registration\templates\custom_admin\dashboard.html:13
-msgid "Add orders"
-msgstr "Добавить заказ"
-
-#: .\registration\templates\custom_admin\dashboard.html:19
-msgid "Admin Dashboard"
-msgstr "Панель администратора"
-
-#: .\registration\templates\custom_admin\dashboard.html:34
-msgid "Active Orders"
-msgstr "Активные заказы"
-
-#: .\registration\templates\custom_admin\dashboard.html:42
-msgid "Monthly Revenue"
-msgstr "Ежемесячный доход"
-
-#: .\registration\templates\custom_admin\dashboard.html:55
-msgid "View Pending Orders"
-msgstr "Просмотреть последние заказы"
-
-#: .\registration\templates\custom_admin\dashboard.html:56
-msgid "Unread Messages"
-msgstr "Непрочитанные сообщения"
-
-#: .\registration\templates\custom_admin\dashboard.html:57
-msgid "Update Service Availability"
-msgstr "Обновить доступность услуги"
-
-#: .\registration\templates\custom_admin\dashboard.html:62
-msgid "Recent Actions"
-msgstr "Последние действия"
-
-#: .\registration\templates\custom_admin\orders.html:4
-msgid "Order Management"
-msgstr "Заказы"
-
-#: .\registration\templates\custom_admin\orders.html:8
-msgid "All Orders"
-msgstr "Все заказы"
-
-#: .\registration\templates\custom_admin\orders.html:11
-msgid "All"
-msgstr "Все"
-
-#: .\registration\templates\custom_admin\orders.html:14
-msgid "New Orders"
-msgstr "Новый заказ"
-
-#: .\registration\templates\custom_admin\orders.html:17
-msgid "In Progress"
-msgstr "Модерация"
-
-#: .\registration\templates\custom_admin\orders.html:20
-msgid "Completed"
-msgstr "Завершён"
-
-#: .\registration\templates\custom_admin\orders.html:23
-msgid "Cancelled"
-msgstr "Отменен"
-
-#: .\registration\templates\custom_admin\orders.html:26
-#: .\registration\templates\services_add_order.html:7
-msgid "Add Order"
-msgstr "Добавить заказ"
-
-#: .\registration\templates\custom_admin\orders.html:30
-#: .\registration\templates\orders.html:13
-msgid "Order ID"
-msgstr "ID заказа"
-
-#: .\registration\templates\custom_admin\orders.html:31
-msgid "Client"
-msgstr "Клиент"
-
-#: .\registration\templates\custom_admin\orders.html:32
-#: .\registration\templates\services.html:32
-#: .\registration\templates\services_add_order.html:9
-msgid "Service"
-msgstr "Услуги"
-
-#: .\registration\templates\custom_admin\orders.html:33
-msgid "Date"
-msgstr "Дата"
-
-#: .\registration\templates\custom_admin\orders.html:34
-msgid "Price"
-msgstr "Цена"
-
-#: .\registration\templates\custom_admin\orders.html:35
-#: .\registration\templates\orders.html:17
-msgid "Status"
-msgstr "Статус"
-
-#: .\registration\templates\custom_admin\reports.html:4
-msgid "Report Management"
-msgstr "Управление отчетами"
-
-#: .\registration\templates\custom_admin\reports.html:10
-#: .\registration\templates\custom_admin\reports.html:16
-msgid "Service Reports"
-msgstr "Отчет о услугах"
-
-#: .\registration\templates\custom_admin\reports.html:11
-msgid "Order Reports"
-msgstr "Отчет о заказах"
-
-#: .\registration\templates\custom_admin\reports.html:12
-msgid "Profit Reports"
-msgstr "Отчет о доходе"
-
-#: .\registration\templates\custom_admin\reports.html:20
-#: .\registration\templates\custom_admin\services.html:14
-#: .\registration\templates\orders.html:15
-msgid "Service Name"
-msgstr "Имя услуги"
-
-#: .\registration\templates\custom_admin\reports.html:21
-msgid "Number of Orders"
-msgstr "Номер ордера"
-
-#: .\registration\templates\custom_admin\reports.html:22
-msgid "Total Revenue"
-msgstr "Весь доход"
-
-#: .\registration\templates\custom_admin\reports.html:27
-msgid "Space Photo Session"
-msgstr ""
-
-#: .\registration\templates\custom_admin\reports.html:32
-msgid "Virtual Flight to Mars"
-msgstr ""
-
-#: .\registration\templates\custom_admin\reports.html:37
-msgid "Planetarium Excursion"
-msgstr ""
-
-#: .\registration\templates\custom_admin\reports.html:42
-msgid "Master Class 'Building a Rocket'"
-msgstr ""
-
-#: .\registration\templates\custom_admin\services.html:4
-#: .\registration\templates\custom_admin\services.html:8
-msgid "Service Management"
-msgstr "Услуги"
-
-#: .\registration\templates\custom_admin\services.html:9
-msgid "Add Service"
-msgstr "Добавить услугу"
-
-#: .\registration\templates\custom_admin\services.html:15
-#: .\registration\templates\custom_admin\users.html:77
-msgid "Description"
-msgstr "Описание"
-
-#: .\registration\templates\custom_admin\users.html:4
-#: .\registration\templates\custom_admin\users.html:8
-msgid "User Management"
-msgstr "Пользователи"
-
-#: .\registration\templates\custom_admin\users.html:10
-msgid "Search users..."
-msgstr "Поиск пользователей..."
-
-#: .\registration\templates\custom_admin\users.html:11
-#: .\registration\templates\services.html:12
-msgid "Search"
-msgstr "Найти"
-
-#: .\registration\templates\custom_admin\users.html:18
-msgid "Registration Date"
-msgstr "Дата регистрации"
-
-#: .\registration\templates\custom_admin\users.html:71
-msgid "Add IP"
-msgstr "Добавить IP"
-
-#: .\registration\templates\custom_admin\users.html:76
-msgid "IP address"
-msgstr "IP адрес"
-
-#: .\registration\templates\custom_admin\users.html:78
-msgid "Created"
-msgstr "Дата создания"
-
-#: .\registration\templates\custom_admin\users.html:98
-msgid "Page navigation example"
-msgstr "Переключить навигацию"
 
 #: .\registration\templates\edit_profile.html:5
 msgid "Edit profile"
@@ -501,11 +743,11 @@ msgstr "Редактирование профиля"
 msgid "Edit Profile"
 msgstr "Редактировать профиль"
 
-#: .\registration\templates\edit_profile.html:34
+#: .\registration\templates\edit_profile.html:35
 msgid "Change password"
 msgstr "Изменить пароль"
 
-#: .\registration\templates\edit_profile.html:37
+#: .\registration\templates\edit_profile.html:38
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
@@ -550,23 +792,19 @@ msgstr ""
 msgid "If you did not receive the email, please check your spam folder."
 msgstr "Если вы не получили письмо, пожалуйста, проверьте папку «Спам»."
 
-#: .\registration\templates\message_about_activate.html:12
-#: .\registration\templates\order_details.html:20
-#: .\registration\templates\password_change_done.html:9
-#: .\registration\templates\password_reset_done.html:10
-#: .\registration\templates\payments.html:7
-#: .\registration\templates\terms_of_service.html:74
-#: .\registration\templates\user_agreement.html:79
-msgid "Return back"
-msgstr "Вернуться назад"
-
-#: .\registration\templates\order_pay.html:4
+#: .\registration\templates\message_add_services_with_zero_cost.html:4
 msgid "Wait manager"
 msgstr "Ожидайте менеджера"
 
-#: .\registration\templates\order_pay.html:9
+#: .\registration\templates\message_add_services_with_zero_cost.html:9
 msgid "Return to the list of orders"
 msgstr "Вернуться в заказы"
+
+#: .\registration\templates\order_service_contents_view.html:7
+#, fuzzy
+#| msgid "Content"
+msgid "Contents"
+msgstr "Содержание"
 
 #: .\registration\templates\orders.html:9
 msgid "My Orders"
@@ -576,26 +814,27 @@ msgstr "Мои заказы"
 msgid "Order Date"
 msgstr "Дата заказа"
 
-#: .\registration\templates\orders.html:37
+#: .\registration\templates\orders.html:43
 #: .\registration\templates\profile.html:32
 msgid "Pay"
 msgstr "Оплатить"
 
-#: .\registration\templates\orders.html:44
+#: .\registration\templates\orders.html:50
 #: .\registration\templates\profile.html:39
 msgid "Get ticket"
 msgstr "Билет"
 
-#: .\registration\templates\orders.html:48
-#: .\registration\templates\profile.html:43
-msgid "Details"
-msgstr "Подробнее"
+#: .\registration\templates\orders.html:52
+#, fuzzy
+#| msgid "Content"
+msgid "View content"
+msgstr "Содержание"
 
-#: .\registration\templates\orders.html:58
+#: .\registration\templates\orders.html:65
 msgid "Previous"
 msgstr "Предыдущая"
 
-#: .\registration\templates\orders.html:64
+#: .\registration\templates\orders.html:71
 msgid "Next"
 msgstr "Далее"
 
@@ -740,7 +979,7 @@ msgstr "Поиск услуг по группе..."
 msgid "Reset"
 msgstr "Очистить"
 
-#: .\registration\templates\services.html:38
+#: .\registration\templates\services.html:39
 msgid "Price from"
 msgstr "От"
 
@@ -752,27 +991,40 @@ msgstr "Оформление заказа"
 msgid "Submit"
 msgstr "Отправить"
 
-#: .\registration\views.py:488
+#: .\registration\templates\services_add_order.html:51
+msgid "Negotiable"
+msgstr "Договорная"
+
+#: .\registration\views.py:562
 msgid "Registration error. Please check the entered data."
 msgstr "Ошибка при регистрации. Пожалуйста, проверьте введенные данные."
 
-#: .\registration\views.py:527
+#: .\registration\views.py:601
 msgid ""
 "You can only request a password reset every {} minutes. Please try again "
 "later."
 msgstr "Вы уже запросили сброс пароля. Повторите запрос позже."
 
-#: .\registration\views.py:557
+#: .\registration\views.py:631
 msgid "Password Reset Requested"
 msgstr "Запрос на сброс пароля"
 
-#: .\registration\views.py:612
+#: .\registration\views.py:682
 msgid "Your account has been successfully activated!"
 msgstr "Ваш аккаунт был успешно активирован!"
 
-#: .\registration\views.py:616
+#: .\registration\views.py:686
 msgid "Invalid activation link!"
 msgstr "Недействительная ссылка активации!"
+
+#~ msgid "View Pending Orders"
+#~ msgstr "Просмотреть последние заказы"
+
+#~ msgid "Unread Messages"
+#~ msgstr "Непрочитанные сообщения"
+
+#~ msgid "Update Service Availability"
+#~ msgstr "Обновить доступность услуги"
 
 #~ msgid "Options"
 #~ msgstr "Опции"
@@ -912,12 +1164,6 @@ msgstr "Недействительная ссылка активации!"
 #~ msgid "Sign Up"
 #~ msgstr "Регистрация"
 
-#~ msgid "Title"
-#~ msgstr "Название"
-
-#~ msgid "Content"
-#~ msgstr "Содержание"
-
 #~ msgid "Catalog"
 #~ msgstr "Каталог"
 
@@ -926,9 +1172,6 @@ msgstr "Недействительная ссылка активации!"
 
 #~ msgid "Item List"
 #~ msgstr "Список товаров"
-
-#~ msgid "Discount"
-#~ msgstr "Скидка"
 
 #~ msgid "Pending Orders"
 #~ msgstr "Ожидающие заказы"
