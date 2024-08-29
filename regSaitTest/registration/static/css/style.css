@@ -328,7 +328,6 @@ footer p {
   width: 100%; /* Ограничение ширины до ширины контейнера */
   text-overflow: ellipsis; /* Добавление многоточия */
   overflow: hidden; /* Обрезка текста, который не помещается */
-  white-space: nowrap; /* Запрет переноса текста на новую строку */
 }
 .user-card .card-order-info form #id_user_comment, .user-card .card-order-info form #id_promo_code {
   width: 100%;
