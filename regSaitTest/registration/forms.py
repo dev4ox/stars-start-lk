@@ -1,5 +1,6 @@
 # python lib
 import os
+import time
 
 # pip lib
 from django.contrib.auth.forms import (
@@ -20,6 +21,7 @@ from tinymce.widgets import TinyMCE
 # my lib
 from .models import CustomUser, Services, Order, Category, PromoCode
 from .utils import get_min_cost
+from panels.models import GroupServices
 
 
 # user forms
@@ -198,13 +200,29 @@ class ServicesChangeForm(forms.ModelForm):
         uploaded_files = self.cleaned_data.get('load_content')
         file_paths = []
 
-        upload_dir = settings.MEDIA_ROOT + '\\service_contents'
+        if instance.id:
+            upload_dir = settings.MEDIA_ROOT + '\\service_contents\\' + str(instance.id)
+            last_id = None
+
+        else:
+            groups_services = GroupServices.objects.all().order_by("id")
+            new_service = Services.objects.create(
+                title="",
+                description="",
+                group_services_id=groups_services[0].id,
+            )
+
+            last_id = new_service.id + 1
+
+            new_service.delete()
+
+            upload_dir = settings.MEDIA_ROOT + '\\service_contents\\' + str(last_id)
 
         if not os.path.exists(upload_dir):
             os.makedirs(upload_dir)
 
         for file in uploaded_files:
-            file_path = self.handle_uploaded_file(file)
+            file_path = self.handle_uploaded_file(file, upload_dir=upload_dir)
 
             if file_path not in instance.contents:
                 file_paths.append(file_path)
@@ -214,13 +232,17 @@ class ServicesChangeForm(forms.ModelForm):
             instance.contents.extend(file_paths)
 
         if commit:
-            instance.save()
+            if not last_id:
+                instance.save()
+
+            else:
+                instance.save(last_id=last_id)
 
         return instance
 
     @staticmethod
-    def handle_uploaded_file(f):
-        file_path = os.path.join(settings.MEDIA_ROOT, "service_contents", f.name)
+    def handle_uploaded_file(f, upload_dir: str) -> str:
+        file_path = os.path.join(upload_dir, f.name)
 
         with open(file_path, 'wb+') as destination:
             for chunk in f.chunks():

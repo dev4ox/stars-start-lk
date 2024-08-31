@@ -2,6 +2,7 @@
 import os
 import uuid
 from glob import glob
+from pathlib import Path
 
 # pip lib
 from django.db import models
@@ -114,23 +115,55 @@ class Services(models.Model):
 
     def save(self, *args, **kwargs):
         file_paths_on_server = []
-        path_to_contents_on_server = os.path.join(settings.MEDIA_ROOT, "service_contents")
+
+        if "last_id" in kwargs:
+            path_to_contents_on_server = os.path.join(settings.MEDIA_ROOT, "service_contents", str(kwargs["last_id"]))
+
+        else:
+            path_to_contents_on_server = os.path.join(settings.MEDIA_ROOT, "service_contents", str(self.id))
+
         file_types = [".docx", ".pdf", ".mp3", ".mp4"]
 
         for file_type in file_types:
             file_paths_on_server += glob(path_to_contents_on_server + "\\*" + file_type)
 
         self.contents: list
+        print(f"before changed: {self.contents}", file_paths_on_server)
 
         for index_content_path, content_path in enumerate(self.contents):
             if content_path not in file_paths_on_server:
                 del self.contents[index_content_path]
 
-        # for index_file_path, file_path in enumerate(file_paths_on_server):
-        #     if file_path not in self.contents:
-        #         self.contents.append(file_path)
+        print(f"after check path: {self.contents}")
 
-        super().save(*args, **kwargs)
+        for file_path in file_paths_on_server:
+            if file_path not in self.contents:
+                self.contents.append(file_path)
+
+        print(f"after check file: {self.contents}")
+        
+        if "last_id" in kwargs:
+            del kwargs["last_id"]
+            super().save(*args, **kwargs)
+        
+        else:
+            super().save(*args, **kwargs)
+
+    def delete(self, using=None, keep_parents=False):
+        if self.contents:
+            directory_path = Path(list(self.contents)[0]).parent
+
+        else:
+            directory_path = None
+
+        for file_path in self.contents:
+            if os.path.exists(file_path):
+                os.remove(file_path)
+
+        if directory_path and os.path.exists(directory_path) and not os.listdir(directory_path):
+            os.rmdir(directory_path)
+
+        super().delete(using, keep_parents)
 
     def __str__(self):
         return self.title
