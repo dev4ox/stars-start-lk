@@ -126,9 +126,9 @@ class Services(models.Model):
             if content_path not in file_paths_on_server:
                 del self.contents[index_content_path]
 
-        for index_file_path, file_path in enumerate(file_paths_on_server):
-            if file_path not in self.contents:
-                self.contents.append(file_path)
+        # for index_file_path, file_path in enumerate(file_paths_on_server):
+        #     if file_path not in self.contents:
+        #         self.contents.append(file_path)
 
         super().save(*args, **kwargs)
 

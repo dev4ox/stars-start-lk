@@ -14,7 +14,6 @@ from django.utils.safestring import mark_safe
 from django import forms
 from django.db import models
 from django.conf import settings
-from django.core.files.uploadedfile import InMemoryUploadedFile
 from phonenumber_field.formfields import PhoneNumberField
 from tinymce.widgets import TinyMCE
 
@@ -161,7 +160,7 @@ class ServicesChangeForm(forms.ModelForm):
         ),
         required=False
     )
-    id = forms.IntegerField()
+    id = forms.IntegerField(required=False)
 
     class Meta:
         model = Services
@@ -190,6 +189,9 @@ class ServicesChangeForm(forms.ModelForm):
             instance = kwargs["instance"]
 
             self.fields["id"].initial = instance.id
+
+        else:
+            self.fields["id"].initial = 0
 
     def save(self, commit=True):
         instance = super().save(commit=False)
