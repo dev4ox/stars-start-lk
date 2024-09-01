@@ -175,62 +175,6 @@ def order_details(request, order_id):
         return redirect("panel_form_edit", order_id)
 
 
-# @login_required
-# def order_service_content_view(request, file_paths):
-#     # responses = []
-#     #
-#     # for file_path in file_paths:
-#     #     responses.append(order_service_content_view_file(file_path))
-#     #
-#     # context = {
-#     #     'responses': responses,
-#     # }
-#     #
-#     # return render(request, 'order_service_cotents_view.html', context)
-#
-#     # file_paths_list = file_paths.split(',')
-#     files_info = []
-#
-#     for file_path in file_paths:
-#         file_ext = os.path.splitext(file_path)[1].lower()
-#         file_info = {
-#             'path': file_path,
-#             'ext': file_ext,
-#         }
-#
-#         if file_ext == '.pdf':
-#             file_info['content_type'] = 'application/pdf'
-#             file_info['display'] = 'embed'
-#
-#         elif file_ext in ['.jpg', '.jpeg', '.png', '.gif']:
-#             file_info['content_type'] = f'image/{file_ext[1:]}'
-#             file_info['display'] = 'image'
-#
-#         elif file_ext == '.mp3':
-#             file_info['content_type'] = 'audio/mpeg'
-#             file_info['display'] = 'audio'
-#
-#         elif file_ext == '.mp4':
-#             file_info['content_type'] = 'video/mp4'
-#             file_info['display'] = 'video'
-#
-#         elif file_ext == '.docx':
-#             file_info['content_type'] = 'text/plain'
-#             file_info['display'] = 'text'
-#
-#         else:
-#             file_info['content_type'] = 'text/plain'
-#             file_info['display'] = 'text'
-#
-#         files_info.append(file_info)
-#
-#     context = {
-#         "files_info": files_info
-#     }
-#
-#     return render(request, 'order_service_contents_view.html', context)
-
-
 @login_required
 def order_service_content(request, service_id):
     service = Services.objects.get(id=service_id)  # Получаем объект Services (замените на нужный)
@@ -261,7 +205,6 @@ def order_service_content(request, service_id):
 
 @login_required
 def order_pay(request, order_id):
-    # return render(request, "order_pay.html")
     order = get_object_or_404(Order, order_id=order_id, user=request.user)
 
     Configuration.account_id = settings.YOKASSA_ACCOUNT_ID
@@ -432,23 +375,6 @@ def services(request):
 
     for service in services_list:
         service.min_cost = get_min_cost(service, output_int_num=True)
-
-        # categories = Category.objects.filter(service=service).order_by('cost')
-        #
-        # if categories:
-        #     count_deactivate = 0
-        #
-        #     for category in categories:
-        #         if category.cost != 0 and category.is_active:
-        #             service.min_cost = int(category.cost)
-        #             break
-        #
-        #         elif not category.is_active:
-        #             count_deactivate += 1
-        #
-        #     else:
-        #         if len(categories) != 0 and count_deactivate != 0:
-        #             service.min_cost = 0
 
     context = {
         "services_list": list(enumerate(services_list)),

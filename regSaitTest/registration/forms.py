@@ -151,18 +151,18 @@ class ServicesChangeForm(forms.ModelForm):
             }
         )
     )
-    load_content = MultipleFileField(required=False)
+    load_content = MultipleFileField(required=False)  # Поле для загрузки нескольких файлов, необязательное для заполнения
     table_contents = forms.CharField(
         widget=forms.Textarea(
             attrs={
                 "hidden": True,
                 "id": "panels_form_services_contents_table",
-                "value": 0,
+                "value": 0,  # Значение по умолчанию
             }
         ),
-        required=False
+        required=False  # Поле не обязательно к заполнению
     )
-    id = forms.IntegerField(required=False)
+    id = forms.IntegerField(required=False)  # Поле для отображения идентификатора записи, необязательное для заполнения
 
     class Meta:
         model = Services
@@ -172,39 +172,40 @@ class ServicesChangeForm(forms.ModelForm):
             "group_services",
             "description",
             'image_path',
-            "table_contents",
-            "load_content",
+            "table_contents",  # Поле для таблицы содержимого
+            "load_content",  # Поле для загрузки контента
             "is_active",
             "is_visible_content"
         ]
 
         labels = {
-            "table_contents": _("Table contents")
+            "table_contents": _("Table contents")  # Метка для поля table_contents
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["id"].widget.attrs["readonly"] = True
-        self.fields["id"].widget.attrs["id"] = "service_id"
+        self.fields["id"].widget.attrs["readonly"] = True  # Делаем поле ID только для чтения
+        self.fields["id"].widget.attrs["id"] = "service_id"  # Присваиваем идентификатор элементу HTML
 
+        # Если форма создается для существующего экземпляра, устанавливаем начальное значение поля ID
         if "instance" in kwargs:
             instance = kwargs["instance"]
-
             self.fields["id"].initial = instance.id
-
         else:
-            self.fields["id"].initial = 0
+            self.fields["id"].initial = 0  # Если экземпляра нет, устанавливаем ID в 0
 
     def save(self, commit=True):
         instance = super().save(commit=False)
-        uploaded_files = self.cleaned_data.get('load_content')
+        uploaded_files = self.cleaned_data.get('load_content')  # Получаем загруженные файлы
         file_paths = []
 
+        # Если ID экземпляра существует, используем его для создания пути загрузки
         if instance.id:
             upload_dir = settings.MEDIA_ROOT + '\\service_contents\\' + str(instance.id)
             last_id = None
 
         else:
+            # Если экземпляра еще нет, создаем временную запись для получения ID
             groups_services = GroupServices.objects.all().order_by("id")
             new_service = Services.objects.create(
                 title="",
@@ -212,20 +213,21 @@ class ServicesChangeForm(forms.ModelForm):
                 group_services_id=groups_services[0].id,
             )
 
-            last_id = new_service.id + 1
-
-            new_service.delete()
+            last_id = new_service.id + 1  # Определяем следующий ID
+            new_service.delete()  # Удаляем временную запись
 
             upload_dir = settings.MEDIA_ROOT + '\\service_contents\\' + str(last_id)
 
+        # Создаем директорию загрузки, если она еще не существует
         if not os.path.exists(upload_dir):
             os.makedirs(upload_dir)
 
+        # Обрабатываем каждый загруженный файл
         for file in uploaded_files:
             file_path = self.handle_uploaded_file(file, upload_dir=upload_dir)
 
             if file_path not in instance.contents:
-                file_paths.append(file_path)
+                file_paths.append(file_path)  # Добавляем путь файла, если его нет в contents
 
         # Добавляем новые пути в contents
         if file_paths:
@@ -234,7 +236,6 @@ class ServicesChangeForm(forms.ModelForm):
         if commit:
             if not last_id:
                 instance.save()
-
             else:
                 instance.save(last_id=last_id)
 
@@ -242,6 +243,7 @@ class ServicesChangeForm(forms.ModelForm):
 
     @staticmethod
     def handle_uploaded_file(f, upload_dir: str) -> str:
+        # Сохраняем загруженный файл в указанной директории
         file_path = os.path.join(upload_dir, f.name)
 
         with open(file_path, 'wb+') as destination:
@@ -249,6 +251,7 @@ class ServicesChangeForm(forms.ModelForm):
                 destination.write(chunk)
 
         return file_path
+
 
 
 class OrderChangeForm(forms.ModelForm):
