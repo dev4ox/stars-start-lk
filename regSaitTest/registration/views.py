@@ -342,16 +342,16 @@ def generate_or_get_pdf(request, order_id):
 
 
 def services(request):
-    services_list = Services.objects.all().order_by("id")
-    # group_services = GroupServices.objects.all().order_by("title")
+    # services_list = Services.objects.all().order_by("id")
+    group_services = GroupServices.objects.all().order_by("id")
     search_query = request.GET.get('search', '')
 
     if search_query:
-        group_services = GroupServices.objects.filter(title__icontains=search_query) | GroupServices.objects.filter(
+        services_list = Services.objects.filter(title__icontains=search_query) | Services.objects.filter(
             description__icontains=search_query).order_by('id')
 
     else:
-        group_services = GroupServices.objects.all().order_by("id")
+        services_list = Services.objects.all().order_by("id")
 
     group_services = list(group_services)
     services_list = list(services_list)

@@ -38,18 +38,21 @@
                 </td>
                 <td>
                      {% if order.status == 'not_paid' %}
-                    <form method="post" action="{% url 'orders_pay' order.order_id %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-success">{% trans "Pay" %}</button>
-                    </form>
+                        <form method="post" action="{% url 'orders_pay' order.order_id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success">{% trans "Pay" %}</button>
+                        </form>
                     {% endif %}
 
                     {% if order.status == 'paid' %}
-                    <form method="post" action="{% url 'order_get_tickets' order.order_id %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-success">{% trans "Get ticket" %}</button>
-                    </form>
-                    <a href="{% url 'order_view_content' order.service.id %}" class="btn btn-info">{% trans "View content" %}</a>
+                        {% if not order.service.is_visible_content %}
+                            <form method="post" action="{% url 'order_get_tickets' order.order_id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success">{% trans "Get ticket" %}</button>
+                            </form>
+                        {% else %}
+                            <a href="{% url 'order_view_content' order.service.id %}" class="btn btn-info">{% trans "View content" %}</a>
+                        {% endif %}
                     {% endif %}
 
                     <a href="{% url 'orders_details' order.order_id %}" class="btn btn-info">{% trans "Details" %}</a>
