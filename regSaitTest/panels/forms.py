@@ -92,6 +92,9 @@ class GroupServicesChangeForm(forms.ModelForm):
         if id_ and new_id and id_ != new_id:
             update_group_service_id(instance, old_id=id_, new_id=new_id)
 
+        instance.save()
+        return instance
+
 
 class OrderChangeManagerForm(forms.ModelForm):
 
