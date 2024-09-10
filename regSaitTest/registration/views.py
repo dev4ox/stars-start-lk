@@ -342,37 +342,35 @@ def generate_or_get_pdf(request, order_id):
 
 
 def services(request):
-    # services_list = Services.objects.all().order_by("id")
     group_services = GroupServices.objects.all().order_by("id")
     search_query = request.GET.get('search', '')
 
     if search_query:
         services_list = Services.objects.filter(title__icontains=search_query) | Services.objects.filter(
             description__icontains=search_query).order_by('id')
-
     else:
         services_list = Services.objects.all().order_by("id")
 
     group_services = list(group_services)
     services_list = list(services_list)
 
-    for index, group in enumerate(group_services):
-        if not group.is_active:
-            del group_services[group_services.index(group)]
+    # Список для хранения индексов групп, которые нужно удалить
+    groups_to_delete = []
 
-        if not services_list[index].is_active:
-            services_group_list = Services.objects.filter(group_services=group)
-            count_deactivate = 0
+    # Проверяем каждую группу услуг
+    for group in group_services:
+        # Получаем все услуги, связанные с этой группой
+        services_in_group = [service for service in services_list if service.group_services == group]
 
-            for service_group in services_group_list:
-                if not service_group.is_active:
-                    count_deactivate += 1
+        # Если в группе нет активных услуг, удаляем эту группу
+        if not services_in_group:
+            groups_to_delete.append(group)
 
-            if count_deactivate == len(services_group_list):
-                del group_services[index]
+    # Удаляем неактивные группы
+    for group in groups_to_delete:
+        group_services.remove(group)
 
-            del services_list[index]
-
+    # Обновляем минимальные цены для оставшихся услуг
     for service in services_list:
         service.min_cost = get_min_cost(service, output_int_num=True)
 
