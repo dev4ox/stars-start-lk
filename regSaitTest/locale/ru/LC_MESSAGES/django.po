@@ -956,8 +956,8 @@ msgid "Our Services"
 msgstr "Услуги"
 
 #: .\registration\templates\services.html:11
-msgid "Search services group..."
-msgstr "Поиск услуг по группе..."
+msgid "Search services..."
+msgstr "Поиск по услугам..."
 
 #: .\registration\templates\services.html:16
 msgid "Reset"
