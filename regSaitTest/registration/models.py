@@ -2,6 +2,7 @@
 import os
 import uuid
 from glob import glob
+from pathlib import Path
 
 # pip lib
 from django.db import models
@@ -108,29 +109,67 @@ class Services(models.Model):
         default="services_images/default.jpg"
     )
     group_services = models.ForeignKey("panels.GroupServices", on_delete=models.CASCADE, default="")
-    contents = models.JSONField(default=list, null=True, blank=True)
+    contents = models.JSONField(default=list, null=True,
+                                blank=True)  # Поле для хранения списка путей к файлам в формате JSON
     is_active = models.BooleanField(default=True)
     is_visible_content = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         file_paths_on_server = []
-        path_to_contents_on_server = os.path.join(settings.MEDIA_ROOT, "service_contents")
+
+        # Определяем путь к содержимому на сервере в зависимости от наличия параметра "last_id"
+        if "last_id" in kwargs:
+            path_to_contents_on_server = os.path.join(settings.MEDIA_ROOT, "service_contents", str(kwargs["last_id"]))
+
+        else:
+            path_to_contents_on_server = os.path.join(settings.MEDIA_ROOT, "service_contents", str(self.id))
+
+        # Типы файлов, которые нужно учитывать
         file_types = [".docx", ".pdf", ".mp3", ".mp4"]
 
+        # Собираем все файлы на сервере, соответствующие указанным типам файлов
         for file_type in file_types:
             file_paths_on_server += glob(path_to_contents_on_server + "\\*" + file_type)
 
-        self.contents: list
+        # Проверяем и корректируем содержимое contents
+        self.contents: list  # Указываем, что contents является списком
 
+        # Удаляем из contents пути, которые не существуют на сервере
         for index_content_path, content_path in enumerate(self.contents):
             if content_path not in file_paths_on_server:
                 del self.contents[index_content_path]
 
-        for index_file_path, file_path in enumerate(file_paths_on_server):
+        # Добавляем в contents файлы, которые есть на сервере, но отсутствуют в списке contents
+        for file_path in file_paths_on_server:
             if file_path not in self.contents:
                 self.contents.append(file_path)
 
-        super().save(*args, **kwargs)
+        # Убираем параметр "last_id" перед сохранением объекта
+        if "last_id" in kwargs:
+            del kwargs["last_id"]
+            super().save(*args, **kwargs)
+
+        else:
+            super().save(*args, **kwargs)
+
+    def delete(self, using=None, keep_parents=False):
+        # Если есть содержимое, определяем путь к директории, где хранятся файлы
+        if self.contents:
+            directory_path = Path(list(self.contents)[0]).parent
+
+        else:
+            directory_path = None
+
+        # Удаляем все файлы, указанные в contents
+        for file_path in self.contents:
+            if os.path.exists(file_path):
+                os.remove(file_path)
+
+        # Если директория существует и пуста, удаляем её
+        if directory_path and os.path.exists(directory_path) and not os.listdir(directory_path):
+            os.rmdir(directory_path)
+
+        super().delete(using, keep_parents)
 
     def __str__(self):
         return self.title

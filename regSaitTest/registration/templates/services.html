@@ -8,7 +8,7 @@
 {% block content %}
 <h2>{% trans "Our Services" %}</h2>
 <form method="get" class="d-flex mb-3">
-    <input type="text" name="search" class="form-control me-2" placeholder="{% trans 'Search services group...' %}" value="{{ search_query }}">
+    <input type="text" name="search" class="form-control me-2" placeholder="{% trans 'Search services...' %}" value="{{ search_query }}">
     <button type="submit" class="btn btn-secondary">{% trans "Search" %}</button>
 
     {% if search_query %}

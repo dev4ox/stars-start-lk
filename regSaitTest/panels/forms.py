@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django_select2.forms import Select2MultipleWidget
 
 from .models import BannedIP, GroupServices
+from .utils import update_group_service_id
 from registration.models import CustomUser, Order, PromoCode
 
 
@@ -77,10 +78,22 @@ class CustomUserChangeModeratorForm(forms.ModelForm):
 
 class GroupServicesChangeForm(forms.ModelForm):
     id = forms.IntegerField(widget=forms.TextInput(attrs={'readonly': 'readonly'}), required=False)
+    new_id = forms.IntegerField(required=False)
 
     class Meta:
         model = GroupServices
-        fields = ["id", 'title', "description", "is_active"]
+        fields = ["id", "new_id", 'title', "description", "is_active"]
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        id_ = self.cleaned_data.get("id")
+        new_id = self.cleaned_data.get("new_id")
+
+        if id_ and new_id and id_ != new_id:
+            update_group_service_id(instance, old_id=id_, new_id=new_id)
+
+        instance.save()
+        return instance
 
 
 class OrderChangeManagerForm(forms.ModelForm):

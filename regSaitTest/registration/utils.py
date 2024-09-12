@@ -1,16 +1,12 @@
 # python lib
 from typing import Union
-import os
 
 # pip lib
-from django import forms
-from django.conf import settings
 from django.db.models import Case, When
 from django.db.models.query import QuerySet
-from django.utils.translation import gettext_lazy as _
 
 # my lib
-from .models import Category, Services, PromoCode
+from .models import Category, Services
 
 
 def convert_list_to_queryset(
