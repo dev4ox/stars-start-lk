@@ -50,9 +50,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'services' %}">{% trans "Services" %}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'orders' %}">{% trans "Orders" %}</a>
-                            </li>
+                            {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'orders' %}">{% trans "Orders" %}</a>
+                                </li>
+                            {% endif %}
                             {% if user.is_authenticated %}
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
