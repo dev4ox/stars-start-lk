@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 12:25+0300\n"
+"POT-Creation-Date: 2024-09-12 11:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,623 +19,645 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\panels\forms.py:14 .\panels\forms.py:40 .\panels\forms.py:64
-#: .\registration\forms.py:30 .\registration\forms.py:75
+#: .\regSaitTest\panels\forms.py:14 .\regSaitTest\panels\forms.py:40
+#: .\regSaitTest\panels\forms.py:64 .\regSaitTest\registration\forms.py:30
+#: .\regSaitTest\registration\forms.py:75
 msgid "Phone number"
 msgstr "Номер телефона"
 
-#: .\panels\forms.py:32 .\panels\forms.py:49 .\registration\forms.py:44
-#: .\registration\forms.py:91
+#: .\regSaitTest\panels\forms.py:32 .\regSaitTest\panels\forms.py:49
+#: .\regSaitTest\registration\forms.py:44
+#: .\regSaitTest\registration\forms.py:91
 msgid "First name"
 msgstr "Имя"
 
-#: .\panels\forms.py:33 .\panels\forms.py:50 .\registration\forms.py:45
-#: .\registration\forms.py:92
+#: .\regSaitTest\panels\forms.py:33 .\regSaitTest\panels\forms.py:50
+#: .\regSaitTest\registration\forms.py:45
+#: .\regSaitTest\registration\forms.py:92
 msgid "Last name"
 msgstr "Фамилия"
 
-#: .\panels\forms.py:34 .\panels\forms.py:51 .\registration\forms.py:93
+#: .\regSaitTest\panels\forms.py:34 .\regSaitTest\panels\forms.py:51
+#: .\regSaitTest\registration\forms.py:93
 msgid "Profile photo"
 msgstr "Фотография профиля"
 
-#: .\panels\forms.py:129 .\panels\templates\admin\promo_code.html:14
+#: .\regSaitTest\panels\forms.py:129
+#: .\regSaitTest\panels\templates\admin\promo_code.html:14
 msgid "Value"
 msgstr "Значение"
 
-#: .\panels\forms.py:130 .\panels\templates\admin\banned_ip.html:15
-#: .\panels\templates\admin\group_service.html:15
-#: .\panels\templates\admin\promo_code.html:15
-#: .\panels\templates\admin\services.html:15
-#: .\panels\templates\manager\services.html:14
-#: .\panels\templates\moderator\group_service.html:15
-#: .\panels\templates\moderator\services.html:15
+#: .\regSaitTest\panels\forms.py:130
+#: .\regSaitTest\panels\templates\admin\banned_ip.html:15
+#: .\regSaitTest\panels\templates\admin\group_service.html:15
+#: .\regSaitTest\panels\templates\admin\promo_code.html:15
+#: .\regSaitTest\panels\templates\admin\services.html:15
+#: .\regSaitTest\panels\templates\manager\services.html:14
+#: .\regSaitTest\panels\templates\moderator\group_service.html:15
+#: .\regSaitTest\panels\templates\moderator\services.html:15
 msgid "Description"
 msgstr "Описание"
 
-#: .\panels\forms.py:131 .\panels\templates\admin\promo_code.html:16
-#: .\registration\templates\orders.html:17
+#: .\regSaitTest\panels\forms.py:131
+#: .\regSaitTest\panels\templates\admin\promo_code.html:16
+#: .\regSaitTest\registration\templates\orders.html:17
 msgid "Discount"
 msgstr "Скидка"
 
-#: .\panels\forms.py:132 .\panels\templates\admin\promo_code.html:17
+#: .\regSaitTest\panels\forms.py:132
+#: .\regSaitTest\panels\templates\admin\promo_code.html:17
 msgid "Expiration date"
 msgstr "Дата окончания"
 
-#: .\panels\forms.py:133
+#: .\regSaitTest\panels\forms.py:133
 msgid "Active"
 msgstr "Активировать"
 
-#: .\panels\middleware.py:57
+#: .\regSaitTest\panels\middleware.py:57
 msgid "Your IP has been banned. For more information, visit:"
 msgstr "Ваш IP адрес был забанен. Связаться с нами:"
 
-#: .\panels\models.py:18 .\registration\models.py:157
+#: .\regSaitTest\panels\models.py:18 .\regSaitTest\registration\models.py:157
 msgid "User"
 msgstr "Пользователь"
 
-#: .\panels\models.py:19 .\registration\models.py:170
-#: .\registration\templates\services.html:43
+#: .\regSaitTest\panels\models.py:19 .\regSaitTest\registration\models.py:170
+#: .\regSaitTest\registration\templates\services.html:43
+#: .\venv\Lib\site-packages\django\forms\formsets.py:484
+#: .\venv\Lib\site-packages\django\forms\formsets.py:491
 msgid "Order"
 msgstr "Заказать"
 
-#: .\panels\models.py:20
+#: .\regSaitTest\panels\models.py:20
 msgid "Amount"
 msgstr "Сумма"
 
-#: .\panels\models.py:21
+#: .\regSaitTest\panels\models.py:21
 msgid "Date Payment"
 msgstr "Дата платежа"
 
-#: .\panels\models.py:22
+#: .\regSaitTest\panels\models.py:22
 msgid "Transaction ID"
 msgstr "ID транзакции"
 
-#: .\panels\models.py:25
+#: .\regSaitTest\panels\models.py:25
 msgid "Payment"
 msgstr "Платеж"
 
-#: .\panels\models.py:26 .\registration\templates\payments.html:4
+#: .\regSaitTest\panels\models.py:26
+#: .\regSaitTest\registration\templates\payments.html:4
 msgid "Payments"
 msgstr "Платежи"
 
-#: .\panels\templates\admin\banned_ip.html:4
-#: .\panels\templates\admin\banned_ip.html:8
-#: .\panels\templates\admin\panels_base_admin.html:38
+#: .\regSaitTest\panels\templates\admin\banned_ip.html:4
+#: .\regSaitTest\panels\templates\admin\banned_ip.html:8
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:38
 msgid "Banned IP"
 msgstr "Бан IP"
 
-#: .\panels\templates\admin\banned_ip.html:4
-#: .\panels\templates\admin\category.html:5
-#: .\panels\templates\admin\group_service.html:4
-#: .\panels\templates\admin\orders.html:4
-#: .\panels\templates\admin\panels_base_admin.html:8
-#: .\panels\templates\admin\panels_base_admin.html:20
-#: .\panels\templates\admin\panels_base_admin.html:83
-#: .\panels\templates\admin\promo_code.html:4
-#: .\panels\templates\admin\reports.html:4
-#: .\panels\templates\admin\services.html:4
-#: .\panels\templates\admin\users.html:4 .\panels\templates\form_change.html:7
-#: .\panels\templates\form_delete.html:4 .\panels\templates\form_details.html:4
-#: .\panels\templates\manager\category.html:5
-#: .\panels\templates\manager\orders.html:4
-#: .\panels\templates\manager\panels_base_manager.html:8
-#: .\panels\templates\manager\panels_base_manager.html:20
-#: .\panels\templates\manager\panels_base_manager.html:71
-#: .\panels\templates\manager\services.html:4
-#: .\panels\templates\manager\users.html:4
-#: .\panels\templates\moderator\category.html:5
-#: .\panels\templates\moderator\group_service.html:4
-#: .\panels\templates\moderator\orders.html:4
-#: .\panels\templates\moderator\panels_base_moderator.html:8
-#: .\panels\templates\moderator\panels_base_moderator.html:20
-#: .\panels\templates\moderator\panels_base_moderator.html:71
-#: .\panels\templates\moderator\services.html:4
-#: .\panels\templates\moderator\users.html:4
-#: .\panels\templates\panels_base_form.html:8
-#: .\panels\templates\panels_base_form.html:82
-#: .\panels\templates\panels_base_form.html:119
-#: .\registration\templates\base.html:12 .\registration\templates\base.html:35
-#: .\registration\templates\base.html:80
-#: .\registration\templates\terms_of_service.html:77
-#: .\registration\templates\user_agreement.html:82
+#: .\regSaitTest\panels\templates\admin\banned_ip.html:4
+#: .\regSaitTest\panels\templates\admin\category.html:5
+#: .\regSaitTest\panels\templates\admin\group_service.html:4
+#: .\regSaitTest\panels\templates\admin\orders.html:4
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:8
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:20
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:83
+#: .\regSaitTest\panels\templates\admin\promo_code.html:4
+#: .\regSaitTest\panels\templates\admin\reports.html:4
+#: .\regSaitTest\panels\templates\admin\services.html:4
+#: .\regSaitTest\panels\templates\admin\users.html:4
+#: .\regSaitTest\panels\templates\form_change.html:7
+#: .\regSaitTest\panels\templates\form_delete.html:4
+#: .\regSaitTest\panels\templates\form_details.html:4
+#: .\regSaitTest\panels\templates\manager\category.html:5
+#: .\regSaitTest\panels\templates\manager\orders.html:4
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:8
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:20
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:71
+#: .\regSaitTest\panels\templates\manager\services.html:4
+#: .\regSaitTest\panels\templates\manager\users.html:4
+#: .\regSaitTest\panels\templates\moderator\category.html:5
+#: .\regSaitTest\panels\templates\moderator\group_service.html:4
+#: .\regSaitTest\panels\templates\moderator\orders.html:4
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:8
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:20
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:71
+#: .\regSaitTest\panels\templates\moderator\services.html:4
+#: .\regSaitTest\panels\templates\moderator\users.html:4
+#: .\regSaitTest\panels\templates\panels_base_form.html:8
+#: .\regSaitTest\panels\templates\panels_base_form.html:82
+#: .\regSaitTest\panels\templates\panels_base_form.html:119
+#: .\regSaitTest\registration\templates\base.html:12
+#: .\regSaitTest\registration\templates\base.html:35
+#: .\regSaitTest\registration\templates\base.html:83
+#: .\regSaitTest\registration\templates\terms_of_service.html:77
+#: .\regSaitTest\registration\templates\user_agreement.html:82
 msgid "Star Start"
 msgstr "Звёздный старт"
 
-#: .\panels\templates\admin\banned_ip.html:9
+#: .\regSaitTest\panels\templates\admin\banned_ip.html:9
 msgid "Add IP"
 msgstr "Добавить IP"
 
-#: .\panels\templates\admin\banned_ip.html:14
+#: .\regSaitTest\panels\templates\admin\banned_ip.html:14
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2208
 msgid "IP address"
 msgstr "IP адрес"
 
-#: .\panels\templates\admin\banned_ip.html:16
+#: .\regSaitTest\panels\templates\admin\banned_ip.html:16
 msgid "Created"
 msgstr "Дата создания"
 
-#: .\panels\templates\admin\banned_ip.html:17
-#: .\panels\templates\admin\category.html:40
-#: .\panels\templates\admin\group_service.html:16
-#: .\panels\templates\admin\orders.html:36
-#: .\panels\templates\admin\promo_code.html:18
-#: .\panels\templates\admin\services.html:16
-#: .\panels\templates\admin\users.html:19
-#: .\panels\templates\manager\orders.html:36
-#: .\panels\templates\manager\users.html:19
-#: .\panels\templates\moderator\category.html:40
-#: .\panels\templates\moderator\group_service.html:16
-#: .\panels\templates\moderator\orders.html:36
-#: .\panels\templates\moderator\services.html:16
-#: .\panels\templates\moderator\users.html:19
-#: .\registration\templates\orders.html:19
+#: .\regSaitTest\panels\templates\admin\banned_ip.html:17
+#: .\regSaitTest\panels\templates\admin\category.html:40
+#: .\regSaitTest\panels\templates\admin\group_service.html:16
+#: .\regSaitTest\panels\templates\admin\orders.html:36
+#: .\regSaitTest\panels\templates\admin\promo_code.html:18
+#: .\regSaitTest\panels\templates\admin\services.html:16
+#: .\regSaitTest\panels\templates\admin\users.html:19
+#: .\regSaitTest\panels\templates\manager\orders.html:36
+#: .\regSaitTest\panels\templates\manager\users.html:19
+#: .\regSaitTest\panels\templates\moderator\category.html:40
+#: .\regSaitTest\panels\templates\moderator\group_service.html:16
+#: .\regSaitTest\panels\templates\moderator\orders.html:36
+#: .\regSaitTest\panels\templates\moderator\services.html:16
+#: .\regSaitTest\panels\templates\moderator\users.html:19
+#: .\regSaitTest\registration\templates\orders.html:19
 msgid "Actions"
 msgstr "Действия"
 
-#: .\panels\templates\admin\banned_ip.html:28
-#: .\panels\templates\admin\category.html:51
-#: .\panels\templates\admin\group_service.html:26
-#: .\panels\templates\admin\orders.html:53
-#: .\panels\templates\admin\promo_code.html:30
-#: .\panels\templates\admin\services.html:26
-#: .\panels\templates\admin\users.html:29
-#: .\panels\templates\manager\orders.html:54
-#: .\panels\templates\moderator\category.html:51
-#: .\panels\templates\moderator\group_service.html:26
-#: .\panels\templates\moderator\orders.html:53
-#: .\panels\templates\moderator\services.html:26
-#: .\panels\templates\moderator\users.html:29
+#: .\regSaitTest\panels\templates\admin\banned_ip.html:28
+#: .\regSaitTest\panels\templates\admin\category.html:51
+#: .\regSaitTest\panels\templates\admin\group_service.html:26
+#: .\regSaitTest\panels\templates\admin\orders.html:53
+#: .\regSaitTest\panels\templates\admin\promo_code.html:30
+#: .\regSaitTest\panels\templates\admin\services.html:26
+#: .\regSaitTest\panels\templates\admin\users.html:29
+#: .\regSaitTest\panels\templates\manager\orders.html:54
+#: .\regSaitTest\panels\templates\moderator\category.html:51
+#: .\regSaitTest\panels\templates\moderator\group_service.html:26
+#: .\regSaitTest\panels\templates\moderator\orders.html:53
+#: .\regSaitTest\panels\templates\moderator\services.html:26
+#: .\regSaitTest\panels\templates\moderator\users.html:29
 msgid "Edit"
 msgstr "Изменить"
 
-#: .\panels\templates\admin\banned_ip.html:29
-#: .\panels\templates\admin\category.html:52
-#: .\panels\templates\admin\group_service.html:27
-#: .\panels\templates\admin\orders.html:54
-#: .\panels\templates\admin\promo_code.html:31
-#: .\panels\templates\admin\services.html:27
-#: .\panels\templates\admin\users.html:30
-#: .\panels\templates\form_delete.html:12
-#: .\panels\templates\moderator\category.html:52
-#: .\panels\templates\moderator\group_service.html:27
-#: .\panels\templates\moderator\services.html:27
+#: .\regSaitTest\panels\templates\admin\banned_ip.html:29
+#: .\regSaitTest\panels\templates\admin\category.html:52
+#: .\regSaitTest\panels\templates\admin\group_service.html:27
+#: .\regSaitTest\panels\templates\admin\orders.html:54
+#: .\regSaitTest\panels\templates\admin\promo_code.html:31
+#: .\regSaitTest\panels\templates\admin\services.html:27
+#: .\regSaitTest\panels\templates\admin\users.html:30
+#: .\regSaitTest\panels\templates\form_delete.html:12
+#: .\regSaitTest\panels\templates\moderator\category.html:52
+#: .\regSaitTest\panels\templates\moderator\group_service.html:27
+#: .\regSaitTest\panels\templates\moderator\services.html:27
+#: .\venv\Lib\site-packages\django\forms\formsets.py:499
 msgid "Delete"
 msgstr "Удалить"
 
-#: .\panels\templates\admin\banned_ip.html:36
-#: .\panels\templates\admin\promo_code.html:38
+#: .\regSaitTest\panels\templates\admin\banned_ip.html:36
+#: .\regSaitTest\panels\templates\admin\promo_code.html:38
 msgid "Page navigation example"
 msgstr "Переключить навигацию"
 
-#: .\panels\templates\admin\category.html:5
-#: .\panels\templates\admin\category.html:9
-#: .\panels\templates\manager\category.html:5
-#: .\panels\templates\manager\category.html:9
-#: .\panels\templates\moderator\category.html:5
-#: .\panels\templates\moderator\category.html:9
+#: .\regSaitTest\panels\templates\admin\category.html:5
+#: .\regSaitTest\panels\templates\admin\category.html:9
+#: .\regSaitTest\panels\templates\manager\category.html:5
+#: .\regSaitTest\panels\templates\manager\category.html:9
+#: .\regSaitTest\panels\templates\moderator\category.html:5
+#: .\regSaitTest\panels\templates\moderator\category.html:9
 msgid "Category Management"
 msgstr "Категории"
 
-#: .\panels\templates\admin\category.html:12
-#: .\panels\templates\manager\category.html:12
-#: .\panels\templates\moderator\category.html:12
+#: .\regSaitTest\panels\templates\admin\category.html:12
+#: .\regSaitTest\panels\templates\manager\category.html:12
+#: .\regSaitTest\panels\templates\moderator\category.html:12
 msgid "Sort by ID"
 msgstr "Сортировка по ID"
 
-#: .\panels\templates\admin\category.html:22
-#: .\panels\templates\manager\category.html:22
-#: .\panels\templates\moderator\category.html:22
+#: .\regSaitTest\panels\templates\admin\category.html:22
+#: .\regSaitTest\panels\templates\manager\category.html:22
+#: .\regSaitTest\panels\templates\moderator\category.html:22
 msgid "Sort by Service Title"
 msgstr "Сортировка по алфавиту"
 
-#: .\panels\templates\admin\category.html:32
-#: .\panels\templates\moderator\category.html:32
+#: .\regSaitTest\panels\templates\admin\category.html:32
+#: .\regSaitTest\panels\templates\moderator\category.html:32
 msgid "Add Category"
 msgstr "Добавить категорию"
 
-#: .\panels\templates\admin\category.html:37
-#: .\panels\templates\manager\category.html:36
-#: .\panels\templates\moderator\category.html:37
+#: .\regSaitTest\panels\templates\admin\category.html:37
+#: .\regSaitTest\panels\templates\manager\category.html:36
+#: .\regSaitTest\panels\templates\moderator\category.html:37
 msgid "Name category"
 msgstr "Название категории"
 
-#: .\panels\templates\admin\category.html:38
-#: .\panels\templates\manager\category.html:37
-#: .\panels\templates\moderator\category.html:38
+#: .\regSaitTest\panels\templates\admin\category.html:38
+#: .\regSaitTest\panels\templates\manager\category.html:37
+#: .\regSaitTest\panels\templates\moderator\category.html:38
 msgid "Name service"
 msgstr "Имя Услуги"
 
-#: .\panels\templates\admin\category.html:39
-#: .\panels\templates\manager\category.html:38
-#: .\panels\templates\moderator\category.html:39
-#: .\registration\templates\orders.html:16
-#: .\registration\templates\services_add_order.html:19
+#: .\regSaitTest\panels\templates\admin\category.html:39
+#: .\regSaitTest\panels\templates\manager\category.html:38
+#: .\regSaitTest\panels\templates\moderator\category.html:39
+#: .\regSaitTest\registration\templates\orders.html:16
+#: .\regSaitTest\registration\templates\services_add_order.html:19
 msgid "Cost"
 msgstr "Стоимость"
 
-#: .\panels\templates\admin\dashboard.html:4
-#: .\panels\templates\admin\panels_base_admin.html:32
-#: .\panels\templates\manager\dashboard.html:4
-#: .\panels\templates\manager\panels_base_manager.html:32
-#: .\panels\templates\moderator\dashboard.html:4
-#: .\panels\templates\moderator\panels_base_moderator.html:32
+#: .\regSaitTest\panels\templates\admin\dashboard.html:4
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:32
+#: .\regSaitTest\panels\templates\manager\dashboard.html:4
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:32
+#: .\regSaitTest\panels\templates\moderator\dashboard.html:4
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:32
 msgid "Dashboard"
 msgstr "Панель управления"
 
-#: .\panels\templates\admin\dashboard.html:10
-#: .\panels\templates\manager\dashboard.html:10
-#: .\panels\templates\moderator\dashboard.html:10
+#: .\regSaitTest\panels\templates\admin\dashboard.html:10
+#: .\regSaitTest\panels\templates\manager\dashboard.html:10
+#: .\regSaitTest\panels\templates\moderator\dashboard.html:10
 msgid "Quick Actions"
 msgstr "Быстрые действия"
 
-#: .\panels\templates\admin\dashboard.html:11
-#: .\panels\templates\moderator\dashboard.html:11
+#: .\regSaitTest\panels\templates\admin\dashboard.html:11
+#: .\regSaitTest\panels\templates\moderator\dashboard.html:11
 msgid "Add group service"
 msgstr "Добавить группу услуг"
 
-#: .\panels\templates\admin\dashboard.html:12
-#: .\panels\templates\moderator\dashboard.html:12
+#: .\regSaitTest\panels\templates\admin\dashboard.html:12
+#: .\regSaitTest\panels\templates\moderator\dashboard.html:12
 msgid "Add service"
 msgstr "Добавить услугу"
 
-#: .\panels\templates\admin\dashboard.html:13
-#: .\panels\templates\moderator\dashboard.html:13
+#: .\regSaitTest\panels\templates\admin\dashboard.html:13
+#: .\regSaitTest\panels\templates\moderator\dashboard.html:13
 msgid "Add orders"
 msgstr "Добавить заказ"
 
-#: .\panels\templates\admin\dashboard.html:19
-#: .\panels\templates\manager\dashboard.html:18
+#: .\regSaitTest\panels\templates\admin\dashboard.html:19
+#: .\regSaitTest\panels\templates\manager\dashboard.html:18
 msgid "Admin Dashboard"
 msgstr "Панель администратора"
 
-#: .\panels\templates\admin\dashboard.html:26
-#: .\panels\templates\admin\panels_base_admin.html:35
-#: .\panels\templates\manager\dashboard.html:25
-#: .\panels\templates\manager\panels_base_manager.html:35
-#: .\panels\templates\moderator\dashboard.html:26
-#: .\panels\templates\moderator\panels_base_moderator.html:35
+#: .\regSaitTest\panels\templates\admin\dashboard.html:26
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:35
+#: .\regSaitTest\panels\templates\manager\dashboard.html:25
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:35
+#: .\regSaitTest\panels\templates\moderator\dashboard.html:26
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:35
 msgid "Users"
 msgstr "Пользователи"
 
-#: .\panels\templates\admin\dashboard.html:34
-#: .\panels\templates\manager\dashboard.html:33
-#: .\panels\templates\moderator\dashboard.html:34
+#: .\regSaitTest\panels\templates\admin\dashboard.html:34
+#: .\regSaitTest\panels\templates\manager\dashboard.html:33
+#: .\regSaitTest\panels\templates\moderator\dashboard.html:34
 msgid "Active Orders"
 msgstr "Активные заказы"
 
-#: .\panels\templates\admin\dashboard.html:42
-#: .\panels\templates\manager\dashboard.html:41
-#: .\panels\templates\moderator\dashboard.html:42
+#: .\regSaitTest\panels\templates\admin\dashboard.html:42
+#: .\regSaitTest\panels\templates\manager\dashboard.html:41
+#: .\regSaitTest\panels\templates\moderator\dashboard.html:42
 msgid "Monthly Revenue"
 msgstr "Ежемесячный доход"
 
-#: .\panels\templates\admin\dashboard.html:52
-#: .\panels\templates\manager\dashboard.html:51
-#: .\panels\templates\moderator\dashboard.html:52
+#: .\regSaitTest\panels\templates\admin\dashboard.html:52
+#: .\regSaitTest\panels\templates\manager\dashboard.html:51
+#: .\regSaitTest\panels\templates\moderator\dashboard.html:52
 msgid "Recent Actions"
 msgstr "Последние действия"
 
-#: .\panels\templates\admin\group_service.html:4
-#: .\panels\templates\admin\group_service.html:8
-#: .\panels\templates\admin\panels_base_admin.html:44
-#: .\panels\templates\moderator\group_service.html:4
-#: .\panels\templates\moderator\group_service.html:8
+#: .\regSaitTest\panels\templates\admin\group_service.html:4
+#: .\regSaitTest\panels\templates\admin\group_service.html:8
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:44
+#: .\regSaitTest\panels\templates\moderator\group_service.html:4
+#: .\regSaitTest\panels\templates\moderator\group_service.html:8
 msgid "Group service"
 msgstr "Группа услуг"
 
-#: .\panels\templates\admin\group_service.html:9
-#: .\panels\templates\moderator\group_service.html:9
+#: .\regSaitTest\panels\templates\admin\group_service.html:9
+#: .\regSaitTest\panels\templates\moderator\group_service.html:9
 msgid "Add Group service"
 msgstr "Добавить группу услуг"
 
-#: .\panels\templates\admin\group_service.html:14
-#: .\panels\templates\moderator\group_service.html:14
+#: .\regSaitTest\panels\templates\admin\group_service.html:14
+#: .\regSaitTest\panels\templates\moderator\group_service.html:14
 msgid "Title"
 msgstr "Название"
 
-#: .\panels\templates\admin\orders.html:4
-#: .\panels\templates\manager\orders.html:4
-#: .\panels\templates\moderator\orders.html:4
+#: .\regSaitTest\panels\templates\admin\orders.html:4
+#: .\regSaitTest\panels\templates\manager\orders.html:4
+#: .\regSaitTest\panels\templates\moderator\orders.html:4
 msgid "Order Management"
 msgstr "Заказы"
 
-#: .\panels\templates\admin\orders.html:8
-#: .\panels\templates\manager\orders.html:8
-#: .\panels\templates\moderator\orders.html:8
+#: .\regSaitTest\panels\templates\admin\orders.html:8
+#: .\regSaitTest\panels\templates\manager\orders.html:8
+#: .\regSaitTest\panels\templates\moderator\orders.html:8
 msgid "All Orders"
 msgstr "Все заказы"
 
-#: .\panels\templates\admin\orders.html:11
-#: .\panels\templates\manager\orders.html:11
-#: .\panels\templates\moderator\orders.html:11
+#: .\regSaitTest\panels\templates\admin\orders.html:11
+#: .\regSaitTest\panels\templates\manager\orders.html:11
+#: .\regSaitTest\panels\templates\moderator\orders.html:11
 msgid "All"
 msgstr "Все"
 
-#: .\panels\templates\admin\orders.html:14
-#: .\panels\templates\manager\orders.html:14
-#: .\panels\templates\moderator\orders.html:14
+#: .\regSaitTest\panels\templates\admin\orders.html:14
+#: .\regSaitTest\panels\templates\manager\orders.html:14
+#: .\regSaitTest\panels\templates\moderator\orders.html:14
 msgid "New Orders"
 msgstr "Новый заказ"
 
-#: .\panels\templates\admin\orders.html:17
-#: .\panels\templates\manager\orders.html:17
-#: .\panels\templates\moderator\orders.html:17
+#: .\regSaitTest\panels\templates\admin\orders.html:17
+#: .\regSaitTest\panels\templates\manager\orders.html:17
+#: .\regSaitTest\panels\templates\moderator\orders.html:17
 msgid "In Progress"
 msgstr "Модерация"
 
-#: .\panels\templates\admin\orders.html:20
-#: .\panels\templates\manager\orders.html:20
-#: .\panels\templates\moderator\orders.html:20
+#: .\regSaitTest\panels\templates\admin\orders.html:20
+#: .\regSaitTest\panels\templates\manager\orders.html:20
+#: .\regSaitTest\panels\templates\moderator\orders.html:20
 msgid "Completed"
 msgstr "Завершён"
 
-#: .\panels\templates\admin\orders.html:23
-#: .\panels\templates\manager\orders.html:23
-#: .\panels\templates\moderator\orders.html:23
+#: .\regSaitTest\panels\templates\admin\orders.html:23
+#: .\regSaitTest\panels\templates\manager\orders.html:23
+#: .\regSaitTest\panels\templates\moderator\orders.html:23
 msgid "Cancelled"
 msgstr "Отменен"
 
-#: .\panels\templates\admin\orders.html:26
-#: .\panels\templates\moderator\orders.html:26
-#: .\registration\templates\services_add_order.html:7
+#: .\regSaitTest\panels\templates\admin\orders.html:26
+#: .\regSaitTest\panels\templates\moderator\orders.html:26
+#: .\regSaitTest\registration\templates\services_add_order.html:7
 msgid "Add Order"
 msgstr "Добавить заказ"
 
-#: .\panels\templates\admin\orders.html:30
-#: .\panels\templates\manager\orders.html:29
-#: .\panels\templates\moderator\orders.html:30
-#: .\registration\templates\orders.html:13
+#: .\regSaitTest\panels\templates\admin\orders.html:30
+#: .\regSaitTest\panels\templates\manager\orders.html:29
+#: .\regSaitTest\panels\templates\moderator\orders.html:30
+#: .\regSaitTest\registration\templates\orders.html:13
 msgid "Order ID"
 msgstr "ID заказа"
 
-#: .\panels\templates\admin\orders.html:31
-#: .\panels\templates\manager\orders.html:30
-#: .\panels\templates\moderator\orders.html:31
+#: .\regSaitTest\panels\templates\admin\orders.html:31
+#: .\regSaitTest\panels\templates\manager\orders.html:30
+#: .\regSaitTest\panels\templates\moderator\orders.html:31
 msgid "Client"
 msgstr "Клиент"
 
-#: .\panels\templates\admin\orders.html:32
-#: .\panels\templates\manager\dashboard.html:11
-#: .\panels\templates\manager\orders.html:31
-#: .\panels\templates\moderator\orders.html:32
-#: .\registration\templates\services.html:32
-#: .\registration\templates\services_add_order.html:9
+#: .\regSaitTest\panels\templates\admin\orders.html:32
+#: .\regSaitTest\panels\templates\manager\dashboard.html:11
+#: .\regSaitTest\panels\templates\manager\orders.html:31
+#: .\regSaitTest\panels\templates\moderator\orders.html:32
+#: .\regSaitTest\registration\templates\services.html:32
+#: .\regSaitTest\registration\templates\services_add_order.html:9
 msgid "Service"
 msgstr "Услуги"
 
-#: .\panels\templates\admin\orders.html:33
-#: .\panels\templates\manager\orders.html:32
-#: .\panels\templates\moderator\orders.html:33
+#: .\regSaitTest\panels\templates\admin\orders.html:33
+#: .\regSaitTest\panels\templates\manager\orders.html:32
+#: .\regSaitTest\panels\templates\moderator\orders.html:33
 msgid "Date"
 msgstr "Дата"
 
-#: .\panels\templates\admin\orders.html:34
-#: .\panels\templates\manager\orders.html:33
-#: .\panels\templates\moderator\orders.html:34
+#: .\regSaitTest\panels\templates\admin\orders.html:34
+#: .\regSaitTest\panels\templates\manager\orders.html:33
+#: .\regSaitTest\panels\templates\moderator\orders.html:34
 msgid "Price"
 msgstr "Цена"
 
-#: .\panels\templates\admin\orders.html:35
-#: .\panels\templates\manager\orders.html:35
-#: .\panels\templates\moderator\orders.html:35
-#: .\registration\templates\orders.html:18
+#: .\regSaitTest\panels\templates\admin\orders.html:35
+#: .\regSaitTest\panels\templates\manager\orders.html:35
+#: .\regSaitTest\panels\templates\moderator\orders.html:35
+#: .\regSaitTest\registration\templates\orders.html:18
 msgid "Status"
 msgstr "Статус"
 
-#: .\panels\templates\admin\panels_base_admin.html:8
-#: .\panels\templates\manager\panels_base_manager.html:8
-#: .\panels\templates\moderator\panels_base_moderator.html:8
-#: .\panels\templates\panels_base_form.html:8
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:8
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:8
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:8
+#: .\regSaitTest\panels\templates\panels_base_form.html:8
 msgid "Admin panel"
 msgstr "Админ-панель"
 
-#: .\panels\templates\admin\panels_base_admin.html:21
-#: .\panels\templates\manager\panels_base_manager.html:21
-#: .\panels\templates\moderator\panels_base_moderator.html:21
-#: .\panels\templates\panels_base_form.html:83
-#: .\registration\templates\base.html:36
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:21
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:21
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:21
+#: .\regSaitTest\panels\templates\panels_base_form.html:83
+#: .\regSaitTest\registration\templates\base.html:36
 msgid "production center"
 msgstr "продюсерский центр"
 
-#: .\panels\templates\admin\panels_base_admin.html:25
-#: .\panels\templates\manager\panels_base_manager.html:25
-#: .\panels\templates\moderator\panels_base_moderator.html:25
-#: .\panels\templates\panels_base_form.html:87
-#: .\registration\templates\base.html:38
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:25
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:25
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:25
+#: .\regSaitTest\panels\templates\panels_base_form.html:87
+#: .\regSaitTest\registration\templates\base.html:38
 msgid "Toggle navigation"
 msgstr "Переключить навигацию"
 
-#: .\panels\templates\admin\panels_base_admin.html:41
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:41
 msgid "Promo Code"
 msgstr "Промокод"
 
-#: .\panels\templates\admin\panels_base_admin.html:47
-#: .\panels\templates\manager\panels_base_manager.html:38
-#: .\panels\templates\moderator\panels_base_moderator.html:38
-#: .\registration\templates\base.html:48
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:47
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:38
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:38
+#: .\regSaitTest\registration\templates\base.html:51
 msgid "Services"
 msgstr "Услуги"
 
-#: .\panels\templates\admin\panels_base_admin.html:50
-#: .\panels\templates\manager\panels_base_manager.html:41
-#: .\panels\templates\moderator\panels_base_moderator.html:41
-#: .\registration\forms.py:312
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:50
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:41
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:41
+#: .\regSaitTest\registration\forms.py:312
 msgid "Category"
 msgstr "Категории"
 
-#: .\panels\templates\admin\panels_base_admin.html:53
-#: .\panels\templates\manager\dashboard.html:12
-#: .\panels\templates\manager\panels_base_manager.html:44
-#: .\panels\templates\moderator\panels_base_moderator.html:44
-#: .\panels\templates\observer\order_user_details.html:4
-#: .\registration\models.py:171 .\registration\templates\base.html:51
-#: .\registration\templates\order_details.html:4
-#: .\registration\templates\orders.html:4
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:53
+#: .\regSaitTest\panels\templates\manager\dashboard.html:12
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:44
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:44
+#: .\regSaitTest\panels\templates\observer\order_user_details.html:4
+#: .\regSaitTest\registration\models.py:171
+#: .\regSaitTest\registration\templates\base.html:54
+#: .\regSaitTest\registration\templates\order_details.html:4
+#: .\regSaitTest\registration\templates\orders.html:4
 msgid "Orders"
 msgstr "Заказы"
 
-#: .\panels\templates\admin\panels_base_admin.html:56
-#: .\panels\templates\admin\reports.html:8
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:56
+#: .\regSaitTest\panels\templates\admin\reports.html:8
 msgid "Reports"
 msgstr "Отчеты"
 
-#: .\panels\templates\admin\panels_base_admin.html:59
-#: .\panels\templates\manager\panels_base_manager.html:47
-#: .\panels\templates\moderator\panels_base_moderator.html:47
-#: .\registration\templates\base.html:55
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:59
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:47
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:47
+#: .\regSaitTest\registration\templates\base.html:58
 msgid "Logout"
 msgstr "Выйти"
 
-#: .\panels\templates\admin\panels_base_admin.html:83
-#: .\panels\templates\manager\panels_base_manager.html:71
-#: .\panels\templates\moderator\panels_base_moderator.html:71
-#: .\panels\templates\panels_base_form.html:119
-#: .\registration\templates\base.html:80
-#: .\registration\templates\terms_of_service.html:77
-#: .\registration\templates\user_agreement.html:82
+#: .\regSaitTest\panels\templates\admin\panels_base_admin.html:83
+#: .\regSaitTest\panels\templates\manager\panels_base_manager.html:71
+#: .\regSaitTest\panels\templates\moderator\panels_base_moderator.html:71
+#: .\regSaitTest\panels\templates\panels_base_form.html:119
+#: .\regSaitTest\registration\templates\base.html:83
+#: .\regSaitTest\registration\templates\terms_of_service.html:77
+#: .\regSaitTest\registration\templates\user_agreement.html:82
 msgid "All rights reserved."
 msgstr "Все права защищены."
 
-#: .\panels\templates\admin\promo_code.html:4
-#: .\panels\templates\admin\promo_code.html:8 .\registration\forms.py:314
+#: .\regSaitTest\panels\templates\admin\promo_code.html:4
+#: .\regSaitTest\panels\templates\admin\promo_code.html:8
+#: .\regSaitTest\registration\forms.py:314
 msgid "Promo code"
 msgstr "Промокод"
 
-#: .\panels\templates\admin\promo_code.html:9
+#: .\regSaitTest\panels\templates\admin\promo_code.html:9
 msgid "Add Promo code"
 msgstr "Добавить промокод"
 
-#: .\panels\templates\admin\reports.html:4
+#: .\regSaitTest\panels\templates\admin\reports.html:4
 msgid "Report Management"
 msgstr "Управление отчетами"
 
-#: .\panels\templates\admin\reports.html:10
-#: .\panels\templates\admin\reports.html:16
+#: .\regSaitTest\panels\templates\admin\reports.html:10
+#: .\regSaitTest\panels\templates\admin\reports.html:16
 msgid "Service Reports"
 msgstr "Отчет о услугах"
 
-#: .\panels\templates\admin\reports.html:11
+#: .\regSaitTest\panels\templates\admin\reports.html:11
 msgid "Order Reports"
 msgstr "Отчет о заказах"
 
-#: .\panels\templates\admin\reports.html:12
+#: .\regSaitTest\panels\templates\admin\reports.html:12
 msgid "Profit Reports"
 msgstr "Отчет о доходе"
 
-#: .\panels\templates\admin\reports.html:20
-#: .\panels\templates\admin\services.html:14
-#: .\panels\templates\manager\services.html:13
-#: .\panels\templates\moderator\services.html:14
-#: .\registration\templates\orders.html:15
+#: .\regSaitTest\panels\templates\admin\reports.html:20
+#: .\regSaitTest\panels\templates\admin\services.html:14
+#: .\regSaitTest\panels\templates\manager\services.html:13
+#: .\regSaitTest\panels\templates\moderator\services.html:14
+#: .\regSaitTest\registration\templates\orders.html:15
 msgid "Service Name"
 msgstr "Имя услуги"
 
-#: .\panels\templates\admin\reports.html:21
+#: .\regSaitTest\panels\templates\admin\reports.html:21
 msgid "Number of Orders"
 msgstr "Номер ордера"
 
-#: .\panels\templates\admin\reports.html:22
+#: .\regSaitTest\panels\templates\admin\reports.html:22
 msgid "Total Revenue"
 msgstr "Весь доход"
 
-#: .\panels\templates\admin\reports.html:27
+#: .\regSaitTest\panels\templates\admin\reports.html:27
 msgid "Space Photo Session"
 msgstr ""
 
-#: .\panels\templates\admin\reports.html:32
+#: .\regSaitTest\panels\templates\admin\reports.html:32
 msgid "Virtual Flight to Mars"
 msgstr ""
 
-#: .\panels\templates\admin\reports.html:37
+#: .\regSaitTest\panels\templates\admin\reports.html:37
 msgid "Planetarium Excursion"
 msgstr ""
 
-#: .\panels\templates\admin\reports.html:42
+#: .\regSaitTest\panels\templates\admin\reports.html:42
 msgid "Master Class 'Building a Rocket'"
 msgstr ""
 
-#: .\panels\templates\admin\services.html:4
-#: .\panels\templates\admin\services.html:8
-#: .\panels\templates\manager\services.html:4
-#: .\panels\templates\manager\services.html:8
-#: .\panels\templates\moderator\services.html:4
-#: .\panels\templates\moderator\services.html:8
+#: .\regSaitTest\panels\templates\admin\services.html:4
+#: .\regSaitTest\panels\templates\admin\services.html:8
+#: .\regSaitTest\panels\templates\manager\services.html:4
+#: .\regSaitTest\panels\templates\manager\services.html:8
+#: .\regSaitTest\panels\templates\moderator\services.html:4
+#: .\regSaitTest\panels\templates\moderator\services.html:8
 msgid "Service Management"
 msgstr "Услуги"
 
-#: .\panels\templates\admin\services.html:9
-#: .\panels\templates\moderator\services.html:9
+#: .\regSaitTest\panels\templates\admin\services.html:9
+#: .\regSaitTest\panels\templates\moderator\services.html:9
 msgid "Add Service"
 msgstr "Добавить услугу"
 
-#: .\panels\templates\admin\users.html:4 .\panels\templates\admin\users.html:8
-#: .\panels\templates\manager\users.html:4
-#: .\panels\templates\manager\users.html:8
-#: .\panels\templates\moderator\users.html:4
-#: .\panels\templates\moderator\users.html:8
+#: .\regSaitTest\panels\templates\admin\users.html:4
+#: .\regSaitTest\panels\templates\admin\users.html:8
+#: .\regSaitTest\panels\templates\manager\users.html:4
+#: .\regSaitTest\panels\templates\manager\users.html:8
+#: .\regSaitTest\panels\templates\moderator\users.html:4
+#: .\regSaitTest\panels\templates\moderator\users.html:8
 msgid "User Management"
 msgstr "Пользователи"
 
-#: .\panels\templates\admin\users.html:10
-#: .\panels\templates\manager\users.html:10
-#: .\panels\templates\moderator\users.html:10
+#: .\regSaitTest\panels\templates\admin\users.html:10
+#: .\regSaitTest\panels\templates\manager\users.html:10
+#: .\regSaitTest\panels\templates\moderator\users.html:10
 msgid "Search users..."
 msgstr "Поиск пользователей..."
 
-#: .\panels\templates\admin\users.html:11
-#: .\panels\templates\manager\users.html:11
-#: .\panels\templates\moderator\users.html:11
-#: .\registration\templates\services.html:12
+#: .\regSaitTest\panels\templates\admin\users.html:11
+#: .\regSaitTest\panels\templates\manager\users.html:11
+#: .\regSaitTest\panels\templates\moderator\users.html:11
+#: .\regSaitTest\registration\templates\services.html:12
 msgid "Search"
 msgstr "Найти"
 
-#: .\panels\templates\admin\users.html:17
-#: .\panels\templates\manager\users.html:17
-#: .\panels\templates\moderator\users.html:17 .\registration\forms.py:28
-#: .\registration\forms.py:98 .\registration\forms.py:103
-#: .\registration\templates\profile.html:15
+#: .\regSaitTest\panels\templates\admin\users.html:17
+#: .\regSaitTest\panels\templates\manager\users.html:17
+#: .\regSaitTest\panels\templates\moderator\users.html:17
+#: .\regSaitTest\registration\forms.py:28
+#: .\regSaitTest\registration\forms.py:98
+#: .\regSaitTest\registration\forms.py:103
+#: .\regSaitTest\registration\templates\profile.html:15
 msgid "Email"
 msgstr "Электронная почта"
 
-#: .\panels\templates\admin\users.html:18
-#: .\panels\templates\manager\users.html:18
-#: .\panels\templates\moderator\users.html:18
+#: .\regSaitTest\panels\templates\admin\users.html:18
+#: .\regSaitTest\panels\templates\manager\users.html:18
+#: .\regSaitTest\panels\templates\moderator\users.html:18
 msgid "Registration Date"
 msgstr "Дата регистрации"
 
-#: .\panels\templates\form_change.html:16
+#: .\regSaitTest\panels\templates\form_change.html:16
 msgid "Save"
 msgstr "Сохранить"
 
-#: .\panels\templates\form_delete.html:14
-#: .\panels\templates\form_details.html:13
-#: .\panels\templates\panels_base_form.html:95
+#: .\regSaitTest\panels\templates\form_delete.html:14
+#: .\regSaitTest\panels\templates\form_details.html:13
+#: .\regSaitTest\panels\templates\panels_base_form.html:95
 msgid "Back"
 msgstr "Назад"
 
-#: .\panels\templates\manager\orders.html:34 .\registration\forms.py:313
+#: .\regSaitTest\panels\templates\manager\orders.html:34
+#: .\regSaitTest\registration\forms.py:313
 msgid "User comment"
 msgstr "Комментарий пользователя"
 
-#: .\panels\templates\manager\users.html:29
-#: .\registration\templates\orders.html:55
-#: .\registration\templates\profile.html:43
+#: .\regSaitTest\panels\templates\manager\users.html:29
+#: .\regSaitTest\registration\templates\orders.html:55
+#: .\regSaitTest\registration\templates\profile.html:43
 msgid "Details"
 msgstr "Подробнее"
 
-#: .\panels\templates\moderator\dashboard.html:19
+#: .\regSaitTest\panels\templates\moderator\dashboard.html:19
 msgid "Moderator Dashboard"
 msgstr "Панель модератора"
 
-#: .\panels\templates\observer\order_user_details.html:31
-#: .\registration\templates\message_about_activate.html:12
-#: .\registration\templates\order_details.html:24
-#: .\registration\templates\password_change_done.html:9
-#: .\registration\templates\password_reset_done.html:10
-#: .\registration\templates\payments.html:7
+#: .\regSaitTest\panels\templates\observer\order_user_details.html:31
+#: .\regSaitTest\registration\templates\message_about_activate.html:12
+#: .\regSaitTest\registration\templates\order_details.html:24
+#: .\regSaitTest\registration\templates\password_change_done.html:9
+#: .\regSaitTest\registration\templates\password_reset_done.html:10
+#: .\regSaitTest\registration\templates\payments.html:7
 msgid "Return back"
 msgstr "Вернуться назад"
 
-#: .\registration\forms.py:35
+#: .\regSaitTest\registration\forms.py:35
 msgid ""
 "I agree to the <a href=\"/lk/terms_of_service\" target=\"_blank\">Terms of "
 "service</a> and the <a href=\"/lk/user_agreement\" target=\"_blank\">User "
@@ -645,11 +667,12 @@ msgstr ""
 "пользования</a> и <a href=\"/lk/user_agreement\" target=\"_blank"
 "\">Пользовательским соглашением</a>"
 
-#: .\registration\forms.py:79 .\registration\templates\edit_profile.html:33
+#: .\regSaitTest\registration\forms.py:79
+#: .\regSaitTest\registration\templates\edit_profile.html:33
 msgid "Password"
 msgstr "Пароль"
 
-#: .\registration\forms.py:81
+#: .\regSaitTest\registration\forms.py:81
 msgid ""
 "Raw passwords are not stored, so there is no way to see this user’s "
 "password, but you can change the password using <a href=\"/password_change"
@@ -659,107 +682,113 @@ msgstr ""
 "пользователя, но вы можете изменить пароль, используя <a href=\"/"
 "password_change\">эту форму</a>."
 
-#: .\registration\forms.py:108
+#: .\regSaitTest\registration\forms.py:108
 msgid "New password"
 msgstr "Новый пароль:"
 
-#: .\registration\forms.py:181
+#: .\regSaitTest\registration\forms.py:181
 msgid "Table contents"
 msgstr "Таблица контента"
 
-#: .\registration\models.py:32
+#: .\regSaitTest\registration\models.py:32
 msgid "email address"
 msgstr "адрес электронной почты"
 
-#: .\registration\models.py:35
+#: .\regSaitTest\registration\models.py:35
 msgid "A user with this email already exists."
 msgstr "Пользователь с таким email уже существует."
 
-#: .\registration\templates\account_activation_email.html:6
-#: .\registration\templates\account_activation_email.html:9
-#: .\registration\templates\message_about_activate.html:8
-#: .\registration\views.py:58
+#: .\regSaitTest\registration\templates\account_activation_email.html:6
+#: .\regSaitTest\registration\templates\account_activation_email.html:9
+#: .\regSaitTest\registration\templates\message_about_activate.html:8
+#: .\regSaitTest\registration\views.py:58
 msgid "Account Activation"
 msgstr "Активация аккаунта"
 
-#: .\registration\templates\account_activation_email.html:6
+#: .\regSaitTest\registration\templates\account_activation_email.html:6
 msgid "Stars start"
 msgstr "Звёздный старт"
 
-#: .\registration\templates\account_activation_email.html:10
-#: .\registration\templates\password_reset_email.html:11
+#: .\regSaitTest\registration\templates\account_activation_email.html:10
+#: .\regSaitTest\registration\templates\password_reset_email.html:11
 msgid "Hello"
 msgstr "Здравствуйте"
 
-#: .\registration\templates\account_activation_email.html:11
+#: .\regSaitTest\registration\templates\account_activation_email.html:11
 msgid "To confirm your account, please click the button below:"
 msgstr "Для подтверждения вашего аккаунта, пожалуйста, нажмите на кнопку ниже:"
 
-#: .\registration\templates\account_activation_email.html:12
+#: .\regSaitTest\registration\templates\account_activation_email.html:12
 msgid "Confirm Account"
 msgstr "Подтвердить аккаунт"
 
-#: .\registration\templates\base.html:12 .\registration\templates\base.html:17
-#: .\registration\templates\base.html:45
-#: .\registration\templates\profile.html:5
-#: .\registration\templates\profile.html:8
+#: .\regSaitTest\registration\templates\base.html:12
+#: .\regSaitTest\registration\templates\base.html:17
+#: .\regSaitTest\registration\templates\base.html:48
+#: .\regSaitTest\registration\templates\profile.html:5
+#: .\regSaitTest\registration\templates\profile.html:8
 msgid "Profile"
 msgstr "Профиль"
 
-#: .\registration\templates\base.html:17
-#: .\registration\templates\terms_of_service.html:8
-#: .\registration\templates\user_agreement.html:8
+#: .\regSaitTest\registration\templates\base.html:17
+#: .\regSaitTest\registration\templates\terms_of_service.html:8
+#: .\regSaitTest\registration\templates\user_agreement.html:8
 msgid "Star start"
 msgstr "Звёздный старт"
 
-#: .\registration\templates\base.html:82
-#: .\registration\templates\terms_of_service.html:8
+#: .\regSaitTest\registration\templates\base.html:45
+msgid "Home"
+msgstr "Главная"
+
+#: .\regSaitTest\registration\templates\base.html:85
+#: .\regSaitTest\registration\templates\terms_of_service.html:8
 msgid "Terms of service"
 msgstr "Условия пользования"
 
-#: .\registration\templates\base.html:83
-#: .\registration\templates\user_agreement.html:8
+#: .\regSaitTest\registration\templates\base.html:86
+#: .\regSaitTest\registration\templates\user_agreement.html:8
 msgid "User agreement"
 msgstr "Пользовательское соглашение"
 
-#: .\registration\templates\edit_profile.html:5
+#: .\regSaitTest\registration\templates\edit_profile.html:5
 msgid "Edit profile"
 msgstr "Редактирование профиля"
 
-#: .\registration\templates\edit_profile.html:10
-#: .\registration\templates\profile.html:17
+#: .\regSaitTest\registration\templates\edit_profile.html:10
+#: .\regSaitTest\registration\templates\profile.html:17
 msgid "Edit Profile"
 msgstr "Редактировать профиль"
 
-#: .\registration\templates\edit_profile.html:35
+#: .\regSaitTest\registration\templates\edit_profile.html:35
 msgid "Change password"
 msgstr "Изменить пароль"
 
-#: .\registration\templates\edit_profile.html:38
+#: .\regSaitTest\registration\templates\edit_profile.html:38
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: .\registration\templates\login.html:5 .\registration\templates\login.html:11
-#: .\registration\templates\login.html:28
+#: .\regSaitTest\registration\templates\login.html:5
+#: .\regSaitTest\registration\templates\login.html:11
+#: .\regSaitTest\registration\templates\login.html:28
 msgid "Login"
 msgstr "Вход"
 
-#: .\registration\templates\login.html:33
+#: .\regSaitTest\registration\templates\login.html:33
 msgid "Forgot password?"
 msgstr "Забыли пароль?"
 
-#: .\registration\templates\login.html:34
-#: .\registration\templates\register.html:5
-#: .\registration\templates\register.html:11
-#: .\registration\templates\register.html:48
+#: .\regSaitTest\registration\templates\login.html:34
+#: .\regSaitTest\registration\templates\register.html:5
+#: .\regSaitTest\registration\templates\register.html:11
+#: .\regSaitTest\registration\templates\register.html:48
 msgid "Sign up"
 msgstr "Зарегистрироваться"
 
-#: .\registration\templates\message_about_activate.html:4
+#: .\regSaitTest\registration\templates\message_about_activate.html:4
 msgid "Account activation"
 msgstr "Активация аккаунта"
 
-#: .\registration\templates\message_about_activate.html:9
+#: .\regSaitTest\registration\templates\message_about_activate.html:9
 msgid ""
 "Thank you for registering! Please activate your account to complete the "
 "registration."
@@ -767,7 +796,7 @@ msgstr ""
 "Спасибо за регистрацию! Пожалуйста, активируйте ваш аккаунт для завершения "
 "регистрации."
 
-#: .\registration\templates\message_about_activate.html:10
+#: .\regSaitTest\registration\templates\message_about_activate.html:10
 msgid ""
 "We have sent an activation email to the address you provided. Please check "
 "your inbox and follow the instructions in the email to activate your account."
@@ -776,104 +805,104 @@ msgstr ""
 "ваш почтовый ящик и следуйте инструкциям в письме для активации вашего "
 "аккаунта."
 
-#: .\registration\templates\message_about_activate.html:11
+#: .\regSaitTest\registration\templates\message_about_activate.html:11
 msgid "If you did not receive the email, please check your spam folder."
 msgstr "Если вы не получили письмо, пожалуйста, проверьте папку «Спам»."
 
-#: .\registration\templates\message_add_services_with_zero_cost.html:4
+#: .\regSaitTest\registration\templates\message_add_services_with_zero_cost.html:4
 msgid "Wait manager"
 msgstr "Ожидайте менеджера"
 
-#: .\registration\templates\message_add_services_with_zero_cost.html:9
+#: .\regSaitTest\registration\templates\message_add_services_with_zero_cost.html:9
 msgid "Return to the list of orders"
 msgstr "Вернуться в заказы"
 
-#: .\registration\templates\order_service_contents_view.html:7
+#: .\regSaitTest\registration\templates\order_service_contents_view.html:7
 msgid "Contents"
 msgstr "Содержание"
 
-#: .\registration\templates\orders.html:9
+#: .\regSaitTest\registration\templates\orders.html:9
 msgid "My Orders"
 msgstr "Мои заказы"
 
-#: .\registration\templates\orders.html:14
+#: .\regSaitTest\registration\templates\orders.html:14
 msgid "Order Date"
 msgstr "Дата заказа"
 
-#: .\registration\templates\orders.html:43
-#: .\registration\templates\profile.html:32
+#: .\regSaitTest\registration\templates\orders.html:43
+#: .\regSaitTest\registration\templates\profile.html:32
 msgid "Pay"
 msgstr "Оплатить"
 
-#: .\registration\templates\orders.html:50
-#: .\registration\templates\profile.html:39
+#: .\regSaitTest\registration\templates\orders.html:50
+#: .\regSaitTest\registration\templates\profile.html:39
 msgid "Get ticket"
 msgstr "Билет"
 
-#: .\registration\templates\orders.html:52
+#: .\regSaitTest\registration\templates\orders.html:52
 msgid "View content"
 msgstr "Просмотреть содержимое"
 
-#: .\registration\templates\orders.html:65
+#: .\regSaitTest\registration\templates\orders.html:65
 msgid "Previous"
 msgstr "Предыдущая"
 
-#: .\registration\templates\orders.html:71
+#: .\regSaitTest\registration\templates\orders.html:71
 msgid "Next"
 msgstr "Далее"
 
-#: .\registration\templates\password_change.html:4
-#: .\registration\templates\password_change_done.html:4
+#: .\regSaitTest\registration\templates\password_change.html:4
+#: .\regSaitTest\registration\templates\password_change_done.html:4
 msgid "Password change"
 msgstr "Изменение пароля"
 
-#: .\registration\templates\password_change.html:9
-#: .\registration\templates\password_change.html:13
+#: .\regSaitTest\registration\templates\password_change.html:9
+#: .\regSaitTest\registration\templates\password_change.html:13
 msgid "Change Password"
 msgstr "Изменить пароль"
 
-#: .\registration\templates\password_change_done.html:7
+#: .\regSaitTest\registration\templates\password_change_done.html:7
 msgid "Password Changed"
 msgstr "Пароль изменен"
 
-#: .\registration\templates\password_change_done.html:8
+#: .\regSaitTest\registration\templates\password_change_done.html:8
 msgid "Your password has been successfully changed."
 msgstr "Ваш пароль был успешно изменен."
 
-#: .\registration\templates\password_reset_complete.html:4
-#: .\registration\templates\password_reset_confirm.html:4
-#: .\registration\templates\password_reset_done.html:4
-#: .\registration\templates\password_reset_request.html:4
+#: .\regSaitTest\registration\templates\password_reset_complete.html:4
+#: .\regSaitTest\registration\templates\password_reset_confirm.html:4
+#: .\regSaitTest\registration\templates\password_reset_done.html:4
+#: .\regSaitTest\registration\templates\password_reset_request.html:4
 msgid "Password reset"
 msgstr "Сброс пароля"
 
-#: .\registration\templates\password_reset_complete.html:7
+#: .\regSaitTest\registration\templates\password_reset_complete.html:7
 msgid "Password Reset Complete"
 msgstr "Сброс пароля"
 
-#: .\registration\templates\password_reset_complete.html:8
+#: .\regSaitTest\registration\templates\password_reset_complete.html:8
 msgid "Your password has been set. You can now log in with your new password."
 msgstr "Успех! Войдите, используя новый пароль."
 
-#: .\registration\templates\password_reset_complete.html:9
-#: .\registration\templates\register.html:51
+#: .\regSaitTest\registration\templates\password_reset_complete.html:9
+#: .\regSaitTest\registration\templates\register.html:51
 msgid "Log in"
 msgstr "Войти"
 
-#: .\registration\templates\password_reset_confirm.html:9
+#: .\regSaitTest\registration\templates\password_reset_confirm.html:9
 msgid "Set New Password"
 msgstr "Изменение пароля"
 
-#: .\registration\templates\password_reset_confirm.html:20
+#: .\regSaitTest\registration\templates\password_reset_confirm.html:20
 msgid "Set password"
 msgstr "Изменить пароль"
 
-#: .\registration\templates\password_reset_done.html:8
-#: .\registration\templates\password_reset_email.html:8
+#: .\regSaitTest\registration\templates\password_reset_done.html:8
+#: .\regSaitTest\registration\templates\password_reset_email.html:8
 msgid "Password Reset"
 msgstr "Сброс пароля"
 
-#: .\registration\templates\password_reset_done.html:9
+#: .\regSaitTest\registration\templates\password_reset_done.html:9
 msgid ""
 "An email with password reset instructions has been sent to the specified "
 "email address."
@@ -881,125 +910,1753 @@ msgstr ""
 "Письмо с инструкциями по сбросу пароля было отправлено на указанный адрес "
 "электронной почты."
 
-#: .\registration\templates\password_reset_email.html:12
+#: .\regSaitTest\registration\templates\password_reset_email.html:12
 msgid ""
 "You requested a password reset. Please click the button below to reset your "
 "password. The link will expire at"
 msgstr "Запрос на сброс пароля. Для изменения пароля перейдите по ссылке ниже"
 
-#: .\registration\templates\password_reset_email.html:13
+#: .\regSaitTest\registration\templates\password_reset_email.html:13
 msgid "Reset Password"
 msgstr "Сбросить пароль"
 
-#: .\registration\templates\password_reset_email.html:14
+#: .\regSaitTest\registration\templates\password_reset_email.html:14
 msgid "If you did not request this, please ignore this email."
 msgstr "Если вы не сбрасывали пароль, проигнорируйте данное сообщение."
 
-#: .\registration\templates\password_reset_email.html:15
+#: .\regSaitTest\registration\templates\password_reset_email.html:15
 msgid "Thank you!"
 msgstr "Спасибо!"
 
-#: .\registration\templates\password_reset_request.html:9
+#: .\regSaitTest\registration\templates\password_reset_request.html:9
 msgid "Reset your password"
 msgstr "Смена пароля"
 
-#: .\registration\templates\password_reset_request.html:19
+#: .\regSaitTest\registration\templates\password_reset_request.html:19
 msgid "Send reset email"
 msgstr "Отправить"
 
-#: .\registration\templates\profile.html:11
+#: .\regSaitTest\registration\templates\profile.html:11
 msgid "Profile Photo"
 msgstr "Фотография профиля"
 
-#: .\registration\templates\profile.html:16
+#: .\regSaitTest\registration\templates\profile.html:16
 msgid "Phone"
 msgstr "Телефон"
 
-#: .\registration\templates\profile.html:22
+#: .\regSaitTest\registration\templates\profile.html:22
 msgid "Last Orders"
 msgstr "Последний заказ"
 
-#: .\registration\templates\profile.html:24
+#: .\regSaitTest\registration\templates\profile.html:24
 msgid "Service:"
 msgstr "Услуга:"
 
-#: .\registration\templates\profile.html:25
+#: .\regSaitTest\registration\templates\profile.html:25
 msgid "Category:"
 msgstr "Категория:"
 
-#: .\registration\templates\profile.html:26
+#: .\regSaitTest\registration\templates\profile.html:26
 msgid "Date:"
 msgstr "Дата:"
 
-#: .\registration\templates\profile.html:27
+#: .\regSaitTest\registration\templates\profile.html:27
 msgid "Status:"
 msgstr "Статус:"
 
-#: .\registration\templates\profile.html:28
+#: .\regSaitTest\registration\templates\profile.html:28
 msgid "Cost:"
 msgstr "Стоимость:"
 
-#: .\registration\templates\profile.html:45
+#: .\regSaitTest\registration\templates\profile.html:45
 msgid "No recent orders"
 msgstr "Заказов не найдено"
 
-#: .\registration\templates\register.html:51
+#: .\regSaitTest\registration\templates\register.html:51
 msgid "Already have an account?"
 msgstr "Уже есть аккаунт?"
 
-#: .\registration\templates\services.html:6
+#: .\regSaitTest\registration\templates\services.html:6
 msgid "Our services"
 msgstr "Услуги"
 
-#: .\registration\templates\services.html:9
+#: .\regSaitTest\registration\templates\services.html:9
 msgid "Our Services"
 msgstr "Услуги"
 
-#: .\registration\templates\services.html:11
+#: .\regSaitTest\registration\templates\services.html:11
 msgid "Search services group..."
 msgstr "Поиск услуг по группе..."
 
-#: .\registration\templates\services.html:16
+#: .\regSaitTest\registration\templates\services.html:16
 msgid "Reset"
 msgstr "Очистить"
 
-#: .\registration\templates\services.html:39
+#: .\regSaitTest\registration\templates\services.html:39
 msgid "Price from"
 msgstr "От"
 
-#: .\registration\templates\services_add_order.html:4
+#: .\regSaitTest\registration\templates\services_add_order.html:4
 msgid "Add order"
 msgstr "Оформление заказа"
 
-#: .\registration\templates\services_add_order.html:20
+#: .\regSaitTest\registration\templates\services_add_order.html:20
 msgid "Submit"
 msgstr "Отправить"
 
-#: .\registration\templates\services_add_order.html:51
+#: .\regSaitTest\registration\templates\services_add_order.html:51
 msgid "Negotiable"
 msgstr "Договорная"
 
-#: .\registration\views.py:562
+#: .\regSaitTest\registration\views.py:562
 msgid "Registration error. Please check the entered data."
 msgstr "Ошибка при регистрации. Пожалуйста, проверьте введенные данные."
 
-#: .\registration\views.py:601
+#: .\regSaitTest\registration\views.py:601
 msgid ""
 "You can only request a password reset every {} minutes. Please try again "
 "later."
 msgstr "Вы уже запросили сброс пароля. Повторите запрос позже."
 
-#: .\registration\views.py:631
+#: .\regSaitTest\registration\views.py:631
 msgid "Password Reset Requested"
 msgstr "Запрос на сброс пароля"
 
-#: .\registration\views.py:682
+#: .\regSaitTest\registration\views.py:682
 msgid "Your account has been successfully activated!"
 msgstr "Ваш аккаунт был успешно активирован!"
 
-#: .\registration\views.py:686
+#: .\regSaitTest\registration\views.py:686
 msgid "Invalid activation link!"
 msgstr "Недействительная ссылка активации!"
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\forms.py:6
+#, fuzzy
+#| msgid "Search users..."
+msgid "Search files"
+msgstr "Поиск пользователей..."
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:5
+msgid "Select an image to embed"
+msgstr ""
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:27
+msgid "Browse for the image you want, then click 'Embed Image' to continue..."
+msgstr ""
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:29
+msgid ""
+"No images found. Upload images using the 'Image Button' dialog's 'Upload' "
+"tab."
+msgstr ""
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:50
+#, fuzzy
+#| msgid "Image"
+msgid "Images in: "
+msgstr "Изображение"
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:62
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:80
+#, fuzzy
+#| msgid "Image"
+msgid "Embed Image"
+msgstr "Изображение"
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:146
+msgid "Play Slideshow"
+msgstr ""
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:147
+msgid "Pause Slideshow"
+msgstr ""
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:148
+msgid "&lsaquo; Previous Photo"
+msgstr ""
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:149
+msgid "Next Photo &rsaquo;"
+msgstr ""
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:150
+msgid "Next &rsaquo;"
+msgstr ""
+
+#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:151
+msgid "&lsaquo; Prev"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\_termui_impl.py:518
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\_termui_impl.py:522
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1120
+msgid "Aborted!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1309
+#: .\venv\Lib\site-packages\click\decorators.py:559
+msgid "Show this message and exit."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1340
+#: .\venv\Lib\site-packages\click\core.py:1370
+#, python-brace-format
+msgid "(Deprecated) {text}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1387
+msgid "Options"
+msgstr "Опции"
+
+#: .\venv\Lib\site-packages\click\core.py:1413
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\click\core.py:1429
+msgid "DeprecationWarning: The command {name!r} is deprecated."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1636
+msgid "Commands"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1668
+msgid "Missing command."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1746
+msgid "No such command {name!r}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:2310
+msgid "Value must be an iterable."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:2331
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\click\core.py:2778
+#, python-brace-format
+msgid "env var: {var}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:2808
+msgid "(dynamic)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:2821
+#, python-brace-format
+msgid "default: {default}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:2834
+msgid "required"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\decorators.py:465
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\decorators.py:528
+msgid "Show the version and exit."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:44
+#: .\venv\Lib\site-packages\click\exceptions.py:80
+#, python-brace-format
+msgid "Error: {message}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:72
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:121
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:123
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:179
+msgid "Missing argument"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:181
+msgid "Missing option"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:183
+msgid "Missing parameter"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:185
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:192
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:212
+#, python-brace-format
+msgid "No such option: {name}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:224
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Possible options: {possibilities})"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:262
+msgid "unknown error"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:269
+msgid "Could not open file {filename!r}: {message}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\parser.py:231
+msgid "Argument {name!r} takes {nargs} values."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\parser.py:413
+msgid "Option {name!r} does not take a value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\parser.py:474
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\click\shell_completion.py:319
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\shell_completion.py:326
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:158
+msgid "Repeat for confirmation"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:174
+msgid "Error: The value you entered was invalid."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:176
+#, python-brace-format
+msgid "Error: {e.message}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:187
+msgid "Error: The two entered values do not match."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:243
+msgid "Error: invalid input"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:773
+msgid "Press any key to continue..."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:266
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:298
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\click\types.py:392
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\click\types.py:414
+msgid "{value!r} is not a valid {number_type}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:470
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:611
+msgid "{value!r} is not a valid boolean."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:635
+msgid "{value!r} is not a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:822
+msgid "file"
+msgstr "файл"
+
+#: .\venv\Lib\site-packages\click\types.py:824
+msgid "directory"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:826
+msgid "path"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:877
+msgid "{name} {filename!r} does not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:886
+msgid "{name} {filename!r} is a file."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:894
+#, python-brace-format
+msgid "{name} '{filename}' is a directory."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:903
+msgid "{name} {filename!r} is not readable."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:912
+msgid "{name} {filename!r} is not writable."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:921
+msgid "{name} {filename!r} is not executable."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:988
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
+msgid "Messages"
+msgstr "Сообщения"
+
+#: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\staticfiles\apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\syndication\apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: .\venv\Lib\site-packages\django\core\paginator.py:30
+msgid "…"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:32
+msgid "That page number is not an integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:33
+msgid "That page number is less than 1"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:34
+msgid "That page contains no results"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:22
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "Enter a valid value."
+msgstr "Введите корректный email"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:104
+#: .\venv\Lib\site-packages\django\forms\fields.py:760
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "Enter a valid URL."
+msgstr "Введите корректный email"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:165
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "Enter a valid integer."
+msgstr "Введите корректный email"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:176
+msgid "Enter a valid email address."
+msgstr "Введите корректный email"
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: .\venv\Lib\site-packages\django\core\validators.py:259
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:267
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:279
+#: .\venv\Lib\site-packages\django\core\validators.py:306
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "Enter a valid IPv4 address."
+msgstr "Введите корректный email"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:286
+#: .\venv\Lib\site-packages\django\core\validators.py:307
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "Enter a valid IPv6 address."
+msgstr "Введите корректный email"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:298
+#: .\venv\Lib\site-packages\django\core\validators.py:305
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr "Введите корректный email"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:341
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:347
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:382
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:391
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:400
+#, python-format
+msgid "Ensure this value is a multiple of step size %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:407
+#, python-format
+msgid ""
+"Ensure this value is a multiple of step size %(limit_value)s, starting from "
+"%(offset)s, e.g. %(offset)s, %(valid_value1)s, %(valid_value2)s, and so on."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:439
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:457
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:480
+#: .\venv\Lib\site-packages\django\forms\fields.py:355
+#: .\venv\Lib\site-packages\django\forms\fields.py:394
+msgid "Enter a number."
+msgstr "Введите номер телефона"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:482
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:487
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:492
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:563
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:624
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\base.py:1477
+#: .\venv\Lib\site-packages\django\forms\models.py:906
+msgid "and"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\base.py:1479
+#, fuzzy, python-format
+#| msgid "user with this email already exists."
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "Пользователь с таким email уже существует."
+
+#: .\venv\Lib\site-packages\django\db\models\constraints.py:20
+#, python-format
+msgid "Constraint “%(name)s” is violated."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:133
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:134
+msgid "This field cannot be null."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:135
+msgid "This field cannot be blank."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:136
+#, fuzzy, python-format
+#| msgid "user with this email already exists."
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr "Пользователь с таким email уже существует."
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or
+#. 'month'. Eg: "Title must be unique for pub_date year"
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:140
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:179
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1155
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1156
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1158
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1208
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1210
+msgid "String (unlimited)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1314
+msgid "Comma-separated integers"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1415
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1419
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1554
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1423
+msgid "Date (without time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1550
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1558
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1563
+msgid "Date (with time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1690
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1692
+msgid "Decimal number"
+msgstr "Номер"
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1853
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1857
+msgid "Duration"
+msgstr "Длительность"
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1909
+msgid "Email address"
+msgstr "Адрес электронной почты"
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1934
+msgid "File path"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2012
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2014
+msgid "Floating point number"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2054
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2056
+msgid "Integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2152
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2169
+msgid "Small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2177
+msgid "IPv4 address"
+msgstr "IP адрес"
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2301
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2302
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2304
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2355
+msgid "Positive big integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2370
+msgid "Positive integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2385
+msgid "Positive small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2401
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2437
+msgid "Text"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2512
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2516
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2520
+msgid "Time"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2628
+msgid "URL"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2652
+msgid "Raw binary data"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2717
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2719
+msgid "Universally unique identifier"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:232
+msgid "File"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:393
+msgid "Image"
+msgstr "Изображение"
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:26
+msgid "A JSON object"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:28
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:939
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:941
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1235
+msgid "One-to-one relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1292
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1294
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1342
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: .\venv\Lib\site-packages\django\forms\boundfield.py:185
+msgid ":?.!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:95
+msgid "This field is required."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:304
+msgid "Enter a whole number."
+msgstr "Введите целое число"
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:475
+#: .\venv\Lib\site-packages\django\forms\fields.py:1252
+msgid "Enter a valid date."
+msgstr "Введите корректный дату"
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:498
+#: .\venv\Lib\site-packages\django\forms\fields.py:1253
+msgid "Enter a valid time."
+msgstr "Введите корректное время"
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:525
+msgid "Enter a valid date/time."
+msgstr "Введите корректную дату"
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:559
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "Enter a valid duration."
+msgstr "Введите корректный email"
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:560
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:629
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:630
+msgid "No file was submitted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:631
+msgid "The submitted file is empty."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:633
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:638
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:702
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr "Загрузите верное изображение"
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:874
+#: .\venv\Lib\site-packages\django\forms\fields.py:960
+#: .\venv\Lib\site-packages\django\forms\models.py:1585
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:962
+#: .\venv\Lib\site-packages\django\forms\fields.py:1081
+#: .\venv\Lib\site-packages\django\forms\models.py:1583
+msgid "Enter a list of values."
+msgstr "Введите список значений"
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1082
+msgid "Enter a complete value."
+msgstr "Введите целое число"
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1321
+msgid "Enter a valid UUID."
+msgstr "Введите корректный UUID"
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1351
+msgid "Enter a valid JSON."
+msgstr "Введите корректный JSON"
+
+#. Translators: This is the default suffix added to form field labels
+#: .\venv\Lib\site-packages\django\forms\forms.py:94
+msgid ":"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\forms.py:231
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:65
+#, python-format
+msgid "Please submit at most %(num)d form."
+msgid_plural "Please submit at most %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:70
+#, python-format
+msgid "Please submit at least %(num)d form."
+msgid_plural "Please submit at least %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:899
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:904
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:911
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:920
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1357
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1448
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1587
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\utils.py:227
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:461
+msgid "Clear"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:462
+msgid "Currently"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:463
+msgid "Change"
+msgstr "Изменить"
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:800
+msgid "Unknown"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:801
+msgid "Yes"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:802
+msgid "No"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:876
+msgid "yes,no,maybe"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:906
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:923
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:925
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:927
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:929
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:931
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:933
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:74
+msgid "p.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:75
+msgid "a.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:80
+msgid "PM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:81
+msgid "AM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:153
+msgid "midnight"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:155
+msgid "noon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:7
+msgid "Monday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:8
+msgid "Tuesday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:9
+msgid "Wednesday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Thursday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:11
+msgid "Friday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:12
+msgid "Saturday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:13
+msgid "Sunday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:16
+msgid "Mon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:17
+msgid "Tue"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:18
+msgid "Wed"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "Thu"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "Fri"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:21
+msgid "Sat"
+msgstr "Установить"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:22
+msgid "Sun"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:25
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:26
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:27
+msgid "March"
+msgstr "Март"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:28
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:29
+msgid "May"
+msgstr "Май"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:30
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:31
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:32
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:33
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:34
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:35
+msgid "November"
+msgstr "Ноябрь"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:36
+msgid "December"
+msgstr "Декабрь"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:39
+msgid "jan"
+msgstr "янв"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:40
+msgid "feb"
+msgstr "фев"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:41
+msgid "mar"
+msgstr "мар"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:42
+msgid "apr"
+msgstr "апр"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:43
+msgid "may"
+msgstr "май"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:44
+msgid "jun"
+msgstr "июн"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:45
+msgid "jul"
+msgstr "июл"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:46
+msgid "aug"
+msgstr "авг"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:47
+msgid "sep"
+msgstr "сен"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:48
+msgid "oct"
+msgstr "окт"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:49
+msgid "nov"
+msgstr "ноя"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:50
+msgid "dec"
+msgstr "дек"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:53
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:54
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:55
+msgctxt "abbrev. month"
+msgid "March"
+msgstr "Март"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:56
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:57
+msgctxt "abbrev. month"
+msgid "May"
+msgstr "Май"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:58
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:59
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:60
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:61
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:62
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:63
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:64
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:67
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:68
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:69
+msgctxt "alt. month"
+msgid "March"
+msgstr "Март"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:70
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:71
+msgctxt "alt. month"
+msgid "May"
+msgstr "Май"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:72
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:73
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:74
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:75
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:76
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:77
+#, fuzzy
+#| msgid "November"
+msgctxt "alt. month"
+msgid "November"
+msgstr "Ноябрь"
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:78
+#, fuzzy
+#| msgid "Decimal number"
+msgctxt "alt. month"
+msgid "December"
+msgstr "Номер"
+
+#: .\venv\Lib\site-packages\django\utils\ipv6.py:8
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "This is not a valid IPv6 address."
+msgstr "Введите корректный email"
+
+#: .\venv\Lib\site-packages\django\utils\text.py:123
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\text.py:323
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: .\venv\Lib\site-packages\django\utils\text.py:342
+#: .\venv\Lib\site-packages\django\utils\timesince.py:135
+msgid ", "
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:8
+#, python-format
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:9
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:10
+#, python-format
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:11
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:12
+#, python-format
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:13
+#, python-format
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:29
+msgid "Forbidden"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:30
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:34
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:40
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:45
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
+"\" …> for links to third-party sites."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:54
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:60
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:66
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:44
+msgid "No year specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:64
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:115
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:214
+msgid "Date out of range"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:94
+msgid "No month specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:147
+msgid "No day specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:194
+msgid "No week specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:349
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:380
+#, fuzzy, python-format
+#| msgid "No %(verbose_name_plural)s available"
+msgid "No %(verbose_name_plural)s available"
+msgstr "%(verbose_name_plural) отсутствуют."
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:652
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:692
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\detail.py:56
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:70
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:77
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:169
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:49
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:51
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:68
+#: .\venv\Lib\site-packages\django\views\templates\directory_index.html:8
+#: .\venv\Lib\site-packages\django\views\templates\directory_index.html:11
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:220
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:206
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:221
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> is in your settings file and you have not configured any "
+"URLs."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:229
+msgid "Django Documentation"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:230
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:238
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:239
+msgid "Get started with Django"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:247
+msgid "Django Community"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:248
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django_ckeditor_5\views.py:77
+msgid "Page not found."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django_ckeditor_5\widgets.py:43
+msgid "Check the correct settings.CKEDITOR_5_CONFIGS "
+msgstr ""
+
+#: .\venv\Lib\site-packages\kombu\transport\qpid.py:1311
+#, python-format
+msgid "Attempting to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\kombu\transport\qpid.py:1316
+#, python-format
+msgid "Connected to qpid with SASL mechanism %s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\kombu\transport\qpid.py:1334
+#, python-format
+msgid "Unable to connect to qpid with SASL mechanism %s"
+msgstr ""
 
 #~ msgid "View Pending Orders"
 #~ msgstr "Просмотреть последние заказы"
@@ -1009,83 +2666,6 @@ msgstr "Недействительная ссылка активации!"
 
 #~ msgid "Update Service Availability"
 #~ msgstr "Обновить доступность услуги"
-
-#~ msgid "Options"
-#~ msgstr "Опции"
-
-#~ msgid "file"
-#~ msgstr "файл"
-
-#~ msgid "Messages"
-#~ msgstr "Сообщения"
-
-#~ msgid "Enter a valid email address."
-#~ msgstr "Введите корректный email"
-
-#~ msgid "Enter a number."
-#~ msgstr "Введите номер телефона"
-
-#~ msgid "user with this email already exists."
-#~ msgstr "Пользователь с таким email уже существует."
-
-#~ msgid "Decimal number"
-#~ msgstr "Номер"
-
-#~ msgid "Duration"
-#~ msgstr "Длительность"
-
-#~ msgid "Email address"
-#~ msgstr "Адрес электронной почты"
-
-#~ msgid "IPv4 address"
-#~ msgstr "IP адрес"
-
-#~ msgid "Image"
-#~ msgstr "Изображение"
-
-#~ msgid "Enter a whole number."
-#~ msgstr "Введите целое число"
-
-#~ msgid "Change"
-#~ msgstr "Изменить"
-
-#~ msgid "Sat"
-#~ msgstr "Установить"
-
-#~ msgid "March"
-#~ msgstr "Март"
-
-#~ msgid "May"
-#~ msgstr "Май"
-
-#~ msgid "November"
-#~ msgstr "Ноябрь"
-
-#~ msgid "may"
-#~ msgstr "май"
-
-#~ msgctxt "abbrev. month"
-#~ msgid "March"
-#~ msgstr "Март"
-
-#~ msgctxt "abbrev. month"
-#~ msgid "May"
-#~ msgstr "Май"
-
-#~ msgctxt "alt. month"
-#~ msgid "March"
-#~ msgstr "Март"
-
-#~ msgctxt "alt. month"
-#~ msgid "May"
-#~ msgstr "Май"
-
-#~ msgid "November"
-#~ msgstr "Ноябрь"
-
-
-#~ msgid "No %(verbose_name_plural)s available"
-#~ msgstr "%(verbose_name_plural) отсутствуют."
 
 #~ msgid "Terms of Service"
 #~ msgstr "Условия пользования"
@@ -1158,9 +2738,6 @@ msgstr "Недействительная ссылка активации!"
 
 #~ msgid "Logo"
 #~ msgstr "Логотип"
-
-#~ msgid "Home"
-#~ msgstr "Главная"
 
 #~ msgid "Posts"
 #~ msgstr "Сообщения"
