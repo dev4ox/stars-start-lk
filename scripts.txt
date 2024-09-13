@@ -22,6 +22,12 @@ pg_dump --data-only --table=registration_services --column-inserts --dbname=star
 pg_dump --data-only --table=registration_category --column-inserts --dbname=stars_start > /tmp/category_data.sql
 pg_dump --data-only --table=registration_customuser --column-inserts --dbname=stars_start > /tmp/customuser_data.sql
 
+mv /tmp/groupservices_data.sql  /home/ten/groupservices_data.sql
+mv /tmp/services_data.sql  /home/ten/services_data.sql
+mv /tmp/category_data.sql  /home/ten/category_data.sql
+mv /tmp/customuser_data.sql  /home/ten/customuser_data.sql
+
+
 psql --dbname=stars_start < /tmp/groupservices_data.sql
 psql --dbname=stars_start < /tmp/services_data.sql
 psql --dbname=stars_start < /tmp/category_data.sql
