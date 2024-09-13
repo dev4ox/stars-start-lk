@@ -35,13 +35,13 @@
     {% endif %}
 
     {% if last_order.status == 'paid' %}
-        {% if not order.service.is_visible_content %}
+        {% if not last_order.service.is_visible_content %}
             <form method="post" action="{% url 'order_get_tickets' last_order.order_id %}" style="display:inline;">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-success">{% trans "Get ticket" %}</button>
             </form>
         {% else %}
-            <a href="{% url 'order_view_content' order.service.id %}" class="btn btn-info">{% trans "View content" %}</a>
+            <a href="{% url 'order_view_content' last_order.service.id %}" class="btn btn-info">{% trans "Content" %}</a>
         {% endif %}
     {% endif %}
 

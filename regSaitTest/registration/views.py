@@ -92,12 +92,14 @@ def set_language(request):
 
 @login_required
 def profile(request):
-    last_order = Order.objects.filter(user=request.user).order_by('-date')[:1]
+    last_order = Order.objects.filter(user=request.user).order_by('-order_id')[:1]
 
     if last_order:
         context = {
             "last_order": last_order[0],
         }
+        print(last_order)
+
 
     else:
         context = {}

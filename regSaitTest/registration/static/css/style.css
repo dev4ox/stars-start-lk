@@ -196,8 +196,11 @@ main {
   }
 }
 @media (max-width: 576px) {
+  .profile-container .profile-right a {
+    padding: 5px 10px;
+  }
   .table {
-    font-size: 0.5rem;
+    font-size: 0.75rem;
   }
   .table th {
     padding: 6px;
@@ -212,11 +215,11 @@ main {
     font-size: 1rem;
   }
   .badge {
-    font-size: 0.5rem;
+    font-size: 0.75rem;
   }
   .btn {
-    font-size: 0.5rem;
-    padding: 2px 4px;
+    font-size: 0.75rem;
+    padding: 5px 10px;
     margin: 2px !important;
   }
 }

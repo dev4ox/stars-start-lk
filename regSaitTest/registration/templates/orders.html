@@ -48,7 +48,7 @@
                             <button type="submit" class="btn btn-success">{% trans "Get ticket" %}</button>
                         </form>
                     {% else %}
-                        <a href="{% url 'order_view_content' order.service.id %}" class="btn btn-info">{% trans "View content" %}</a>
+                        <a href="{% url 'order_view_content' order.service.id %}" class="btn btn-info">{% trans "Content" %}</a>
                     {% endif %}
                 {% endif %}
 
