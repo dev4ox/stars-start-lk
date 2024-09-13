@@ -521,13 +521,12 @@ footer {
     margin-right: 5px;
 }
 
-.btn-secondary {
+.btn-search {
     margin-left: 6px;
     background-color: rgba(0, 255, 0, 0.2);
-    color: $text-color-wh;
+    color: $text-color;
     &:hover {
         background-color: rgba(0, 255, 0, 0.6);
-        color: $text-color-wh;
     }
 }
 

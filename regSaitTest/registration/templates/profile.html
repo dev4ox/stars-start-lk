@@ -21,6 +21,7 @@
 <div class="last-order shadow">
 <h3>{% trans "Last Orders" %}</h3>
 {% if last_order %}
+    <p>{% trans "ID:" %} {{ last_order.service.id }}</p>
     <p>{% trans "Service:" %} {{ last_order.service.title }}</p>
     <p>{% trans "Category:" %} {{ last_order.category.name }}</p>
     <p>{% trans "Date:" %} {{ last_order.date }}</p>
@@ -34,10 +35,14 @@
     {% endif %}
 
     {% if last_order.status == 'paid' %}
-    <form method="post" action="{% url 'order_get_tickets' last_order.order_id %}" style="display:inline;">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-success">{% trans "Get ticket" %}</button>
-    </form>
+        {% if not order.service.is_visible_content %}
+            <form method="post" action="{% url 'order_get_tickets' last_order.order_id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">{% trans "Get ticket" %}</button>
+            </form>
+        {% else %}
+            <a href="{% url 'order_view_content' order.service.id %}" class="btn btn-info">{% trans "View content" %}</a>
+        {% endif %}
     {% endif %}
 
     <a href="{% url 'orders_details' last_order.order_id %}" class="btn btn-info">{% trans "Details" %}</a>
