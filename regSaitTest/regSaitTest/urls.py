@@ -21,7 +21,6 @@ from django.conf.urls.static import static
 from registration.urls import urlpatterns_ajax
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
     path("lk/", include("registration.urls")),
     path("lk/panels/", include("panels.urls")),
     path('tinymce/', include('tinymce.urls')),

@@ -211,16 +211,19 @@ main {
   .table td:last-child {
     padding: 2px;
   }
+  .table .btn {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    margin: 2px !important;
+  }
   h2 {
     font-size: 1rem;
   }
   .badge {
     font-size: 0.75rem;
   }
-  .btn {
-    font-size: 0.75rem;
-    padding: 5px 10px;
-    margin: 2px !important;
+  .btn-search {
+    margin-left: 10px;
   }
 }
 .last-order {
@@ -298,16 +301,17 @@ footer {
   width: 100%;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
-.user-card .card-body {
+
+.card-body {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.user-card .card-body h5 {
+.card-body h5 {
   margin-bottom: 15px;
 }
-.user-card .card-body p:first-of-type {
+.card-body p:first-of-type {
   margin: 0;
   overflow: hidden;
   max-height: 4.8em; /* Высота для 4-х строк */
@@ -317,11 +321,11 @@ footer {
   white-space: normal;
   transition: max-height 0.3s ease;
 }
-.user-card .card-body p:first-of-type.expanded {
+.card-body p:first-of-type.expanded {
   max-height: none; /* Убираем ограничение высоты */
   overflow: visible;
 }
-.user-card .card-body .toggle-link {
+.card-body .toggle-link {
   color: #00aeff;
   cursor: pointer;
   font-size: 14px;
@@ -329,13 +333,14 @@ footer {
   display: inline-block;
   text-align: right;
 }
-.user-card .card-body .toggle-link:hover {
+.card-body .toggle-link:hover {
   text-decoration: underline;
 }
-.user-card .card-order-info {
+
+.card-order-info {
   padding: 20px;
 }
-.user-card .card-order-info form {
+.card-order-info form {
   display: block;
   width: 100%;
   font-size: 1rem;
@@ -343,7 +348,7 @@ footer {
   line-height: 1.5;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.user-card .card-order-info form select {
+.card-order-info form select {
   padding: 0.375rem 0.75rem;
   border-radius: 0.25rem;
   color: #FFFFFF;
@@ -353,7 +358,7 @@ footer {
   text-overflow: ellipsis; /* Добавление многоточия */
   overflow: hidden; /* Обрезка текста, который не помещается */
 }
-.user-card .card-order-info form #id_user_comment, .user-card .card-order-info form #id_promo_code {
+.card-order-info form #id_user_comment, .card-order-info form #id_promo_code {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;

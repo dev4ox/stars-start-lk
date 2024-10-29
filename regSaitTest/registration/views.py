@@ -188,7 +188,7 @@ def order_service_content(request, service_id):
         file_path = Path(file_path)
         url = os.path.join(settings.MEDIA_URL, "service_contents", str(service.id), file_path.name)
 
-        if file_path.suffix in ['.docx', '.pdf', '.mp3', '.mp4']:
+        if file_path.suffix in ['.docx', '.pdf', '.mp3', '.mp4', '.jpg', '.rar', '.zip']:
             file_data.append(
                 {
                     'name': file_path.name,

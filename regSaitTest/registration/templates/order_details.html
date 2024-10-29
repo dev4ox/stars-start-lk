@@ -7,18 +7,18 @@
 <div class="container">
     <h2>Order</h2>
     <div class="card-body">
-        <p><strong>Order ID:</strong> {{ order.order_id }}</p>
-        <p><strong>User:</strong> {{ order.user.username }}</p>
-        <p><strong>Service:</strong> {{ order.service.title }}</p>
-        <p><strong>Category:</strong> {{ order.category.name }}</p>
-        <p><strong>Date:</strong> {{ order.date }}</p>
-        <p><strong>Status:</strong> {{ order.get_status_display }}</p>
-        <p><strong>User Comment:</strong> {{ order.user_comment }}</p>
-        <p><strong>Moderator Comment:</strong> {{ order.moder_comment }}</p>
+        <p><strong>{% trans "ID:" %}</strong> {{ order.order_id }}</p>
+        <p><strong>{% trans "User:" %}</strong> {{ order.user.username }}</p>
+        <p><strong>{% trans "Service:" %}</strong> {{ order.service.title }}</p>
+        <p><strong>{% trans "Category:" %}</strong> {{ order.category.name }}</p>
+        <p><strong>{% trans "Date:" %}</strong> {{ order.date }}</p>
+        <p><strong>{% trans "Status:" %}</strong> {{ order.get_status_display }}</p>
+        <p><strong>{% trans "User Comment:" %}</strong> {{ order.user_comment }}</p>
+        <p><strong>{% trans "Moderator Comment:" %}</strong> {{ order.moder_comment }}</p>
         {% if order.cost != 0  %}
-            <p><strong>Cost:</strong> ₽ {{ order.cost }}</p>
+            <p><strong>{% trans "Cost:" %}</strong> {{ order.cost }} ₽</p>
         {% else %}
-            <p><strong>Cost:</strong> Цена договорная</p>
+            <p><strong>{% trans "Cost:" %}</strong> Цена договорная</p>
         {% endif %}
     </div>
     <a class="btn-primary" href="{% url 'orders' %}">{% trans "Return back" %}</a>

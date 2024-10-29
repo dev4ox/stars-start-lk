@@ -30,7 +30,7 @@ SECRET_KEY = secret.DJANGO_SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = secret.DEBUG
 
-ALLOWED_HOSTS = ['stars-start.ru', '176.57.217.86', "127.0.0.1", "192.168.3.136"]
+ALLOWED_HOSTS = ['stars-start.ru', '176.57.217.86', "127.0.0.1", "192.168.81.135"]
 
 # Application definition
 
