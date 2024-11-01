@@ -355,30 +355,44 @@ def services(request):
 
     group_services = list(group_services)
     services_list = list(services_list)
+    dict_groups = {}
 
-    # Список для хранения индексов групп, которые нужно удалить
-    groups_to_delete = []
-
-    # Проверяем каждую группу услуг
     for group in group_services:
-        # Получаем все услуги, связанные с этой группой
-        services_in_group = [service for service in services_list if service.group_services == group]
+        if group.is_active:
+            dict_groups[group] = []
 
-        # Если в группе нет активных услуг, удаляем эту группу
-        if not services_in_group:
-            groups_to_delete.append(group)
+        for service in services_list:
+            if service.group_services == group and service.is_active and group.is_active:
+                dict_groups[group].append(service)
 
-    # Удаляем неактивные группы
-    for group in groups_to_delete:
-        group_services.remove(group)
+        if group.is_active and not dict_groups[group]:
+            del dict_groups[group]
+
+    # # Список для хранения индексов групп, которые нужно удалить
+    # groups_to_delete = []
+    #
+    # # Проверяем каждую группу услуг
+    # for group in group_services:
+    #     # Получаем все услуги, связанные с этой группой
+    #     services_in_group = [service for service in services_list if service.group_services == group]
+    #
+    #     # Если в группе нет активных услуг, удаляем эту группу
+    #     if not services_in_group:
+    #         groups_to_delete.append(group)
+    #
+    # # Удаляем неактивные группы
+    # for group in groups_to_delete:
+    #     group_services.remove(group)
 
     # Обновляем минимальные цены для оставшихся услуг
-    for service in services_list:
-        service.min_cost = get_min_cost(service, output_int_num=True)
+    for group, services in dict_groups.items():
+        for service in services:
+            service.min_cost = get_min_cost(service, output_int_num=True)
 
     context = {
-        "services_list": list(enumerate(services_list)),
-        "group_services": group_services,
+        # "services_list": list(enumerate(services_list)),
+        # "group_services": group_services,
+        "dict_groups": dict_groups,
         "search_query": search_query,
     }
 

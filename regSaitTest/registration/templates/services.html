@@ -19,40 +19,34 @@
 </form>
 
 
-{% if group_services %}
-    {% for group in group_services %}
-        <h3 style="text-align: center; margin: 30px auto 0;">{{ group.title }}</h3>
-        <div class="row">
-
-            {% for index, service in services_list %}
-
-                {% if service.group_services == group and service.is_active %}
-                    <div class="col-md-6">
-                        <div class="user-card">
-                            <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ service.title }}</h5>
-                                <div>
-                                    {{ service.description|safe }}
-                                </div>
-                                {% if service.min_cost != 0 and service.min_cost is not None %}
-                                    <p>{% trans 'Price from' %} {{ service.min_cost }} ₽</p>
-                                {% elif service.min_cost == 0 and service.min_cost is not None %}
-                                    <p>Цена договорная</p>
-                                {% endif %}
-                                <a href="{% url 'services_add_order' service.id %}" class="btn btn-success">{% trans "Order" %}</a>
-                            </div>
+{#{% if group_services %}#}
+{% for group, services in dict_groups|items %}
+    <h3 style="text-align: center; margin: 30px auto 0;">{{ group.title }}</h3>
+    <div class="row">
+        {% for service in services %}
+            <div class="col-md-6">
+                <div class="user-card">
+                    <img src="{{ service.image_path.url }}" class="card-img-top" alt="{% trans 'Service' %}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ service.title }}</h5>
+                        <div>
+                            {{ service.description|safe }}
                         </div>
+                        {% if service.min_cost != 0 and service.min_cost is not None %}
+                            <p>{% trans 'Price from' %} {{ service.min_cost }} ₽</p>
+                        {% elif service.min_cost == 0 and service.min_cost is not None %}
+                            <p>Цена договорная</p>
+                        {% endif %}
+                        <a href="{% url 'services_add_order' service.id %}" class="btn btn-success">{% trans "Order" %}</a>
                     </div>
-                {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
 
-            {% endfor %}
 
-        </div>
-    {% endfor %}
-
-
-{% endif %}
+{#{% endif %}#}
 
 {% endblock %}
 
