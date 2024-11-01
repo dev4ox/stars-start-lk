@@ -13,7 +13,6 @@ from reportlab.pdfgen import canvas
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 from yookassa import Configuration, Payment
-from docx import Document
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
@@ -32,7 +31,7 @@ from django.core.paginator import Paginator
 # from django.core.handlers.wsgi import WSGIRequest
 from django.template.loader import render_to_string
 from django.conf import settings
-from django.http import HttpResponse, FileResponse
+from django.http import HttpResponse
 
 # my lib
 from .forms import (
@@ -43,13 +42,9 @@ from .forms import (
     OrderAddUser,
     CustomSetPasswordForm,
 )
-from .models import Order, Services, CustomUser, PromoCode
-from .utils import get_min_cost
-
-from panels.models import GroupServices
-from panels.utils import get_ip
-from panels.tasks import check_payment_status
-from panels.views_forms import AddOrGetDataSession
+from .models import Order, Services, CustomUser, PromoCode, GroupServices
+from .utils import get_min_cost, get_ip
+from .tasks import check_payment_status
 
 User = get_user_model()
 
@@ -158,21 +153,22 @@ def order_details(request, order_id):
         return render(request, "observer/order_user_details.html", context)
 
     elif request.user.role == -1 or request.user.role == 2:
-        request.session = AddOrGetDataSession(
-            session=request.session,
-            form_name="order_change",
-            url_redirect="orders",
-            model_name="order",
-            model_list_param_name=["order_id", ],
-            model_save_commit=False,
-            model_link_field_value={
-                "cost": "category.cost"
-            },
-            html_vars={
-                "title": "Order change",
-                "h2_tag": "Order change",
-            },
-        )
+        pass
+        # request.session = AddOrGetDataSession(
+        #     session=request.session,
+        #     form_name="order_change",
+        #     url_redirect="orders",
+        #     model_name="order",
+        #     model_list_param_name=["order_id", ],
+        #     model_save_commit=False,
+        #     model_link_field_value={
+        #         "cost": "category.cost"
+        #     },
+        #     html_vars={
+        #         "title": "Order change",
+        #         "h2_tag": "Order change",
+        #     },
+        # )
 
         return redirect("panel_form_edit", order_id)
 

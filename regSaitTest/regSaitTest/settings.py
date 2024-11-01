@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['stars-start.ru', '176.57.217.86', "127.0.0.1", "192.168.81.135
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +49,8 @@ INSTALLED_APPS = [
     "django_celery_results",
     'tinymce',
     'registration.apps.RegistrationConfig',
-    "panels.apps.PanelsConfig",
+    'admin_panel.apps.AdminPanelConfig',
+    # "panels.apps.PanelsConfig",
     "widget_tweaks",
 ]
 
@@ -61,8 +63,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'panels.middleware.CheckRoleMiddleware',
-    'panels.middleware.BanIPMiddleware',
 ]
 
 ROOT_URLCONF = 'regSaitTest.urls'
@@ -72,11 +72,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, "registration/templates/"),
-            os.path.join(BASE_DIR, "panels/templates/"),
-            os.path.join(BASE_DIR, "panels/templates/admin/"),
-            os.path.join(BASE_DIR, "panels/templates/manager/"),
-            os.path.join(BASE_DIR, "panels/templates/moderator/"),
-            os.path.join(BASE_DIR, "panels/templates/observer/"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

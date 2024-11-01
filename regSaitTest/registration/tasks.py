@@ -1,7 +1,7 @@
 from celery import shared_task
 from yookassa import Payment, Configuration
 from requests import HTTPError
-from registration.models import Order
+from .models import Order
 from .models import Payment as Payment_models
 from django.conf import settings
 from django.utils import timezone

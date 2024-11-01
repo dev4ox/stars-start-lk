@@ -19,9 +19,8 @@ from phonenumber_field.formfields import PhoneNumberField
 from tinymce.widgets import TinyMCE
 
 # my lib
-from .models import CustomUser, Services, Order, Category, PromoCode
+from .models import CustomUser, Services, Order, Category, PromoCode, GroupServices
 from .utils import get_min_cost
-from panels.models import GroupServices
 
 
 # user forms
@@ -255,7 +254,7 @@ class ServicesChangeForm(forms.ModelForm):
 
 
 class OrderChangeForm(forms.ModelForm):
-    manager = forms.ModelChoiceField(queryset=CustomUser.objects.filter(role=1), required=False)
+    manager = forms.ModelChoiceField(queryset=CustomUser.objects.all(), required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

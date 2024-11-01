@@ -18,15 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 from .settings import DEBUG, MEDIA_URL, MEDIA_ROOT
 from django.conf.urls.static import static
-from registration.urls import urlpatterns_ajax
 
 urlpatterns = [
     path("lk/", include("registration.urls")),
-    path("lk/panels/", include("panels.urls")),
+    path("admin/", admin.site.urls),
+    # path("lk/panels/", include("panels.urls")),
     path('tinymce/', include('tinymce.urls')),
 ]
 
-urlpatterns += urlpatterns_ajax
+# urlpatterns += urlpatterns_ajax
 
 if DEBUG:
     urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
